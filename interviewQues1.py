@@ -105,6 +105,43 @@ result = printMajority(nums)
 
 
 
+## Sort Colors (0, 1, 2) ##
+arr = [ 2, 0 , 1, 2 ,0]
+# if asked to do sorting then , use hash DS whose Time complexity is O(n) and Space Complexity is O(n) #
+##  Here, Use P0 --> Pointing0(Put LHS) and P2 --> Pointing2(Put RHS) , automatic given array get sorted and is applicable if (0,1,2) are only elements in an array ## 
+# Time complexity is O(n)
+
+def sortColors(arr):
+    curr = p0 = 0
+    p2 = len(arr) - 1 
+    while curr<= p2:
+     if arr[curr] == 0:
+        # swapping putting 0 at p0 towards LHS
+        arr[p0] , arr[curr] = arr[curr] ,arr[p0]
+        curr +=1
+        p0 +=1
+        # swapping putting 2 at p2 towards RHS
+     elif arr[curr] == 2:
+        arr[p2], arr[curr] = arr[curr] , arr[p2]
+        p2 -= 1   
+     else:
+        curr += 1
+    return arr 
+
+resultSortedColors = sortColors(arr)
+print("sortedColors are:" , resultSortedColors)
+
+
+
+##
+
+
+
+
+
+
+
+
 
 
 
