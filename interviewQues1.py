@@ -133,7 +133,25 @@ print("sortedColors are:" , resultSortedColors)
 
 
 
-##
+## Top K Frequent Elements ##
+# finding out largest kth elements according to their highest frequency #
+# Time Complexity is and Space Complexity is
+
+from collections import Counter 
+import heapq
+array = [2 , 1, 1 ,1 , 3, 3 , 4]
+k = 3
+# Base Cond if finding out K(same as given array length) elements , return array 
+def topKfrequnecyElement(array , k):
+ if k == len(array):
+    return set(array)
+
+ count = Counter(array)
+ print(count)
+ return heapq.nlargest(k , count.keys() , key = count.get)    
+
+result = topKfrequnecyElement(array , k)
+print("Top K elements is" ,result)
 
 
 
