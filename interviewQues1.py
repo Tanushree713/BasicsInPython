@@ -107,7 +107,7 @@ result = printMajority(nums)
 
 ## Sort Colors (0, 1, 2) ##
 arr = [ 2, 0 , 1, 2 ,0]
-# if asked to do sorting then , use hash DS whose Time complexity is O(n) and Space Complexity is O(n) #
+# if asked to do sorting then , use hash DS whose Time complexity is O(n) and Space Complexity is O(1) #
 ##  Here, Use P0 --> Pointing0(Put LHS) and P2 --> Pointing2(Put RHS) , automatic given array get sorted and is applicable if (0,1,2) are only elements in an array ## 
 # Time complexity is O(n)
 
@@ -135,7 +135,8 @@ print("sortedColors are:" , resultSortedColors)
 
 ## Top K Frequent Elements ##
 # finding out largest kth elements according to their highest frequency #
-# Time Complexity is and Space Complexity is
+# Time Complexity is O(n + klog(n)) , in worst case k=n So, overall TC becomes O(n^2) 
+#  and Space Complexity is O(n)
 
 from collections import Counter 
 import heapq
@@ -154,6 +155,35 @@ result = topKfrequnecyElement(array , k)
 print("Top K elements is" ,result)
 
 
+
+
+## Top Closest points ##
+# k - Minimum Distance wale points ko as a output paas krna h # 
+# Time complexity is O(klogn), Space Complexity is O(n+k) , where in worstCase k=n
+from heapq import heappush , heappop
+import math 
+
+def get_distance(x, y):
+    return math.sqrt(x**2 + y**2)
+
+def kClosestPoints(points , k):
+    min_heap = []
+    n = len(points)
+    for i in range(n) :
+        x = points[i][0]
+        y = points[i][1]
+        heappush(min_heap , (get_distance(x , y) , points[i]))
+
+    result = []
+    for i in range(k):
+        result.append(heappop(min_heap)[1])
+    return result  
+
+points = [[3,3] , [5,-1] ,[-2,4]]
+k = 2
+
+topkpoints = kClosestPoints(points , k)
+print("Top K Closest Points", topkpoints )
 
 
 
