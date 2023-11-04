@@ -1,4 +1,4 @@
-## Min And Max Element  in given Array ##
+## 1.Min And Max Element  in given Array ##
 # Time Complexity is O(n) 
 # Space complexity is O(1)
 arr = [11, 23, 12, 13 , 36 , 40 , 9]
@@ -12,7 +12,7 @@ resultant = minAndMax(arr)
 print("min element is :" , resultant["min"] )
 print("max element is :" , resultant["max"] )
 
-## Best Time to Buy and sell the Stock ##
+## 2. Best Time to Buy and sell the Stock ##
 # Time Complexity is O(n)
 # Space Complexity is O(1) 
 prices = [ 7, 1, 5, 4, 6, 3]
@@ -30,7 +30,5 @@ def buysellStock(prices):
 result = buysellStock(prices)
 print("Max Profit is :" , result )     
 
-## Max Product of SubArray ##
-# Time complexity is 
-# Space Complexity is 
+
 

@@ -187,6 +187,20 @@ print("Top K Closest Points", topkpoints )
 
 
 
+## Count Number of ways to reach Upstairs ##
+# either Takes one step or two step at a time #
+# Time Complexity is O(n), Space Complexity is O(1) #
+
+def countNumWays(n):
+    if ( n <= 3):
+        return n 
+    else :
+        return countNumWays(n-1) + countNumWays(n-2) 
+
+n = 5
+print("Number Of ways To reach Upstairs " ,countNumWays(n))           
+
+
 
 
 
