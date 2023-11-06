@@ -1,5 +1,5 @@
-## 1.Min And Max Element  in given Array ##
-# Time Complexity is O(n) 
+## 1. Min And Max Element  in given Array ##
+# Time Complexity is O(nlogn) 
 # Space complexity is O(1)
 arr = [11, 23, 12, 13 , 36 , 40 , 9]
 def minAndMax(arr):
@@ -11,6 +11,55 @@ def minAndMax(arr):
 resultant = minAndMax(arr)
 print("min element is :" , resultant["min"] )
 print("max element is :" , resultant["max"] )
+
+## OPTIMIZED Approach :- DIVIDE And CONQUER
+# Time Complexity is O(n)
+# space Complexity is O(1)
+
+def findMinandMax(arr  , i , j):
+    # small problem 
+    if i == j: # single element is present in array
+        max_value = arr[i]
+        min_value = arr[i]
+    elif i == j-1 : # i= 0 j=1 having 2 elements
+        # Do one comparison 
+        if arr[i]< arr[j]:
+            max_value = arr[j]
+            min_value = arr[i]  
+        else:
+            max_value = arr[i]
+            min_value = arr[j]
+    #Big problem
+    else:
+        # Divide
+        mid = i + (j-i)//2
+        # Recursion --> Conquer
+        max_l , min_l  = findMinandMax(arr , i , mid)
+        max_r , min_r = findMinandMax(arr , mid+1 , j)
+        # combine
+        # final max_value
+        if max_l < max_r :
+            max_value = max_r
+        else:
+            max_value = max_l
+        # final min_value    
+        if min_l < min_r :
+            min_value = min_l
+        else:
+            min_value = min_r    
+            
+    return max_value , min_value
+
+
+arr = [70 , 56  ,45 , 62 , 31, 29 , 15 , 10 , 3 , 13 , 97] 
+i = 0 
+j = len(arr) - 1
+max_value , min_value = findMinandMax(arr , i , j)
+print("Max and Min element is:" , max_value , min_value)                     
+
+
+
+
 
 ## 2. Best Time to Buy and sell the Stock ##
 # Time Complexity is O(n)
@@ -28,7 +77,8 @@ def buysellStock(prices):
     return max_profit
 
 result = buysellStock(prices)
-print("Max Profit is :" , result )     
+print("Max Profit is :" , result )  
+
 
 
 ## 3. Max Product of SubArray ##
@@ -102,6 +152,13 @@ def tripletSum(nums):
 nums = [ 1 , 2, -1 , 0 , -2 , 4 , -3]                    
 resultants = tripletSum(nums)
 print ("triplet whose sum is zero is " , resultants)
+
+
+
+## 5. Kth Smallest Element 
+# Approach 1 --> sort array then kindex = k-1  -> print array[kindex]
+# Approach 1 : Time complexity is O(nlogn) , Space Complexity is O(1)
+# Approach 2 --> 
 
 
 
