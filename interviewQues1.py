@@ -198,7 +198,33 @@ def countNumWays(n):
         return countNumWays(n-1) + countNumWays(n-2) 
 
 n = 5
-print("Number Of ways To reach Upstairs " ,countNumWays(n))           
+print("Number Of ways To reach Upstairs " ,countNumWays(n))       
+
+
+
+## Find Pairs whose Sum equals to target value ##
+# Using Two pointer Approach #
+# Time Complexity is O(n) , Space Complexity is O(1)
+
+def findPairs( arrays , target):
+    # big Problem
+    l = 0
+    r = len(arrays)-1 
+    while l < r :
+      if arrays[l] + arrays[r] == target :
+        return l , r
+      elif arrays[l] + arrays[r] < target :
+        l = l + 1
+      else :
+        r = r -1     
+
+
+    return -1 , -1
+
+arrays = [ 20 , 35 , 7 , 9 , 11]
+target = 55
+sumOfPairs = findPairs(arrays , target)
+print("index of element whose sum is given target value :", sumOfPairs)
 
 
 
