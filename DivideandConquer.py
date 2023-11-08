@@ -97,7 +97,75 @@ k = 9
 searchElement = binarysearch(array , k )
 print("Search Element is :", searchElement )
 
-## 4th Application >>
+## 4th Application >> Merge Sort ##
+# Time Complexity is O(nlogn) , Space Complexity is O(n) #
+
+
+# definition of mergeProcedure function
+def mergeProcedure( arr , i , mid , j):
+    # n1 -> no. of elements in leftSubarray (i , mid)
+    n1 = mid - i + 1
+    # n2 -> no. of elements in rightSubarray (mid + 1 , j)
+    n2 = j - mid 
+    # Initialize left and right Subarray
+    leftSubarray = [0] * n1
+    rightSubarray = [0] * n2
+    # copy elements from (original )array to (as) subarray 
+    for m in range(n1):
+        leftSubarray[m] = arr[i + m]
+    for n in range(n2):
+        rightSubarray[n] = arr[mid + 1 + n]
+    p = 0
+    q = 0 
+    k = i
+    ## returning sorted subarray
+    while p < n1 and q < n2 :
+        if leftSubarray[p] <= rightSubarray[q]:
+            arr[k] = leftSubarray[p]
+            p += 1
+
+
+        else:
+             arr[k] = rightSubarray[q]
+             q += 1
+
+        k += 1
+
+     ## copy entire elements from leftsubarray
+    while  p < n1:
+        arr[k] = leftSubarray[p]
+        p += 1
+        k += 1
+
+     ## copy entire elements from rightsubarray
+    while q < n2 :
+        q += 1
+        k += 1
+
+
+# definition of mergeSort function
+def mergeSort(arr , i , j):
+    # small Problem 
+    if i == j :
+     return arr
+    # Big Problem  (i < j)
+    else: 
+      # Divide
+      mid = i + (j-i )// 2  
+      # conquer -> recursive call
+      mergeSort(arr , i , mid)
+      mergeSort(arr , mid+1 , j)
+      # combine 
+      mergeProcedure( arr , i , mid , j)
+    return arr
+
+
+sortarray = [50 , 70, 65, 13 , 80 , 62 , 98 , 17]
+i = 0 
+j = len(sortarray) - 1
+result = mergeSort(sortarray , i , j)
+print("Sorted Array is :" , result)
+
 
 
 
