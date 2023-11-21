@@ -168,6 +168,36 @@ print("Sorted Array is :" , result)
 
 
 
+## 5th Application >> QuickSort >> Best Method For Highly Unsorted Array 
+# Time {Average} complexity is O(nlogN ) , Space Complexity O(1)
+def partition(arr , p , q):
+    i = p 
+    pivot = arr[p]
+    for j in range(i+1 , q+1 ):
+        if arr[j]<= pivot :
+            i = i+1 
+            arr[i] , arr[j] = arr[j], arr[i]
+    arr[i] , arr[p] = arr[p ],arr[i]
+    return i         
+
+
+def quickSort( arr , p , q) :
+    if p < q :
+        mid = partition(arr , p , q)
+        quickSort(arr , p , mid -1 )
+        quickSort(arr , mid+1 , q)
+    return arr   
+
+unSortedArr = [ 70 , 50 , 47 , 99 , 147 , 34 , 85 , 21]
+p = 0 
+q = len(unSortedArr) -1
+gettingSortedArray = quickSort(unSortedArr , p , q)
+print("Sorted Array is by appying quicksort:" , gettingSortedArray)
+
+
+
+
+
 
 
 
