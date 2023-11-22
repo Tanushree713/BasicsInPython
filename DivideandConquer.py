@@ -195,6 +195,49 @@ gettingSortedArray = quickSort(unSortedArr , p , q)
 print("Sorted Array is by appying quicksort:" , gettingSortedArray)
 
 
+## RANDOM QuickSort Algo ##
+# Time Complexity is O(nlogN) and space Complexity is O(1) #
+
+import random
+# definition for random_Partition 
+def randomPartition(unArr , p , q):
+    # taking random values
+    random_pivot = random.randrange(p , q) 
+    # swap random_value and element at zeroth index
+    unArr[p] , unArr[random_pivot] = unArr[random_pivot] , unArr[p] 
+    return partition(unArr , p , q)
+
+
+# definition for Partition 
+def partition( unArr , p , q):
+     i = p 
+     pivot = unArr[p]
+     for j in range(i+1 , q+1):
+        if unArr[j] <= pivot:
+            i += 1
+            unArr[i] , unArr[j] = unArr[j] , unArr[i]
+     unArr[i] , unArr[p] = unArr[p], unArr[i]
+     return i        
+
+
+# definition of Random  QuickSort 
+def randomQuickSort(unArr , p , q):
+    # big Problem 
+    if p < q :
+        mid = randomPartition(unArr , p , q)
+        randomQuickSort(unArr , p , mid-1 ) # mid-1 >> rest one Element taking as pivot element , which comes in correct place after 1st step #
+        randomQuickSort(unArr , mid+1 , q)
+    return unArr
+
+
+unArr = [70 , 50 , 47 , 99 , 147 , 34 , 85 , 21]
+p = 0 
+q = len(unArr) - 1
+result = randomQuickSort(unArr , p , q)
+print("Soterd Array using random quickSort" , result)
+
+
+
 
 
 
