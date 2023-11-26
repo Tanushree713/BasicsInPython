@@ -239,6 +239,100 @@ print("Soterd Array using random quickSort" , result)
 
 
 
+## 6th Application >> QuickSelection Procedure 
+####  Kth Smallest Element in an Array 
+## Time complexity : 1. Best Case(equal element division)>>O(n)
+##                   2. Worst Case(either left element is more than Right or right one than left)>> O(n^2)
+## Space Complexity is O(1)
+
+def selectionProcedure(arr , p ,q , k):
+    # Small problem (having single element )
+    if len(arr) == 1 :
+        return arr[p]
+    # Big Problem 
+    else :
+        m = partition(arr , p , q) # partition returns Position(m = i+1) of Pivot in sorted Array 
+        if m == k :
+            return arr[m-1] # m-1 bcoz, m-1 = index of pivotElement in sorted Array 
+        elif m < k : # need to move Right Side (range (m , q))
+            return selectionProcedure(arr , m , q , k) # m bcoz,m-1 = pivot index and we need to move right side 
+        else: # need to move left side 
+            return selectionProcedure(arr , p , m-2 , k) # m-2 bcoz, m-1 =pivotElement index and need to move just left 
+
+def partition(arr , p ,q):
+    i = p 
+    pivot = arr[p]
+    for j in range (i+1 , q+1): # q+1 bcoz, on taking q only last one element is missed 
+        if arr[j] <= pivot :
+            i += 1
+            arr[i] , arr[j] = arr[j], arr[i]
+    arr[i] , arr[p] = arr[p]  , arr[i]
+    return i+1 # return position instead of index                       
+
+
+unArray = [ 30 , 70 , 50 , 98 , 24 , 12 , 43 , 48]
+p = 0 
+q = len(unArray) - 1
+k = 4
+result = selectionProcedure(unArray , p , q , k)
+print("Kth Smallest Elemnt in an Array is " , result)
+
+
+
+## Count The Number Of Inversions , using Divide and Conquer Approach ##
+# Time complexity is O(nlogn) , Space complexity is O(n)
+
+# definition of inversionCount getting count 
+def inversionCount(arr, p, q):
+    _, inv_count = mergesort(arr, p, q)
+    return inv_count
+
+def mergesort(arr, p, q):
+    # Divide
+    if p < q:
+        mid = p + (q - p) // 2
+        # Conquer >> recursive calls
+        left, inv_left = mergesort(arr, p, mid)
+        right, inv_right = mergesort(arr, mid + 1, q)
+        # Combine
+        merged, inv_merge = merge(left, right)
+        return merged, inv_left + inv_right + inv_merge
+    # Small problem
+    else:
+        return [arr[p]], 0
+
+def merge(left, right):
+    result = []
+    i = j = inv_count = 0
+    while i < len(left) and j < len(right):
+        if left[i] <= right[j]:  # left subArr is sorted
+            result.append(left[i])
+            i += 1
+        else:  # right subarray element is lesser than left, so need to invert
+            result.append(right[j])
+            inv_count += len(left) - i  # len(left)-i: remaining elements of left Arr that are greater than the element present in right arr
+            j += 1
+    result.extend(left[i:])
+    result.extend(right[j:])
+    return result, inv_count
+
+unsortArr = [30, 18, 5, 36, 9, 25, 72 , 2]
+p = 0
+q = len(unsortArr) - 1
+count = inversionCount(unsortArr, p, q)
+print("The inversion count of an Array is ", count)
+
+
+ 
+
+
+
+
+
+
+
+
+
 
 
 
