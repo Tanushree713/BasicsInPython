@@ -195,6 +195,47 @@ print("Kth smallest element is :" , result )
 
 
 
+## 6th Kth Largest Element ##
+# Time complexity is O(n)  , Space Complexity is O(1) 
+def selectionPartition( arr , p, q , k):
+    i = p 
+    pivot = arr[p]
+    for j in range(i+1 , q+1) :
+        if arr[j] >= pivot :
+            i += 1
+            arr[i] , arr[j] = arr[j] , arr[i]
+    arr[i] , arr[p] =arr[p] , arr[i] 
+    return i+1  # returning position not index       
+
+
+# definition for quickSorting
+def quickSort(arr , p , q , k):
+   
+    #Divide
+    m = selectionPartition( arr , p , q , k) # m = provide position
+    #check 
+    if m == k :
+        return arr[m-1] # m-1 bcoz , m-1 =index of that element
+    elif m < k :
+        return quickSort(arr , m , q , k) # m is just right element of getting element 
+    else:
+        return quickSort(arr , p , m-2 , k) # just left element (m-1 = element)
+
+
+givenArr = [ 7, 1, 5, 4, 6, 3] #[3, 1, 5, 4, 6, 7] if have this array then , tjis is worst case(descending order) .So , Time complexity is O(n^2).
+p = 0
+q = len(givenArr)- 1
+k = 5
+result = quickSort(givenArr , p  , q , k)
+print("Kth Largest  element is :" , result )
+
+
+
+
+
+
+
+
 
 
 
