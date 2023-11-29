@@ -195,7 +195,7 @@ print("Kth smallest element is :" , result )
 
 
 
-## 6th Kth Largest Element ##
+## 6. Kth Largest Element ##
 # Time complexity is O(n)  , Space Complexity is O(1) 
 def selectionPartition( arr , p, q , k):
     i = p 
@@ -229,7 +229,37 @@ k = 5
 result = quickSort(givenArr , p  , q , k)
 print("Kth Largest  element is :" , result )
 
+## 7. Repeat And Missing Elements 
+# Time complexity is O(n) , Space complexity is O(1)
+#definition for repeatAndMissing
+#LOGIC# -ve to each elements atleast once if found more than once becomes +ve , that +ve having repeated elements and also having that ,
+#  i + 1 = missing element
 
+def repeatAndMissing(nums):
+    repeat  = 0 
+    missing = 0
+    n = len(nums)
+    for num in nums:
+        index = abs(num) - 1  # Storing index from 1 instead of 0
+        if nums[index] < 0 :  # Check each element is visited ( becomes -ve)
+          repeat = abs(num)   # if a number is encountered whose corresponding index has already been marked as negative, it means that this number is a repetition, and its absolute value is assigned to the repeat variable
+        else:
+            nums[index] = -nums[index] # -ve to each elements 
+    for i in range(n) :
+        if nums[i] > 0 :
+            missing = i+1
+    return repeat , missing
+
+
+
+array = [ 7, 1, 5, 4, 6, 3 , 3] 
+results = repeatAndMissing(array)
+
+print("Repeated And Missing Element" , results)
+## 11. Find Duplicates Number ##
+# Time Complexity is  , Space Complexity is 
+
+ 
 
 
 
