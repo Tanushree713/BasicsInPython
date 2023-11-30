@@ -229,6 +229,8 @@ k = 5
 result = quickSort(givenArr , p  , q , k)
 print("Kth Largest  element is :" , result )
 
+
+
 ## 7. Repeat And Missing Elements 
 # Time complexity is O(n) , Space complexity is O(1)
 #definition for repeatAndMissing
@@ -256,6 +258,41 @@ array = [ 7, 1, 5, 4, 6, 3 , 3]
 results = repeatAndMissing(array)
 
 print("Repeated And Missing Element" , results)
+
+
+
+## 8. Merge Intervals 
+# Approach 1 >> create Stack -> store updated( index[0] of 1st interval ,[whatever max of index[1] of 1st interval and index[1] of 2nd interval] if end >= start)intervals get stored inside created stack 
+# else append the intervals as it is
+# Time Complexity is O(nlogn) , Space Complexity is O(n)
+# Approach 2 
+# No need to create stack , take merged which created list by comparing and updating 
+#Time Complexity is O(nlogn) , Space Complexity is O(1)
+
+# definition for mergeIntervals
+def mergeInterval(intervals):
+    if not intervals: #small problem 
+        return []
+    merged = [intervals[0]]  #intialise containing 1st interval of intervals array
+    intervals.sort(key = lambda x:x[0])  # sort according to [0] index of interval of intervals
+    #Big Problem 
+    for i in range( 1, len(intervals)):
+        current_interval = intervals[i] # current_interval = (interval with 1 index )
+        last_merge_interval = merged[-1] # last_merge_interval = (interval with 0 index)
+
+        #check overlap 
+        #{current_interval[0] = start intv of interval of intervals }{#last_merge_interval[1] = end intv of interval of intervals }
+        if current_interval[0] <= last_merge_interval[1] : #check and update 
+            merged[-1] = [last_merge_interval[0] , max(current_interval[1] , last_merge_interval[1])]
+        else:  # No overlap, add the current interval to the merged list
+            merged.append(current_interval)
+
+    return merged        
+
+intervals = [[2, 3] , [3 , 8 ] , [1, 6] , [7, 10]]
+results = mergeInterval(intervals)
+print("The Merge Intervals Are :", results)
+
 ## 11. Find Duplicates Number ##
 # Time Complexity is  , Space Complexity is 
 
