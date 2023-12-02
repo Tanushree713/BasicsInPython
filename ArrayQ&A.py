@@ -293,6 +293,22 @@ intervals = [[2, 3] , [3 , 8 ] , [1, 6] , [7, 10]]
 results = mergeInterval(intervals)
 print("The Merge Intervals Are :", results)
 
+
+## 9. Merge Sorted Array ##
+# Approach 1>> Create new array then , Compare both 1 nd 2 array , find greater one then  ,Append in last index of new array 
+# Time Complexity is O(n) , Space Complexity is O(n) 
+# Approach 2 >> Create preAllocate List having one element then push elements in that preallocate list according to Comparisons.
+# Time complexity is O(n) , Space complexity is O(1)
+
+ 
+
+arr1 = [1, 2, 3, 0, 0, 0 ]
+arr2 = [2 , 5, 7]
+m = len(arr1) 
+n = len(arr2) 
+result = merge_Sorted_Array(arr1 , arr2 , m , n)
+print("Sorted Array is by merging :", result)
+
 ## 11. Find Duplicates Number ##
 # Time Complexity is  , Space Complexity is 
 
