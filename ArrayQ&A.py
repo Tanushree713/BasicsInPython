@@ -335,8 +335,52 @@ result = merge_Sorted_Array(arr1, arr2)
 print("Sorted Array is by merging:", result)
 
 
+
+
+
+## 10. Majority Elements (frequency > n/2) ##
+# Time Complexity is O(n) , Space Complexity is O(1)
+def findMajority(array):
+    count = 0
+    cand = None
+    for arr in array :
+         if count == 0 :
+            cand = arr
+         count += ( 1 if arr == cand else -1)
+    return cand
+def isMajority(array , cand):
+    n = len(array)
+    cnt = 0
+    for i in range(n) :
+     if array[i] == cand :
+        cnt += 1
+    if cnt > n/2 :
+        return 1
+    else :
+        return 0        
+
+def printMajority(array) :
+
+    cand = findMajority(array)
+    if isMajority(array , cand):
+      print("majority Elements is " , cand)
+    else :
+      print("Not exist Candidates ")
+
+
+array = [ 2, 2, 2, 2 ,3, 3 , 2, 1]      
+result = printMajority(array)
+
+
+
+
+
+
 ## 11. Find Duplicates Number ##
 # Time Complexity is  , Space Complexity is 
+
+    
+
 
  
 
