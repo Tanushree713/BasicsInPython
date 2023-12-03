@@ -298,16 +298,42 @@ print("The Merge Intervals Are :", results)
 # Approach 1>> Create new array then , Compare both 1 nd 2 array , find greater one then  ,Append in last index of new array 
 # Time Complexity is O(n) , Space Complexity is O(n) 
 # Approach 2 >> Create preAllocate List having one element then push elements in that preallocate list according to Comparisons.
-# Time complexity is O(n) , Space complexity is O(1)
+# Time complexity is O(nlogn) , Space complexity is O(1)
 
- 
+def merge_Sorted_Array(arr1, arr2):
+    m , n = len(arr1) - 1, len(arr2) - 1  #getting last index of both arr1 and arr2  
+    merged_index = len(arr1) + len(arr2) - 1 #for index of new extending arr1
 
-arr1 = [1, 2, 3, 0, 0, 0 ]
-arr2 = [2 , 5, 7]
-m = len(arr1) 
-n = len(arr2) 
-result = merge_Sorted_Array(arr1 , arr2 , m , n)
-print("Sorted Array is by merging :", result)
+    # Resize arr1 to accommodate the merged elements
+    arr1.extend([0] * len(arr2))
+
+    while m >= 0 and n >= 0:
+        if arr1[m] > arr2[n]:  # comparing from last index of both arr1 and arr2  
+            arr1[merged_index] = arr1[m]   # put obtain largest element after comparison into last index of extend arr1
+            m -= 1
+        else:
+            arr1[merged_index] = arr2[n]
+            n -= 1
+        merged_index -= 1
+    # Remaining elements in arr1 copy that as it is
+    while m >= 0:
+        arr1[merged_index] = arr1[m]
+        m -= 1
+        merged_index -= 1
+    # Remaining elements in arr1 copy that as it is
+    while n >= 0:
+        arr1[merged_index] = arr2[n]
+        n -= 1
+        merged_index -= 1    
+
+    return arr1
+
+# Example
+arr1 = [1, 2, 3  , 4]
+arr2 = [2, 5, 7]
+result = merge_Sorted_Array(arr1, arr2)
+print("Sorted Array is by merging:", result)
+
 
 ## 11. Find Duplicates Number ##
 # Time Complexity is  , Space Complexity is 
