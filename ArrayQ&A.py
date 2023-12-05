@@ -373,25 +373,30 @@ result = printMajority(array)
 
 
 
+## 11. Find All Duplicates Number i Array ##((IF "FIND DUPLICATE then , use LINKEDLIST CYCLE{TORTOISE , HARE Method}"))
+# Approach 1>> sort array , traverse 2 loops from i and i+1 , check arr[i] == arr[i+1] if yes return arr[i]
+# Time Complexity is O(nlogn)  , Space Complexity is O(1)
+# Approach 2>> Repeat Approach
+# # Time Complexity is O(n) , Space Complexity is O(1)
+def find_duplicates(nums):
+    duplicates = []
+
+    for i in range(len(nums)):
+        index = abs(nums[i]) - 1
+        if nums[index] < 0:  # give visited element
+            duplicates.append(index + 1) #add that element indx in duplicate list
+        else:
+            nums[index] = -nums[index]
+
+    return duplicates
+
+# Example
+arr = [1, 2, 3, 4, 2, 5, 6 ]
+result = find_duplicates(arr)
+print("Duplicates in the array:", result)
 
 
-
-## 11. Find Duplicates Number ##
-# Time Complexity is  , Space Complexity is 
-
-    
-
-
- 
-
-
-
-
-
-
-
-
-
+##
 
 
 
