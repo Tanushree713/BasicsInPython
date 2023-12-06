@@ -391,12 +391,40 @@ def find_duplicates(nums):
     return duplicates
 
 # Example
-arr = [1, 2, 3, 4, 2, 5, 6 ]
+arr = [1, 2, 3, 4, 2, 5, 6 , -4 ]
+arr = [abs(num) for num in arr]
 result = find_duplicates(arr)
 print("Duplicates in the array:", result)
 
 
-##
+## 12. Space Optimization using Bit manipulation ##
+# Find all the elements between a and b which are divisible by 2 and 5  
+# Time Complexity is O(b-a) and Space Complexity is O(k)
+# Initial values
+a = 10
+b = 20
+marked = 0
+
+# Mark multiples of 2 or 5
+for num in range(a , b+1):
+    if num % 2 == 0 or num % 5 == 0:
+        marked |= (1 << num - a)
+
+# In this loop, the following bits will be set in 'marked':
+# 0b00000001110 (indices 2, 4, 5, 6, 8 in binary)
+
+multiples = []
+
+# Retrieve marked multiples
+for i in range(b+1):
+    if (marked & (1 << i)) != 0:
+        multiples.append(a+i)
+
+# 'multiples' will contain the numbers corresponding to the set bits in 'marked'
+# [2, 4, 5, 6, 8]
+
+# Final result
+print("Elements that are multiples of 2 or 5:", multiples)
 
 
 

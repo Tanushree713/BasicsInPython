@@ -1,5 +1,5 @@
 ## Insertion At Front ##
-## Time Complexity is O(n)
+## Time Complexity is O(n) , Space complexity is O(n)
 
 #Class Constructor for Node
 class Node :
