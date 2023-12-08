@@ -427,6 +427,62 @@ for i in range(b+1):
 print("Elements that are multiples of 2 or 5:", multiples)
 
 
+## 15.Next Permutation 
+
+## 16.Find Sum Pairs In sorted Rotated Array is Present or not
+# Time Complexity is O(n) , Space Complexity is O(1)
+
+def pairInSortedArray(arr , x ):
+    # finding pivot element 
+    n = len(arr) 
+    for i in range(n):
+       if arr[i] > arr[i+1] :
+        break 
+    l = (i + 1 )% n  # minimum element 
+    r = i            # maximum element
+
+    while l != r :
+       if arr[l] + arr[r] == x :
+        return True
+       elif arr[l] + arr[r] < x :
+          l =  (l + 1) % n
+       else:
+          r = (n+ r-1 )% n   
+    return False
+
+nums = [11, 15, 26, 38, 9, 10]
+x = 22
+result  = pairInSortedArray(nums , x)
+if result :
+    print("Yes !Sum Pairs is Present " )
+else:
+    print("No! not found sum pairs")    
+
+
+## 17. Sort Colors 
+# Time Complexity is O(n) , Space Complexity is O(1)
+
+def sortArr(arr):
+    p0 = curr = 0
+    p2 = len(arr) - 1
+    while curr < p2:
+       if arr[curr] == 0 :
+        arr[p0] , arr[curr] = arr[curr] , arr[p0]
+        p0 += 1
+        curr +=1
+       elif arr[curr] == 2 :
+        arr[p2] , arr[curr] = arr[curr] , arr[p2]
+        p2 -= 1
+       else:
+        curr = curr +1  
+    return arr       
+ 
+array =  [2,0,2,1,1,0]
+result = sortArr(array)
+print("Sorted Array is " , result)
+
+
+
 
 
 

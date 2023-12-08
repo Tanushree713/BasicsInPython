@@ -12,6 +12,9 @@
 
 ## If having more than 2 element are single in arr
 # pseuduCode >>
+# 
+# 
+# 
 #  
 #Question2>> Swap 2 numbers a, b
 # a = a^b
