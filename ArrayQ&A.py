@@ -427,6 +427,32 @@ for i in range(b+1):
 print("Elements that are multiples of 2 or 5:", multiples)
 
 
+## 13.Find Min. number of merge operation make an array Palindrome ##
+# Two Pointer Approach 
+# Time complexity is O(n) , Space Complexity is O(1)
+def CountOperation(arr):
+    count = 0 
+    i = 0
+    j = len(arr) - 1
+    while i < j:
+       if arr[i] == arr[j]:
+         i += 1
+         j -= 1
+       elif arr[i] < arr[j]:  #{ i = 2 , j = 4 , where i < j }
+        arr[i+1] = arr[i+1] + arr[i] # {indx2 = 6}
+        i += 1
+        count += 1
+       else :
+        arr[j-1] = arr[j-1] + arr[j]
+        j -= 1
+        count += 1
+
+    return count       
+
+nums = [1, 2 , 3 , 4 , 1] 
+result = CountOperation(nums)
+print("Minimum number of operations to make an Array palindrome is " , result )
+
 ## 15.Next Permutation 
 
 ## 16.Find Sum Pairs In sorted Rotated Array is Present or not
