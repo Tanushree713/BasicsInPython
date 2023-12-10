@@ -488,7 +488,7 @@ print("Find Power Value of given Element " , result)
 ## 15.Next Permutation 
 
 ## 16.Find Sum Pairs In sorted Rotated Array is Present or not
-# Time Complexity is O(n) , Space Complexity is O(1)
+# Time Complexity is O(logn) , Space Complexity is O(1)
 
 def pairInSortedArray(arr , x ):
     # finding pivot element 
