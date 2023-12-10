@@ -453,6 +453,38 @@ nums = [1, 2 , 3 , 4 , 1]
 result = CountOperation(nums)
 print("Minimum number of operations to make an Array palindrome is " , result )
 
+
+## 14. Find Power(x , n)
+# Divide and Conquer Approach 
+# Time Complexity is O(logn) , Space Complexity is O(1)
+
+def findPower(x , n):
+    # Small Problems 
+    if n == 0 :
+      return 1 
+    elif n < 1:
+        n = -n 
+        x = 1/x    # '/' for Integer division and '//' for float-point division 
+        return findPower( x , n)
+    elif n == 1 :
+       return x
+    # Big Problems 
+    else:
+        # Divide    
+        mid = n//2
+        # conquer >> recursive calls
+        y = findPower(x , mid)
+        ans = y * y
+        if n % 2 == 0 :
+            return ans
+
+    return ans * x
+
+x = 2 #base
+n = 7   #power
+result = findPower(x , n)
+print("Find Power Value of given Element " , result)    
+
 ## 15.Next Permutation 
 
 ## 16.Find Sum Pairs In sorted Rotated Array is Present or not
