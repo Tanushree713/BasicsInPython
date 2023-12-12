@@ -486,6 +486,40 @@ result = findPower(x , n)
 print("Find Power Value of given Element " , result)    
 
 ## 15.Next Permutation 
+#Approach1 >> Take All combinations and then , find out just after given combo 
+# Time Complexity is O(n!) , Space Complexity is O(n!)
+#Approach2 >> 2Pointer Type 
+# Time Complexity is O(n) , Space Complexity is O(1)
+def find_next_permutation(arr):
+    # Find the first pair of indices (i, i+1) from the right such that arr[i] < arr[i+1]
+    i = len(arr) - 2
+    while i >= 0 and arr[i] >= arr[i + 1]:
+        i -= 1
+
+    if i == -1:
+        # If no such pair is found, the array is in descending order, so reverse it
+        arr.reverse()
+    else:
+        # Find the smallest index j from the right such that arr[j] > arr[i]
+        j = len(arr) - 1
+        while arr[j] <= arr[i]:
+            j -= 1
+
+        # Swap arr[i] and arr[j]
+        arr[i], arr[j] = arr[j], arr[i]
+
+        # Reverse the subarray arr[i+1:]
+        arr[i + 1:] = reversed(arr[i + 1:])
+
+    return arr
+
+# Example usage
+arr = [1, 2, 3]
+given_permutation = [2, 1, 3]
+next_permutation = find_next_permutation(given_permutation)
+
+print("Next Combination is " ,next_permutation)
+
 
 ## 16.Find Sum Pairs In sorted Rotated Array is Present or not
 # Time Complexity is O(logn) , Space Complexity is O(1)
