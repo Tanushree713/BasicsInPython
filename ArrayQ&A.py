@@ -564,8 +564,29 @@ array =  [2,0,2,1,1,0]
 result = sortArr(array)
 print("Sorted Array is " , result)
 
-## 18. Rotate Array 
-#
+## 18. Rotate Array After Kth Steps
+#Time Complexity is O(n) , Space Complexity is O(1)
+# 
+def rotatedArray(arr , start , end):
+      while start < end:
+        arr[start], arr[end] = arr[end], arr[start] #swaps 
+        start += 1
+        end -= 1
+      return arr
+def printRotatedArray(arr ,  k ):
+    n = len(arr)
+    k = k % n 
+    rotatedArray(arr, 0, n - 1)  #reverse whole Array 
+    rotatedArray(arr , 0 , k - 1) #reverse left subarray
+    rotatedArray(arr , k , n-1)   #reverse right subarray 
+   
+    return arr
+
+nums = [1, 2, 3, 4, 5, 6, 7]
+k = 3
+result = printRotatedArray(nums , k)
+print("Rotated subarray after Kth Steps " , result)
+
 
 ## 19. Count Consecutive One's 
 # Time Complexity is O(n), Space complexity is O(1)
