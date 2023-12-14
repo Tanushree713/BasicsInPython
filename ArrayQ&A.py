@@ -605,6 +605,49 @@ nums = [1, 1, 1, 1, 4, 1, 5, 1]
 result = findOnesCount(nums)
 print("MAx Number of consecutive One's " , result)
 
+## 20. Spiral Matrix 
+# Time Complexity is O(n*m) , Space Complexity is O(n*m)
+def spiralMatrix(arr):
+    result = []
+    if not arr:
+     return result 
+    m = len(arr)  #rows
+    n = len(arr[0]) #columns
+    top = 0
+    left = 0
+    right = n - 1  # columns 
+    bottom = m- 1 # rows
+     # traverse till the elements remaining inside an array 
+  
+    while top <= bottom and left <=right :  
+        # traverse from left to right where top is Constant
+        for i in range(left , right + 1):
+            result.append(arr[top][i])
+        top += 1
+        # traverse from top to bottom where right is Constant
+        for i in range(top , bottom + 1): 
+            result.append(arr[i][right])
+        right -= 1
+        # traverse from right to left where bottom is Constant
+        # Make Sure that this run only, when element remains for moving left to right .Suppose having only one row remains then no need to traverse 
+        if top <= bottom : 
+         for i in range(right , left - 1 , -1):
+            result.append(arr[bottom][i])
+         bottom -= 1
+        # traverse from bottom to top where left is Constant
+        if left <= right :
+         for i in range(bottom , top - 1 , -1): # (last -1 )indicates that the loop should decrement the index by 1 with each iteration.
+            result.append(arr[i][left])
+         left += 1
+
+    return result                    
+
+
+
+nums =  [[1, 2, 3], [4, 5, 6], [7, 8, 9]]
+resultant = spiralMatrix(nums)
+print("Spiral Matrix is :" , resultant )
+
 
 
 
