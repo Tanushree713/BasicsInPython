@@ -605,6 +605,17 @@ nums = [1, 1, 1, 1, 4, 1, 5, 1]
 result = findOnesCount(nums)
 print("MAx Number of consecutive One's " , result)
 
+
+
+
+
+
+
+
+
+
+####------------------------------------------------2D MATRIX ARRAY --------------------------------------------------------####
+
 ## 20. Spiral Matrix 
 # Time Complexity is O(n*m) , Space Complexity is O(n*m)
 def spiralMatrix(arr):
