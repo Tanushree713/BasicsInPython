@@ -1,5 +1,5 @@
 ## 42. Fibonacci Number 
-# Time Complexity is O(n) , Space Complexity is O(1)
+# Time Complexity is O(n) , Space Complexity is O(n)
 def fibonacciNum(n):
   # Base Cond
   if n == 0 or n == 1 :
@@ -23,7 +23,7 @@ result1 = findPower(n)
 print("Given n is Power of x" , result1)
 
 # APProach2>>Using Recursion
-# Time Complexity is O(n) , Space Complexity is O(1)
+# Time Complexity is O(logn) , Space Complexity is O(logn)
 def findPowerNum(n):
     # Base Cond
     if n==1 :
@@ -41,10 +41,8 @@ print("Given n is Power of x using recursion" , result2)
 
 ## 44. Sum of Digit of a Number Using recursion
 #APProach >> Reverse number and add them 
-# Time Complexity is O(n) , Space Complexityis O(1)
+# Time Complexity is O(logn) , Space Complexityis O(logn)
 def findSumOfDigit(n):
-  sum = 0
-  remainder = 0 
   # base cond
   if not n :
     return 0
@@ -55,5 +53,20 @@ result = findSumOfDigit(nums)
 print("Sum Of the Given Digits" , result)
 
 
-## 45.
+## 45. Find GCD or HCF
+# APProach >>  Euclidean Algo 
+# Time Complexity is O(log(min(a,b))) , Space Complexity is O(log(min(a,b)))
+def findHCF( a , b ):
+  if b == 0 :
+    return a
+  return findHCF(b , a % b)  
+a = 48 
+b = 17
+result = findHCF(a , b)
+print(" HCF of a and b is" , result)
+    
+
+
+
+
 ## 46.
