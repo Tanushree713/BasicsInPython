@@ -67,6 +67,36 @@ print(" HCF of a and b is" , result)
     
 
 
+## 46.Print sums of all subsets of a given set
+# Approach 1.>> Power Set 
+# Approach 2.>> using recursion {SC = O(n)}, Divide in 2 parts- 
+#  1> Selection (pointer move i+1 , sum + arr[i])
+#  2> Rejection (pointer move i+1 , sum  )
+# Store in DS if i == len(arr)
+# then sort the stored sum , {SC = O(2^n)}
+# Time Complexity is O(2^n) , Space complexity is O(n + 2^n)
+
+def subsetSum(arr  , i  , sum ,  result ):
+   
+  if i == len(arr):  # if Come beyond the array  , Store Sum in DS
+    result.append(sum)
+    return 
+  #Include element and recurse(Selection)
+  subsetSum(arr , i + 1 , sum + arr[i]  , result  )
+  #Exclude element and recurse(Rejection)
+  subsetSum( arr , i + 1 , sum , result)
+
+nums = [1, 2, 3]
+sum = 0
+result = []
+i = 0
+subsetSum(nums , i , sum  , result ) #fun calling
+resultant = list(set(result)) #get unique elements and create list (after creating list able to sort that array )
+resultant.sort() # sort getting sum 
+for results in resultant:
+ print(results , end =" " ) #lies result in one line 
+
+ 
 
 
-## 46.
+                                
