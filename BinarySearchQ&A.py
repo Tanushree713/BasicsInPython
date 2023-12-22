@@ -44,4 +44,7 @@ result = indexSearchEle(arr , target)
 print("Position of Searched Element is " , result)
 
 
-## 49. 
+
+
+## 49. Search In Rotated Sorted Array 
+# Time Complexity is O() , Space complexity is O()

@@ -59,7 +59,7 @@ print("Sum Of the Given Digits" , result)
 def findHCF( a , b ):
   if b == 0 :
     return a
-  return findHCF(b , a % b)  
+  return findHCF(b , a % b)  ## For LCM use , { return abs(a*b)// gcd(a,b )}
 a = 48 
 b = 17
 result = findHCF(a , b)
