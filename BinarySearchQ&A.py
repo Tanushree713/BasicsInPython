@@ -46,5 +46,34 @@ print("Position of Searched Element is " , result)
 
 
 
-## 49. Search In Rotated Sorted Array 
-# Time Complexity is O() , Space complexity is O()
+## 49. Search In Rotated Sorted duplicates ele In Array 
+# Either left hand side is sorted or right hand side sorted 
+# Time Complexity is O(log n) , Space complexity is O(1)
+def sortedSearchArr(arr , target ):
+ # if have duplicate ele then Need To convert " arr = list(set(arr))"
+   i = 0
+   j = len(arr) - 1 
+   mid  = i +( j - i)// 2
+   while i <= j :
+    if arr[mid] == target:
+      return mid
+  # sorted Array LHS
+    if arr[i] <= arr[mid]: # check element from lower to mid one
+      if arr[i] <= target and  target <= arr[mid] : # if target lies between lower to mid 
+        j = mid - 1 # remove the right half 
+      else:
+        i = mid + 1
+
+    else: # if target lies between mid to right 
+      if  arr[mid] <= target and target <= arr[j] : #target lies between mid to higher 
+        i = mid + 1
+      else:
+        j = mid  - 1  
+
+   return -1 
+
+nums = [ 7 , 8 , 9 , 1, 2, 3 , 3 , 4 , 5 , 6 , 6]  
+target = 9
+result = sortedSearchArr(nums , target)
+print("Searched Element by k th rotated sorted unique Array  " , result)
+
