@@ -62,7 +62,7 @@ def sortedSearchArr(arr , target ):
       if arr[i] <= target and  target <= arr[mid] : # if target lies between lower to mid 
         j = mid - 1 # remove the right half 
       else:
-        i = mid + 1
+        i = mid + 1 # remove the  left half 
 
     else: # if target lies between mid to right 
       if  arr[mid] <= target and target <= arr[j] : #target lies between mid to higher 
