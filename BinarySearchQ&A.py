@@ -72,7 +72,7 @@ def sortedSearchArr(arr , target ):
 
    return -1 
 
-nums = [ 7 , 8 , 9 , 1, 2, 3 , 3 , 4 , 5 , 6 , 6]  
+nums = [ 7 , 8 , 9 , 1, 2, 3 , 4 , 5 , 6]  
 target = 9
 result = sortedSearchArr(nums , target)
 print("Searched Element by k th rotated sorted unique Array  " , result)

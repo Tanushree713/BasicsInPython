@@ -660,7 +660,7 @@ print("Spiral Matrix is :" , resultant )
 
 
 
-## Matrix Diagonal Sum 
+## 21. Matrix Diagonal Sum 
 # Time Complexity is O(n) , Space Complexity is O(1)
 def diagonalSumMatrix(mat):
     res = 0
@@ -670,7 +670,7 @@ def diagonalSumMatrix(mat):
         res += mat[i][n-1-i] #(0,2)(1,1)(2,0)
     # if n(row and colmn) is odd there substract by repeated elem that is added in res(during diagonal from both direction)
     # if n(rows and colmn) is even there is no repeated elem added in res(sum of diagonal elem).So, return only res  
-    return res - mat[n//2][n//2] if n % 2  else res #1. odd  #2. even
+    return res - mat[n//2][n//2] if n % 2  else res  #1. odd   #2. even
 
 matrix_even = [
     [1, 2, 3],
