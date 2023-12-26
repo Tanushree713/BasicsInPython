@@ -25,11 +25,11 @@ class LinkedList:
             temp =  temp.next
 
 # Driver Code 
-# llist  = LinkedList()
-# llist.insertAtBeginning(12)
-# llist.insertAtBeginning(10)
-# llist.insertAtBeginning(8)          
-# llist.printList()  
+llist  = LinkedList()
+llist.insertAtBeginning(12)
+llist.insertAtBeginning(10)
+llist.insertAtBeginning(8)          
+llist.printList()  
 
 
 ## Insertion At End  ##
@@ -67,16 +67,16 @@ class LinkedList:
             print(str(temp.data) + " " ,end = " ")     
             temp = temp.next 
 
-# lilist = LinkedList()
-# lilist.insertionAtEnd(12)
-# lilist.insertionAtEnd(9)
-# lilist.insertionAtEnd(7)
-# lilist.printListing()
+lilist = LinkedList()
+lilist.insertionAtEnd(12)
+lilist.insertionAtEnd(9)
+lilist.insertionAtEnd(7)
+lilist.printListing()
 
 
 
 ## Insertion After Any Node ##
-# Time Complexity is O() , Space Complexity is O()
+# Time Complexity is O(1) , Space Complexity is O(1)
 
 # Class Constructor for Node
 class Node :
@@ -88,7 +88,7 @@ class LinkedList :
     def __init__(self):
         self.head = None
   # function definition for insertion at end 
-    def insertionAtEnd(self , new_data):
+    def insertionAtEnd(self , new_data):    #{TC = O(n) ,SC = O(1)}
         new_node = Node(new_data)
         if self.head is None:
             self.head = new_node 
@@ -100,7 +100,7 @@ class LinkedList :
 
 
   # function definition for insertion at any node
-    def insertionAtAnyNode(self , prev_node , new_data):
+    def insertionAtAnyNode(self , prev_node , new_data):  #{TC = O(1) ,SC = O(1)}
         new_node = Node(new_data)
         if prev_node is None :
             print("given node is available at Likedlist")
@@ -109,7 +109,7 @@ class LinkedList :
         prev_node.next = new_node
     # function definition for printing LinkedList
     
-    def printLists(self):
+    def printLists(self):        #{TC = O(n) ,SC = O(1)}
         temp = self.head
         while temp :
             print(str(temp.data) + " " , end=" ")
@@ -121,6 +121,62 @@ llists.insertionAtEnd(13)
 llists.insertionAtEnd(15)
 llists.insertionAtAnyNode(llists.head.next.next , 16)
 llists.printLists()
+
+
+## Deletion Of Any Node 
+# Time Complexity is O(n) , Space Complexity is O(1)
+# Class constructor for Node
+class Node:
+    def __init__(self , data):
+        self.data = data
+        self.next = None
+
+class LinkedList:
+    def __init__(self):
+        self.head = None
+    def insertionAtFront(self , new_data) :
+        new_node = Node(new_data)
+        if self.head is None:
+            self.head = new_node
+        else :    
+          temp = self.head
+          new_node.next = self.head 
+          self.head = new_node
+
+    def deletionAtAnyNode(self , pos):
+       
+        # Base Case Condition 
+        if self.head is None : #empty LinkedList
+            return
+        temp = self.head 
+        if pos == 0:
+           self.head = temp.next
+           temp = None
+           return
+        for i in range(pos -1 ):
+            temp = temp.next 
+            if temp is None : # pointer points out of bound 
+                return 
+            if temp.next is None:
+                return    
+        new_ptr = temp.next.next # creating new ptr starts pointing nextValue of curr node to nextValue of just after currnode  
+       # store nextValue of just after currnode by making none its value firstly 
+        temp.next = new_ptr
+
+    def printLinkedList(self):
+        temp = self.head
+        while temp :
+            print(str(temp.data) + " " , end =" ")
+            temp = temp.next
+
+linkedList = LinkedList()
+linkedList.insertionAtFront(21)
+linkedList.insertionAtFront(22)
+linkedList.insertionAtFront(23)
+linkedList.insertionAtFront(25)
+linkedList.deletionAtAnyNode(2)
+linkedList.printLinkedList()            
+
 
 
 
