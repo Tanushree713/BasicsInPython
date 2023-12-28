@@ -149,16 +149,16 @@ class LinkedList:
         if self.head is None : #empty LinkedList
             return
         temp = self.head 
-        if pos == 0:
-           self.head = temp.next
-           temp = None
-           return
+        # if pos == 0:
+        #    self.head = temp.next
+        #    temp = None
+        #    return
         for i in range(pos -1 ):
             temp = temp.next 
-            if temp is None : # pointer points out of bound 
-                return 
-            if temp.next is None:
-                return    
+            # if temp is None : # pointer points out of bound 
+            #     return 
+            # if temp.next is None:
+            #     return    
         new_ptr = temp.next.next # creating new ptr starts pointing nextValue of curr node to nextValue of just after currnode  
        # store nextValue of just after currnode by making none its value firstly 
         temp.next = new_ptr
@@ -176,6 +176,74 @@ linkedList.insertionAtFront(23)
 linkedList.insertionAtFront(25)
 linkedList.deletionAtAnyNode(2)
 linkedList.printLinkedList()            
+
+
+
+
+## Searching Element In an LinkedList ##
+# Only Linear Search Is Possible #
+# Time Complexity is O(n) , Space Complexity is O(1)
+
+# class constructor for Node
+class Node:
+    def __init__(self , data):
+        self.next = None
+        self.data = data
+
+# class constructor for LinkedList
+class LinkedList:
+    def __init__(self):
+        self.head = None
+
+    # Insertion At End #
+    def insertionAtEnd(self , new_data):
+        new_node = Node(new_data)
+        if self.head is None :
+            self.head = new_node
+            return 
+        else:
+            temp  =  self.head 
+            while temp.next :
+                temp = temp.next 
+            temp.next = new_node
+    # Search At Any Node (Using Linear Search)
+    def searchData(self , key):
+        temp = self.head
+        while temp :
+            if temp.data == key :
+                return True 
+            else: 
+               temp = temp.next 
+        return False 
+
+
+    def printInsertedList(self):
+        temp = self.head 
+        while temp :
+            print(str(temp.data) + " " , end =" ")
+            temp = temp.next
+
+llist = LinkedList()
+llist.insertionAtEnd(32)
+llist.insertionAtEnd(33)
+llist.insertionAtEnd(35)
+llist.insertionAtEnd(38)
+llist.insertionAtEnd(13)
+llist.printInsertedList()
+print()
+key = 30
+result = llist.searchData(key)
+if result :
+    print("Data is Found ")
+else:
+    print("Data is Not Found")    
+
+
+
+
+
+
+
 
 
 
