@@ -242,6 +242,61 @@ else:
 
 
 
+## Reversal Of LinkedList ##
+# Time complexity is O(n) , Space Complexity is O(1)
+# class Constructor For Node
+class Node:
+    def __init__(self , data):
+        self.next = None
+        self.data = data
+# class Constructor For LinkedList
+class LinkedList:
+    def __init__(self):
+        self.head = None  
+# definition function for insertion at front         
+    def insertAtBegin(self , new_data):
+        new_node = Node(new_data)
+        new_node.next = self.head
+        self.head = new_node
+# definition For Reversal LinkedList
+    def reverseLinkedList(self):
+        curr = self.head
+        prev = None
+        next_ptr = None
+        while curr :
+            next_ptr = curr.next 
+            curr.next = prev 
+            prev = curr
+            curr = next_ptr
+        # Need To add Condition For Linkage of Last Node with head node
+        self.head = prev
+# defintion for Printing List        
+    def  printOut(self):
+        temp = self.head
+        while temp:
+            print(str(temp.data) + " " , end =" ")
+            temp = temp.next 
+
+
+likedList = LinkedList()
+likedList.insertAtBegin(1)
+likedList.insertAtBegin(2)
+likedList.insertAtBegin(3)
+likedList.insertAtBegin(4)
+likedList.insertAtBegin(5)
+print("Original LinkedList")
+likedList.printOut()
+likedList.reverseLinkedList()
+print()
+print("Reversed LinkedList are :")
+likedList.printOut()
+
+
+
+
+## SKip List , Concepts Based on modified Binary-Search Used In LinkedList For searching Any Node
+
+
 
 
 
