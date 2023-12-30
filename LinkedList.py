@@ -25,11 +25,11 @@ class LinkedList:
             temp =  temp.next
 
 # Driver Code 
-llist  = LinkedList()
-llist.insertAtBeginning(12)
-llist.insertAtBeginning(10)
-llist.insertAtBeginning(8)          
-llist.printList()  
+# llist  = LinkedList()
+# llist.insertAtBeginning(12)
+# llist.insertAtBeginning(10)
+# llist.insertAtBeginning(8)          
+# llist.printList()  
 
 
 ## Insertion At End  ##
@@ -67,11 +67,11 @@ class LinkedList:
             print(str(temp.data) + " " ,end = " ")     
             temp = temp.next 
 
-lilist = LinkedList()
-lilist.insertionAtEnd(12)
-lilist.insertionAtEnd(9)
-lilist.insertionAtEnd(7)
-lilist.printListing()
+# lilist = LinkedList()
+# lilist.insertionAtEnd(12)
+# lilist.insertionAtEnd(9)
+# lilist.insertionAtEnd(7)
+# lilist.printListing()
 
 
 
@@ -115,12 +115,12 @@ class LinkedList :
             print(str(temp.data) + " " , end=" ")
             temp = temp.next            
    
-llists = LinkedList()
-llists.insertionAtEnd(12)
-llists.insertionAtEnd(13)
-llists.insertionAtEnd(15)
-llists.insertionAtAnyNode(llists.head.next.next , 16)
-llists.printLists()
+# llists = LinkedList()
+# llists.insertionAtEnd(12)
+# llists.insertionAtEnd(13)
+# llists.insertionAtEnd(15)
+# llists.insertionAtAnyNode(llists.head.next.next , 16)
+# llists.printLists()
 
 
 ## Deletion Of Any Node 
@@ -169,13 +169,13 @@ class LinkedList:
             print(str(temp.data) + " " , end =" ")
             temp = temp.next
 
-linkedList = LinkedList()
-linkedList.insertionAtFront(21)
-linkedList.insertionAtFront(22)
-linkedList.insertionAtFront(23)
-linkedList.insertionAtFront(25)
-linkedList.deletionAtAnyNode(2)
-linkedList.printLinkedList()            
+# linkedList = LinkedList()
+# linkedList.insertionAtFront(21)
+# linkedList.insertionAtFront(22)
+# linkedList.insertionAtFront(23)
+# linkedList.insertionAtFront(25)
+# linkedList.deletionAtAnyNode(2)
+# linkedList.printLinkedList()            
 
 
 
@@ -223,26 +223,29 @@ class LinkedList:
             print(str(temp.data) + " " , end =" ")
             temp = temp.next
 
-llist = LinkedList()
-llist.insertionAtEnd(32)
-llist.insertionAtEnd(33)
-llist.insertionAtEnd(35)
-llist.insertionAtEnd(38)
-llist.insertionAtEnd(13)
-llist.printInsertedList()
-print()
-key = 30
-result = llist.searchData(key)
-if result :
-    print("Data is Found ")
-else:
-    print("Data is Not Found")    
+# llist = LinkedList()
+# llist.insertionAtEnd(32)
+# llist.insertionAtEnd(33)
+# llist.insertionAtEnd(35)
+# llist.insertionAtEnd(38)
+# llist.insertionAtEnd(13)
+# llist.printInsertedList()
+# print()
+# key = 30
+# result = llist.searchData(key)
+# if result :
+#     print("Data is Found ")
+# else:
+#     print("Data is Not Found")    
 
 
 
 
 
 ## Reversal Of LinkedList ##
+###########
+## Count Number of Nodes  ##
+###########
 # Time complexity is O(n) , Space Complexity is O(1)
 # class Constructor For Node
 class Node:
@@ -270,6 +273,16 @@ class LinkedList:
             curr = next_ptr
         # Need To add Condition For Linkage of Last Node with head node
         self.head = prev
+
+# definition function For Count The Nodes In LinkedList
+    def countNodes(self):
+        temp = self.head
+        count = 0
+        while temp:
+            count += 1
+            temp = temp.next
+        return count
+
 # defintion for Printing List        
     def  printOut(self):
         temp = self.head
@@ -290,6 +303,18 @@ likedList.reverseLinkedList()
 print()
 print("Reversed LinkedList are :")
 likedList.printOut()
+print()
+count = likedList.countNodes()
+print("Count Nodes In linkedList :" , count)
+
+
+
+
+
+
+
+
+
 
 
 
