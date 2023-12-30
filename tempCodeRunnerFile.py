@@ -1,5 +1,0 @@
-llist  = LinkedList()
-# llist.insertAtBeginning(12)
-# llist.insertAtBeginning(10)
-# llist.insertAtBeginning(8)          
-# llist.printList()

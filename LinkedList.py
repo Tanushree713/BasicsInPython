@@ -291,21 +291,76 @@ class LinkedList:
             temp = temp.next 
 
 
-likedList = LinkedList()
-likedList.insertAtBegin(1)
-likedList.insertAtBegin(2)
-likedList.insertAtBegin(3)
-likedList.insertAtBegin(4)
-likedList.insertAtBegin(5)
-print("Original LinkedList")
-likedList.printOut()
-likedList.reverseLinkedList()
+# likedList = LinkedList()
+# likedList.insertAtBegin(1)
+# likedList.insertAtBegin(2)
+# likedList.insertAtBegin(3)
+# likedList.insertAtBegin(4)
+# likedList.insertAtBegin(5)
+# print("Original LinkedList")
+# likedList.printOut()
+# likedList.reverseLinkedList()
+# print()
+# print("Reversed LinkedList are :")
+# likedList.printOut()
+# print()
+# count = likedList.countNodes()
+# print("Count Nodes In linkedList :" , count)
+
+
+
+
+
+## Floyd's Cycle Algorithm ##
+# Also called Tortoise and hare , Slow and fast ptr Algo
+# Time Complexity is O(n) , Space Complexity is O(1)
+# class Constructor For Node
+class Node:
+    def __init__(self , data):
+        self.data = data
+        self.next = None
+# class constructor For LinkedList
+class LinkedList:
+    def __init__(self):
+        self.head = None
+
+    # definition For Insertion At Starting
+    def insertionAtStart(self , new_data):
+        new_node = Node(new_data)
+        new_node.next = self.head 
+        self.head = new_node
+
+    # definition For Floyd's Algo
+    def detectedLoopInLinkedList(self):
+        tortoise = self.head  # move one steps
+        hare = self.head # move two steps 
+        while hare and tortoise and hare.next:
+            hare = hare.next.next
+            tortoise = tortoise.next
+            if hare == tortoise:
+                return True
+        return False
+
+     # definition For printing 
+    def printingListLinked(self):
+        temp = self.head
+        while temp:
+            print(str(temp.data) + " ", end =" " )
+            temp = temp.next   
+
+lnkedList = LinkedList()
+lnkedList.insertionAtStart(7)     
+lnkedList.insertionAtStart(6)
+lnkedList.insertionAtStart(5)
+lnkedList.insertionAtStart(4)
+lnkedList.insertionAtStart(3)
+lnkedList.printingListLinked()
 print()
-print("Reversed LinkedList are :")
-likedList.printOut()
-print()
-count = likedList.countNodes()
-print("Count Nodes In linkedList :" , count)
+lnkedList.head.next.next.next.next = lnkedList.head
+if lnkedList.detectedLoopInLinkedList():
+    print("Detected Loop Found In LinkedList") 
+else:
+    print("Not Found")                    
 
 
 
