@@ -365,6 +365,88 @@ else:
 
 
 
+## Merge Two Sorted LinkedLists ##
+# Time Complexity is O(n) , Space Complexity is O(n)
+# Using Recursion concept #
+
+# Class Constructor For Node
+class Node:
+    def __init__(self , data):
+        self.next = None 
+        self.data = data
+# Class Constructor For  LinkedList
+class LinkedList:
+    def __init__(self):
+        self.head = None 
+
+    # definition Insertion At End 
+    def insertionAtEnding( self , new_data):
+        new_node = Node(new_data)
+        
+        if self.head is None:
+            self.head = new_node
+        temp = self.head
+        while temp.next:
+            temp =temp.next
+        temp.next = new_node 
+
+    def forPrintList(self):
+        temp = self.head
+        while temp :
+            print(str(temp.data) + " " , end =" ")
+            temp = temp.next
+
+
+# Definition For MergeLists
+def mergeSortedList(head1 , head2 ):
+    temp =  None  #created  empty Node for storing new merged ListS
+    if head1 is None :  #if head1 is empty return head2 list 
+        return head2
+    if head2 is None :
+        return head1
+
+    if head1.data <= head2.data :
+        temp = head1
+        temp.next = mergeSortedList(head1.next , head2) # recursive call
+
+    else:
+        temp = head2
+        temp.next = mergeSortedList(head1 , head2.next) # recursive call
+
+    return temp        
+ 
+
+
+llisting1 = LinkedList() 
+
+llisting1.insertionAtEnding(2)
+llisting1.insertionAtEnding(4)
+llisting1.insertionAtEnding(6)
+llisting1.insertionAtEnding(8)
+llisting1.insertionAtEnding(10)
+print("Sorted LinkedList 1 :") 
+llisting1.forPrintList()
+
+llisting2 = LinkedList() 
+
+llisting2.insertionAtEnding(1)
+llisting2.insertionAtEnding(3)
+llisting2.insertionAtEnding(5)
+llisting2.insertionAtEnding(7)
+llisting2.insertionAtEnding(9)
+llisting2.insertionAtEnding(11)
+print("Sorted LinkedList 2 :")
+llisting2.forPrintList()
+
+llisting3 = LinkedList()
+llisting3.head = mergeSortedList(llisting1.head , llisting2.head)
+print("MergedLists :")
+llisting3.forPrintList()
+
+
+
+
+
 
 
 
