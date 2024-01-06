@@ -1,6 +1,6 @@
-## Deletion Of Node But the twist is Head is Not given , So not able to access the address of Previous node . 
-## Only given Node(its Value)
-## Time Complexity is O(1)  , Space Complexity is O(1)
+## 50. Deletion Of Node But the twist is Head is Not given , So not able to access the address of Previous node  ##
+## Only given Node(its Value) ##
+## Time Complexity is O(n)  , Space Complexity is O(1)
 # use Logic:- For kth element deletion  ::condition::
 #  1. Loop node.next is not None -> node.val = node.next.val (Interchanging NodeValues) , node.next = node.next.next (Linking Formantion)
 #  2. If Last Node is remain then ,{ if node.next is None   -->  node = None }
@@ -26,7 +26,30 @@ class LinkedList:
             node = None
 
 
-## Reversal Of LinkedList ##
+## 51. Removal of Element from the LinkedList ##
+# Time Complexity is O(n) , Space Complexity is O(1)
+def removeElement(self , head , val ):
+    if self.head is None:
+        return 
+    curr = self.head
+    prev = None 
+    while curr != None:
+        if curr.val == val :
+            if prev is not None : 
+              prev.next = curr.next
+            else:
+              self.head = curr.next
+        else:      
+           prev = curr      
+        curr = curr.next 
+
+    return self.head        
+
+
+
+
+
+## 52. Reversal Of LinkedList ##
 # Time Complexity is O(n) , Space Complexity is O(1)
 
 # Logic #
@@ -44,7 +67,7 @@ while curr != None :
 return prev
 
 
-## Merge Two Sorted LinkedList ##
+## 53. Merge Two Sorted LinkedList ##
 # Time Complexity is O(m+n) , Space Complexity is O(m+n)
 
 #logic#
@@ -65,6 +88,30 @@ def mergeTwolist(self, list1 , list2):
        temp.next = self.mergeTwolist(list1 , list2.next)
 
    return temp     
+
+
+
+## 54. Middle node of the LinkedList ##
+# Time complexity is O(n/2) , Space Complexity is O(1)
+# Approach using Hare-Tortoise Method
+
+#logic#
+def middleNode(self , head ):
+    hare = self.head
+    tortoise = self.head
+    while hare != None and hare.next != None :
+        tortoise = tortoise.next
+        hare = hare.next.next
+
+    return tortoise
+
+
+## 55. 
+
+
+
+
+
 
 
 
