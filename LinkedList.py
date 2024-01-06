@@ -451,16 +451,9 @@ llisting3.forPrintList()
 
 
 
-
-
-
-
-
-
-
-
-
 ## SKip List , Concepts Based on modified Binary-Search Used In LinkedList For searching Any Node
+## Time Complexity for searching and insertion both is , TC = O(logn)
+
 
 
 
