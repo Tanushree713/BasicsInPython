@@ -41,7 +41,32 @@ while curr != None :
     prev = curr
     curr = next
 
-return prev    
+return prev
+
+
+## Merge Two Sorted LinkedList ##
+# Time Complexity is O(m+n) , Space Complexity is O(m+n)
+
+#logic#
+def mergeTwolist(self, list1 , list2):
+
+   if list1 is None :
+      return list2
+
+   if list2 is None :
+       return list1
+    
+   temp = None
+   if list1.val <= list2.val :
+       temp = list1 
+       temp.next = self.mergeTwolist(list1.next , list2)
+   else:
+       temp  = list2
+       temp.next = self.mergeTwolist(list1 , list2.next)
+
+   return temp     
+
+
 
 
 
