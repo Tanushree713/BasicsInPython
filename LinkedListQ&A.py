@@ -26,7 +26,22 @@ class LinkedList:
             node = None
 
 
-## 
+## Reversal Of LinkedList ##
+# Time Complexity is O(n) , Space Complexity is O(1)
+
+# Logic #
+if self.head is None :
+    return 
+prev = None    
+curr = self.head
+next = None  
+while curr != None :
+    next = curr.next
+    curr.next = prev 
+    prev = curr
+    curr = next
+
+return prev    
 
 
 
