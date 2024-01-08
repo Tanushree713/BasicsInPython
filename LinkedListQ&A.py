@@ -67,6 +67,7 @@ while curr != None :
 return prev
 
 
+
 ## 53. Merge Two Sorted LinkedList ##
 # Time Complexity is O(m+n) , Space Complexity is O(m+n)
 
@@ -106,8 +107,13 @@ def middleNode(self , head ):
     return tortoise
 
 
-## 55. 
-
+## 55. LinkedList is Palindrome or Not ##
+## Approach 1>> Use StackDS To Store temp one by one then take temp = head pointer , start pop from stack and do comparisons b/w poping element and temp
+## Time Complexity is O(N) , Space Complexity is O(N)
+# Approach 2>> a). Find Mid(diff cases in Even and Odd) of LL
+#              b). Reversing remaining list from Mid.next
+#              c). Do comparisons     
+## Time Complexity is O(N) , Space Complexity is O(1)
 
 
 
