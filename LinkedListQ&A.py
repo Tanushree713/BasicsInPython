@@ -114,7 +114,57 @@ def middleNode(self , head ):
 #              b). Reversing remaining list from Mid.next
 #              c). Do comparisons     
 ## Time Complexity is O(N) , Space Complexity is O(1)
+class ListNode:
+    def __init__(self, value=0, next=None):
+        self.value = value
+        self.next = next
 
+def is_palindrome(head):
+    # Helper function to reverse a linked list
+    def reverse_list(node):
+        prev = None
+        while node:
+            next_node = node.next
+            node.next = prev
+            prev = node
+            node = next_node
+        return prev
+
+    # Helper function to find the middle of the linked list
+    def find_middle(node):
+        slow = node
+        fast = node
+
+        while fast and fast.next:
+            slow = slow.next
+            fast = fast.next.next
+
+        return slow
+
+    if not head or not head.next:
+        # An empty list or a single-node list is a palindrome
+        return True
+
+    # Find the middle of the linked list
+    middle = find_middle(head)
+
+    # Reverse the second half of the linked list
+    reversed_second_half = reverse_list(middle)
+
+    # Compare the reversed second half with the first half
+    while reversed_second_half:
+        if head.value != reversed_second_half.value:
+            return False
+        head = head.next
+        reversed_second_half = reversed_second_half.next
+
+    return True
+
+# Example usage:
+# Create a linked list: 1 -> 2 -> 3 -> 2 -> 1
+linked_list = ListNode(1, ListNode(2, ListNode(3, ListNode(2, ListNode(1)))))
+result = is_palindrome(linked_list)
+print(result)  # Output: True
 
 
 
