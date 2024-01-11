@@ -312,6 +312,7 @@ print("Count Nodes In linkedList :" , count)
 
 
 ## Floyd's Cycle Algorithm ##
+##Approach1>> Use Hashing , check if any node is already presence on hash then cycle is presence {TC-O(n)} , {SC-O(N)}##
 # Also called Tortoise and hare , Slow and fast ptr Algo
 # Time Complexity is O(m+n+c*i) , Space Complexity is O(1)
 # class Constructor For Node

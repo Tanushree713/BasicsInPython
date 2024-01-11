@@ -161,6 +161,24 @@ def comparisonInLL(self , head1 , head2): #firstHalf-->head1 and secondHalf-->he
 
 
 
+## 56. Check LinkedList Cycle-I ##
+## Time complexity is O(m+n+c(i)) , Space complexity is O(1) ##
+def testPresenceOfCycle(self , head):
+    hare = head
+    tortoise = head
+    while tortoise is not None and hare is not None and hare.next is not None :
+        tortoise = tortoise.next
+        hare = hare.next.next
+        if hare == tortoise :
+          return True 
+    return False      
+
+
+## 57. Check LinkedList Cycle-II  ##
+## Time Complexity is O()  , Space Complexity is O()  
+
+
+
 
 
 
