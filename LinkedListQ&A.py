@@ -174,11 +174,30 @@ def testPresenceOfCycle(self , head):
     return False      
 
 
-## 57. Check LinkedList Cycle-II  ##
-## Time Complexity is O()  , Space Complexity is O()  
+## 57. Check LinkedList Cycle-II (Find Starting point In LL) ##
+## Time Complexity is nearlyto O(N)  , Space Complexity is O(1) 
+# Appraoch>>
+# >>1.Find Presence of Cycle   
+# >>2.Take Another head then start moving head by one step and same time meetpoint by one step 
+# >>3. Again Point where they meet is starting point of the cycle 
+def findStartPositionOfCycle(self , head):
+    if head is None or head.next is None :
+        return None
+    entry = head
+    slow = head
+    fast = head
+    # cycle exist or not 
+    while fast is not None and fast.next is not None  :
+        slow = slow.next 
+        fast = fast.next.next
+        if slow == fast:
+            while slow != entry:
+                entry = entry.next
+                slow = slow.next
+            return entry
+        return None         
 
-
-
+        
 
 
 
