@@ -197,6 +197,59 @@ def findStartPositionOfCycle(self , head):
             return entry
         return None         
 
+
+
+
+
+
+## 58. Maximum Twin Sum ##
+## First node (0 indexed) & last node(n-i-1 indexed) , second node(1 indx) & second last node(n-i-2 indx) ##
+## Add them return max of them 
+## Time complexity is O(n) , Space Complexity is O(1)
+##Approach >>
+#>>1. FindMiddle
+#>>2. ReverseHalf give new head
+#>>3.Add them , sum = head.val + newhead.val
+#>>4.Find Maxsum = max(Maxsum , sum) and return Maxsum
+def maxTwinSum(self ,head):
+    sum = 0
+    maxSum = 0
+    if head is None and head.next is None: # empty
+        return 0
+    if head.next is not None and head.next.next is None : # two nodes are present
+        sum = head.val + head.next.val
+        return sum
+
+    middle = self.findMiddle(head)
+    reversedHead = self.reversehalf(middle) #not middle.next 
+    while head is not None and reverseHead is not None :
+        sum = head.val + reversedHead.val
+        maxSum = max(maxSum, sum)
+        head = head.next
+        reversedHead = reversedHead.next
+    return maxSum
+
+    def findMiddle(self ,head):
+        slow = head
+        fast = head
+        while fast is not None and fast.next is not None :
+            slow = slow.next
+            fast = fast.next.next
+
+        return slow
+    def reversehalf(self , head):
+        prev = None
+        curr = head
+        next = None
+        while curr is not None:
+            next = curr.next 
+            curr.next = prev
+            prev = curr
+            curr = next
+        return prev               
+
+
+
         
 
 
