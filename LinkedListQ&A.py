@@ -114,57 +114,56 @@ def middleNode(self , head ):
 #              b). Reversing remaining list from Mid.next
 #              c). Do comparisons     
 ## Time Complexity is O(N) , Space Complexity is O(1)
-class ListNode:
-    def __init__(self, value=0, next=None):
-        self.value = value
-        self.next = next
 
-def is_palindrome(head):
-    # Helper function to reverse a linked list
-    def reverse_list(node):
-        prev = None
-        while node:
-            next_node = node.next
-            node.next = prev
-            prev = node
-            node = next_node
-        return prev
 
-    # Helper function to find the middle of the linked list
-    def find_middle(node):
-        slow = node
-        fast = node
+# Palindrome LL 
+def palindromeLL(self , head):
+    
+    if head is None and head.next is None :
+        return True 
 
-        while fast and fast.next:
-            slow = slow.next
-            fast = fast.next.next
+    middle = self.findMiddle(head)
+    newhead = self.reverseHalf(middle.next) # second half LL new head 
+    comparisonsResult  = self.comparisonInLL(head , newhead)
+    return comparisonsResult
 
-        return slow
+# Finding middle of LL 
+def findMiddle( self , head):
+    slow  = head
+    fast = head
+    while fast.next is not None and fast.next.next is not None :
+        slow  = slow.next 
+        fast = fast.next.next 
+    return slow 
+# Reversal of Half LL    
+def reverseHalf(self , head):
+    next = None
+    curr = head
+    prev = None
+    while curr != None :
+        next = curr.next 
+        curr.next = prev
+        prev = curr
+        curr = next
 
-    if not head or not head.next:
-        # An empty list or a single-node list is a palindrome
-        return True
+    return prev
 
-    # Find the middle of the linked list
-    middle = find_middle(head)
-
-    # Reverse the second half of the linked list
-    reversed_second_half = reverse_list(middle)
-
-    # Compare the reversed second half with the first half
-    while reversed_second_half:
-        if head.value != reversed_second_half.value:
+# Comparisons between List1 and List2
+def comparisonInLL(self , head1 , head2): #firstHalf-->head1 and secondHalf-->head2
+    while head1 is not None and head2 is not None :
+        if head1.val  != head2.val :
+            self.reverseHalf(head2)
             return False
-        head = head.next
-        reversed_second_half = reversed_second_half.next
-
+        head1 = head1.next
+        head2 = head2.next
+    self.reverseHalf(head2) #getting back  original LL 
     return True
 
-# Example usage:
-# Create a linked list: 1 -> 2 -> 3 -> 2 -> 1
-linked_list = ListNode(1, ListNode(2, ListNode(3, ListNode(2, ListNode(1)))))
-result = is_palindrome(linked_list)
-print(result)  # Output: True
+
+
+
+
+
 
 
 
