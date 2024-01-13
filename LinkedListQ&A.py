@@ -250,6 +250,35 @@ def maxTwinSum(self ,head):
 
 
 
+
+## 59. Remove the nth Node from the end of LL ##
+## Time Complexity is O(n) , Space Complexity is O(1)
+##Approach>> 
+##>> take fast pointer run till then n(position) 
+##>> Take slow = head and fast = getting node from outside the loop
+##>> start moving again till fast.next != None
+##>> point where slow is stop that is our prev node , where need put value pointing next--> next and store in deletenode
+##>> Return head
+def removeNnodeAtEnd(self , head):
+    fast = head
+    slow = head
+    for i in range(n): #starts from 0 till nth node , where n= position of node to be deleted
+        fast = fast.next
+    if fast is None :
+        return head.next #reaching at Last pointer
+
+    while fast.next is not None :
+        slow = slow.next 
+        fast = fast.next
+    deletenode = slow.next
+    slow.next = slow.next.next  
+
+    return  head 
+
+
+
+
+
         
 
 
