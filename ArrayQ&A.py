@@ -683,6 +683,69 @@ print("Diagonal Sum Matrix is " , result)
 
 
 
+## 22. Count the negative Numbers in sorted 2-D Array ##
+## Time Complexity is O(m + n) , Space Complexity is O(1)
+# Approach >>
+#> 1. use Binary Search to search first negative element index
+#> 2. substract and store in findNeg that index from the length of column 
+#> 3. count = count + findNeg
+
+def binarySearch(arr):
+    def countNegNumber(row):
+        n = len(row) #rows
+        left = 0
+        right = n - 1
+        count = 0
+
+        while left <= right :
+            mid = left + ( right -left)// 2 
+            mid_ele = row[mid]
+            if mid_ele < 0 :
+                count = (right - mid) + 1
+                right = mid - 1
+            else :
+                left = mid + 1
+
+        return count 
+
+    total_count = 0 
+    for row in arr :
+        total_count = total_count + countNegNumber(row)
+
+    return total_count    
+
+mat = [
+   [1, -2, -3, -4],
+    [5, 6, 7, 8],
+    [9, 10, 11, -12],
+]
+
+result = binarySearch(mat)
+print("Matrix " , result )
+
+
+      
+## 23. Richest Customer wealth ##
+# Time complexity is O(m*n) , Space Complexity is O(1) 
+# Here taking list so , use sum function 
+def richestwealth(accounts):
+    total = 0
+    maxSum = 0
+    for wealth in accounts :
+        total = sum(wealth)
+        maxSum = max(maxSum , total)
+
+    return maxSum
+arr = [
+    [1,2,3],[3,2,1]
+]    
+result = richestwealth(arr)
+print("Richest Man " , result)
+
+
+
+
+
 
 
 
