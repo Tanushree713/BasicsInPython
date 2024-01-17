@@ -6,3 +6,12 @@
 
 
 ## Variables, dataTypes ##
+# Variable = data Container 
+# keyWord = reserved word eg. None , False , while , def , return  , and , break , try , import etc
+# datatype :-
+# 1> Integer
+#2> Floating points Numbers
+#3> Strings
+#4> Booleans
+#5> None #denotes nothing
+
