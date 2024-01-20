@@ -71,34 +71,55 @@ print("Remove the str" , result )
 
 
 
-## 63. Implement Stack to Queue ##
-# Time Complexity is O() , Space Complexity is O()
-class MyStack(object):
+## 63. Implement Queue using Stack  ##
+# Time Complexity is O(n) , Space Complexity is O(n)
+class MyQueue(object):
 
     def __init__(self):
         self.stack1 = []
         self.stack2 = []
         se;f.front = 0 
-
+    # Time Complexity is O(1) , Space Complexity is O(n)
     def push(self , x) :
         if self.stack1:
             self.stack1.append(x)
         else:    
             self.front = x   
-    
+    # Time Complexity is O(n) , Space Complexity is O(2n)
     def pop(self):
         if not self.stack2 :
             while self.stack1 :
                 self.stack2.append(self.stack1.pop())
         return self.stack2.pop()        
-
+    # Time Complexity is O(1) , Space Complexity is O(n)
     def  peek(self):
         if self.stack2 :
             return self.stack2.peek()
         return self.front    
 
-
+    # Time Complexity is O(1) , Space Complexity is O(n)
     def empty(self):
         return not self.stack1 and not self.stack2 
 
 
+
+
+## 64. Implement stack using Queue
+# Time Complexity is O(n) , Space Complexity is O(n)
+class MyStack() :
+    def __init__(self):
+        self.q = deque
+    # Time Complexity is O(n) , Space Complexity is O(n)
+    def push(self , x):
+        self.q.append(x)
+    # Time Complexity is O(1) , Space Complexity is O(n)
+    def pop(self):
+        for i in range(len(self.q) - 1):
+            self.q.append(self.q.popleft())    
+        return self.q.popleft()
+    # Time Complexity is O(1) , Space Complexity is O(n)
+    def top(self):
+        return self.q[-1]      
+    # Time Complexity is O(1) , Space Complexity is O(n)
+    def empty(self ):
+        return not self.q       
