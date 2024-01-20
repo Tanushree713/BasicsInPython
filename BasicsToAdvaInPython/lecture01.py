@@ -27,3 +27,7 @@
 # 3.> Assigned
 # 4.> Comparison
  
+##------------------------String----------------------------##
+# Escape Sequence character >> Sequence of characters after backslash eg. "\n" , "\t"
+
+##------------------------List And Tuples--------------------##
