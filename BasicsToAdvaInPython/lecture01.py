@@ -29,5 +29,19 @@
  
 ##------------------------String----------------------------##
 # Escape Sequence character >> Sequence of characters after backslash eg. "\n" , "\t"
+#  friends = ["tanu" , "manu" , "harry" , "janu" ,"vanu"]
+# print(friends[0:4])  >> ["tanu" , "manu" , "harry" , "janu" ]
+# print(friends[-4])   >> manu
 
 ##------------------------List And Tuples--------------------##
+# :Initialization of List:
+#  list = [ 1, 2 , 3 , 4]
+# tuples >> Immutable (cannot able to Update)
+# :Initialization of tuples:
+# tuple0 = ()
+# tuple1 = (1,)      || if write "(1)" only without comma Becomes wrong
+# tuples = ( 1, 2, 3, 4)
+# print(tuple)
+
+
+##-----------------------Dictionary And Sets----------------------##
