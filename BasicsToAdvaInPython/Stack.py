@@ -123,3 +123,21 @@ class MyStack() :
     # Time Complexity is O(1) , Space Complexity is O(n)
     def empty(self ):
         return not self.q       
+
+
+
+  ## 65. Online Stock Span ##
+  # # Time Complexity is O(n) , Space Complexity is O(n)     
+class StockSpanner(objects):
+    def __init__(self):
+        self.stack = [] # contains pairs of price and span >> [ price , span ]
+    
+    def next(self, price): # curr price = price here
+        span = 1
+        while self.stack and self.stack[-1][0] <= price :
+            span += self.stack[-1][1]
+            self.stack.pop()
+
+        self.stack.append((price , span))
+        return span      
+

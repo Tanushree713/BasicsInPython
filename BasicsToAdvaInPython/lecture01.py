@@ -1,3 +1,5 @@
+# { * =====  IMP For Interview }
+
 ##  ------  MODULES , COMMENTS , PIP ------- ##
 # Modules>> can be imported and used in our program 
 # PIP >> Package Manager for Python
@@ -45,3 +47,15 @@
 
 
 ##-----------------------Dictionary And Sets----------------------##
+# Dictionary = collection of key value pairs 
+# myDic = {
+#      "1" : "tanu",
+#      "2"  : "Manu",
+#      "3" : "Janu"
+#          }
+# print(myDict['4']) >> Throw An Err  **
+# print(myDict.get('4')) >> return None (if not present )  **
+
+# Set = collection of unique Elements
+# :Initialization of Sets:
+# set1 = { 1, 2, 3, 4 , 3, 1, 5}   >> {1, 2, 3, 4, 5}

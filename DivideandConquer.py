@@ -182,7 +182,7 @@ def partition(arr , p , q):
 
 
 def quickSort( arr , p , q) :
-    if p < q :
+    if p <= q :
         mid = partition(arr , p , q)
         quickSort(arr , p , mid -1 )
         quickSort(arr , mid+1 , q)
