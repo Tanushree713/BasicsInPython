@@ -141,3 +141,4 @@ class StockSpanner(objects):
         self.stack.append((price , span))
         return span      
 
+
