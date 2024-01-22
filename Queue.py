@@ -40,6 +40,29 @@ print("Person Needed Time To buy Tickets " , result)
 
 
 
+## 67. Product of last K Numbers ##
+# Time Complexity is O(n) , Space Complexity is O(n)
+from collections import deque
+class Solution(object):
+    def __init__(self):
+        self.q = deque([1])
+        self.product= 1
+
+    def add(self , num ):
+        if not num :
+            self.q = [1]
+            self.product = 1
+        else:
+            self.product *= num
+            self.q.append( self.product)
+
+    def product(self , k):
+        if k >= len(self.q) :
+            return 0
+
+        else:
+            return  self.product//self.q[-k-1]
+
 
 
 
