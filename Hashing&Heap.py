@@ -12,7 +12,7 @@ class Solution(object):
 
 
 ## 70. Kth Largest Element ##
-# Time Complexity is O() , Space Complexity is O()
+# Time Complexity is O(nlogk) , Space Complexity is O(log k)
 
 class Solution(object):
     def findKthLargest(self , nums , k):
@@ -28,4 +28,17 @@ class Solution(object):
 
 
 ## 71. Kth Smallest  Element ##
-# Time Complexity is O() , Space Complexity is O()
+# Time Complexity is O(nlogk) , Space Complexity is O(logk)
+class Solution(object):
+    def findKthLargest(self , nums , k):
+
+        heap = []
+        for num in nums :
+            if len(heap) < k :
+                heapq.heappush(heap , -num)
+            else:
+                if num < -heap[0]:
+                    heapq.heappop(heap)
+                    heapq.heappush(heap , -num)
+
+            return -heap[0]            
