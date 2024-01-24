@@ -42,3 +42,6 @@ class Solution(object):
                     heapq.heappush(heap , -num)
 
             return -heap[0]            
+
+
+## 72. 

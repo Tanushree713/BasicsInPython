@@ -715,13 +715,41 @@ def binarySearch(arr):
     return total_count    
 
 mat = [
-   [1, -2, -3, -4],
-    [5, 6, 7, 8],
+   [1, 2, 3, -4],
+    [5, 6, 7, -8],
     [9, 10, 11, -12],
 ]
 
 result = binarySearch(mat)
 print("Matrix " , result )
+
+# Alternative Approach >> 
+# Time Complexity is O(n) , Space Complexity is O(1)
+def countNegNum(arr):
+    row_len = len(arr[0])
+    col_len = len(arr)
+    count = 0 
+    i = 0
+    j = row_len - 1
+
+    while i < col_len and j >= 0 :
+        if arr[i][j]  < 0:
+            count += col_len - i 
+            j -= 1
+
+        else:
+            i += 1
+    return count            
+mat = [
+   [1, 2, 3, -4],
+    [5, 6, -7, -8],
+    [9, 10, -11, -12],
+]
+
+result = countNegNum(mat)
+print("Matrix1 " , result )
+
+
 
 
       
