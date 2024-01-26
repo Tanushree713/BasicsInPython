@@ -1,6 +1,6 @@
 ## 50. Deletion Of Node But the twist is Head is Not given , So not able to access the address of Previous node  ##
 ## Only given Node(its Value) ##
-## Time Complexity is O(n)  , Space Complexity is O(1)
+## Time Complexity is O(1)  , Space Complexity is O(1)
 # use Logic:- For kth element deletion  ::condition::
 #  1. Loop node.next is not None -> node.val = node.next.val (Interchanging NodeValues) , node.next = node.next.next (Linking Formantion)
 #  2. If Last Node is remain then ,{ if node.next is None   -->  node = None }

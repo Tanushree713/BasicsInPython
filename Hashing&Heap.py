@@ -69,7 +69,7 @@ print("kth closest Ele " , result1)
 
 
 ## 73. Smallest Positive Number Missing In unsorted Array ##
-# Time Complexity is O() , Space Complexity is O() #
+# Time Complexity is O(n) , Space Complexity is O(n) #
 class Solution(object):
     def miss_smallestPositiveNum(self, arr1 ):
         numset = set() # hashset
@@ -83,6 +83,6 @@ class Solution(object):
 arr = [ 1, 2 , 3, 4, 5]
 solution2 = Solution()
 resultant = solution2.miss_smallestPositiveNum(arr)
-print("MissedSmallPositive-Ele",resultant)
+print("MissedSmallPositive-Ele", resultant)
 
 

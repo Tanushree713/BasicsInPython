@@ -113,6 +113,25 @@ print("max product is:" , maxSubArrayProductIs)
 print("product of subarray " , max_product)
 
 ## Approach2 (OPTIMIZE)##
+# Time Complexity is O(n) , Space Complexity is O(1) #
+def findMaxSubarrayProduct(self ,arr):
+    n = len(arr)
+    res = float('-inf')  # Contain Max Value
+    prefix = 1
+    suffix = 1
+    for i in range(n):
+        if prefix == 0 :
+            prefix = 1
+        if suffix == 0 :
+            suffix = 1
+        prefix *= arr[i]
+        suffix *= arr[n-i-1]
+        res = max(res , max(prefix, suffix))          
+
+    return res    
+
+
+
 
 ## 4. 3Sums
 # Getting triplets sum is equal to zero return that subarray #
