@@ -230,10 +230,41 @@ print("index of element whose sum is given target value :", sumOfPairs)
 
   
 
+## KADANE'S ALGORITHM ##
+# Maximum SubArr Sum #
+# Time Complexity is O(n) , Space Complexity is O(1) #
+def MaxSumSubarr(nums):
+    start =  0
+    end = 0 
+    currSum = 0 
+    maxSum = float('-inf')
+    total_indx = 0 
+    n = len(nums)
+    for i in range(n):
+        currSum += nums[i]
+        if currSum < 0 :
+            currSum = 0 
+            total_indx = i + 1
+        if currSum > maxSum :
+            maxSum = currSum 
+            start = total_indx 
+            end = i 
+
+    if maxSum == 0 :  # empty 
+        start = -1 
+        end = -1
+
+    return ( maxSum , nums[start:end + 1] )
+# Example usage:
+arr = [-2, 1, -3, 4, -1, 2, 1, -5, 4]
+result = MaxSumSubarr(arr)
+print("Maximum Subarray Sum And Corresponding Subarray:", result )
 
 
 
 
+
+  
 
 
 
