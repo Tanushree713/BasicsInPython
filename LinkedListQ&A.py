@@ -175,7 +175,7 @@ def testPresenceOfCycle(self , head):
 
 
 ## 57. Check LinkedList Cycle-II (Find Starting point In LL) ##
-## Time Complexity is nearlyto O(N)  , Space Complexity is O(1) 
+## Time Complexity is nearly to O(N)  , Space Complexity is O(1) 
 # Appraoch>>
 # >>1.Find Presence of Cycle   
 # >>2.Take Another head then start moving head by one step and same time meetpoint by one step 
@@ -262,7 +262,7 @@ def maxTwinSum(self ,head):
 def removeNnodeAtEnd(self , head):
     fast = head
     slow = head
-    for i in range(n): #starts from 0 till nth node , where n= position of node to be deleted
+    for i in range(n): #starts from 0 till nth node , where n = position of node to be deleted
         fast = fast.next
     if fast is None :
         return head.next #reaching at Last pointer

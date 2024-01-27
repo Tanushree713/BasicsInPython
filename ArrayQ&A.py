@@ -133,7 +133,20 @@ def findMaxSubarrayProduct(self ,arr):
 
 
 
-## 4. 3Sums
+## 4. 3Sums  ##
+# Approach1>> Brute Force Approach #
+# Time Complexity is o(n^3) , Space Complexity is O(1)
+#  traverse Loop i from 0 to n-1
+# traverse Loop j from i + 1 to n-1
+# traverse Loop k from j + 1 to n-1 
+# check , if arr[i] + arr[j] + arr[k] == 0 
+# result = [ arr[i] , arr[j] , arr[k] ]
+# return set(sort(result))
+
+
+
+
+
 # Getting triplets sum is equal to zero return that subarray #
 #  Two pointer Approach
 # Time Complexity is O(n^2)
@@ -171,6 +184,11 @@ def tripletSum(nums):
 nums = [ 1 , 2, -1 , 0 , -2 , 4 , -3]                    
 resultants = tripletSum(nums)
 print ("triplet whose sum is zero is " , resultants)
+
+
+
+
+
 
 
 
