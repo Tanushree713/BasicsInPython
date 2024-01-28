@@ -133,7 +133,8 @@ def findMaxSubarrayProduct(self ,arr):
 
 
 
-## 4. 3Sums  ##
+## 4. 3Sums  #
+# Getting triplets sum is equal to zero return that subarray #
 # Approach1>> Brute Force Approach #
 # Time Complexity is o(n^3) , Space Complexity is O(1)
 #  traverse Loop i from 0 to n-1
@@ -144,11 +145,7 @@ def findMaxSubarrayProduct(self ,arr):
 # return set(sort(result))
 
 
-
-
-
-# Getting triplets sum is equal to zero return that subarray #
-#  Two pointer Approach
+# Approach2>>  Two pointer Approach
 # Time Complexity is O(n^2)
 # Space Complexity is O(k) where k depneds on number of subarray 
 

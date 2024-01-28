@@ -7,6 +7,7 @@
 # REPL >> "Read evaluate print Loop" , for few lines of code , use Repl instead of Python but not to much used .
 
 
+
 ##  ------  Variables, dataTypes  -------- ##
 # Variable = data Container 
 # keyWord = reserved word eg. None , False , while , def , return  , and , break , try , import etc
@@ -48,6 +49,10 @@
 
 ##-----------------------Dictionary And Sets----------------------##
 # Dictionary = collection of key value pairs 
+# Empty Dictionary #
+# a = {}        *** Empty Set 
+# print(type(a)) >> Output :- dictionary TYPE
+# 
 # myDic = {
 #      "1" : "tanu",
 #      "2"  : "Manu",
@@ -59,3 +64,7 @@
 # Set = collection of unique Elements
 # :Initialization of Sets:
 # set1 = { 1, 2, 3, 4 , 3, 1, 5}   >> {1, 2, 3, 4, 5}
+# b = set()          *** Empty Set 
+# print(type(b))  >> Output :- set TYPE 
+# * Set is not hashable , So not able to add any list inside set but tuples can be added 
+
