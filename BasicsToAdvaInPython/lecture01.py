@@ -90,3 +90,5 @@
 # 2. In For loop , know the number of iterations in advance 
 #   In while loop , not know the no. of iterations and will continued when the condition being true 
 ## for-else used together,"else" will executes only when "for" runs succesfully till end ..If "break" is used inside "for" loop then, else statement cannot be executed..
+# PASS STATEMENT( NULL Statement ) >> pass useCase is similar to continue and break , used when need to do nothing 
+# fstring >> print(f"{nums}X{i}={nums*i}")

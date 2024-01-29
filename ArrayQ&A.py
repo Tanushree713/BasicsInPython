@@ -806,6 +806,22 @@ print("Richest Man " , result)
 
 
 
+## 24. Toeplitz Matrix ##
+# Time Complexity is O(m*n) , Space Complexity is O(1)
+class Solution(object):
+  def toeplitz(self , matrix):
+    row = len(matrix)
+    col = len(matrix[0])
+    for i in range(row - 1):  # No need to traverse At last element bcoz last become diagonal itself 
+        for j in range(col - 1):
+            if matrix[i][j] != matrix[i+1][j+1]:  # (0,0) = (1,1) =(2,2)
+                return False 
+    return True
+    
+arr =[[1,2],[2,2]]
+solution = Solution()
+result = solution.toeplitz(arr)
+print("Every diagonal are same top-left to bottom-right : " , result )                
 
 
 
