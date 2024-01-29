@@ -825,7 +825,18 @@ print("Every diagonal are same top-left to bottom-right : " , result )
 
 
 
-
+## 25. Rotate Image (2-D Array )  ##
+# Approach >> 1. transpose >> 2. Reversed RowWise
+# Time Complexity is O(n^2) , Space Complexity is O(1)
+class Solution(object):
+    def rotatematrix(self , matrix ):
+        n = len(matrix)
+        for i in range(n-1):  #last second Elemnt
+            for j in range(i+1 , n): #last Ele
+                 matrix[i][j], matrix[j][i] = matrix[j][i], matrix[i][j] #swap Upper triangle 
+        for i in range(n):
+            matrix[i] = list(reversed(matrix[i]))  #reversed rowWise
+        return matrix           
 
 
 
