@@ -861,3 +861,46 @@ print("Transposal of Matrix" , result)
 
 
 
+## Set Zeroes Matrix ##
+# Approach1 >> Firstly Mark rows and cols with -1 then , again traverse in loop set it to zeroes
+# Time Complexity is O(n^3) , Space Complexity is O(1) #
+# # Approach2 >> 1. Marked rows , cols (Take Inplace 1st row and 1st Col)
+#                2. From last row-col till Start second row-col set Zeroes
+#                3. Set zeroes At First Row(set zero at 1st Row ) and First Col(set zero at 1st Col)
+# # Time Complexity is O(n^2) , Space Complexity is O(1) #
+class Solution(object):
+    def setMatrix(self, matrix):
+        m = len(matrix)
+        n = len(matrix[0])
+        col0 = 1
+        for i in range(m):
+            for j in range(n):
+                if matrix[i][j] == 0 :
+                    # marking ith row 
+                    matrix[i][0] = 0 
+                    # marking jth col
+                    if j != 0 :
+                        matrix[0][j]
+                    else:
+                        col0 = 0
+        for i in range(m-1 , -1 , -1): # move from backward 
+            for j in range(n-1 , 0 , -1)  : # to ensure that don't overwrite values
+                if matrix[i][j] != 0 :
+                    if matrix[0][j] or matrix[i][0] == 0 :
+                        matrix[i][j] = 0
+
+        if matrix[0][0] == 0 : # left to right set zero
+            for j in range(n):
+                matrix[0][j] = 0 
+        if col0 == 0:
+            for i in range(m) : # top to bottom set zero
+                matrix[i][0]   = 0
+
+        return matrix             
+
+
+
+
+
+
+
