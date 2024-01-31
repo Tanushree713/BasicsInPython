@@ -92,3 +92,9 @@
 ## for-else used together,"else" will executes only when "for" runs succesfully till end ..If "break" is used inside "for" loop then, else statement cannot be executed..
 # PASS STATEMENT( NULL Statement ) >> pass useCase is similar to continue and break , used when need to do nothing 
 # fstring >> print(f"{nums}X{i}={nums*i}")
+
+
+
+##-----------------------8. Functions And Recursions -----------------------------##
+# Types of function :- 1. Built-In( Ex>> print , sum , swap )  2. User-Defined( defined by user )
+# pass default parameter >> def greet(name= "Stranger"):    print("hello!" + name )

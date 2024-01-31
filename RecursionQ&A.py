@@ -23,7 +23,7 @@ result1 = findPower(n)
 print("Given n is Power of x" , result1)
 
 # APProach2>>Using Recursion
-# Time Complexity is O(logn) , Space Complexity is O(logn)
+# Time Complexity is O(logn) , Space Complexity is O(1)
 def findPowerNum(n):
     # Base Cond
     if n==1 :
