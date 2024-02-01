@@ -886,7 +886,7 @@ class Solution(object):
         for i in range(m-1 , -1 , -1): # move from backward 
             for j in range(n-1 , 0 , -1)  : # to ensure that don't overwrite values
                 if matrix[i][j] != 0 :
-                    if matrix[0][j] or matrix[i][0] == 0 :
+                    if matrix[0][j] == 0 or matrix[i][0] == 0 :
                         matrix[i][j] = 0
 
         if matrix[0][0] == 0 : # left to right set zero

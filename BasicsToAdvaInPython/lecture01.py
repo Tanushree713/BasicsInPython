@@ -98,3 +98,14 @@
 ##-----------------------8. Functions And Recursions -----------------------------##
 # Types of function :- 1. Built-In( Ex>> print , sum , swap )  2. User-Defined( defined by user )
 # pass default parameter >> def greet(name= "Stranger"):    print("hello!" + name )
+# Uses of Strip >> Helps To remove an Extra Space from begining and ending of string
+# def removeWord(strs , word):
+#     newStr = strs.replace(word, "Hello")
+#     return newStr.strip()
+
+# this = "   hey ! Good Morning   "  
+# result = removeWord(this , "hey" ) 
+# print(result) 
+    
+
+ 
