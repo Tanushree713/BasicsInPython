@@ -107,5 +107,31 @@
 # result = removeWord(this , "hey" ) 
 # print(result) 
     
+##---------------------9. File I/O ------------------------------##
+# RAM ->Volatile and its content are lost once program get terminates 
+# HDD -> Non-Volatile 
+# File -> Stored data in storage device
+# Types of files -> 1. Text Files(.txt , .c  etc) 2.Binary Files (.jpg , .dat etc) 
+# Modes Of opening File(In TXT) >> read'r' , write'w', append'a', update'+'
+# Read'r' is For reading purpose and Write'w' is For creating new File and write(overwrite) text inside any empty file
+# want To append text at the end of text inside file Use write() and append 'a'
+# Modes In Binary use (read with 'rb')
+# Fuction To Read File >> 1. readline , 2. read  ,3.
 
- 
+# USE OPEN FUNCTION >> To Open The file 
+#syntax#
+# f = open('sample.txt' , 'r') # by default 'read' mode sample.txt File 
+# data = f.read()
+# print(data)
+# f.close()
+
+#syntax#
+# f = open('sample.txt' , 'w')   # for writing 'w' inside sample File and for append replace 'w' with 'a' rest of the code are same 
+# f.write("Myself Tanu From Satna ")
+# f.close()
+
+# WITH STATEMENT #
+# best way to Open and Close(No need to close) File Automatically is the With statement .
+#syntax#
+# with open("sample.txt") as f :
+#     f.read()
