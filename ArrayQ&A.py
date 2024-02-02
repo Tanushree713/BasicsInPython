@@ -861,7 +861,7 @@ print("Transposal of Matrix" , result)
 
 
 
-## Set Zeroes Matrix ##
+## 27. Set Zeroes Matrix ##
 # Approach1 >> Firstly Mark rows and cols with -1 then , again traverse in loop set it to zeroes
 # Time Complexity is O(n^3) , Space Complexity is O(1) #
 # # Approach2 >> 1. Marked rows , cols (Take Inplace 1st row and 1st Col)
@@ -901,6 +901,32 @@ class Solution(object):
 
 
 
+## 28. Reshape Matrix ##
+# Time Complexity is O(m*n) , Space Complexity is O(m*n) #
+class Solution(object):
+    def reshapeMatrix(self , mat , r , c):
+        m = len(mat)     # rows
+        n = len(mat[0])  # cols
+        originalLen = m*n  # originalLenOfArr
+        result = [[0] * c for _ in range(r)]  # Convert rows to cols 
+        if originalLen != r*c :  # Case are legal or not ..by checking no. of Elements In Array 
+            return mat
+        for i in range(originalLen):    
+            result[ i // c][i % c] = mat[ i // n][i % n] 
+        return result    
 
 
-
+## 29. Flip The Image ##
+# Time Complexity is O(m*n + n ) , Space Complexity is O(1) #
+class Solution(object):
+    def flipImage(self, image):
+        # reversing rowwise
+        for i in range(len(image)):  #reversing Matrix
+            image[i] = list(reversed(image[i]))
+        for i in range(len(image)):   # Interchanging The Value 0 to 1 or 1 to 0 
+            for j in range(len(image[0])):
+                if image[i][j] != 0 :
+                    image[i][j] = 0 
+                else:
+                    image[i][j] = 1
+        return image                    
