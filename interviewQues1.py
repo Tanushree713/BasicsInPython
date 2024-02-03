@@ -263,7 +263,23 @@ print("Maximum Subarray Sum And Corresponding Subarray:", result )
 
 
 
-
+## Kth Missing Element in an Array ##
+# Time Complexity is O(n) , Space Complexity is O(1)
+def kthMising(nums , k):
+    low = 0 
+    high = len(nums)-1
+    while low <= high:
+        mid = low + (high - low) // 2
+        midEle = nums[mid] - (mid+ 1)
+        if midEle < k :
+            low = mid + 1
+        else:
+            high = mid + 1
+        return low + k 
+nums = [2 ,3 ,4 ,7 ,11]
+k = 5    
+result = kthMising(nums , k) 
+print("kth Missing element is " ,result) 
   
 
 

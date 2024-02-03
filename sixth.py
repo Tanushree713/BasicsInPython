@@ -16,3 +16,6 @@ def selectionSort( arr ):
 
 result = selectionSort(arr) 
 print(result)    
+
+
+      
