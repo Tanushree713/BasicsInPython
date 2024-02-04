@@ -39,6 +39,39 @@ print("Number of inversions To sort the Array" , getInvCount)
 
 
 
+## 79. MergeSorted Array ##
+# Time Complexity is O(2n) , Space Complexity is O(1) #
+def mergeSortArr(arr1 , arr2 ):
+    m = len(arr1) - 1
+    n = len(arr2) - 1 
+    merge_ind = len(arr1) + len(arr2) - 1
+    arr1.extend([0] * len(arr2) )
+    while m >= 0 and n >= 0 :
+        if arr1[m] > arr2[n]:
+            arr1[merge_ind] = arr1[m]
+            m -= 1
+        else:
+            arr1[merge_ind] = arr2[n]
+            n -= 1
+        merge_ind -= 1
+    return arr1
+
+    while m > 0 :
+        arr1[merge_ind] = arr1[m]
+        m -= 1
+        merge_ind -= 1
+
+    while n > 0 :
+        arr1[merge_ind] = arr2[n]
+        n -= 1
+        merge_ind -= 1
+num1 = [1, 5, 9, 10, 15, 20]
+num2 = [1, 2, 3, 5, 8, 9]        
+resultant = mergeSortArr(num1 , num2)     
+print("Mergeed Sorted Array" , resultant)                   
+
+
+
 
 
 
