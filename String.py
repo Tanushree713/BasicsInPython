@@ -84,7 +84,26 @@ print("Common Prefix in Words" , resultant)
 
 
 
-## 35. Length of SubString ##
+## 35. Length of SubString  Without repeating Characters ##
+# Time Complexity is O(2n) , Space Complexity is O(n) #
+# Tc is 2n bcoz takimg extra time after traversing right pointer left will also get started with 0 indx 
+class Solution(object):
+    def longestSubstr(self , s):
+        charSet = set()
+        maxlen = 0
+        left = 0
+        for right in range(len(s)):
+            while s[right] in charSet :
+                charSet.remove(s[left])
+                left += 1
+            charSet.add(s[right])
+            maxlen = max(maxlen , right - left + 1) 
+        return maxlen       
+solutions = Solution()
+strs = "abcbdabab"
+result = solutions.longestSubstr(strs)
+print("longestSubstring is " , result )
+
 
        
         
