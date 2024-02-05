@@ -121,5 +121,20 @@ jewelStone = solutions.jewelStones("aAB" , "aAAbBcA")
 print("Number of jewels in stones" , jewelStone)  
        
 
+## 37. Valid Anagram (In rearranging Order )   ##
+# Time Complexity is O() , Space Complexity is O() #
+from collections import Counter
+class Solution(object):
+    def validAnagram(self , str1 , str2):
+        str1_cnt = Counter(str1)
+        str2_cnt = Counter(str2)
+        if str1_cnt == str2_cnt :
+            return True 
+        return False    
+solutions = Solution()
+result = solutions.validAnagram("anagram" , "nagaram")   
+print("Valid Anagram ? " , result  )     
 
-        
+
+
+## 38. 
