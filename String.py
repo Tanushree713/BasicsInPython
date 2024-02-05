@@ -86,7 +86,8 @@ print("Common Prefix in Words" , resultant)
 
 ## 35. Length of SubString  Without repeating Characters ##
 # Time Complexity is O(2n) , Space Complexity is O(n) #
-# Tc is 2n bcoz takimg extra time after traversing right pointer left will also get started with 0 indx 
+# TC is 2n bcoz takimg extra time after traversing right pointer , left will also get started with 0 indx 
+# Must be Improved by storing the its left pointer corresponding indices and updating its indices , directly jump the left pointer to the corresponds indices ..this will reduces time ... 
 class Solution(object):
     def longestSubstr(self , s):
         charSet = set()
@@ -105,5 +106,20 @@ result = solutions.longestSubstr(strs)
 print("longestSubstring is " , result )
 
 
+## 36. Jewels And  Stones ##
+# Time Complexity is O(n+m) , Space Complexity is O(n) #
+class Solution(object):
+    def jewelStones(self , jewels , stones):
+        jewelSet = set(jewels)
+        count = 0
+        for s in stones:
+            if s in jewelSet :
+                count += 1
+        return count        
+solutions = Solution()
+jewelStone = solutions.jewelStones("aAB" , "aAAbBcA")    
+print("Number of jewels in stones" , jewelStone)  
        
+
+
         
