@@ -169,7 +169,7 @@ print("reverse vowels in string" , result)
 
 ## 39. Valid Palindrome ##
 # Only AphaNumeric (A to Z , a to z , 0 to 9 ) are Allowed , if any non-alphaNum( , : !) are present then remove them and convert all char into lowerCase #
-# Time Complexity is O()  , Space Complexity is O()  #
+# Time Complexity is O(n)  , Space Complexity is O(c)  # c= 26 letters
 class Solution:
     def validPalindrome(self , s):
         def sanitized_str(s):
@@ -190,3 +190,25 @@ class Solution:
 solutions = Solution()
 result = solutions.validPalindrome("A man, a plan, a canal: Panama")
 print("Valid Palindrome are :", result )                            
+
+
+
+
+## 40. Redistribute Characters To Make All Strings Are Equal ##
+# Time Complexity is O(n*m) , Space Complexity is O(c) #
+class Solution:
+    def makeEqualString(self , words):
+        n = len(words)
+        charCount = Counter()
+        for w in words :
+            charCount.update(w)
+        for count in charCount.values():
+            if count % n != 0 :
+                return False
+        return True
+redistributor = Solution()
+results = redistributor.makeEqualString(["abc","aabc","bc"])
+print("redistribute Char To make String Equal" , results)                
+
+
+
