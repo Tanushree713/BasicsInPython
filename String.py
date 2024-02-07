@@ -212,8 +212,10 @@ print("redistribute Char To make String Equal" , results)
 
 
 
+
+
 ## 41. Split a String In Balanced Strings ##
-# Time Complexity is O() , Space complexity is O() #
+# Time Complexity is O(n) , Space complexity is O(1) #
 class Solution(object):
     def balancedStr(self , s):
         count = 0 
