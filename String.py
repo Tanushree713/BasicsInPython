@@ -212,3 +212,23 @@ print("redistribute Char To make String Equal" , results)
 
 
 
+## 41. Split a String In Balanced Strings ##
+# Time Complexity is O() , Space complexity is O() #
+class Solution(object):
+    def balancedStr(self , s):
+        count = 0 
+        r = 0
+        for i in range(len(s)):
+            if s[i] == "R":
+                r += 1
+            elif s[i] == "L":
+                r -= 1
+            if r == 0 :
+                count += 1
+        return count
+solutions = Solution()
+resultants = solutions.balancedStr("RLRRLLRLRL")
+print("Balanced String" ,resultants )                        
+
+
+
