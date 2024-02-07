@@ -106,6 +106,8 @@ result = solutions.longestSubstr(strs)
 print("longestSubstring is " , result )
 
 
+
+
 ## 36. Jewels And  Stones ##
 # Time Complexity is O(n+m) , Space Complexity is O(n) #
 class Solution(object):
@@ -119,7 +121,9 @@ class Solution(object):
 solutions = Solution()
 jewelStone = solutions.jewelStones("aAB" , "aAAbBcA")    
 print("Number of jewels in stones" , jewelStone)  
-       
+
+
+
 
 ## 37. Valid Anagram (In rearranging Order )   ##
 # Time Complexity is O() , Space Complexity is O() #
@@ -134,6 +138,8 @@ class Solution(object):
 solutions = Solution()
 result = solutions.validAnagram("anagram" , "nagaram")   
 print("Valid Anagram ? " , result  )     
+
+
 
 
 
@@ -157,3 +163,30 @@ class Solution(object):
 solutions = Solution()
 result = solutions.reverseVowels("leetcode")
 print("reverse vowels in string" , result)                     
+
+
+
+
+## 39. Valid Palindrome ##
+# Only AphaNumeric (A to Z , a to z , 0 to 9 ) are Allowed , if any non-alphaNum( , : !) are present then remove them and convert all char into lowerCase #
+# Time Complexity is O()  , Space Complexity is O()  #
+class Solution:
+    def validPalindrome(self , s):
+        def sanitized_str(s):
+            sanitize = ""
+            for char in s:
+                if char.isalnum():
+                    sanitize += char.lower()
+            return sanitize
+        s = sanitized_str(s)
+        left = 0 
+        right = len(s) - 1
+        while left < right :
+            if s[left] != s[right]:
+                return False
+            left += 1
+            right -= 1
+        return True 
+solutions = Solution()
+result = solutions.validPalindrome("A man, a plan, a canal: Panama")
+print("Valid Palindrome are :", result )                            
