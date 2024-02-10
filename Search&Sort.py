@@ -1,3 +1,35 @@
+## 73. Find Three Common Elements In Three Sorted Array ##
+## APPROACH-1>> Use Extra space , take intersection b/w arr1 and arr2 store it temp1 and after that take intersection b/w temp1 and arr3 store it temp 2 and return temp2 , TC= O(n1+n1+n3) , SC= O(temp1 + temp2 ) ##
+## APPROACH-2>> Don't use Extra Space 
+# Time Complexity is O(n1 + n2 + n3), Space Complexity is O(1) #   
+def findCommonEle(arr1 , arr2 , arr3):
+    n1 = len(arr1)
+    n2 = len(arr2)
+    n3 = len(arr3)
+    i = 0 
+    j = 0
+    k = 0 
+    while i < n1 and j < n2 and k < n3 :
+        if arr1[i] == arr2[j] and arr2[j] == arr3[k]:
+            print(arr1[i])
+            i += 1
+            j += 1
+            k += 1
+        elif arr1[i ]< arr2[j]:
+            i += 1
+        elif arr2[j] < arr3[k]:
+            j += 1
+        else:
+            k+= 1
+    
+arr1 = [1, 5, 10, 20, 40, 80]
+arr2 = [6, 7, 20, 80, 100]
+arr3 =[ 3, 4, 15, 20, 30, 70, 80, 120]
+result = findCommonEle(arr1 , arr2 , arr3 )
+print("Common Elements In three Sorted Arr " , result )
+
+
+
 ## 74. Count Inversion In An Array ##
 # Time Complexity is O(n logn) , Space Complexity is O(n) #
 def invCount(arr , p , q):
