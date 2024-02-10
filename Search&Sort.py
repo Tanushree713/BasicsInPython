@@ -26,7 +26,8 @@ arr1 = [1, 5, 10, 20, 40, 80]
 arr2 = [6, 7, 20, 80, 100]
 arr3 =[ 3, 4, 15, 20, 30, 70, 80, 120]
 result = findCommonEle(arr1 , arr2 , arr3 )
-print("Common Elements In three Sorted Arr " , result )
+print("Common Elements In three Sorted Arr " , result )         
+
 
 
 
@@ -68,6 +69,28 @@ p = 0
 q = len(nums) - 1
 getInvCount = invCount(nums , p , q)
 print("Number of inversions To sort the Array" , getInvCount)
+
+
+
+
+
+## 75. Find dulicates in an Array ##
+# Time Complexity is O(n) , Space Complexity is O(k)# where are no. of duplis
+def findDupli(nums):
+    repeat = []
+    for num in nums :
+        index = abs(num) - 1
+        if nums[index] < 0 :
+            repeat.append( abs(num))
+            print(repeat)
+        nums[index] = - nums[index]
+    return repeat    
+    
+arr = [ 1, 2, 3, 6, 3, 6, 1 ]
+resultants = findDupli(arr)
+print("Duplis are " , resultants)  
+
+
 
 
 
