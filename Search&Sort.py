@@ -92,6 +92,30 @@ print("Duplis are " , resultants)
 
 
 
+## 76. Minimum Number of Swaps Required ##
+## Also use Greedy Algo ##
+## Using Hashing ##
+# Time Complexity is O(nlogn) , Space Complexity is O(n) #
+def minSwaps(arr):
+    count = 0 
+    n =len(arr) 
+    hashset = {} # creating hash set
+    temp = sorted(arr) 
+    for i in range(n):
+        hashset[arr[i]] = i # storing indexes of original arr {ele1:indx0, 1: indx1, 4: indx2, 2: indx3}
+    for i in range(n):
+        if arr[i] != temp[i]:
+            count += 1
+            init = arr[i] #storing curr elem
+            arr[i] , arr[hashset[temp[i]]] = arr[hashset[temp[i]]] , arr[i]  
+            hashset[init] , hashset[temp[i]]= hashset[temp[i] ] , i 
+
+    return count
+arr = [1, 5, 4, 3, 2] 
+results = minSwaps(arr) 
+print("Minimum Number of swaps are " , results )  
+
+
 
 
 ## 79. MergeSorted Array ##
