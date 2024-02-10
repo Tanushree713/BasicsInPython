@@ -1,4 +1,4 @@
-## 73. Find Three Common Elements In Three Sorted Array ##
+## 73. Find Common Elements In Three Sorted Array ##
 ## APPROACH-1>> Use Extra space , take intersection b/w arr1 and arr2 store it temp1 and after that take intersection b/w temp1 and arr3 store it temp 2 and return temp2 , TC= O(n1+n1+n3) , SC= O(temp1 + temp2 ) ##
 ## APPROACH-2>> Don't use Extra Space 
 # Time Complexity is O(n1 + n2 + n3), Space Complexity is O(1) #   
@@ -74,7 +74,7 @@ print("Number of inversions To sort the Array" , getInvCount)
 
 
 
-## 75. Find dulicates in an Array ##
+## 75. Find duplicates in an Array ##
 # Time Complexity is O(n) , Space Complexity is O(k)# where are no. of duplis
 def findDupli(nums):
     repeat = []
@@ -115,6 +115,11 @@ arr = [1, 5, 4, 3, 2]
 results = minSwaps(arr) 
 print("Minimum Number of swaps are " , results )  
 
+
+
+
+
+## 77. Allocation Of Minimum Pages ##
 
 
 
