@@ -26,8 +26,8 @@ def findCommonEle(arr1 , arr2 , arr3):
 arr1 = [1, 5, 10, 20, 40, 80]
 arr2 = [6, 7, 20, 80, 100]
 arr3 =[ 3, 4, 15, 20, 30, 70, 80, 120]
-# result = findCommonEle(arr1 , arr2 , arr3 )
-# print("Common Elements In three Sorted Arr " , result )         
+result = findCommonEle(arr1 , arr2 , arr3 )
+print("Common Elements In three Sorted Arr " , result )         
 
 
 
@@ -68,8 +68,8 @@ def merged(leftArr , rightArr):
 nums = [ 2 , 4, 1, 3, 5]
 p = 0
 q = len(nums) - 1
-# getInvCount = invCount(nums , p , q)
-# print("Number of inversions To sort the Array" , getInvCount)
+getInvCount = invCount(nums , p , q)
+print("Number of inversions To sort the Array" , getInvCount)
 
 
 
@@ -88,8 +88,8 @@ def findDupli(nums):
     return repeat    
     
 arr = [ 1, 2, 3, 6, 3, 6, 1 ]
-# resultants = findDupli(arr)
-# print("Duplis are " , resultants)  
+resultants = findDupli(arr)
+print("Duplis are " , resultants)  
 
 
 
@@ -113,11 +113,45 @@ def minSwaps(arr):
 
     return count
 arr = [1, 5, 4, 3, 2] 
-# results = minSwaps(arr) 
-# print("Minimum Number of swaps are " , results )  
+results = minSwaps(arr) 
+print("Minimum Number of swaps are " , results )  
 
 
 
+
+## 77. Allocation Of Minimum Pages ##
+# Using Binary search #
+# Time Complexity is O( n + log(sum(pages))) , Space Complexity is O(1)#
+def validDistribution(pages , mid):
+    students = 1
+    pages_read = 0
+    for i in range(len(pages)):
+        if pages_read + pages[i] > mid:
+            students += 1
+            pages_read = pages[i]
+        else:
+            pages_read += pages[i]
+    return students
+
+def minPagesAllocate(pages , n , m): # n =Books Num and m = Students Num
+    if n < m:
+        return -1 
+    low = max(pages)
+    high = sum(pages)   
+    while low <= high :
+        mid = low + (high -low) //2
+        students = validDistribution(pages , mid)
+        if students > m :
+            low = mid + 1
+        else:
+            high = mid - 1
+    return low            
+
+pages = [15,17,20]
+m =2
+n =  3
+result = minPagesAllocate(pages , n , m)
+print("Minimum Page Allocation is " , result )
 
 
 
