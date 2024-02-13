@@ -55,3 +55,33 @@
 #      count++
 # print(count)
 
+
+## Armstrong Number ##
+# Time Complexity is O(n) , Space Complexity is O(1) #
+import math
+def numPower(n):
+    return math.pow(n , 3)
+
+def  isArms(num):
+        originalNum = num
+        result = 0
+        while num > 0 :
+            lastdigit = num % 10
+            cubeNum = numPower(lastdigit)
+            result = result + cubeNum
+            num = num // 10
+        if result == originalNum :
+            return True 
+        else:
+            return False
+nums = 253
+resultant = isArms(nums)
+print("Is Armstrong Number :" , resultant) 
+
+
+## Pythagorean triplets ##
+## Time Complexity is O(n == 3) , Space Complexity is O(1) ##
+## Approach >> Sort([a , b, c]) store in a, b , c and then , check by applying pythagoreas Triplet ##
+def is_pythagorean_triplet(a, b, c):
+    a, b, c = sorted([a, b, c])
+    return a**2 + b**2 == c**2
