@@ -41,7 +41,7 @@ print("Given n is Power of x using recursion" , result2)
 
 ## 44. Sum of Digit of a Number Using recursion
 #APProach >> Reverse number and add them 
-# Time Complexity is O(logn) , Space Complexityis O(logn)
+# Time Complexity is O(logn) , Space Complexityis O(1)
 def findSumOfDigit(n):
   # base cond
   if not n :
@@ -53,9 +53,11 @@ result = findSumOfDigit(nums)
 print("Sum Of the Given Digits" , result)
 
 
+
+
 ## 45. Find GCD or HCF
 # APProach >>  Euclidean Algo 
-# Time Complexity is O(log(min(a,b))) , Space Complexity is O(log(min(a,b)))
+# Time Complexity is O(log(min(a,b))) , Space Complexity is O(1)
 def findHCF( a , b ):
   if b == 0 :
     return a
@@ -65,6 +67,8 @@ b = 17
 result = findHCF(a , b)
 print(" HCF of a and b is" , result)
     
+
+
 
 
 ## 46.Print sums of all subsets of a given set

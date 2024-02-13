@@ -274,8 +274,8 @@ def kthMising(nums , k):
         if midEle < k :
             low = mid + 1
         else:
-            high = mid + 1
-        return low + k 
+            high = mid - 1
+    return high +1+ k 
 nums = [2 ,3 ,4 ,7 ,11]
 k = 5    
 result = kthMising(nums , k) 

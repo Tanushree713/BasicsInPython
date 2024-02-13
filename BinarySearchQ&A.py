@@ -16,7 +16,7 @@ def searchElement(arr , target ):
         right = mid - 1  
   return False           
 matrix = [[1, 2, 3,] ,[4, 5 ,6 ], [7 , 8, 9]]
-target = 0
+target = 9 
 result = searchElement(matrix, target)
 print("Elemnet searched in an Array " , result)
 
