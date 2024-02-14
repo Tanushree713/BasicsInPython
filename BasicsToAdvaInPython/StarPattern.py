@@ -91,6 +91,55 @@ def pattern5(n):
         pat += "\n"
     return pat              
              
-n = int(input("Enter the rows and Cols :"))
-patn5 = pattern5(n)
-print("Pattren5 is:\n" + patn5 )             
+# n = int(input("Enter the rows and Cols :"))
+# patn5 = pattern5(n)
+# print("Pattren5 is:\n" + patn5 )             
+
+
+
+#6. *
+#   **
+#   ***
+#   ****
+#   *****
+#   ****
+#   ***
+#   **
+#   *
+def pattern6(n):
+    for i in range(0 , n):
+        print("*" * i ) 
+    for i in range(n-1 , 0 , -1):
+        print("*" * i) 
+    print("\n")       
+# n = int(input("Enter the rows and Cols :"))
+# pattern6(n)
+      
+
+
+#7. 1
+#   01
+#   101
+#   0101
+#   10101      
+def pattern7(n):
+    for i in range(1 , n+1):
+        if i % 2 == 0 :
+            start = 0 
+        else :
+            start = 1
+        for j in range(i):
+            if start == 0 :
+                if j % 2 == 0 :
+                    print("0", end="")
+                else:
+                    print("1" , end="")  
+            else :
+                if j % 2 == 0 :
+                    print("1" , end="")
+                else:
+                    print("0" , end="")
+        print()    
+n = int(input("Enter The rows :"))        
+pattern7(n)                 
+
