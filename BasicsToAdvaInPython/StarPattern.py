@@ -174,6 +174,30 @@ def pattern9(n):
             print(integer, end=" ")
             integer = integer+1
         print()
-n = int(input("Enter Rows:"))  
-pattern9(n)        
+# n = int(input("Enter Rows:"))  
+# pattern9(n)        
 
+#10. A
+#    AB
+#    ABC
+#    ABCD
+def pattern10(n):
+    for i in range(0 , n ):
+        for j in range(i+1):
+            print(chr(65+j) , end="")
+        print()
+# n = int(input("Enter the rows: "))        
+# pattern10(n)        
+
+#11. ABCDE
+#    ABCD
+#    ABC
+#    AB
+#    A
+def pattern11(n):
+    for i in range(n):
+        for j in range(n-i):
+            print(chr(65 + j) , end=" ")
+        print()
+n = int(input("Enter the rows: "))        
+pattern11(n)            
