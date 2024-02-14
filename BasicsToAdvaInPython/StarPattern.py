@@ -140,6 +140,40 @@ def pattern7(n):
                 else:
                     print("0" , end="")
         print()    
-n = int(input("Enter The rows :"))        
-pattern7(n)                 
+# n = int(input("Enter The rows :"))        
+# pattern7(n)                 
+
+
+
+#8. 1      1
+#   12    21
+#   123  321
+#   12344321
+def pattern8(n):
+    for i in range(1 , n+1):
+        for j in range(1 , i+1):
+            print(str(j) , end="")
+        for j in range(2*n - 2*i):
+            print(" ", end="") 
+        for j in range(i , 0 , -1 ):
+            print(str(j) , end="")       
+        print()  
+# n = int(input("Enter Rows:"))        
+# pattern8(n)       
+
+
+#9. 1
+#   2 3
+#   4 5 6
+#   7 8 9 10
+#   11 12 13 14 15
+def pattern9(n):
+    integer = 1 
+    for i in range(1 , n+1):
+        for j in range(1 , i+1):
+            print(integer, end=" ")
+            integer = integer+1
+        print()
+n = int(input("Enter Rows:"))  
+pattern9(n)        
 
