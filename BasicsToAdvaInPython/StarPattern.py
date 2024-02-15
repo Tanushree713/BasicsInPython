@@ -199,5 +199,45 @@ def pattern11(n):
         for j in range(n-i):
             print(chr(65 + j) , end=" ")
         print()
-n = int(input("Enter the rows: "))        
-pattern11(n)            
+# n = int(input("Enter the rows: "))        
+# pattern11(n)            
+
+
+#12.     A
+#       ABA
+#       ABCBA
+#      ABCDCBA
+def pattern12(n):
+    for i in range(n):
+        for j in range((n-i-1)):
+            print(" ", end="")
+        breakPoint = (2*i+1) // 2   
+        for j in range(i  + 1):
+             print(chr(65 + j), end="")
+        for j in range(i-1, -1 , -1):
+            print(chr(65 + j) , end="")     
+          
+        for i in range(n-i-1):
+            print(" " , end="")
+        print()
+# n = int(input("Enter the rows: "))        
+# pattern12(n)                 
+
+
+
+#13. E
+#    D E
+#    C D E 
+#    B C D E
+#    A B C D E 
+def pattern13(n):
+    for i in range(n):
+        for j in range(i+1):
+            print(chr(69 - i + j), end=" ")
+        print()  
+# n = int(input("Enter the rows: "))        
+# pattern13(n)          
+
+
+
+#14. 

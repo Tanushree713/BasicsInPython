@@ -150,3 +150,32 @@
 
 
 ##----------------OOPs-------------##
+# Fundamental Concepts In OOPs are:
+#1. Class
+#2. Object 
+#3. Abstraction 
+#4, Encapsulation
+#5. Inheritance 
+
+##------------------Class & Object -------------------##
+class Employee:
+    name = "tanu"
+    def __init__(self , name , age , salary):
+        self.name = name 
+        self.age = age 
+        self.salary = salary 
+    def display_info(self):
+        print("Name :" , self.name)
+        print("Age:" , self.age ) 
+        print("Salary:" , self.salary)   
+print(Employee.name) # class attribute 
+emp = Employee("Tanushree", 20 , "30K")   #Instantiation of Class = Creation of an Object
+emp.display_info()   # instance Attribute 
+
+##--------------------Abstraction & EnCapsulation--------------##
+
+
+
+
+
+
