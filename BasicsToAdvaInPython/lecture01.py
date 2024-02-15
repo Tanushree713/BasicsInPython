@@ -154,28 +154,161 @@
 #1. Class
 #2. Object 
 #3. Abstraction 
-#4, Encapsulation
-#5. Inheritance 
+#4, Encapsulation 
+#6. PolyMorphism 
+#5. Inheritance
 
 ##------------------Class & Object -------------------##
-class Employee:
-    name = "tanu"
-    def __init__(self , name , age , salary):
-        self.name = name 
-        self.age = age 
-        self.salary = salary 
-    def display_info(self):
-        print("Name :" , self.name)
-        print("Age:" , self.age ) 
-        print("Salary:" , self.salary)   
-print(Employee.name) # class attribute 
-emp = Employee("Tanushree", 20 , "30K")   #Instantiation of Class = Creation of an Object
-emp.display_info()   # instance Attribute 
+# class Employee:
+#     name = "tanu"
+#     def __init__(self , name , age , salary):
+#         self.name = name 
+#         self.age = age 
+#         self.salary = salary 
+#     def display_info(self):
+#         print("Name :" , self.name)
+#         print("Age:" , self.age ) 
+#         print("Salary:" , self.salary)   
+# print(Employee.name) # class attribute 
+# emp = Employee("Tanushree", 20 , "30K")   #Instantiation of Class = Creation of an Object
+# emp.display_info()   # instance Attribute 
+
+
 
 ##--------------------Abstraction & EnCapsulation--------------##
 
+# Abstraction>> Hiding  the Implementation details of an object from the user and providing the simplified interface with object #
+# from abc_exmp import Add 
+# Add()
+#eg>> Using Camera , user Know how to use camera for clicking the picture but they don't know the working function  defined by the programmer
+#  
+# 1. Abstract Class       2.Interface
+
+#1. Abstract Class (different Implemention & similar(common) action )#
+# from abc import ABC , abstractmethod     #(use * for all methods)
+# class Car(ABC):
+#     def Show(self):
+#         print("4 wheels")
+#     @abstractmethod    
+#     def Speed(self):
+#         pass
+# class Maruti(Car):
+#     def Speed(self):
+#         print("100Km/H") 
+# class Suzuki(Car):
+#      def Speed(self):
+#         print("70Km/H")           
+
+#we are not able to create obj of pure abstract class eg,. Car 
+# obj1 = Maruti()
+# obj1.Show()
+# obj1.Speed()
+# obj2 = Suzuki()
+# obj2.Show()
+# obj2.Speed()
+
+
+#2. Interface (same Action Different implementation )#
+# having only abstractmethod 
+# from abc import ABC , abstractmethod
+# class Shape(ABC):
+#     @abstractmethod  #only have abstractmethods
+#     def Show(self):
+#         pass 
+# class Square(Shape):
+#     def Show(self):
+#         print("Has four Sides")    
+# class Pentagon(Shape) :
+#     def Show(self):
+#         print("has 5 sides")   
+
+# # not able to create Pure Abstract Object #
+# obj1 = Square()
+# obj1.Show()
+# obj2 = Pentagon()
+# obj2.Show()
+
+
+
+
+# Encapsulation >> Hiding the Implementation details of an object from the user and providing the controlled access to it . 
+# class Employee:
+#     _name = "Tanu" # Protected 
+#     __age = 20 # Private (written with double undescore are private not able to reveal it publicly )
+#     def displayInfo(self)  :
+#         print("Name :" , self._name)  
+#         print("Age:" , self.__age )
+# emp = Employee()
+# print("Outside The Class" , Employee._name) # able to access that protected member 
+
+# emp.displayInfo()
+
+# print("Outside The Class" , Employee.__age) # not able to access that private member So throw an ERR 
 
 
 
 
 
+##----------------------------Polymorphism ----------------##
+# Same Object Different Behaviour #
+# print(len("Tanushree"))
+# print(len(["Tanu" , "Shree"]))
+# len function is same but behaviour is different 
+# Having OverLoading(calling same function number of times passing same params by adding one in each one by one ) and Overriding(for each customized function gives customized answer)Both #
+
+# OverLoading 
+# class MathOperations:
+#     def add(self, x, y):
+#         return x + y
+
+#     def add(self, x, y, z):
+#         return x + y + z
+# math = MathOperations()
+# print(math.add(2, 3))     
+# print(math.add(2, 3, 4))   
+
+
+#OverRiding
+# class Animal:
+#     def sound(self):
+#         print("Animal makes a sound")
+
+# class Dog(Animal):
+#     def sound(self):
+#         print("Dog barks")
+
+# class Cat(Animal):
+#     def sound(self):
+#         print("Cat meows")
+# dog = Dog()
+# dog.sound() 
+
+# cat = Cat()
+# cat.sound() 
+
+
+
+
+##---------------------Inheritance---------------------##
+# Child Inherits the parent Properties #
+# class Animal:
+#     def sound(self):
+#         print("Animal makes a sound")
+
+# class Dog(Animal):
+#     def sound(self):
+#         print("Dog barks")
+
+# class Cat(Animal):
+#     def sound(self):
+#         print("Cat meows")
+# dog = Dog()
+# dog.sound() 
+
+# cat = Cat()
+# cat.sound()
+
+#Types> 
+# 1. Single 
+# 2. Multiple
+# 3.MultiLevel
