@@ -85,3 +85,20 @@ print("Is Armstrong Number :" , resultant)
 def is_pythagorean_triplet(a, b, c):
     a, b, c = sorted([a, b, c])
     return a**2 + b**2 == c**2
+
+
+
+## Reverse Array Using Stack ##
+# Time Complexity is O(2n) , Space Complexity is O(2n) #
+def reversedArr(arr) :
+    stack = []
+    result = []
+    for i in range( len(arr)):
+        stack.append(arr[i])
+    while stack:
+        result.append(stack.pop())  
+
+    return result   
+arr = [5 , 4, 3, 2, 1]     
+resultant = reversedArr(arr)
+print(resultant)     
