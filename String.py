@@ -126,7 +126,7 @@ print("Number of jewels in stones" , jewelStone)
 
 
 ## 37. Valid Anagram (In rearranging Order )   ##
-# Time Complexity is O() , Space Complexity is O() #
+# Time Complexity is O(2n) , Space Complexity is O(2n) #
 from collections import Counter
 class Solution(object):
     def validAnagram(self , str1 , str2):

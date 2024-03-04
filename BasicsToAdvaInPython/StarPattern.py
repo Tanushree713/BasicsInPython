@@ -211,7 +211,7 @@ def pattern12(n):
     for i in range(n):
         for j in range((n-i-1)):
             print(" ", end="")
-        breakPoint = (2*i+1) // 2   
+        # breakPoint = (2*i+1) // 2   
         for j in range(i  + 1):
              print(chr(65 + j), end="")
         for j in range(i-1, -1 , -1):
@@ -220,8 +220,8 @@ def pattern12(n):
         for i in range(n-i-1):
             print(" " , end="")
         print()
-# n = int(input("Enter the rows: "))        
-# pattern12(n)                 
+n = int(input("Enter the rows: "))        
+pattern12(n)                 
 
 
 
@@ -241,3 +241,4 @@ def pattern13(n):
 
 
 #14. 
+
