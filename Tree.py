@@ -48,5 +48,29 @@ root.right = Node(3)
 root.left.left = Node(4)
 root.left.right = Node(5)
 print("Preorder Traversal :")  
-root.preOrder()  
+# root.preOrder()  
                 
+
+## 3. PostOrder Tree Traversal Algo ##
+# Time complexity is O(n) , Space Complexity is O(n) #
+class Node :
+    def __init__(self , data):
+        self.data = data
+        self.left = None
+        self.right = None
+
+    def postOrder(self):
+       if self:
+        if self.left :
+            self.left.postOrder()
+        if self.right:
+            self.right.postOrder()
+        print(str(self.data) + " " , end = "")  
+
+root = Node(1)
+root.left = Node(2)
+root.right = Node(3)
+root.left.left = Node(4)
+root.left.right = Node(5)
+print("Postorder Traversal :") 
+root.postOrder()
