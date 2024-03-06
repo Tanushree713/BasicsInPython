@@ -172,11 +172,30 @@ root = insertionBST(root , 80)
 root = insertionBST(root , 110)
 root = insertionBST(root , 50)
 root = insertionBST(root , 90)
-print("Inorder Traversal" )
-inorderBST(root)
-print()
-print("Minimum Value In BST " , findMin(root)) 
-print("Maximum Value In BST " , findMax(root))          
+# print("Inorder Traversal" )
+# inorderBST(root)
+# print()
+# print("Minimum Value In BST " , findMin(root)) 
+# print("Maximum Value In BST " , findMax(root))          
 
 
-# 2. 
+
+
+# 2. Find Num Of UniqueBST #
+# TC is O(n^2) , SC is O(n) #
+def findUniqueBST(n) :
+    n1 , n2 , sum_Val = 0 , 0 , 0 
+    if n == 0 or n == 1:
+        return 1
+    else :
+        for i in range(1 , n+1):
+            n1 = findUniqueBST(i - 1)    #c0
+            n2 = findUniqueBST(n - i)   #cn
+            sum_Val += n1*n2             #catalan Series 
+        return sum_Val
+n = 3        
+result = findUniqueBST(n)            
+print("Number Of Unique BST " , result )
+
+
+# 3. 
