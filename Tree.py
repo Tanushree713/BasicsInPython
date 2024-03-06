@@ -128,7 +128,7 @@ root.left.right = Node(5)
 
 
 ##------------BST-----------------------##
-# 1. Insertion and Inorder BST  And Maximum And Minimum BST #
+# 1. Insertion and Inorder BST  And Maximum And Minimum BST and  BST Searching #
 # Time complexity is O(n) , Space Complexity is O(n)  ---> Worst Case #
 # TC is O(logn) , Space Complexity is O(logn) --> Best or Average Case #
 class Node  :
@@ -136,7 +136,7 @@ class Node  :
         self.left = None
         self.right = None
         self.data = data
-
+# For insertion BST #
 def insertionBST(root , key):
     if root is None:
         return Node(key)
@@ -148,18 +148,32 @@ def insertionBST(root , key):
         else:
             root.left = insertionBST(root.left , key )    
     return root 
+
+# For Finding Min In BST #    
 def  findMin(root):
     curr = root
     while curr.left :
         curr = curr.left
     return curr.data  
 
+# For Finding Max In BST #
 def  findMax(root):
     curr = root
     while curr.right :
         curr = curr.right
-    return curr.data     
+    return curr.data
 
+# For Search key  In BST #
+# TC is O((n) --> UnBalanced  , (logn) --> Balanced) , SC is O(1)
+def searchBST(root , key ):
+    if root is None or root.data == key :
+        return root 
+    elif root.data > key :
+        return searchBST(root.left , key )
+    else:
+        return searchBST(root.right , key )     
+
+# For Inorder BST #
 def inorderBST(root):
     if root :
         if root.left :
@@ -167,6 +181,8 @@ def inorderBST(root):
         print(str(root.data) + " " , end="")
         if root.right :
             inorderBST(root.right)  
+
+
 root = Node(100)
 root = insertionBST(root , 80)
 root = insertionBST(root , 110)
@@ -174,9 +190,15 @@ root = insertionBST(root , 50)
 root = insertionBST(root , 90)
 # print("Inorder Traversal" )
 # inorderBST(root)
-# print()
+print()
 # print("Minimum Value In BST " , findMin(root)) 
-# print("Maximum Value In BST " , findMax(root))          
+# print("Maximum Value In BST " , findMax(root))
+# key = 100  
+# result = searchBST(root , key )   
+# if result : 
+#     print("Searching Key Is Present In BST" )
+# else:
+#     print("Not present In BST ")      
 
 
 
@@ -194,8 +216,9 @@ def findUniqueBST(n) :
             sum_Val += n1*n2             #catalan Series 
         return sum_Val
 n = 3        
-result = findUniqueBST(n)            
-print("Number Of Unique BST " , result )
+# result = findUniqueBST(n)            
+# print("Number Of Unique BST " , result )
 
 
-# 3. 
+
+
