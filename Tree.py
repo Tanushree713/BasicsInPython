@@ -24,7 +24,7 @@ root.left = Node(2)
 root.right = Node(3)
 root.left.left = Node(4)
 root.left.right = Node(5)
-print("Inorder Traversal :")  
+# print("Inorder Traversal :")  
 # root.inOrder()  
 
 
@@ -47,7 +47,7 @@ root.left = Node(2)
 root.right = Node(3)
 root.left.left = Node(4)
 root.left.right = Node(5)
-print("Preorder Traversal :")  
+# print("Preorder Traversal :")  
 # root.preOrder()  
                 
 
@@ -72,5 +72,111 @@ root.left = Node(2)
 root.right = Node(3)
 root.left.left = Node(4)
 root.left.right = Node(5)
-print("Postorder Traversal :") 
-root.postOrder()
+# print("Postorder Traversal :") 
+# root.postOrder()
+
+
+
+##----------------------------Interview Q/A----------------------------------------##
+## Building Tree >> TC is O(n^2)  , SC is O(n)  ##
+
+# class TreeNode:
+#     def __init__(self, val):
+#         self.val = val
+#         self.left = None
+#         self.right = None
+
+# def buildTree(inorder, postorder):
+#     if not inorder or not postorder:
+#         return None
+    
+#     root_val = postorder.pop()
+#     root = TreeNode(root_val)
+#     root_index = inorder.index(root_val)
+    
+#     root.right = buildTree(inorder[root_index+1:], postorder)
+#     root.left = buildTree(inorder[:root_index], postorder)
+    
+#     return root
+
+# def inorderTraversal(root):
+#     if root is None:
+#         return []
+#     return inorderTraversal(root.left) + [root.val] + inorderTraversal(root.right)
+
+# def postorderTraversal(root):
+#     if root is None:
+#         return []
+#     return postorderTraversal(root.left) + postorderTraversal(root.right) + [root.val]
+
+# def printTree(root, level=0, prefix='Root:'):
+#     if root:
+#         print(' ' * (level * 4) + prefix, root.val)
+#         printTree(root.left, level + 1, prefix='L--:')
+#         printTree(root.right, level + 1, prefix='R--:')
+
+# # Example usage:
+# inorder = [4, 2, 5, 1, 6, 3, 7]
+# postorder = [4, 5, 2, 6, 7, 3, 1]
+# root = buildTree(inorder, postorder)
+
+# print("Inorder traversal:", inorderTraversal(root))
+# print("Postorder traversal:", postorderTraversal(root))
+
+# print("\nTree Structure:")
+# printTree(root)
+
+
+##------------BST-----------------------##
+# 1. Insertion and Inorder BST  And Maximum And Minimum BST #
+# Time complexity is O(n) , Space Complexity is O(n)  ---> Worst Case #
+# TC is O(logn) , Space Complexity is O(logn) --> Best or Average Case #
+class Node  :
+    def __init__(self, data):
+        self.left = None
+        self.right = None
+        self.data = data
+
+def insertionBST(root , key):
+    if root is None:
+        return Node(key)
+    else:
+        if root.data == key :
+            return root
+        elif root.data < key :
+            root.right = insertionBST(root.right , key )      
+        else:
+            root.left = insertionBST(root.left , key )    
+    return root 
+def  findMin(root):
+    curr = root
+    while curr.left :
+        curr = curr.left
+    return curr.data  
+
+def  findMax(root):
+    curr = root
+    while curr.right :
+        curr = curr.right
+    return curr.data     
+
+def inorderBST(root):
+    if root :
+        if root.left :
+            inorderBST(root.left)
+        print(str(root.data) + " " , end="")
+        if root.right :
+            inorderBST(root.right)  
+root = Node(100)
+root = insertionBST(root , 80)
+root = insertionBST(root , 110)
+root = insertionBST(root , 50)
+root = insertionBST(root , 90)
+print("Inorder Traversal" )
+inorderBST(root)
+print()
+print("Minimum Value In BST " , findMin(root)) 
+print("Maximum Value In BST " , findMax(root))          
+
+
+# 2. 
