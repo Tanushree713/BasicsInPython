@@ -127,7 +127,13 @@ root.left.right = Node(5)
 # printTree(root)
 
 
+
+
+
+
 ##------------BST-----------------------##
+
+
 # 1. Insertion and Inorder BST  And Maximum And Minimum BST and  BST Searching #
 # Time complexity is O(n) , Space Complexity is O(n)  ---> Worst Case #
 # TC is O(logn) , Space Complexity is O(logn) --> Best or Average Case #
@@ -137,6 +143,7 @@ class Node  :
         self.right = None
         self.data = data
 # For insertion BST #
+#  TC is O( n ) , SC is O(n ) #  
 def insertionBST(root , key):
     if root is None:
         return Node(key)
@@ -149,7 +156,8 @@ def insertionBST(root , key):
             root.left = insertionBST(root.left , key )    
     return root 
 
-# For Finding Min In BST #    
+# For Finding Min In BST #
+# TC is O(logn or n ) , SC is O(1) #    
 def  findMin(root):
     curr = root
     while curr.left :
@@ -157,6 +165,7 @@ def  findMin(root):
     return curr.data  
 
 # For Finding Max In BST #
+# TC is O(logn or n ) , SC is O(1) #
 def  findMax(root):
     curr = root
     while curr.right :
@@ -164,7 +173,7 @@ def  findMax(root):
     return curr.data
 
 # For Search key  In BST #
-# TC is O((n) --> UnBalanced  , (logn) --> Balanced) , SC is O(1)
+# TC is O((n) --> UnBalanced  , (logn) --> Balanced) , SC is O(1)#
 def searchBST(root , key ):
     if root is None or root.data == key :
         return root 
@@ -174,6 +183,7 @@ def searchBST(root , key ):
         return searchBST(root.right , key )     
 
 # For Inorder BST #
+#  TC is O( n ) , SC is O(n ) #  
 def inorderBST(root):
     if root :
         if root.left :
