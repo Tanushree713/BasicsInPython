@@ -232,3 +232,96 @@ n = 3
 
 
 
+
+# 3. Deletion IN BST #
+# TC is O(n) , SC is O(n) --> In worst case  #
+class Node :
+    def __init__(self , data ) :
+        self.data = data
+        self.left = None 
+        self.right = None 
+
+def insertionInBST(root , key):
+    if root is None:
+        return Node(key)
+    else:
+        if root.data == key :
+            return root
+        elif root.data < key :
+            root.right = insertionBST(root.right , key )      
+        else:
+            root.left = insertionBST(root.left , key )    
+    return root 
+
+def minValInBST(root):
+    curr = root 
+    while curr.left:
+        curr= curr.left
+    return curr.data 
+
+def deleteNode(root , key ):
+
+        if root is None :
+            return root
+        if key < root.data :
+            root.left = deleteNode(root.left , key )
+        elif key > root.data :
+            root.right = deleteNode(root.right , key )   
+        else:
+            if root.left is None :
+                temp = root.right
+                root = None 
+                return temp
+            elif root.right is None :
+                temp = root.left 
+                root = None
+                return temp 
+            temp = minValInBST(root.right)
+            root.data = temp
+            print("Min Value " , temp )
+            root.right = deleteNode(root.right, temp )
+        return root 
+
+def inorderInBST(root):
+    if root :
+        if root.left :
+            inorderInBST(root.left)
+        print(str(root.data) + " " , end = "")
+        if root.right :
+            inorderInBST(root.right)
+
+# insertion of node 
+root = Node(100)
+root = insertionInBST(root , 80)
+root = insertionInBST(root , 110)
+root = insertionInBST(root , 50)
+root = insertionInBST(root , 70)
+root = insertionInBST(root , 20)
+root = insertionInBST(root , 145)
+root = insertionInBST(root , 120)
+
+# Inorder BST 
+print("Inorder Traversal" )
+inorderInBST(root)
+
+# deleteNode In BST #
+
+# deleteNode has no child 
+print()
+deleteNode(root , 20 )
+print("Inorder traversal modified tree")
+inorderInBST(root)
+
+# deleteNode has 1 child
+print() 
+deleteNode(root , 120)
+print("Inorder traversal modified tree")
+inorderInBST(root)
+
+# deleteNode has 2 child 
+print()
+deleteNode(root , 100)
+print("Inorder traversal modified tree")
+inorderInBST(root)
+
+
