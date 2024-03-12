@@ -52,6 +52,8 @@ nums = [ 7 , 1, 4 , 7 , 15]
 # result = timeToSell(nums)
 # print("Max profit " , result )
 
+
+
 # 3. Max Product SubArray #
 # TC is O(n) , SC is O(1)  #
 def maxProductSubArr(arr):
@@ -135,6 +137,8 @@ q = len(arr) - 1
 k = 3
 # result = kthSmallest1(arr , p , q, k)
 # print("Kth Smallest Number is " , result )
+
+
 
 #APP2>>
 # TC is O(nlogk ) , SC is O(k) #
@@ -316,8 +320,8 @@ def spaceOptimize( a, b ):
     return multiples
 a = 10
 b = 20
-result = spaceOptimize(a, b)
-print("multiples of 2 and 5 b/w a to b" , result )            
+# result = spaceOptimize(a, b)
+# print("multiples of 2 and 5 b/w a to b" , result )            
 
 
 # 12. MergeOperationTo make palindromeARR #
@@ -340,8 +344,283 @@ def makePalindrome(arr) :
             j -= 1
     return cnt 
 arr = [ 1, 2, 3 , 8 , 4 ,  5 , 1]
-result = makePalindrome(arr) 
-print(" MergeoperationTo make palindrome ARR :" , result )             
+# result = makePalindrome(arr) 
+# print(" MergeoperationTo make palindrome ARR :" , result )             
+
+
+# 13. Power(a , n)   #
+# TC is O(logn ) , SC is O(1)  #
+def power(a , n ):
+    if n ==  0 :
+        return 1
+    elif n == 1 :
+        return a   
+    elif n < 0 :
+        n = -n 
+        a = 1 / a
+        return power(a , n)      
+    else:
+        mid = n // 2
+        b = power(a , mid )
+        result = b * b 
+
+    if n % 2 :
+        return  a * result 
+    else :
+        return result  
+a = 2
+n = 6
+# result = power(a , n )
+# print("Value of power of a is :" , result)
+
+
+
+
+# 14. Next Permutation #
+# TC is O(n) , SC is O(1)  #
+def nextPermute(arr) :
+    i = len(arr) - 2
+    while i >= 0 and arr[i] >= arr[ i + 1]:
+        i -= 1
+    if i == -1 :
+        return reversed(arr)
+    else:
+        j = len(arr) - 1
+        while arr[i] > arr[j]:
+            j -= 1
+        arr[i] , arr[j] = arr[j] , arr[i]    
+        arr[i+1:] = reversed(arr[i+1:])  
+        return arr         
+arr = [ 1, 3, 2]
+# result = nextPermute(arr)
+# print("resultant is " , result )
+
+
+# 15. Sum Pairs #
+# TC is O(n) , SC is O(1) #
+def sumPairs(arr  , key ):
+    n = len(arr)
+    for i in range(n):
+        if arr[i ] > arr[i+1]:
+            break
+    left = (i+1 ) % n 
+    right = i  
+    while left != right :
+        if arr[left] + arr[right] == key :
+            return True 
+        elif arr[left] + arr[right] < key :
+            left  = (left + 1 ) % n 
+        else:
+            right  = (n + right - 1) % n 
+
+    return False             
+arr =[ 11, 15, 26, 38, 9, 10]
+key  = 26
+# result = sumPairs(arr , key )
+# print("Sum Pairs " , result )
+
+
+# 16. Sort Colors #
+# TC is O(n) , SC is O(1) #
+def sortColors(nums):
+    curr = p0 = 0
+    p2 = len(arr) - 1
+    while curr < p2 :
+        if nums[curr] == 0 :
+            nums[p0] , nums[curr] = nums[curr] , nums[p0]
+            p0 += 1
+            curr += 1
+        elif nums[curr] == 2 :
+            nums[p2] , nums[curr] = nums[curr] , nums[p2]
+            p2 -= 1
+        else:
+            curr += 1
+
+    return nums 
+arr = [ 2 , 1 , 0 , 1, 2, 0]       
+# result = sortColors(arr)
+# print("Sorted Colors " , result)  
+
+
+
+# 17. Rotate Array #
+# TC is O(n) , SC is O(1) #
+def reverseArr(arr , start , end ) :
+    while start < end :
+         arr[start] , arr[end] = arr[end ] , arr[start]
+         start += 1
+         end -= 1
+    return arr 
+def rotateArr(arr , k ) :
+    n = len(arr)
+    k = k % n
+    reverseArr(arr , 0 , n - 1)
+    reverseArr(arr , 0 , k - 1)
+    reverseArr(arr , k , n - 1)
+    return arr
+arr = [ 2 , 3, 4 , 5, 7 , 8 , 10 ]
+k = 5
+# result = rotateArr(arr , k)
+# print("Rotated k Arr" , result )
+
+
+
+
+
+# 18. Consecutive Ones #
+# TC is O(n) , SC is O(1)  #
+def countConsectveOnes(arr):
+    n = len(arr)
+    count = 0 
+    maxcnt = 0 
+    for i in range(n):
+        if arr[i] == 1:
+            count += 1
+            maxcnt = max(maxcnt , count )
+        else:
+            count = 0 
+    return maxcnt 
+arr = [ 1 , 1, 1 , 0 ,0 , 1, 1, 3, 1, 0]    
+# result = countConsectveOnes(arr)    
+# print("The Consecutive Ones is " , result )       
+
+
+
+# 19. Spiral Matrix #
+# TC is O(m*n) , SC is O(m*n)  #
+def spiralMatrix(arr):
+    left = 0
+    right = len(arr[0]) - 1
+    top = 0
+    bottom = len(arr) - 1
+    result = [ ]
+    while left <= right and top <=  bottom :
+        for i in range(left , right +  1):
+            result.append(arr[top][i])
+        top += 1
+        for i in range(top , bottom + 1 ):
+            result.append(arr[i][right])
+        right -= 1  
+        if top < bottom  :    
+            for i in range(right , left - 1, -1 ):
+                result.append(arr[bottom][i]) 
+            bottom -= 1
+        if left < right :    
+            for i in range( bottom , top - 1 , -1 ) :
+                result.append(arr[i][left])  
+            left += 1
+    return result 
+arr = [[1, 2, 3], [4, 5, 6], [7, 8, 9]]
+# result = spiralMatrix(arr)
+# print("SpiralMatrix", result )
+
+
+
+
+# 20. Matrix Diagonal Sum #
+# TC is O(n) , SC is O(1) #
+def matrixDiagSum(arr) :
+    res = 0
+    n = len(arr)
+    for i in range(n):
+        res += arr[i][i]
+        res += arr[i][n-i-1]
+    if n  % 2 :
+        res -= arr[n//2][n//2]
+    return res    
+arr = [[1, 2, 3 , 0], [4, 5, 6 , 0], [7, 8, 9 , 0] , [11, 12, 13 , 0]]
+# result = matrixDiagSum(arr)
+# print("Matrix Diagonal Sum " , result )
+
+
+
+# 21. Count Negative Numbers In a Sorted Matrix #
+# TC is O(m+n) , SC is O(1)  #
+def countNegNum(arr) :
+    rows = len(arr[0])
+    cols  = len(arr)
+    i = 0 
+    j = rows - 1
+    count = 0 
+    while i < cols and j >= 0 :
+        if arr[i][j] < 0 :
+            count += cols - i 
+            j -= 1
+        i += 1
+    return count           
+arr = [ [1, 2, 3, -4],
+    [5, 6, -7, -8],
+    [9, 10, -11, -12]]
+# result = countNegNum(arr)
+# print("Count Neg Num " , result )
+
+
+
+#  22. Richest Customer wealth #
+# TC is O(m*n), SC is O(m) #
+def richestWealth(accounts) :
+    maxSum = 0 
+    for wealth in accounts :
+        total =  sum(wealth)
+        maxSum = max( maxSum  , total )
+    return maxSum
+arr = [[1, 2, 3, -4],
+    [5, 6, -7, -8],
+    [9, 10, -11, -12]]    
+# result = richestWealth(arr)
+# print("Richest wealth " , result )         
+
+
+
+# 23. Toeplitz Matrix #
+# TC is O(m*n) , SC is O(1)  #
+def toeplitzMat(arr) :
+    rows = len(arr)
+    cols = len(arr[0])
+    for i in range(rows - 1):
+        for j in range(cols-1):
+            if arr[i][j] != arr[i+1][j+1]:
+                return False
+    return True 
+# arr = [[1,2,3,4],[5,1,2,3],[9,5,1,2]]
+# result = toeplitzMat(arr)    
+# print("Toeplitz Mat " , result )            
+
+
+
+# 24. Rotate Image #
+# TC is O(n^2) , SC is O(1)  #
+def rotateImage(mat) :
+    n = len(mat)
+    for i in range(n - 1):
+        for j in range(i+1 , n):
+            mat[i][j] , mat[j][i] = mat[j][i] , mat[i][j]
+    for i in range(n) :       
+        mat[i] = list(reversed(mat[i]) )  
+    return mat 
+mat = [[1, 2, 3 ], [4, 5, 6 ], [7, 8, 9 ]]      
+# result = rotateImage(mat)
+# print("Matrix is Rotated" , result )
+
+
+
+# 25. Transposal Matrix #
+# TC is O(m*n)  , SC is O(m*n)  #
+def transposalMat(mat):
+    rows = len(mat) 
+    cols = len(mat[0])
+    res = [[0] * rows for _ in range(cols)]
+    for i in range(rows):
+        for j in range(cols):
+            res[j][i] = mat[i][j] 
+    return res        
+mat = [[1,2,3],[4,5,6],[7,8,9]]
+# result = transposalMat(mat)
+# print("Transposal Matrix  " , result )
+
+
+
+# 26. 
 
 
 
