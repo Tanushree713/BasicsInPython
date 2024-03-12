@@ -624,5 +624,21 @@ mat = [[1,2,3],[4,5,6],[7,8,9]]
 
 
 
+# 27. Reshape Matrix #
+# TC is O(m*n) , SC is O(m*n ) #
+def reshapeMat(mat , r, c):
+    m = len(mat)
+    n = len(mat[0])
+    res = [[0] * c for _ in range(r)]
+    originalLen = m * n 
+    if originalLen != r*c :
+        return mat
+    for i in range(originalLen):
+        res[i // c][i % c] = mat[i // n ][ i % n] 
+    return res
+mat = [[1,2],[3,4]]
+result = reshapeMat(mat , 1, 4 )
+print("Reshaped" , result  )         
+
 
 
