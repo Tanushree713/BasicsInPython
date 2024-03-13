@@ -620,7 +620,41 @@ mat = [[1,2,3],[4,5,6],[7,8,9]]
 
 
 
-# 26. 
+# 26. Set Matrix Zeroes #
+# TC is O(n^2)  , SC is O(1)  #
+def setMatrixZeroes(arr):
+    m = len(arr)
+    n = len(arr[0])
+    col0 = 1
+    for i in range(m):
+        for j in range(n):
+            if arr[i][j] == 0 :
+                arr[i][0] = 0 
+                if j != 0 :
+                    arr[0][j] = 0
+                else:    
+                    col0 = 0 
+    for i in range(m-1 , -1 , -1 ) :
+        for j in range(n - 1, 0 , -1 ):
+            if arr[i][j] != 0 :
+                if arr[i][0] == 0  or arr[0][j] == 0 :
+                     arr[i][j] = 0 
+    if arr[0][0] == 0 :
+        for j in range(n):
+            arr[0][j] = 0 
+    if col0 == 0 :
+        for i in range(m) :
+            arr[i][0]  = 0 
+    return arr                                             
+
+matrix = [[0,1,2,0],[3,4,5,2],[1,3,1,5]]
+result = setMatrixZeroes(matrix)
+print("Set matrix" , result )
+
+
+
+
+
 
 
 
@@ -637,8 +671,14 @@ def reshapeMat(mat , r, c):
         res[i // c][i % c] = mat[i // n ][ i % n] 
     return res
 mat = [[1,2],[3,4]]
-result = reshapeMat(mat , 1, 4 )
-print("Reshaped" , result  )         
+# result = reshapeMat(mat , 1, 4 )
+# print("Reshaped" , result  )         
+
+
+
+# 28. Flip Image #
+# TC is O() , SC is O() #
+
 
 
 
