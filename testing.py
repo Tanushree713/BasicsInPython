@@ -648,8 +648,8 @@ def setMatrixZeroes(arr):
     return arr                                             
 
 matrix = [[0,1,2,0],[3,4,5,2],[1,3,1,5]]
-result = setMatrixZeroes(matrix)
-print("Set matrix" , result )
+# result = setMatrixZeroes(matrix)
+# print("Set matrix" , result )
 
 
 
@@ -677,8 +677,22 @@ mat = [[1,2],[3,4]]
 
 
 # 28. Flip Image #
-# TC is O() , SC is O() #
-
+# TC is O(n^2) , SC is O(1) #
+def flipImage(mat):
+    m = len(mat)
+    n = len(mat[0])
+    for i in range(n):
+        mat[i] = list((reversed(mat[i])))
+    for i in range(n):
+        for j in range(n):
+            if mat[i][j] != 0 :
+                mat[i][j] = 0 
+            else:
+                mat[i][j] = 1
+    return mat
+mat = [[1,1,0],[1,0,1],[0,0,0]]  
+result = flipImage(mat)
+print("Flpi Image " , result )                         
 
 
 
