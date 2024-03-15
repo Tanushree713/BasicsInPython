@@ -704,6 +704,21 @@ def reverseStr(string):
         right -= 1
     return string  # return ''.join(string)
 string = ["h","e","l","l","o"] 
-res = reverseStr(string)
-print("Reversed string " , res)       
+# res = reverseStr(string)
+# print("Reversed string " , res)       
+
+
+
+# 30. First Unique Char #
+# TC is O(n) , SC is O(n)  #
+from collections import Counter 
+def firstUniqueChar(string):
+    countChar = Counter(string)
+    for index , char in enumerate(string):
+        if countChar[char] == 1:
+            return index, char
+    return -1         
+string = "leetcode"
+result = firstUniqueChar(string)
+print("FirstUnique Char" , result )
 
