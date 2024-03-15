@@ -554,10 +554,10 @@ arr = [ [1, 2, 3, -4],
 # result = countNegNum(arr)
 # print("Count Neg Num " , result )
 
-
+##----------------------------------------##
 
 #  22. Richest Customer wealth #
-# TC is O(m*n), SC is O(m) #
+# TC is O(m*n), SC is O(1) #
 def richestWealth(accounts) :
     maxSum = 0 
     for wealth in accounts :
@@ -653,11 +653,6 @@ matrix = [[0,1,2,0],[3,4,5,2],[1,3,1,5]]
 
 
 
-
-
-
-
-
 # 27. Reshape Matrix #
 # TC is O(m*n) , SC is O(m*n ) #
 def reshapeMat(mat , r, c):
@@ -691,8 +686,24 @@ def flipImage(mat):
                 mat[i][j] = 1
     return mat
 mat = [[1,1,0],[1,0,1],[0,0,0]]  
-result = flipImage(mat)
-print("Flpi Image " , result )                         
+# result = flipImage(mat)
+# print("Flpi Image " , result )                         
 
 
+##-------------------------------------##
+
+# 29. Reverse String #
+# TC is O(n) , SC is O(n) #
+def reverseStr(string):
+    left = 0
+    right = len(string) - 1 
+   # string = list(string) 
+    while left < right :
+        string[left] , string[right] = string[right] , string[left]
+        left += 1
+        right -= 1
+    return string  # return ''.join(string)
+string = ["h","e","l","l","o"] 
+res = reverseStr(string)
+print("Reversed string " , res)       
 
