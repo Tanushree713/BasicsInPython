@@ -719,6 +719,18 @@ def firstUniqueChar(string):
             return index, char
     return -1         
 string = "leetcode"
-result = firstUniqueChar(string)
-print("FirstUnique Char" , result )
+# result = firstUniqueChar(string)
+# print("FirstUnique Char" , result )
 
+
+
+# 31. Reverse Words In String #
+# TC is O(n)  , SC is O(n) #
+def reverseWords(string):
+    getwords = string.split(" ")
+    getreversedWords = getwords[::-1]
+    getReversal = ' '.join(getreversedWords)
+    return getReversal
+string = "the sky is blue" 
+result = reverseWords(string)
+print("Reversed Words : " , result )        
