@@ -732,5 +732,38 @@ def reverseWords(string):
     getReversal = ' '.join(getreversedWords)
     return getReversal
 string = "the sky is blue" 
-result = reverseWords(string)
-print("Reversed Words : " , result )        
+# result = reverseWords(string)
+# print("Reversed Words : " , result )        
+
+
+# 32. Length Of Last Words #
+# TC is O(n) , SC is O(n)  #
+def lengthOfLastWords(string):
+    getWords = string.split(" ")
+    getLastwords = getWords[len(getWords) - 1]
+    return len(getLastwords)
+string = "Tanu is good and smart women"
+# result = lengthOfLastWords(string)
+# print("Length of last String" , result)
+
+
+# 33. Longest common Prefix #
+# TC is O(n*m*log(k)) , SC is O(k)  #
+def longestCommonPrefix(string) :
+    common = []
+    if not string :
+        return ""
+    string.sort()
+    firstW = string[0]
+    lastW = string[len(string) - 1]
+    for i in range(len(firstW)):
+        if i < len(lastW) and firstW[i] == lastW[i] :
+            common.append(firstW[i])
+        else:
+            break 
+    return ''.join(common)
+string = ["flower","flow","flight"]
+result = longestCommonPrefix(string)
+print("Longest Common Prefix : " , result)
+
+
