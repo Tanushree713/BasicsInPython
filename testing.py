@@ -787,7 +787,7 @@ string = "abcabcbb"
 
 
 # 35. Jewels And Stones #
-# TC is O()  , SC is O()  #
+# TC is O(s+j)  , SC is O(j)  #
 def jewelsAndStones(jewels , stones):
     jewelSet = set(jewels)
     count = 0
@@ -797,7 +797,23 @@ def jewelsAndStones(jewels , stones):
     return count 
 jewels = "aA"
 stones = "aAABBBb"
-result = jewelsAndStones(jewels , stones)
-print("Jewels And Stones" , result )            
+# result = jewelsAndStones(jewels , stones)
+# print("Jewels And Stones" , result )            
  
 
+# 36. Valid Anagram #
+# TC is O(2n)) , SC is O(2n) #
+from collections import Counter
+def validAnagram(str1 , str2):
+    counter1 = Counter(str1)
+    counter2 = Counter(str2)
+    if counter1 == counter2 :
+        return True 
+    return False 
+str1 = "anagram"
+str2 = "nagara"
+result = validAnagram(str1 , str2 )
+print("ValidAnagram is" , result )
+
+
+# 37. 
