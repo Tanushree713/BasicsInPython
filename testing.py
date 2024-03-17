@@ -782,5 +782,22 @@ def longestSubstr(string):
     maxlen = max(maxlen , right-left + 1)    
     return maxlen
 string = "abcabcbb"    
-result = longestSubstr(string)   
-print("LongestSubstr" , result )             
+# result = longestSubstr(string)   
+# print("LongestSubstr" , result )             
+
+
+# 35. Jewels And Stones #
+# TC is O()  , SC is O()  #
+def jewelsAndStones(jewels , stones):
+    jewelSet = set(jewels)
+    count = 0
+    for s in stones:
+        if s in jewelSet :
+            count += 1
+    return count 
+jewels = "aA"
+stones = "aAABBBb"
+result = jewelsAndStones(jewels , stones)
+print("Jewels And Stones" , result )            
+ 
+
