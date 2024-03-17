@@ -763,7 +763,24 @@ def longestCommonPrefix(string) :
             break 
     return ''.join(common)
 string = ["flower","flow","flight"]
-result = longestCommonPrefix(string)
-print("Longest Common Prefix : " , result)
+# result = longestCommonPrefix(string)
+# print("Longest Common Prefix : " , result)
 
 
+
+# 34. Longest substring Without Repeat Char #
+# TC is O(2n) , SC is O(n)  #
+def longestSubstr(string):
+    maxlen = 0 
+    left = 0
+    charset = set()
+    for right in range(len(string)):
+        if string[right] in charset:
+            charset.remove(string[left])
+            left += 1
+        charset.add(string[right])
+    maxlen = max(maxlen , right-left + 1)    
+    return maxlen
+string = "abcabcbb"    
+result = longestSubstr(string)   
+print("LongestSubstr" , result )             
