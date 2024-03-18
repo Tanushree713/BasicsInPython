@@ -812,8 +812,95 @@ def validAnagram(str1 , str2):
     return False 
 str1 = "anagram"
 str2 = "nagara"
-result = validAnagram(str1 , str2 )
-print("ValidAnagram is" , result )
+# result = validAnagram(str1 , str2 )
+# print("ValidAnagram is" , result )
 
 
-# 37. 
+# 37. Reverse Vowels of string #
+# TC is O(n) , SC is O(1) #
+def reverseVowels(string):
+    vowels = "AEIOUaeiou"
+    left = 0
+    right = len(string) - 1
+    string = list(string)
+    while left < right :
+        while left < right and string[left] not in vowels :
+            left += 1
+        while left < right and string[right] not in vowels :
+            right -= 1
+        string[left], string[right] = string[right], string[left]     
+        left += 1
+        right -= 1
+            
+    return ''.join(string)        
+string = "hello"
+# result = reverseVowels(string)
+# print("Reverse vowels :" , result )
+
+
+
+# 38. Valid Palindrome #
+# Tc is O(n) , Sc is O(1)  #
+def sanitized(s):
+    sanitize = ""
+    for char in s :
+        if char.isalnum():
+            sanitize += char.lower()
+    return sanitize      
+def validPalindrome(string):
+    string = sanitized(string)
+    left = 0
+    right = len(string) - 1
+    while left < right :
+       if string[left] != string[right]:
+        return False
+       left += 1
+       right -= 1
+    return True 
+string = "race a car"
+result = validPalindrome(string)
+print("ValidPalindrome" , result )       
+
+
+# 39. Redistribute Make Equal Char #
+# Tc is O(n)  , Sc is O(n) #
+def redistributemakeEqual(words):
+    charcount = Counter()
+    n = len(words)
+    for w in words :
+        charcount.update(w)
+    for count in charcount.values():
+        if count % n != 0 :
+            return False 
+    return True 
+string = ["abc" , "bc", "aabc"]
+result = redistributemakeEqual(string)
+print("redistribute Make Equal :" , result )
+
+
+# 40. Balance String #
+# Tc is O(n) , SC is O(1)  #
+def balanceStr(string):
+    count = 0 
+    r = 0
+    for i in range(len(string)):
+        if string[i] == "R":
+            r += 1
+        elif string[i] == "L":
+            r -= 1
+        if r == 0 :
+            count += 1
+    return count        
+string = "RLRLRLLL"
+result = balanceStr(string)
+print("Split balanced String" , result)
+
+
+
+
+
+
+
+
+
+
