@@ -858,8 +858,8 @@ def validPalindrome(string):
        right -= 1
     return True 
 string = "race a car"
-result = validPalindrome(string)
-print("ValidPalindrome" , result )       
+# result = validPalindrome(string)
+# print("ValidPalindrome" , result )       
 
 
 # 39. Redistribute Make Equal Char #
@@ -873,9 +873,9 @@ def redistributemakeEqual(words):
         if count % n != 0 :
             return False 
     return True 
-string = ["abc" , "bc", "aabc"]
-result = redistributemakeEqual(string)
-print("redistribute Make Equal :" , result )
+string = ["abc" , "abc", "aabc"]
+# result = redistributemakeEqual(string)
+# print("redistribute Make Equal :" , result )
 
 
 # 40. Balance String #
@@ -892,14 +892,54 @@ def balanceStr(string):
             count += 1
     return count        
 string = "RLRLRLLL"
-result = balanceStr(string)
-print("Split balanced String" , result)
+# result = balanceStr(string)
+# print("Split balanced String" , result)
 
 
 
 
+##-------------------------------------##
+
+# 41. Fibonacci number #
+# TC is O(n) , SC is O(1)  #
+def fibonacciNum(n):
+    if n == 0 or n == 1:
+        return n 
+    else:
+        return fibonacciNum(n-1) + fibonacciNum(n-2)  
+n =  3  
+result = fibonacciNum(n)
+print("Fibonacci Num" , result)
 
 
+
+# 42. find Power of Four #
+# Tc is O(n) , Sc is O(1)  #
+def findPowerFour(n):
+    if n <= 0  :
+        return False
+    elif n == 1:
+        return True
+    else:
+        return n % 4 == 0 and findPowerFour(n // 4)      
+n = 20
+result = findPowerFour(n)
+print("Find power Four" , result )        
+
+
+# 43. Sum of Digits #
+# TC is O(n) , Sc is O(1)  #
+def sumOfDigit(n):
+    if n == 0 or n == 1 :
+        return n 
+    else :
+        return n % 10 + sumOfDigit(n//10) 
+n =  4321          
+result = sumOfDigit(n)
+print("Sum Of Digit :" , result )
+
+
+# 44. 
 
 
 
