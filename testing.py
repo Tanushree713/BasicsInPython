@@ -923,8 +923,8 @@ def findPowerFour(n):
     else:
         return n % 4 == 0 and findPowerFour(n // 4)      
 n = 20
-result = findPowerFour(n)
-print("Find power Four" , result )        
+# result = findPowerFour(n)
+# print("Find power Four" , result )        
 
 
 # 43. Sum of Digits #
@@ -935,11 +935,26 @@ def sumOfDigit(n):
     else :
         return n % 10 + sumOfDigit(n//10) 
 n =  4321          
-result = sumOfDigit(n)
-print("Sum Of Digit :" , result )
+# result = sumOfDigit(n)
+# print("Sum Of Digit :" , result )
 
 
-# 44. 
+# 44. Find GCD or HCF Of Two Number #
+# Tc is O(log(min(a , b))) , Sc is O(1)  #
+def findGCD(a , b):
+    if b == 0 :
+        return a
+    else:
+        return findGCD(b , a%b ) 
+a = 2 
+b = 5        
+result = findGCD(a , b)           
+print("Finding GCD :" , result )
+
+
+# 45. All Subsets Sum #
+# Tc is O() , Sc is O() #
+
 
 
 
