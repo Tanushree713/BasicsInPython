@@ -948,14 +948,28 @@ def findGCD(a , b):
         return findGCD(b , a%b ) 
 a = 2 
 b = 5        
-result = findGCD(a , b)           
-print("Finding GCD :" , result )
+# result = findGCD(a , b)           
+# print("Finding GCD :" , result )
+
 
 
 # 45. All Subsets Sum #
-# Tc is O() , Sc is O() #
+# Tc is O(2^n) , Sc is O( n + 2^n) #
+def sumOfAllSubsets(arr  , i , sum , result):
+    if i == len(arr):
+        result.append(sum)
+        return 
+    else :
+        sumOfAllSubsets(arr , i + 1, sum + arr[i] , result) 
+        sumOfAllSubsets(arr , i + 1 , sum , result)         
 
-
-
-
+nums = [1 , 2, 3]
+result = []
+i = 0 
+sum = 0
+sumOfAllSubsets(nums , i , sum , result)
+resultant = list(set(result))
+resultant.sort()
+for r in resultant:
+    print(r , end=" ")
 
