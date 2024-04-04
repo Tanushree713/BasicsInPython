@@ -485,6 +485,7 @@ arr = [ 1 , 1, 1 , 0 ,0 , 1, 1, 3, 1, 0]
 # print("The Consecutive Ones is " , result )       
 
 
+##----------------------------------------##
 
 # 19. Spiral Matrix #
 # TC is O(m*n) , SC is O(m*n)  #
@@ -554,7 +555,6 @@ arr = [ [1, 2, 3, -4],
 # result = countNegNum(arr)
 # print("Count Neg Num " , result )
 
-##----------------------------------------##
 
 #  22. Richest Customer wealth #
 # TC is O(m*n), SC is O(1) #
@@ -908,8 +908,8 @@ def fibonacciNum(n):
     else:
         return fibonacciNum(n-1) + fibonacciNum(n-2)  
 n =  3  
-result = fibonacciNum(n)
-print("Fibonacci Num" , result)
+# result = fibonacciNum(n)
+# print("Fibonacci Num" , result)
 
 
 
@@ -970,6 +970,34 @@ sum = 0
 sumOfAllSubsets(nums , i , sum , result)
 resultant = list(set(result))
 resultant.sort()
-for r in resultant:
-    print(r , end=" ")
+# for r in resultant:
+#     print(r , end=" ")
+
+
+##---------------------------------------##
+
+
+# 46. 2-D Binary Search #
+# TC is O() , SC is O() #
+def binarysearch2D(arr , target):
+    m = len(arr) 
+    n = len(arr[0])
+    left = 0
+    right = m*n - 1
+    while left <= right :
+        mid = left + (right - left )// 2
+        mid_Ele = arr[mid//n][mid%n]
+        if mid_Ele == target :
+            return True
+        elif mid_Ele < target :
+            left = mid + 1
+        else :
+            right = mid - 1
+    return False 
+arr = [[ 1, 2 ,3 ] , [4, 5, 16] , [7, 8 ,9] ] 
+target = 6
+result = binarysearch2D(arr , target)
+print("Binary search In 2D " , result )                     
+
+
 
