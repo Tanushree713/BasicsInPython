@@ -996,8 +996,29 @@ def binarysearch2D(arr , target):
     return False 
 arr = [[ 1, 2 ,3 ] , [4, 5, 16] , [7, 8 ,9] ] 
 target = 6
-result = binarysearch2D(arr , target)
-print("Binary search In 2D " , result )                     
+# result = binarysearch2D(arr , target)
+# print("Binary search In 2D " , result )                     
 
 
 
+# 47. Search Position(Index of target) #
+# Time Complexity is O(logn) , Space Complexity is O(1) #
+def searchPos(arr , k ):
+    i = 0
+    j = len(arr) - 1
+    while i < j :
+           mid  = i + (j -i) // 2
+           if arr[mid] == k :
+             return mid
+           elif arr[mid] < k :
+              i = mid + 1
+           else:
+            j = mid - 1
+arr = [1 , 2 , 3, 4, 5] 
+k = 4
+result  = searchPos(arr , k ) 
+print("Searched Element " , result )               
+
+
+
+    
