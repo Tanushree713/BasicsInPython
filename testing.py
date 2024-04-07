@@ -1014,10 +1014,39 @@ def searchPos(arr , k ):
               i = mid + 1
            else:
             j = mid - 1
+    return -1         
 arr = [1 , 2 , 3, 4, 5] 
 k = 4
-result  = searchPos(arr , k ) 
-print("Searched Element " , result )               
+# result  = searchPos(arr , k ) 
+# print("Searched Element " , result )               
+
+
+
+# 48. Search In Rotated sorted Array #
+# Time Complexity is O(logn) , Space complexity is O(1) #
+def searchRotatedArr(arr , k):
+   i = 0
+   j = len(arr) - 1
+   while i <= j :
+        mid  = i + (j- i) // 2
+        if arr[mid] == k:
+            return mid
+        if arr[i] <= arr[mid]:
+            if arr[i] <= k and k <= arr[mid] :
+                j = mid - 1
+            else:
+                i = mid + 1
+        else:
+            if arr[mid] <= k and k <= arr[j]:
+                i = mid + 1
+            else:
+                j = mid - 1
+   return -1
+arr = [ 7 , 8 , 9 , 1, 2, 3 , 4 , 5 , 6]  
+k = 9
+result = searchRotatedArr(arr , k)                    
+print("Sorted Arr " , result )            
+
 
 
 
