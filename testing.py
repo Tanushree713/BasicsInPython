@@ -36,6 +36,7 @@ j = len(arr) - 1
 # print("Max and Min " , maxValue , minValue)
 
 
+
 # 2. Best time To Sell And Stock #
 # TC is O(n) , SC is O(1) #
 def timeToSell(price):
@@ -1046,6 +1047,28 @@ arr = [ 7 , 8 , 9 , 1, 2, 3 , 4 , 5 , 6]
 k = 9
 result = searchRotatedArr(arr , k)                    
 print("Sorted Arr " , result )            
+
+
+##---------------------------------##
+
+# 49. Delete Node LL #
+# Time Complexity is O(n) , Space Complexity is O(1) #
+class Node :
+    def __init__(self , data):
+        self.next = None
+        self.data = data 
+class LinkedList:
+    def __init__(self , x) :
+        self.val = x
+
+    def deleteNodeInLL(self , node):
+        if node is None:
+            return 
+        if node.next is not None :
+            node.val = node.next.val 
+            node.next = node.next.next 
+        else:
+            node = None 
 
 
 
