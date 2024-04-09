@@ -979,7 +979,7 @@ resultant.sort()
 
 
 # 46. 2-D Binary Search #
-# TC is O() , SC is O() #
+# TC is O(log(m*n)) , SC is O(1) #
 def binarysearch2D(arr , target):
     m = len(arr) 
     n = len(arr[0])
@@ -1072,5 +1072,28 @@ class LinkedList:
 
 
 
+## 50. Remove elements of the LL ##
+# Time complexity is O(n) , Space complexity is O(1)  #
+def removeElem(self , head , val ):
+    curr = self.head 
+    prev = None 
+    if self.head is None :
+        return 
+    while curr :
+        if curr.val == val :
+            if prev :
+                prev.next = curr.next
+            else:
+                self.head = curr.next 
+        else:            
+            prev = curr
+        curr = curr.next
+    return self.head         
 
-    
+
+
+           
+
+
+
+
