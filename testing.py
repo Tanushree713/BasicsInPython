@@ -1156,6 +1156,95 @@ def mergeTwoSortedLL(self , list1 , list2):
 
 
            
+# 53. Middle In LL #
+# Time Complexity is O(n) , Space Complexity is O(1) #
+def middleInLL(self, head):
+    tortoise = head
+    hare = head
+    while tortoise and hare and hare.next:
+        hare = hare.next.next 
+        tortoise = tortoise.next 
+    return tortoise     
+
+
+# 54. Palindrome In LL #
+# Time complexity is O(n) , Space Complexity is O(1) #
+def palindromeInLL(self , head ):
+    middle = findMiddle(head)
+    halfReversed = reversal(middle.next)
+    result = comparison(head , halfReversed)
+    if result :
+        print("yes , It is Palindrome ")
+    else:
+        print("No , not Palindrome ")
+def findMiddle(head):
+    slow = head 
+    fast = head
+    while fast.next and fast.next.next :
+        fast = fast.next.next
+        slow = slow.next 
+    return slow     
+
+def reversal(head):
+    curr = head
+    next = None 
+    prev = None 
+    while curr :
+         next = curr.next 
+         curr.next = prev
+         prev = curr
+         curr = next 
+    return prev     
+
+def comparison(head1 , head2 )  : 
+    while head1 and head2 : 
+        if head1.data != head2.data :
+            reversal(head2)
+            return False 
+        else:      
+            head1 = head1.next
+            head2 = head2.next
+    reversal(head2) 
+    return True 
+
+
+# 55. LinkedList cycle 1 #
+# Time complexity is O(n) , Space complexity is O(1) #
+def linkedListI(self ,head ):
+    hare = head 
+    tortoise = head
+    while hare and hare.next :
+        hare = hare.next.next 
+        tortoise = tortoise.next 
+        if hare == tortoise:
+            return True
+    return False 
+
+
+
+# 56. LinkedListCycle 2 #
+# Time Complexity is O(n) , Space Complexity is O(1) #
+def linkedListII(self , head):
+    fast = head 
+    slow = head 
+    entry = head 
+    while fast and fast.next :
+        fast = fast.next.next 
+        slow = slow.next 
+        if fast == slow :
+            while slow != entry :
+                entry = entry.next
+                slow = slow.next 
+            return entry      
+    return None
+
+
+
+      
+
+
+    
+
 
 
 
