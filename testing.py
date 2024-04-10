@@ -1045,8 +1045,8 @@ def searchRotatedArr(arr , k):
    return -1
 arr = [ 7 , 8 , 9 , 1, 2, 3 , 4 , 5 , 6]  
 k = 9
-result = searchRotatedArr(arr , k)                    
-print("Sorted Arr " , result )            
+# result = searchRotatedArr(arr , k)                    
+# print("Sorted Arr " , result )            
 
 
 ##---------------------------------##
@@ -1090,6 +1090,69 @@ def removeElem(self , head , val ):
         curr = curr.next
     return self.head         
 
+
+# 51.Reverse LL #
+# Time Complexity is O(n) , Space Complexity is O(1) #
+class Node :
+    def __init__(self ,data ):
+        self.data = data 
+        self .next = None 
+class LinkedLists :
+    def __init__(self ):
+        self.head = None 
+
+    def insertionAtStart(self , new_data):
+        new_node = Node(new_data)
+        if self.head is None :
+            self.head = new_node
+        else:
+            new_node.next = self.head
+            self.head = new_node    
+
+    def reverseInLL(self ):
+        curr = self.head
+        next = None 
+        prev = None 
+        while curr :
+            next = curr.next 
+            curr.next = prev 
+            prev = curr
+            curr = next 
+        self.head = prev 
+    def printLL(self):
+        temp = self.head 
+        while temp :
+            print(str(temp.data) + " " , end="")
+            temp = temp.next 
+
+listing = LinkedLists()
+listing.insertionAtStart(1)
+listing.insertionAtStart(2)
+listing.insertionAtStart(3)
+listing.insertionAtStart(4)
+listing.insertionAtStart(5)
+listing.printLL()
+print()
+listing.reverseInLL()
+listing.printLL()
+
+
+
+# 52. MergeTwo Sorted LL #
+# Time Complexity is O(2n) , Space Complexity is O(1) #
+def mergeTwoSortedLL(self , list1 , list2):
+    if list1 is None :
+        return list2 
+    elif list2 is None :
+        return list1
+    else:
+        if list1.val <= list2.val :
+            temp = list1
+            temp = self.mergeTwoSortedLL(list1.next , list2)
+        else:
+            temp = list2
+            temp = self.mergeTwoSortedLL(list1 , list2.next)  
+        return temp               
 
 
            
