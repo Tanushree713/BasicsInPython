@@ -325,3 +325,63 @@ print("Inorder traversal modified tree")
 inorderInBST(root)
 
 
+
+
+
+# 4. Max Sum No Adjacent Node #
+# Approach 1>> Inc & Exc Method #
+# Tc is O(n) , Sc is O(1) #
+def maxSumNoAdjacent1(arr):
+    if arr is None :
+        return 0
+    elif len(arr) == 1:
+        return arr 
+    else:
+        inc = arr[0]
+        exc = 0 
+        for i in range(1 , len(arr)):
+            new_exc = max(inc , exc)
+            inc = exc + arr[i]   
+            exc = new_exc
+        return max(inc , exc )   
+arr = [3, 2, 7, 20 ]
+result = maxSumNoAdjacent1(arr)
+print()
+print("MaxSum No Adjacent " , result )
+
+
+
+
+#Approach 2 >> BST 
+# Tc is O(n) , Sc is O(n) #
+class Node :
+    def __init__(self , val):
+        self.val = val 
+        self.left = None 
+        self.right = None 
+        
+def maxSumNoAdjacent2(root):   
+    if root is None :
+        return 0 , 0
+        
+    left_inc , left_exc = maxSumNoAdjacent2(root.left)  
+    right_inc , right_exc = maxSumNoAdjacent2(root.right)
+    inc_sum = root.val + left_exc + right_exc
+    exc_sum = max(left_inc , left_exc ) + max(right_inc , right_exc)
+    return inc_sum , exc_sum 
+    
+root = Node(1)
+root.left = Node(2)
+root.right = Node(3)
+root.left.left = Node(4)
+root.left.right = Node(5)
+root.right.left = Node(6)
+root.right.right = Node(7) 
+max_incSum, max_excSum = maxSumNoAdjacent2(root)    
+print("Maximum Sum No Adjacent Root Node  ",max(max_incSum , max_excSum ))    
+
+
+# 5. Construct BST From PreOrder Traversal #
+# TC is O() , Sc is O() #
+def preorderBST() :
+    pass
