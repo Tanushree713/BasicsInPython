@@ -1404,3 +1404,17 @@ class StackUsingQueue:
             return self.front    
     def empty(self) :
         return not self.stack1 and not self.stack2
+
+
+
+# 64. Online Stock Span #
+# Tc is O(n) , SC is O(n)  #
+def onlineStockSpan(prices , span):
+    stack = []
+    span = 1
+    if stack and stack[-1][0] <= prices :
+        span += stack[-1][1]
+        stack.pop()
+    else:
+        stack.append((prices, span ))    
+    return span         
