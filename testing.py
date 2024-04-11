@@ -1131,10 +1131,10 @@ listing.insertionAtStart(2)
 listing.insertionAtStart(3)
 listing.insertionAtStart(4)
 listing.insertionAtStart(5)
-listing.printLL()
-print()
-listing.reverseInLL()
-listing.printLL()
+# listing.printLL()
+# print()
+# listing.reverseInLL()
+# listing.printLL()
 
 
 
@@ -1239,13 +1239,168 @@ def linkedListII(self , head):
     return None
 
 
+# 57. Maximum Sum Pairs #
+# Tc is O() , Sc is O()  #
 
-      
+def maxSumPairs(self , head1 ):
+    if head is None :
+        return 0
+    elif head and head.next is None :
+        return head.data
+    elif head.next and head.next.next is None :
+        sum = head.next.data + head.data 
+        return sum         
+
+    middle = findMiddles(head1)
+    head2 = reversalLL(middle)
+    while head1 and head2 :
+        sum = head1.data + head2.data
+        maxSum = max(maxSum , sum)
+        head1 = head1.next 
+        head2 = head2.next 
+    return maxSum    
+
+def findMiddles(head):
+    slow = head 
+    fast = head
+    while fast.next and fast.next.next :
+        fast = fast.next.next
+        slow = slow.next 
+    return slow     
+
+def reversal(head):
+    curr = head
+    next = None 
+    prev = None 
+    while curr :
+         next = curr.next 
+         curr.next = prev
+         prev = curr
+         curr = next 
+    return prev     
 
 
-    
+# 58. Deletion Of nth node From the Last In LL #
+# Tc is O(n)  , Sc is O(1) #
+def deletionNthNodeInLL(self , head , n) :
+    fast = head 
+    slow  = head
+    for i in range(n):
+        fast = fast.next 
+    if fast is None :
+        return head.next     
+    while fast.next :
+        fast = fast.next 
+        slow = slow.next 
+    slow.next = slow.next.next 
+    return head 
+
+
+##-------------------------------------------##
+
+# 59. Valid Parenthesis #
+# Tc is O(n) , Sc is O(n) #
+def validparenthesis(string) :
+    stack = []
+    open_params = set([ "(" , "{" , "[" ])
+    dictionary = {
+        "(" : ")",
+        "{" : "}" , 
+        "[" : "]"
+    }
+    for char in string :
+        if char in open_params:
+            stack.append(char)
+        elif stack and char == dictionary[stack[-1]] :
+            stack.pop()
+        else :
+            return False 
+    return stack == []
+
+string = "({[])"
+# result = validparenthesis(string)
+# if result :
+#     print("Valid")
+# else:
+#     print("Invalid")                        
 
 
 
+# 60. Make A Great String #
+# TC is O(n) , Sc is O(n)  #
+def makeGreatStr(string):
+    stack = []
+    for char in string :
+        if stack and abs(ord(char) - ord(stack[-1])) == 32 :
+            stack.pop()
+        else :
+            stack.append(char)
+    return ''.join(stack)            
+string = "LeeEetcode"
+# result = makeGreatStr(string)
+# print("GreatStr : " , result )
 
 
+
+# 61. Remove duplicates In string #
+# Tc is O(n) , Sc is O(n)  #
+def removeduplis(string):
+  stack = []
+  for char in string :
+    if stack and char == stack[-1] :
+        stack.pop()
+    else:
+        stack.append(char)    
+return stack         
+
+
+# 62. Implement stack using Queue #
+# Tc is O(n) , Sc is O(n) #
+from collections import deque
+class QueueUsingStack :
+
+    def __init__(self ):
+        self.q = deque
+
+
+    def push(self , x):
+        self.q.push(x)
+
+    def pop(self) :
+        for i in range(len(self.q)-1):
+            self.q.append(self.q.popleft())
+        return self.q.popleft()
+
+    def top(self) :
+        return self.q[-1]
+
+    def empty(self) :
+        return not self.q 
+
+
+# 63. Implement Queue using Stack #
+# Tc is O(2n) , Sc is O(2n)  #
+class StackUsingQueue:
+    def __init__(self):
+        self.stack1 = []
+        self.stack2 = []
+        self.front = 0
+    def push(self , x) :
+        if self.stack1:
+            self.stack1.append(x)
+        else:
+            self.front = x   
+
+    def pop(self):
+        if not self.stack2 :
+            while self.stack1 :
+                self.stack2.append(self.stack1.pop())
+            return self.stack2.pop()    
+
+    def peek(self) :
+        if self.stack2:
+            return self.stack2.peek()
+        else:
+            return self.front    
+    def empty(self) :
+        return not self.stack1 and not self.stack2
