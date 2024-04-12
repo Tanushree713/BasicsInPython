@@ -1357,7 +1357,7 @@ return stack
 # 62. Implement stack using Queue #
 # Tc is O(n) , Sc is O(n) #
 from collections import deque
-class QueueUsingStack :
+class StackUsingQueue :
 
     def __init__(self ):
         self.q = deque
@@ -1380,7 +1380,7 @@ class QueueUsingStack :
 
 # 63. Implement Queue using Stack #
 # Tc is O(2n) , Sc is O(2n)  #
-class StackUsingQueue:
+class QueueUsingStack:
     def __init__(self):
         self.stack1 = []
         self.stack2 = []
@@ -1412,9 +1412,48 @@ class StackUsingQueue:
 def onlineStockSpan(prices , span):
     stack = []
     span = 1
-    if stack and stack[-1][0] <= prices :
+    while stack and stack[-1][0] <= prices :
         span += stack[-1][1]
         stack.pop()
-    else:
-        stack.append((prices, span ))    
+    stack.append((prices, span ))    
     return span         
+
+
+# 65.   Time Needed To Buy Tickets #
+# Tc is O(n) , Sc is O(1) #
+# Approach 1>>
+def timeToBuyTickets1(self , tickets , k):
+    time = 0 
+    for i in range(len(tickets)):
+        if tickets[i] < tickets[k]:
+            time += tickets[i]
+        else:
+            time += tickets[k]
+        if i > k and tickets[i] >= tickets[k]:
+            time -= 1
+    return time                
+
+
+# Approach2>>
+# Tc is O(n) , Sc is O(n)  #
+from collections import deque
+def timeToBuyTickets2(self , tickets , k ):
+    time = 0 
+    queue = deque(range(len(tickets)))
+    while queue :
+         index = queue.popleft()
+         tickets[index] -= 1
+         time += 1
+         if tickets[index] == 0 and i == k :
+            break 
+         queue.append(index)  
+    return time      
+
+
+# 66. Product Of Last Number #
+# Tc is O() , Sc is O() #
+
+
+
+
+

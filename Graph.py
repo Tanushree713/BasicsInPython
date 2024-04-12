@@ -3,6 +3,7 @@
 # 1. DFT           2. BFT
 
 #-----------Depth First Traversal Algo ----------------------#
+# Tc is O(V+E) , Sc is O(V+E) #
 # 5 --> 3, 7 $ 3-->2, 4 $ 7-->8 $ 4-->8 
 def depthFirstTraverse(visited , graph , node):
     if node is not  visited:
@@ -27,6 +28,8 @@ depthFirstTraverse(visited , graph , '5')
 
 
 #-----------------------BreadthFirst Traversal Algo ----------------------#
+# Tc is O(V+E) , Sc is O(V+E) #
+# A-->B, C , D $ B--> E $ C--> E , F $ D-->F , E-->G $ F--> G $ G--> []
 from collections import deque
 queue = deque()
 def breadthFirstTraverse(visited , graph , node):
