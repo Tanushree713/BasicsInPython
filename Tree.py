@@ -143,7 +143,7 @@ class Node  :
         self.right = None
         self.data = data
 # For insertion BST #
-#  TC is O( n ) , SC is O(n ) #  
+#  TC is O( n ) , SC is O(1 ) #  
 def insertionBST(root , key):
     if root is None:
         return Node(key)
@@ -214,7 +214,7 @@ print()
 
 
 # 2. Find Num Of UniqueBST #
-# TC is O(n^2) , SC is O(n) #
+# TC is O(n^2) , SC is O(1) #
 def findUniqueBST(n) :
     n1 , n2 , sum_Val = 0 , 0 , 0 
     if n == 0 or n == 1:
@@ -382,6 +382,46 @@ print("Maximum Sum No Adjacent Root Node  ",max(max_incSum , max_excSum ))
 
 
 # 5. Construct BST From PreOrder Traversal #
-# TC is O() , Sc is O() #
-def preorderBST() :
-    pass
+# TC is O(n) , Sc is O(n) #
+INT_MIN = -float('inf')
+INT_MAX = float('inf')
+
+class Node:
+    def __init__(self, data):
+        self.left = None
+        self.right = None
+        self.data = data
+
+def buildBST(preorder, preIndex, key, min_val, max_val, size):
+    if preIndex[0] >= size:
+        return None
+    
+    root = None
+    
+    if key > min_val and key < max_val:
+        root = Node(key)
+        preIndex[0] += 1
+        
+        if preIndex[0] < size:
+            root.left = buildBST(preorder, preIndex, preorder[preIndex[0]], min_val, key, size)
+            root.right = buildBST(preorder, preIndex, preorder[preIndex[0]], key, max_val, size)
+    
+    return root 
+
+def bstFromPreorder(preorder):
+    size = len(preorder)
+    preIndex = [0]
+    return buildBST(preorder, preIndex, preorder[0], INT_MIN, INT_MAX, size)
+
+def preorder_traversal(root):
+    if root:
+        print(root.data, end=' ')
+        preorder_traversal(root.left)
+        preorder_traversal(root.right)
+
+# Example usage:
+preorder = [8, 5, 1, 7, 10, 12]
+root = bstFromPreorder(preorder)
+print("Preorder Traversal of Constructed BST:")
+preorder_traversal(root)
+

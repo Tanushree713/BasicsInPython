@@ -1465,7 +1465,8 @@ class ProductLastNum:
     def product():
         if k >= len(self.q):
             return 0
-        return self.product//self.q[-k-1]    
+        else:    
+            return self.product//self.q[-k-1]    
 
 
 
