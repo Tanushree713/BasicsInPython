@@ -1451,7 +1451,23 @@ def timeToBuyTickets2(self , tickets , k ):
 
 
 # 66. Product Of Last Number #
-# Tc is O() , Sc is O() #
+# Tc is O(n) , Sc is O(n) #
+class ProductLastNum:
+    def __init__(self):
+        self.q = deque([1])
+    def add(self , num ):
+      if not num :  
+        self.q = [1]
+        self.product = 1
+      else:
+        self.product *= num
+        self.q.append(self.product) 
+    def product():
+        if k >= len(self.q):
+            return 0
+        return self.product//self.q[-k-1]    
+
+
 
 
 
