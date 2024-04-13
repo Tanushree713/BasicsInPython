@@ -425,3 +425,7 @@ root = bstFromPreorder(preorder)
 print("Preorder Traversal of Constructed BST:")
 preorder_traversal(root)
 
+
+# 6. PreOrder To PostOrder #
+def PreToPost():
+    pass

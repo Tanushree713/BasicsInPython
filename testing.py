@@ -1419,6 +1419,8 @@ def onlineStockSpan(prices , span):
     return span         
 
 
+##-------------------------------------------##
+
 # 65.   Time Needed To Buy Tickets #
 # Tc is O(n) , Sc is O(1) #
 # Approach 1>>
@@ -1469,8 +1471,80 @@ class ProductLastNum:
             return self.product//self.q[-k-1]    
 
 
+##----------------------------------------------##
+
+# 67. Top K frequent Elements #
+# Tc is O(nlogk) , Sc is O(n)  #
+from collections import Counter
+import heapq
+def topKFrequentEle(nums , k):
+    if k == len(nums):
+        return set(nums)
+    count = Counter(nums)
+    return heapq.nlargest(k , count.keys() , key = count.get )
+nums = [ 2, 2 , 3, 3, 3 ,4, 5]
+k = 2    
+result = topKFrequentEle(nums , k)
+print("Top K Frequent Elem " , result )
 
 
 
+# 68. Kth Largest Elements #
+# Tc is O(nlogk) , Sc is O(k) #
+from heapq import heappush , heappop 
+def kthLargestEle(nums , k):
+    heap = []
+    for num in nums :
+        if len(heap) < k :
+            heapq.heappush(heap , num)
+        if num > heap[0] :
+            heapq.heappop(heap)
+            heapq.heappush(heap , num)
+    return heap[0]  
+nums1 = [2, 3 , 5 , 7, 9]
+k = 3          
+result = kthLargestEle(nums1 , k )
+print("Kth Largest Ele In Arr " , result )
 
+
+
+# 69. Kth Smallest Ele #
+# Tc is O(nlogK) , Sc is O(k) #
+from heapq import heappush , heappop 
+def kthSmallestEle(nums , k):
+    heap = []
+    for num in nums :
+        if len(heap) < k :
+            heapq.heappush(heap , -num)
+        if num <  -heap[0] :
+            heapq.heappop(heap)
+            heapq.heappush(heap , -num)
+    return -heap[0]  
+nums2 = [2, 3 , 4 , 5 , 7, 9]
+k = 3          
+result = kttSmallestEle(nums2 , k )
+print("Kth Smallest Ele In Arr " , result )
+
+
+# 70. Top K Closest Value #
+# Tc is O(nlogK) , Sc is O(n) #
+from heapq import heappop , heappush
+def kthClosestValues(nums , k , x):
+    maxheap =  []
+    result = []
+    for i in range(len(nums)):
+      heappush(maxheap , (abs(x-nums[i]), nums[i]))
+    for i in range(k):
+        result.append(heappop(maxheap)[1])    
+    return sorted(result) 
+
+nums = [1 , 3, 5, 7, 9 ,11]
+k = 3
+x = 10 
+result = kthClosestValues(nums , k , x)
+print("Kth closest Values From Given X is " , result )
+
+
+# 71. Smallest Positive Number #
+# Tc is O() , Sc is O()  #
 
