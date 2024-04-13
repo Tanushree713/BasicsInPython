@@ -1545,6 +1545,16 @@ result = kthClosestValues(nums , k , x)
 print("Kth closest Values From Given X is " , result )
 
 
-# 71. Smallest Positive Number #
-# Tc is O() , Sc is O()  #
-
+# 71. Missing Smallest Positive Number #
+# Tc is O(n) , Sc is O(n)  #
+def smallestPositiveNum(nums ):
+    hashset = set()
+    for num in nums :
+        if num > 0 :
+            hashset.add(num)
+    for i in range(1 , len(nums) + 2):
+        if i not in hashset :
+            return i
+nums = [2 , 3, 4, 5 , 6]
+result = smallestPositiveNum(nums)
+print("Missing Positive Number " , result )
