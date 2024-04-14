@@ -58,3 +58,32 @@ graph ={
 print()
 print() 
 breadthFirstTraverse(visited, graph , 'A')
+
+
+
+
+##---------------------------------------------------------##
+##-----Fractional KnapSack -----------------##
+class Item:
+    def __init__(self , profit , weight):
+        self.weight = weight
+        self.profit = profit
+
+def fractionalKnapsack(arr , M):
+    arr.sort(key = lambda x : (x.profit /x.weight) , reverse = True)  #sort in descending on profit/weight
+    maxProfit = 0.0
+    for item in arr :
+        print(item.profit , item.weight , item.profit//item.weight)
+    for item in arr :   #decrementing the capacity and incrementing profit values
+        if item.weight <= M:
+            M-= item.weight
+            maxProfit+= item.profit 
+        else:
+            maxProfit += item.profit * M /item.weight   
+            break
+    return maxProfit      
+
+M = 37 
+arr = [Item(25 , 5) , Item(75 , 10) , Item(100 , 12) , Item(50 , 4) , Item(45 , 7) ]
+maxProfit = fractionalKnapsack(arr , M)
+print("Maximum Profit " , maxProfit )
