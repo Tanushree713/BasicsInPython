@@ -227,3 +227,7 @@ def MajorityEle(arr):
         print("No Majority Ele" )    
 arr = [ 3, 3, 4, 2, 4, 4, 2, 4, 4 ]
 MajorityEle(arr)
+
+
+
+

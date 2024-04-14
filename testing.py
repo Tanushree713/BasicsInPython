@@ -1558,3 +1558,177 @@ def smallestPositiveNum(nums ):
 nums = [2 , 3, 4, 5 , 6]
 result = smallestPositiveNum(nums)
 print("Missing Positive Number " , result )
+
+
+##------------------------------------------------##
+
+#72. Common Elements From Three Sorted Arr #
+# Tc is O(n1 + n2 + n3) , Sc is O(k)  #
+def commonEle(arr1 , arr2 , arr3):
+   n1 = len(arr1)
+   n2 = len(arr2) 
+   n3 = len(arr3)
+   i = 0
+   j = 0
+   k = 0 
+   result = []
+   while i < n1 and  j < n2 and k < n3 :
+    if arr1[i] == arr2[j] and arr2[j] == arr3[k] :
+        result.append(arr1[i])
+        i += 1
+        j += 1
+        k += 1
+    elif arr1[i] < arr2[j]:
+        i += 1
+    elif arr2[j] < arr3[k]:
+        j += 1
+    else:
+        k += 1
+   return result  
+arr1 = [1, 5, 10, 20, 40, 80]
+arr2 = [6, 7, 20, 80, 100]
+arr3 =[ 3, 4, 15, 20, 30, 70, 80, 120]    
+result = commonEle(arr1 , arr2 , arr3 )
+print("The Common Ele" , result )  
+
+
+
+# 73. Inversions Of Array #
+# Tc is O(nlogn) , Sc is O(n)  #
+def inversionsOFArr(arr , p , q):
+    _ , invCount = mergeSort(arr , p , q)
+    return invCount 
+
+def mergeSort(arr , p , q):
+    if p < q:
+        mid = p + (q - p) // 2
+        left , leftInv = mergeSort(arr , p , mid)
+        right , rightInv = mergeSort(arr , mid + 1, q)
+        merge , mergeInv = merged(left , right)
+        return merge , leftInv + rightInv + mergeInv
+
+    return [arr[p]] , 0 
+
+def merged(left , right):
+    i = 0 
+    j = 0 
+    countInv = 0
+    result = []
+    while i < len(left) and j < len(right) :
+        if left[i] <= right[j] :
+            result.append(left[i])
+            i += 1
+        else:
+            result.append(right[j])    
+            countInv += len(left) - i
+            j += 1
+    result.extend(left[i:])   
+    result.extend(right[j:])
+    return result , countInv
+
+nums = [8, 4, 2, 1, 9, 5, 7]
+p = 0 
+q = len(nums) - 1
+result = inversionsOFArr(nums , p , q)
+print("CountInv" , result )
+
+
+
+# 74. Find the Duplicates #
+# Tc is O(n) , Sc is O(1) #
+def findDuplis(nums):
+    dupli = [] 
+    for num in nums :
+        index = abs(num) - 1
+        if nums[index] < 0  :
+            dupli.append(abs(num))
+        nums[index] = -nums[index]
+    return dupli
+nums = [1, 2, 3 , 4, 5, 2 ,1]    
+result = findDuplis(nums)    
+print("Duplicacy" , result )
+
+
+# 75. Minimum Swaps #
+# Tc is O() , Sc is O() #
+def minSwaps() :
+    pass
+
+
+# 76. Allocate Min Number Of Pages #
+# Tc is O() , Sc is O() #
+def allocatePages():
+    pass
+
+
+# 77. Merge Sorted Array Using O(1) Space #
+# Tc is O(n) , Sc is O(1) #
+
+def mergeSorted(arr1 , arr2):
+    m = len(arr1) - 1
+    n = len(arr2) - 1
+    mergeInd = len(arr1) + len(arr2) - 1
+    arr1.extend([0] * len(arr2))
+ 
+    while m >= 0 and n >= 0 :
+        if arr1[m] > arr2[n]:
+            arr1[mergeInd] = arr1[m]
+            m -= 1
+        else:
+            arr1[mergeInd] = arr2[n]
+            n -= 1
+        mergeInd -= 1
+    while m >= 0 :
+        arr1[mergeInd] = arr1[m]
+        m-= 1
+        mergeInd -= 1
+    while n >= 0 :
+        arr1[mergeInd] = arr2[n]
+        n -= 1
+        mergeInd -= 1
+    return arr1
+arr1 = [1 , 3 , 5, 7,9 ,11]
+arr2 = [2 , 4, 6 , 8 , 10 ]
+result = mergeSorted(arr1 , arr2)      
+print("Merge Two Sorted Arr" , result ) 
+
+
+#78. Majority Elem #
+# Tc is O(n) , Sc is O(1) #
+def findMaj(nums):
+    cand = None 
+    count = 0
+    for num in nums :
+        if count == 0 :
+            cand = num 
+        count += (1 if num == cand else -1)  
+    return cand 
+     
+def isMaj(nums , cand):
+    cnt = 0 
+    n = len(nums)
+    for i in range(n):
+        if nums[i] == cand :
+            cnt += 1
+    if cnt > n//2 :
+        return 1
+    else :
+        return 0
+
+def majorityInArr(nums):
+    cand = findMaj(nums)
+    result = isMaj(nums , cand)
+    if result :
+        print("Majority Ele is " , cand)
+    else:
+        print("Not Found Majority ")
+
+nums = [2 , 3, 4, 4, 4, 4]
+result = majorityInArr(nums)
+
+
+
+#---------------------------------------------#
+
+
+
