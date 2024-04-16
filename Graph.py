@@ -64,6 +64,8 @@ breadthFirstTraverse(visited, graph , 'A')
 
 ##---------------------------------------------------------##
 ##-----Fractional KnapSack -----------------##
+# Tc is O(nlogn) , Sc is O(n) #
+
 class Item:
     def __init__(self , profit , weight):
         self.weight = weight

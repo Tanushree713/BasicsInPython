@@ -1650,15 +1650,62 @@ print("Duplicacy" , result )
 
 
 # 75. Minimum Swaps #
-# Tc is O() , Sc is O() #
-def minSwaps() :
-    pass
+# Tc is O(nlogn) , Sc is O(n) #
+def minSwaps(arr) :
+     n = len(arr) 
+     count = 0 
+     temp = sorted(arr)
+     hashset = {}
+     for i in range(n):
+        hashset[arr[i]] = i 
+     for i in range(n):
+        if arr[i] != temp[i]:
+            count += 1
+            init = arr[i]
+            arr[i] , arr[hashset[temp[i]]] = arr[hashset[temp[i]]] , arr[i]
+            hashset[temp[i]] , hashset[init] = i , hashset[temp[i]]
+     return count 
+arr = [ 2 , 4, 1 , 3 , 5 , 6]       
+result = minSwaps(arr)
+print("Min Swaps " , result )
 
 
 # 76. Allocate Min Number Of Pages #
-# Tc is O() , Sc is O() #
-def allocatePages():
-    pass
+# Tc is O(nlogn) , Sc is O(1) #
+def validDist(pages , mid):
+    page_read = 0
+    students = 1
+    for i in range(len(pages)):
+        if page_read + pages[i] > mid :
+            students += 1
+            page_read = pages[i]
+        else:
+            page_read += pages[i]
+    return students             
+
+def allocatePages(pages , n , m ):
+    if n <  m :
+        return -1
+    else:
+        low = max(pages)
+        high = sum(pages)
+        while low <= high :
+            mid = low + (high-low) // 2
+            students = validDist(pages , mid)
+            if students > m :
+                low = mid + 1
+            else :
+               high = mid - 1
+        return low 
+
+arr = [15,17,20]
+N = 3
+M = 2
+result = allocatePages(arr , N , M)
+print("Min Allocated No Pages " , result)
+
+
+    
 
 
 # 77. Merge Sorted Array Using O(1) Space #
