@@ -426,6 +426,38 @@ print("Preorder Traversal of Constructed BST:")
 preorder_traversal(root)
 
 
+
+
 # 6. PreOrder To PostOrder #
-def PreToPost():
-    pass
+# Tc is O(nlogn) , Sc is O(n)  #
+
+class Node:
+    def __init__(self , val):
+        self.left = None
+        self.right = None 
+        self.val = val 
+
+def buildBST(start , end , preorder):
+    if start > end :
+        return None 
+    root = Node(preorder[start])    
+    mid = start 
+    while mid <= end and preorder[mid] <= preorder[start]:
+        mid += 1
+    root.left = buildBST(start + 1 , mid - 1, preorder)
+    root.right = buildBST(mid , end , preorder)    
+    return root
+
+def postOrderTraversal(root):
+    if root is None :
+        return []
+    return postOrderTraversal(root.left) + postOrderTraversal(root.right) + [root.val]  
+
+def constructPostOrder(arr):
+    root = buildBST(0 , len(arr) - 1 , arr)
+    return postOrderTraversal(root)
+
+arr1 = [8 , 7 , 1, 10 , 6]
+print()
+print("Input:", arr1)
+print("Output:", constructPostOrder(arr1))    

@@ -89,3 +89,40 @@ M = 37
 arr = [Item(25 , 5) , Item(75 , 10) , Item(100 , 12) , Item(50 , 4) , Item(45 , 7) ]
 maxProfit = fractionalKnapsack(arr , M)
 print("Maximum Profit " , maxProfit )
+
+
+
+
+## ---------------Dij kstra's Algorithm ---------------##
+#Tc is O((V+E)log(V)) , Sc is O(1) #
+from heapq import heappush , heappop 
+def dijkstrasAlgo(graph , start_vertex):
+    distances = {vertex : float("infinity") for vertex in graph}
+    distances[start_vertex] = 0
+
+    pq = [(0 , start_vertex)]
+    while len(pq) > 0 :
+        current_distance , current_vertex = heappop(pq)
+        if current_distance > distances[current_vertex]:
+            continue
+        for neighbor , weight in graph[current_vertex].items():
+            distance = current_distance + weight 
+
+            if distance < distances[neighbor]:
+                distances[neighbor] = distance
+                heappush(pq , (distance, neighbor))
+
+
+    return distances
+
+
+
+graph = {
+    "A":{"B":2 , "C":5, "D":2 , "E":7 , "F":50} ,
+    "B":{"C":2, "D":1, "E":2, "F":60},
+    "C":{"B":3, "E":3 , "F": 90},
+    "D":{"E":1 , "F":3},
+    "E":{"D":4 , "F":4},
+    "F":{}
+}
+print(dijkstrasAlgo(graph , "A"))
