@@ -63,6 +63,7 @@ breadthFirstTraverse(visited, graph , 'A')
 
 
 ##---------------------------------------------------------##
+##            GREEDY APPLICATION                     ##
 ##-----Fractional KnapSack -----------------##
 # Tc is O(nlogn) , Sc is O(n) #
 
@@ -89,6 +90,40 @@ M = 37
 arr = [Item(25 , 5) , Item(75 , 10) , Item(100 , 12) , Item(50 , 4) , Item(45 , 7) ]
 maxProfit = fractionalKnapsack(arr , M)
 print("Maximum Profit " , maxProfit )
+
+
+
+
+##------Job Sequences-------##
+# Tc is O(nlogn) , Sc is O(maxDeadline) #
+def jobSequences(arr , maxDeadline):
+    n = len(arr)
+    arr.sort(key = lambda x:x[1] , reverse=True)
+    result = [False] * maxDeadline
+    job = [-1] * maxDeadline
+    for i in range(n):
+        for j in range(min(maxDeadline-1 , arr[i][2]-1) ,  -1 , -1):
+            if result[j] is False :
+                result[j] = True 
+                job[j] = arr[i][0]
+                break
+    return job         
+
+arr = [
+    ['J1', 55, 5],
+    ['J2', 65, 2],
+    ['J3', 75, 7],
+    ['J4', 60, 3],
+    ['J5', 70, 2],
+    ['J6', 50, 1],
+    ['J7', 85, 4],
+    ['J8', 68, 5],
+    ['J9', 45, 3]
+]
+maxDeadline = 7   ## maxdeadline =  max(job[2] for job in arr ) 
+result = jobSequences(arr , maxDeadline)    
+print("MaxProfit when Scheduling Job Like:" , result )
+
 
 
 
