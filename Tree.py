@@ -504,3 +504,28 @@ class Solution(object):
 
 
 
+# 86. DeleteNode In BST #
+# TC is O(h) , SC is O(h) #
+class Solution(object):
+    def minimalValRightBST(self , root):
+        root = root.right
+        while root.left :
+            root = root.left
+        return root.val    
+
+    def deleteNode(self, root, key):
+        if root is None :
+           return root
+        elif root.val > key :
+            root.left = self.deleteNode(root.left , key )
+        elif root.val < key :
+            root.right = self.deleteNode(root.right , key )
+        else:
+            if root.left is None :
+                return root.right
+            elif root.right is None :
+                return root.left 
+            temp = self.minimalValRightBST(root) 
+            root.val = temp
+            root.right = self.deleteNode(root.right , temp) 
+        return root      
