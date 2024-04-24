@@ -327,8 +327,27 @@ inorderInBST(root)
 
 
 
+# 81. Search In BST #
+# Time Complexity is O(h) --> Balanced Tree(O(logn)) , Unbalanced Tree(o(n)) #
+# Space Complexity is O(h)--> Balanced Tree(O(logn)) , Unbalanced Tree(o(n)) #
+class Solution(object):
+    def searchBST(self, root, val):
+       if root is None :
+        return None 
+       elif root.val == val :
+        return root 
+       elif root.val < val :
+        return self.searchBST(root.right , val)
+       else:
+        return self.searchBST(root.left , val)  
 
-# 4. Max Sum No Adjacent Node #
+solution = Solution()
+result = solution.searchBST()
+print(result)
+
+
+
+# 82. Max Sum No Adjacent Node #
 # Approach 1>> Inc & Exc Method #
 # Tc is O(n) , Sc is O(1) #
 def maxSumNoAdjacent1(arr):
@@ -381,7 +400,7 @@ max_incSum, max_excSum = maxSumNoAdjacent2(root)
 print("Maximum Sum No Adjacent Root Node  ",max(max_incSum , max_excSum ))    
 
 
-# 5. Construct BST From PreOrder Traversal #
+# 83. Construct BST From PreOrder Traversal #
 # TC is O(n) , Sc is O(n) #
 INT_MIN = -float('inf')
 INT_MAX = float('inf')
@@ -428,7 +447,7 @@ preorder_traversal(root)
 
 
 
-# 6. PreOrder To PostOrder #
+# 84. PreOrder To PostOrder #
 # Tc is O(nlogn) , Sc is O(n)  #
 
 class Node:
@@ -461,3 +480,27 @@ arr1 = [8 , 7 , 1, 10 , 6]
 print()
 print("Input:", arr1)
 print("Output:", constructPostOrder(arr1))    
+
+
+
+# 85. Kth Smallest IN BST #
+# TC is O(n) , SC is O(n) #
+# Approach >> 1. Inorder Traverse Stored in Result Arr
+#             2. get result[k-1] 
+class Solution(object):
+    def inorderBST(self , root):
+        result = []
+        if root :
+            result += self.inorderBST(root.left )
+            result.append(root.val)
+            result += self.inorderBST(root.right)
+        return result     
+                    
+    def kthSmallest(self, root, k):
+       inorderResult = self.inorderBST(root)
+       if k <= len(inorderResult):
+          return inorderResult[k-1]
+       return -1    
+
+
+

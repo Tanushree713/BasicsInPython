@@ -902,7 +902,7 @@ string = "RLRLRLLL"
 ##-------------------------------------##
 
 # 41. Fibonacci number #
-# TC is O(n) , SC is O(1)  #
+# TC is O(2^n) , SC is O(1)  #
 def fibonacciNum(n):
     if n == 0 or n == 1:
         return n 
@@ -1778,5 +1778,3 @@ result = majorityInArr(nums)
 #---------------------------------------------#
 
 # 79. BST 
-
-
