@@ -65,7 +65,7 @@ breadthFirstTraverse(visited, graph , 'A')
 ##---------------------------------------------------------##
 ##            GREEDY APPLICATION                     ##
 ##-----Fractional KnapSack -----------------##
-# Tc is O(nlogn) , Sc is O(n) #
+# Tc is O(nlogn) , Sc is O(1) #
 
 class Item:
     def __init__(self , profit , weight):
@@ -82,7 +82,7 @@ def fractionalKnapsack(arr , M):
             M-= item.weight
             maxProfit+= item.profit 
         else:
-            maxProfit += item.profit * M /item.weight   
+            maxProfit += item.profit * M /item.weight   # (2/3 * profitValue)
             break
     return maxProfit      
 
@@ -161,3 +161,6 @@ graph = {
     "F":{}
 }
 print(dijkstrasAlgo(graph , "A"))
+
+
+

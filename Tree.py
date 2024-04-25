@@ -529,3 +529,41 @@ class Solution(object):
             root.val = temp
             root.right = self.deleteNode(root.right , temp) 
         return root      
+
+
+
+# 87. Diameter Of Binary Tree #
+# Longest Path In BST #
+# Tc is O(n) , Sc is O(n) #
+class TreeNode:
+    def __init__(self ,val):
+        self.val = val 
+        self.left = None 
+        self.right = None 
+
+def find_max(node , maxi):
+    if not node :
+        return 0
+    lh = find_max(node.left , maxi)
+    rh = find_max(node.right , maxi)
+    maxi[0] = max(maxi[0] , lh + rh)
+    return 1 + max( lh , rh ) 
+
+
+def diameterOfBST(root):
+    if not root :
+        return 0
+    maxi = [-float("infinite")]
+    find_max(root , maxi)
+    return maxi    
+
+root = TreeNode(10)
+root.left = TreeNode(5)
+root.right = TreeNode(15)
+root.left.left = TreeNode(3)
+root.left.right = TreeNode(7)
+root.right.right = TreeNode(18)
+
+print("Diameter of BST:", diameterOfBST(root))
+
+
