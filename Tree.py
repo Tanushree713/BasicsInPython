@@ -341,9 +341,9 @@ class Solution(object):
        else:
         return self.searchBST(root.left , val)  
 
-solution = Solution()
-result = solution.searchBST()
-print(result)
+# solution = Solution()
+# result = solution.searchBST()
+# print(result)
 
 
 
@@ -541,21 +541,21 @@ class TreeNode:
         self.left = None 
         self.right = None 
 
-def find_max(node , maxi):
-    if not node :
-        return 0
-    lh = find_max(node.left , maxi)
-    rh = find_max(node.right , maxi)
-    maxi[0] = max(maxi[0] , lh + rh)
-    return 1 + max( lh , rh ) 
+    def find_max(self , node , maxi):
+        if not node :
+            return 0
+        lh = self.find_max(node.left , maxi)
+        rh = self.find_max(node.right , maxi)
+        maxi[0] = max(maxi[0] , lh + rh)
+        return 1 + max( lh , rh ) 
 
 
-def diameterOfBST(root):
-    if not root :
-        return 0
-    maxi = [-float("infinite")]
-    find_max(root , maxi)
-    return maxi    
+    def diameterOfBST(self, root):
+        if not root :
+            return 0
+        maxi = [-float("inf")]
+        self.find_max(root , maxi)
+        return maxi    
 
 root = TreeNode(10)
 root.left = TreeNode(5)
@@ -563,7 +563,31 @@ root.right = TreeNode(15)
 root.left.left = TreeNode(3)
 root.left.right = TreeNode(7)
 root.right.right = TreeNode(18)
+tree = TreeNode(None)
+print("Diameter of BST:", tree.diameterOfBST(root))
 
-print("Diameter of BST:", diameterOfBST(root))
 
+# 90. Maximum Depth Of BST Or Height OF BST #
+# Tc is O(n) , Sc is O(logn or n) #
+class TreeNode:
+    def __init__(self , val):
+        self.left = None 
+        self.right = None 
+        self.val = val 
+        
+    def maxiDepthBST(self , root):
+        if not root :
+            return 0 
+        lh = self.maxiDepthBST(root.left)
+        rh = self.maxiDepthBST(root.right)
+        return 1 + max(lh , rh) 
 
+root = TreeNode(10)
+root.left = TreeNode(5)
+root.right = TreeNode(15)
+root.left.left = TreeNode(3)
+root.right.right = TreeNode(20)
+tree = TreeNode(None)
+result = tree.maxiDepthBST(root)
+
+print("Maximum Depth OF BST" , result )         
