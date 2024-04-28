@@ -530,9 +530,43 @@ class Solution(object):
             root.right = self.deleteNode(root.right , temp) 
         return root      
 
+# 91. Check If Tree is Isomorphics #
+#  Tc is O(n), Sc is O(h) 
+class TreeNode :
+    def __init__(self , data ):
+        self.data = data 
+        self.left = None 
+        self.right = None 
+
+    def isIsomorphicBST(self , root1 , root2):
+        if root1 is None and root2 is None :  # both pointed Null
+            return True
+        if root1 is None or root2 is None :   # both tree nodes are unequal 
+            return False 
+        if root1.data != root2.data :         # both tree datas are unequal
+            return False     
+        else :
+            a = self.isIsomorphicBST(root1.left , root2.left) and self.isIsomorphicBST(root1.right , root2.right)
+            b = self.isIsomorphicBST(root1.right , root2.left) and self.isIsomorphicBST(root1.left , root2.right)
+            return a or b  
+root1 = TreeNode(1)
+root1.left = TreeNode(2)
+root1.right = TreeNode(3)
+root1.left.left = TreeNode(5)
+root1.left.right = TreeNode(6)
+
+root2 = TreeNode(1)
+root2.left = TreeNode(3)
+root2.right = TreeNode(2)
+root2.right.left = TreeNode(4)
+root2.right.right = TreeNode(5)
+
+tree = TreeNode(None)
+print("isIsomorphics BST :" ,tree.isIsomorphicBST(root1 , root2) )
+        
 
 
-# 87. Diameter Of Binary Tree #
+# 92. Diameter Of Binary Tree #
 # Longest Path In BST #
 # Tc is O(n) , Sc is O(n) #
 class TreeNode:
@@ -567,7 +601,7 @@ tree = TreeNode(None)
 print("Diameter of BST:", tree.diameterOfBST(root))
 
 
-# 90. Maximum Depth Of BST Or Height OF BST #
+# 90. /  93. Maximum Depth Of BST Or Height OF BST #
 # Tc is O(n) , Sc is O(logn or n) #
 class TreeNode:
     def __init__(self , val):
