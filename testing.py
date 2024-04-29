@@ -1198,7 +1198,7 @@ while mergeList:
 
            
 
-           
+
 # 53. Middle In LL #
 # Time Complexity is O(n) , Space Complexity is O(1) #
 def middleInLL(self, head):
@@ -1283,7 +1283,7 @@ def linkedListII(self , head):
 
 
 # 57. Maximum Sum Pairs #
-# Tc is O() , Sc is O()  #
+# Tc is O(2N) , Sc is O(1)  #
 
 def maxSumPairs(self , head1 ):
     if head is None :

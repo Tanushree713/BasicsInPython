@@ -530,6 +530,66 @@ class Solution(object):
             root.right = self.deleteNode(root.right , temp) 
         return root      
 
+
+
+
+# 89. Create a Mirror Tree From the given BST #
+# Tc is O(n) , Sc is O(1) #
+class TreeNode:
+    def __init__(root, val):
+        root.left =  None
+        root.right = None
+        root.val = val
+
+def mirrorTree(root):
+
+    if root is None :
+        return 
+    mirrorTree(root.left)
+    mirrorTree(root.right)
+    root.left , root.right = root.right , root.left 
+
+def printInorder(root):
+    if root:
+        printInorder(root.left)
+        print(root.val , end=" ")
+        printInorder(root.right)
+
+
+root = TreeNode(1)
+root.left = TreeNode(2)
+root.right = TreeNode(3)
+root.left.left = TreeNode(4)
+root.right.left = TreeNode(5)
+print("originalTree")
+printInorder(root)
+print()
+print("Mirror Tree")
+mirrorTree(root)
+printInorder(root)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 # 91. Check If Tree is Isomorphics #
 #  Tc is O(n), Sc is O(h) 
 class TreeNode :
