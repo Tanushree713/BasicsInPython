@@ -368,7 +368,7 @@ else:
 
 ## Merge Two Sorted LinkedLists ##
 # Time Complexity is O(n) , Space Complexity is O(n)
-# Using Recursion concept #
+# Approach 1>> Using Recursion concept #
 
 # Class Constructor For Node
 class Node:
@@ -449,6 +449,46 @@ print("MergedLists :")
 llisting3.forPrintList()
 
 
+##----------------Or -----------------##
+
+# Tc is O(2N) , Sc is O(1) #
+# Approach 2>> Using dummy Node and takes Node as it is without using any extra Space #
+
+class ListNode:
+    def __init__(self , val) :
+        self.next = None 
+        self.val = val 
+
+def mergeSortedLL2(head1 , head2):
+    dummy = ListNode(0)
+    temp = dummy 
+    while head1 and head2 :
+        if head1.val <= head2.val :
+            temp.next = head1
+            head1 = head1.next 
+        else:
+            temp.next = head2
+            head2 = head2.next 
+        temp = temp.next 
+    if head1 is None :
+        temp.next = head2
+    elif head2 is None :
+        temp.next = head1
+
+    return dummy.next 
+
+head1 = ListNode(1)
+head1.next = ListNode(3)
+head1.next.next = ListNode(5)
+
+head2 = ListNode(2)
+head2.next = ListNode(4)
+head2.next.next = ListNode(6)
+
+mergeList = mergeSortedLL(head1 , head2)
+while mergeList:
+    print(mergeList.val , end=" ")
+    mergeList = mergeList.next 
 
 
 

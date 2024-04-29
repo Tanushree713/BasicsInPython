@@ -1140,7 +1140,8 @@ listing.insertionAtStart(5)
 
 # 52. MergeTwo Sorted LL #
 # Time Complexity is O(2n) , Space Complexity is O(1) #
-def mergeTwoSortedLL(self , list1 , list2):
+# Approach 1>> Using Recursion 
+def mergeTwoSortedLL1(self , list1 , list2):
     if list1 is None :
         return list2 
     elif list2 is None :
@@ -1154,6 +1155,48 @@ def mergeTwoSortedLL(self , list1 , list2):
             temp = self.mergeTwoSortedLL(list1 , list2.next)  
         return temp               
 
+
+
+# Tc is O(2N) , Sc is O(1) #
+# Approach 2>> Using dummy Node and takes Node as it is without using any extra Space #
+class ListNode:
+    def __init__(self , val) :
+        self.next = None 
+        self.val = val 
+
+def mergeSortedLL2(head1 , head2):
+    dummy = ListNode(0)
+    temp = dummy 
+    while head1 and head2 :
+        if head1.val <= head2.val :
+            temp.next = head1
+            head1 = head1.next 
+        else:
+            temp.next = head2
+            head2 = head2.next 
+        temp = temp.next 
+    if head1 is None :
+        temp.next = head2
+    elif head2 is None :
+        temp.next = head1
+
+    return dummy.next 
+
+head1 = ListNode(1)
+head1.next = ListNode(3)
+head1.next.next = ListNode(5)
+
+head2 = ListNode(2)
+head2.next = ListNode(4)
+head2.next.next = ListNode(6)
+
+mergeList = mergeSortedLL(head1 , head2)
+while mergeList:
+    print(mergeList.val , end=" ")
+    mergeList = mergeList.next 
+
+
+           
 
            
 # 53. Middle In LL #
