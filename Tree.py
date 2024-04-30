@@ -556,23 +556,17 @@ def printInorder(root):
         printInorder(root.right)
 
 
-root = TreeNode(1)
-root.left = TreeNode(2)
-root.right = TreeNode(3)
-root.left.left = TreeNode(4)
-root.right.left = TreeNode(5)
+root = TreeNode(5)
+root.left = TreeNode(4)
+root.right = TreeNode(7)
+root.left.left = TreeNode(2)
+root.right.left = TreeNode(6)
 print("originalTree")
 printInorder(root)
 print()
 print("Mirror Tree")
 mirrorTree(root)
 printInorder(root)
-
-
-
-
-
-
 
 
 
@@ -685,3 +679,57 @@ tree = TreeNode(None)
 result = tree.maxiDepthBST(root)
 
 print("Maximum Depth OF BST" , result )         
+
+
+
+# ZigZag Tree #
+# Tc ic O(n) , Sc is O(n) #
+class TreeNode:
+    def __init__(self , val) :
+        self.left = None
+        self.right = None
+        self.val = val 
+
+def zigzagBST(root):
+    if root is None :
+        return []
+    queue = [root] 
+    result = []
+    reverse = False
+
+    while queue :
+        level_nodes = []
+        next_queue = []
+
+        while queue:
+            node = queue.pop(0)
+            level_nodes.append(node.val)
+
+            if node.left :
+                next_queue.append(node.left)
+
+            if node.right:
+                next_queue.append(node.right)
+
+        if reverse:
+            result.extend(level_nodes[::-1])  
+        else:    
+            result.extend(level_nodes)
+
+        queue = next_queue
+        reverse = not reverse
+    
+    return result 
+
+root = TreeNode(1)
+root.left = TreeNode(2)
+root.right = TreeNode(3)
+root.left.left = TreeNode(4)
+root.left.right = TreeNode(5)
+root.right.left = TreeNode(6)
+root.right.right = TreeNode(7)
+result = zigzagBST(root)
+print("ZIgZag Traversal In Tree" , result )
+
+
+

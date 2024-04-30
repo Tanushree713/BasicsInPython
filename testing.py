@@ -1391,7 +1391,7 @@ def removeduplis(string):
   stack = []
   for char in string :
     if stack and char == stack[-1] :
-        stack.pop()
+        stack.pop()    # use continue (For o/p is letcode . otherwise o/p is ltcode )
     else:
         stack.append(char)    
 return stack         
@@ -1821,3 +1821,4 @@ result = majorityInArr(nums)
 #---------------------------------------------#
 
 # 79. BST 
+
