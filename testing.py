@@ -1524,7 +1524,7 @@ def topKFrequentEle(nums , k):
     if k == len(nums):
         return set(nums)
     count = Counter(nums)
-    return heapq.nlargest(k , count.keys() , key = count.get )
+    return heapq.nlargest(k , count.keys() , key = count.get )  # count.keys() method help to use key(unique_Elemnts )[2, 3, 4, 5] instead of value ...
 nums = [ 2, 2 , 3, 3, 3 ,4, 5]
 k = 2    
 result = topKFrequentEle(nums , k)

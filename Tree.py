@@ -682,7 +682,7 @@ print("Maximum Depth OF BST" , result )
 
 
 
-# ZigZag Tree #
+# 94.  ZigZag Tree #
 # Tc ic O(n) , Sc is O(n) #
 class TreeNode:
     def __init__(self , val) :
@@ -733,3 +733,42 @@ print("ZIgZag Traversal In Tree" , result )
 
 
 
+
+# 95. Reversal Level Order Traversal #
+# Tc is O(n) , Sc is O(n) #
+class TreeNode:
+    def __init__(root, val):
+        root.left = None
+        root.right = None 
+        root.val = val 
+def reversalOrderTraversal(root):
+    if root is None :
+        return []
+    queue = [root]
+    result = []
+    while queue :
+        level_nodes =  []
+        next_queue = []
+
+        while queue :
+            node = queue.pop(0)   # pop(0) ->Indicates treating the list as a queue #
+            level_nodes.append(node.val)
+
+            if node.left :
+                next_queue.append(node.left)
+            if node.right :
+                next_queue.append(node.right) 
+        result =  level_nodes  + result   # concatenating
+        queue = next_queue
+     
+    return result 
+
+root = TreeNode(1)
+root.left = TreeNode(2)
+root.right = TreeNode(3)                        
+root.left.left = TreeNode(4)
+root.left.right = TreeNode(5)
+root.right.left = TreeNode(6)
+root.right.right = TreeNode(7)
+result = reversalOrderTraversal(root)
+print("ReversalOrder Traversal", result )
