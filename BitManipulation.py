@@ -98,7 +98,7 @@ def reversedArr(arr) :
     while stack:
         result.append(stack.pop())  
 
-    return result   
+    return result  
 arr = [5 , 4, 3, 2, 1]     
 resultant = reversedArr(arr)
 print(resultant)     

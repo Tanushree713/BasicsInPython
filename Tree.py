@@ -533,6 +533,50 @@ class Solution(object):
 
 
 
+
+# 88. Minimum  Swap to make BS to BST #
+# Tc is O() , Sc is O() #
+# Inorder Traversal of original BS > sorted elments > InorderTraversal Of BS and using iterator swaps the tree val with the sorted Elements values #
+class TreeNode :
+    def __init__(root , val ):
+        root.left = None
+        root.right = None 
+        root.val = val 
+
+def inorder_traversal(root , elements):
+    if not root :
+        return 
+    inorder_traversal(root.left , elements)
+    elements.append(root.val)    
+    inorder_traversal(root.right , elements)
+
+def countSwaps(root , elements , i , counts):
+    if root :
+        i = countSwaps(root.left , elements , i , counts )
+        if root.val != elements[i]:
+            root.val = elements[i]
+            counts += 1
+        i += 1
+        i = countSwaps(root.right , elements , i , counts)
+    return counts 
+
+def minSwapBS_to_BST(root):
+    elements = []
+    inorder_traversal(root , elements)
+    elements.sort()   
+    return countSwaps(root , elements , 0 , 0) 
+
+root = TreeNode(5)
+root.left = TreeNode(6)
+root.right = TreeNode(7)
+root.left.left = TreeNode(8)
+root.left.right = TreeNode(9)
+root.right.left = TreeNode(10)
+root.right.right = TreeNode(11)
+
+result = minSwapBS_to_BST(root)
+print("Min Swaps required BS to BST" , result )
+
 # 89. Create a Mirror Tree From the given BST #
 # Tc is O(n) , Sc is O(1) #
 class TreeNode:
@@ -557,27 +601,18 @@ def printInorder(root):
 
 
 root = TreeNode(5)
-root.left = TreeNode(4)
+root.left = TreeNode(6)
 root.right = TreeNode(7)
-root.left.left = TreeNode(2)
-root.right.left = TreeNode(6)
+root.left.left = TreeNode(8)
+root.left.right = TreeNode(9)
+root.right.left = TreeNode(10)
+root.right.right = TreeNode(11)
 print("originalTree")
 printInorder(root)
 print()
 print("Mirror Tree")
 mirrorTree(root)
 printInorder(root)
-
-
-
-
-
-
-
-
-
-
-
 
 
 
