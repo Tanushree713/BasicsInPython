@@ -1820,5 +1820,21 @@ result = majorityInArr(nums)
 
 #---------------------------------------------#
 
-# 79. BST 
+# 79. Search IN BST  
+# Tc is O(h) , Sc is O(1) #
+def searchInBST(root , key):
+    if root is None :
+        return None 
+    elif root.val == key  :
+        return root 
+    elif root.val < key :
+        return searchInBST(root.right , key )
+    else :
+        return searchInBST(root.left , key)
+
+
+
+# 80. Max Sum of Nodes No adjacent Nodes 
+# Tc is O() , Sc is O() #
+
 
