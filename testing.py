@@ -741,7 +741,7 @@ string = "the sky is blue"
 # TC is O(n) , SC is O(n)  #
 def lengthOfLastWords(string):
     getWords = string.split(" ")
-    getLastwords = getWords[len(getWords) - 1]
+    getLastwords = getWords[- 1]
     return len(getLastwords)
 string = "Tanu is good and smart women"
 # result = lengthOfLastWords(string)
@@ -1835,6 +1835,22 @@ def searchInBST(root , key):
 
 
 # 80. Max Sum of Nodes No adjacent Nodes 
-# Tc is O() , Sc is O() #
+# Tc is O(h) , Sc is O(1) #
+class Node:
+    def __init__(root , val):
+        root.val = val 
+        root.left = None
+        root.right = None
 
+def maxWithoutAdjNode(root):
+    if root is None :
+        return 0 , 0 
+    leftInc , leftExc = maxWithoutAdjNode(root.left)
+    rightInc , rightExc = maxWithoutAdjNode(root.right)
+    sumInc = root.val + leftExc + rightExc
+    sumExc = max(leftInc , leftExc) + max(rightInc, rightExc)
+    return sumInc , sumExc
+
+resultInc , resultExc = maxWithoutAdjNode(root)
+print("Maximum Sum Without taking Adjacent Node" , max(resultInc , resultExc))         
 
