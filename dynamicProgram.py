@@ -113,7 +113,50 @@ l2.next.next = ListNode(4)
 
 result = ListNode(0).addTwoNumInLL(l1 , l2)
 result.printLL()
+print()
 
+##3. ODD EVEN LinkedList ##
+# Tc is O(n) , Sc is O(1) #
+
+class Node:
+  def __init__(self , val):
+    self.next = None
+    self.val = val
+
+def oddEvenLL(head):
+    if head is None or head.next is None:
+        return head
+    
+    odd = head
+    even = head.next
+    evenHead = head.next 
+    
+    while even and even.next:
+        odd.next = odd.next.next  
+        odd = odd.next 
+        even.next = even.next.next 
+        even = even.next  
+        
+    odd.next = evenHead  
+    return head
+
+
+def printList(head):
+    temp = head 
+    print("ODD EVEN IN LL")
+    while temp:
+        print(str(temp.val)+ " " , end="")
+        temp = temp.next 
+
+listNode = Node(1)
+listNode.next = Node(2)
+listNode.next.next = Node(3)
+listNode.next.next.next = Node(4)
+listNode.next.next.next.next = Node(5)
+listNode.next.next.next.next.next = Node(6)
+
+result = oddEvenLL(listNode)
+printList(result)
 
 
 
