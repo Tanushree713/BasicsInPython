@@ -1854,3 +1854,6 @@ def maxWithoutAdjNode(root):
 resultInc , resultExc = maxWithoutAdjNode(root)
 print("Maximum Sum Without taking Adjacent Node" , max(resultInc , resultExc))         
 
+
+
+

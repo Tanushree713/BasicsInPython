@@ -160,5 +160,17 @@ printList(result)
 
 
 
+##4. L0 , L1 , L2 Arrange In sorted 0's , 1's and 2's ##
+# Tc is O() , Sc is O() #
+class Node:
+    def __init__(self , val):
+        self.next = None 
+        self.val = val
+
+def sortedLL(head):
+    while head :
+        
+
+
 
 
