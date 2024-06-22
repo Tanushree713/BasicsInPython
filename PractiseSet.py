@@ -1,4 +1,4 @@
-# Sorting Algo #
+##Sorting Algo's##
 #1. BubbleSort# 
 # Tc is O(n^2), Sc is O(1)
 def bubbleSort(arr):
@@ -74,8 +74,55 @@ print("Sort arr Using QuickSort" , result)
  
 
 
-#
+#6. MergeSort #
+# Tc is O(nlogn) , Sc is O(n) #
+def mergeSort(arr , i , j):
+    if i == j :
+        return arr 
+    else :
+        mid = i + (j-i) // 2
+        mergeSort(arr , i , mid)
+        mergeSort(arr , mid+1 , j) 
+        mergeProcedure(arr , i , mid , j)
+        return arr 
+def mergeProcedure(arr , i , mid , j ):
+    n1 = mid - i + 1
+    n2 =  j - mid 
+    leftArr = [0] * n1
+    rightArr = [0] * n2 
+    for m in range(n1):
+        leftArr[m] = arr[i+m]
+    for n in range(n2):
+        rightArr[n] = arr[mid+1+n]
+    p = 0 
+    q = 0 
+    k = i 
+    while p < n1 and q < n2 :
+        if leftArr[p] <= rightArr[q]:
+            arr[k] = leftArr[p]
+            p += 1
+        else:
+            arr[k] = rightArr[q]
+            q += 1
+        k += 1
+    while p < n1 :
+        arr[k] = leftArr[p]
+        p += 1
+        k += 1 
 
+    while q < n2 :
+        arr[k] = rightArr[q]
+        q += 1 
+        k += 1
+arr = [ 6 , 4 , 2 , 1 , 5] 
+i = 0
+j = len(arr) - 1
+result = mergeSort(arr , i , j)   
+print("Sort Arr Using MergeSort" , result )                   
+
+
+##ARRAYS##
+#1. 
        
 
 
