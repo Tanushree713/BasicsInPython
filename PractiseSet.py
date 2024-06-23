@@ -257,8 +257,8 @@ arr =  [2 , 1 , -4, -1 , 0 , 3 , -2]
 k = 3 
 p = 0 
 q = len(arr) - 1
-result = kthSmallest1(arr , p , q, k)
-print("Kth Smallest Element1" , result)   
+# result = kthSmallest1(arr , p , q, k)
+# print("Kth Smallest Element1" , result)   
 
 # Using HeapSort #
 # Tc is O(nlogk) , Sc is O(k) #
@@ -275,16 +275,158 @@ def kthSmallest2(nums , k):
     return -heap[0]                
 arr =  [2 , 1 , -4, -1 , 0 , 3 , -2] 
 k = 2
-result = kthSmallest2(arr , k)
-print("Kth Smallest Element2" , result )
+# result = kthSmallest2(arr , k)
+# print("Kth Smallest Element2" , result )
 
 # Using BSTConcept #
 # Tc is O(nlogn) , Sc is O(k)#
 
 
+#6.RepeatAndMissingNum#
+# Tc is O(n) , Sc is O(1) #
+def repeatAndMiss(nums):
+    n = len(nums)
+    repeat = 0
+    missing = 0 
+    for num in nums:
+        indx = abs(num) - 1
+        if nums[indx] < 0 :
+            repeat = abs(num)
+        else:
+            nums[indx] = - nums[indx]    
+    for i in range(n):
+        if nums[i] > 0 :
+            missing = i + 1
+    return repeat, missing
+arr = [2 ,1 , 5, 4, 4] 
+# result = repeatAndMiss(arr)
+# print("Repeat And Missing are ", result )            
 
 
-        
+
+#7.MergeIntervals#
+# Tc is O(nlogn) , Sc is O(1) #
+def mergeIntervals(intervals):
+    n = len(intervals)
+    if not intervals :
+        return []
+    intervals.sort(key = lambda x:x[0])   
+    merged = [intervals[0]]
+    for i in range(1 , n):
+        curr_intervals = intervals[i]
+        last_merged_intervals = merged[-1]
+        if curr_intervals[0] <= last_merged_intervals[1]:
+            merged[-1] = [last_merged_intervals[0] , max(curr_intervals[1] , last_merged_intervals[1])]
+        else:
+            merged.append(curr_intervals)    
+    return merged 
+intervals = [[2, 3] , [3 , 8 ] , [1, 6] , [7, 10]]  
+# result = mergeIntervals(intervals)
+# print("Merged Intervals are ", result )           
+
+
+#8.MergeSortedArr#
+# Tc is O(n) , Sc is O(1) #
+def mergedSortedArr(arr1 , arr2):
+    m = len(arr1)-1
+    n = len(arr2)-1
+    merged = len(arr1) + len(arr2) - 1
+    arr1.extend([0]* len(arr2))
+    while m >= 0 and n >= 0 :
+        if arr1[m] > arr2[n]:
+            arr1[merged] = arr1[m]
+            m -= 1
+        else:
+            arr1[merged] = arr2[n]
+            n -= 1     
+        merged -= 1
+
+    while m >= 0 :
+        arr1[merged] = arr1[m]
+        m -= 1
+        merged -= 1 
+
+    while n >= 0 :
+        arr1[merged] = arr2[n]
+        n -= 1 
+        merged -= 1     
+
+    return arr1
+arr1 = [ 2  , 4 , 6, 8] 
+arr2 = [ 1 , 3, 5, 7]
+result = mergedSortedArr(arr1 , arr2 ) 
+print("Merged Sorted Arr" , result  )
+
+
+#9.MajorityEle#
+# Tc is O(n) , Sc is O(1) #
+def findCand(nums) :
+    cand = None 
+    count = 0
+    for num in nums :
+        if count == 0 :
+            cand = num 
+        count += (1 if cand == num else -1 ) 
+    return cand 
+def ismajorityEle(nums , cand ):
+    cnt = 0 
+    n = len(nums)
+    for i in range(n):
+        if nums[i] == cand :
+            cnt += 1
+    if cnt > n//2 :
+        return True 
+    else :
+        return False 
+
+def majorityEle(nums):
+    cand = findCand(nums)
+    result = ismajorityEle(nums , cand)
+    if result :
+        print("Is Majority " , cand)
+    else:
+        print("Not Majority ")    
+nums = [2 , 3 ,3, 3, 2, 5 , 3]
+result = majorityEle(nums)
+
+
+#10.FindDuplicates#
+# Tc is O(n) , Sc is O(n) #
+def findDupli(nums):
+    seen = set()
+    dupli = []
+    for num in nums :
+        if num in seen:
+            dupli.append(num)
+        else:
+            seen.add(num)
+    return dupli 
+arr = [2 , 3 ,3, 2, 5 , 4] 
+# result = findDupli(arr)
+# print("Duplicates are ", result )              
+
+
+#11.FindNumDivisibleBy2&5#
+# Tc is O(b-a) , Sc is O(k)  #
+def FindNumDivisibleBy2_5(a , b):
+    marked = 0 
+    for num in range(a , b+1):
+        if num%2 == 0 or num%5 == 0 :
+            marked |= (1 << (num-a))
+    multiples = []
+    for i in range(b-a+1):
+        if ( marked & (1 << i) )!= 0   :
+            multiples.append(a+i)
+    return multiples
+a = 10
+b = 25
+result = FindNumDivisibleBy2_5(a , b)
+print("Numbers Divisible by 2 or 5 ", result )                 
+
+
+#12.MergeOperations#
+# Tc is O() , Sc is O() #
+
 
 
 
