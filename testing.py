@@ -114,7 +114,6 @@ arr = [ 1 , 0 , -1 , 2, -3 , 5]
 #APP1>>
 # TC is O(nlogn) , SC is O(1) #
 def kthSmallest1(arr , p , q , k ):
-    if  p < q :
         m = partition(arr , p , q)
         if m == k :
             return arr[m - 1]
@@ -158,6 +157,11 @@ arr = [ 6 , 8 , 1, 19 , 3]
 k = 2
 # result = kthSmallest2(arr , k)
 # print("KthSmallest2" , result )
+
+
+#APP3>> 
+# Tc is O(nlogn) , Sc is O(k)#
+# USING BST CONCEPT (firstly do insertion then find the samallest One .)
 
 
 
