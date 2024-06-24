@@ -492,7 +492,7 @@ arr = [ 1, 3, 2]
 # print("resultant is " , result )       
 
 #15.SumPairs#
-# Tc is O() , Sc is O() #
+# Tc is O(n) , Sc is O(1) #
 def sumPairs(arr , target):
     n = len(arr)
     for i in range(n):
@@ -512,6 +512,49 @@ arr = [ 15, 26, 38, 9, 10]
 key  = 19
 # result = sumPairs(arr , key )
 # print("Sum Pairs :" , result )
+
+
+#16.SortColors#
+# Tc is O()  , Sc is O() #
+def sortColors(nums) :
+    curr = 0 
+    p0 =  0
+    p2 = len(arr) - 1
+    while curr < p2 :
+        if nums[curr] == 0 :
+            nums[p0] , nums[curr] = nums[curr] , nums[p0]
+            p0 += 1
+            curr += 1
+        elif nums[curr] == 2 :
+            nums[p2] , nums[curr] = nums[curr] , nums[p2]
+            p2 -= 1
+        else:
+            curr += 1
+    return nums 
+arr = [ 2 , 1 , 0 , 1, 2, 0]       
+# result = sortColors(arr)
+# print("Sorted Colors " , result)    
+
+#17.RotateArr#
+# Tc is O() , Sc is O() #
+def reverseArr(arr , start , end):
+    while start < end :
+        arr[start], arr[end] = arr[end], arr[start]
+        start += 1
+        end -= 1 
+    return arr    
+def rotateARR(arr , k) :
+    n = len(arr)
+    k = k % n
+    reverseArr(arr , 0  , n-1)
+    reverseArr(arr , 0  , k-1)
+    reverseArr(arr , k , n-1)
+    return arr 
+
+arr = [ 2 , 3, 4 , 5, 7 , 8 , 10 ]
+k = 2
+result = rotateARR(arr , k)
+print("Rotated k Arr" , result )
 
                    
 
