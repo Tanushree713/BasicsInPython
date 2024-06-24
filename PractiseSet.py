@@ -226,8 +226,8 @@ def tripletSum(nums) :
                 right -= 1 
     return resultant         
 arr = [2 , 1 , -4, -1 , 0 , 3 , -2]  
-result = tripletSum(arr)
-print("Triplet Sum " , result )
+# result = tripletSum(arr)
+# print("Triplet Sum " , result )
 
 
 #5.KthSmallestEle#
@@ -354,8 +354,8 @@ def mergedSortedArr(arr1 , arr2):
     return arr1
 arr1 = [ 2  , 4 , 6, 8] 
 arr2 = [ 1 , 3, 5, 7]
-result = mergedSortedArr(arr1 , arr2 ) 
-print("Merged Sorted Arr" , result  )
+# result = mergedSortedArr(arr1 , arr2 ) 
+# print("Merged Sorted Arr" , result  )
 
 
 #9.MajorityEle#
@@ -382,10 +382,10 @@ def ismajorityEle(nums , cand ):
 def majorityEle(nums):
     cand = findCand(nums)
     result = ismajorityEle(nums , cand)
-    if result :
-        print("Is Majority " , cand)
-    else:
-        print("Not Majority ")    
+    # if result :
+    #     print("Is Majority " , cand)
+    # else:
+    #     print("Not Majority ")    
 nums = [2 , 3 ,3, 3, 2, 5 , 3]
 result = majorityEle(nums)
 
@@ -420,12 +420,106 @@ def FindNumDivisibleBy2_5(a , b):
     return multiples
 a = 10
 b = 25
-result = FindNumDivisibleBy2_5(a , b)
-print("Numbers Divisible by 2 or 5 ", result )                 
+# result = FindNumDivisibleBy2_5(a , b)
+# print("Numbers Divisible by 2 or 5 ", result )                 
 
 
 #12.MergeOperations#
+# Tc is O(n) , Sc is O(1) #
+def mergeOperationCount(arr):
+    i = 0 
+    j = len(arr) - 1
+    count = 0 
+    while i <= j :
+        if arr[i] == arr[j]:
+            i += 1
+            j -= 1
+        elif arr[i] < arr[j]:
+            arr[i + 1] = arr[i] + arr[i+1] 
+            count += 1    
+            i += 1
+
+        else:
+            arr[j-1] = arr[j] + arr[j-1]
+            count += 1
+            j -= 1
+    return count 
+arr = [ 1, 2, 3 , 8 , 4 ,  5 , 1]
+# result = mergeOperationCount(arr) 
+# print(" MergeoperationTo make palindrome ARR :" , result )  
+
+#13.Power(a, n)#
+# Tc is O(logn)  , Sc is O(1) #
+def power(a ,n):
+    if n == 0 :
+        return 1
+    elif n == 1:
+        return a
+    elif n < 0:
+        n = -n
+        a = 1/a
+    else:
+        mid = n//2
+        b = power(a , mid)
+        result = b * b
+    if n % 2 :
+        return a * result
+    else:
+        return result 
+a = 2
+n = 5
+# result = power(a , n)
+# print("n is the Power of a " , result )     
+
+
+#14.NextPermute#
+# Tc is O(n) , Sc is O(1) #
+def nextPermute(arr):
+    i = len(arr) - 2
+    while i >= 0 and arr[i] > arr[i+1]:
+        i -= 1
+    if i == -1 :
+        arr.reverse()
+    else:
+        j = len(arr) - 1
+        while arr[i] > arr[j]:
+            j -= 1
+        arr[i] , arr[j] = arr[j] , arr[i]
+        arr[i+1:] = reversed(arr[i+1:])
+    return arr
+arr = [ 1, 3, 2]
+# result = nextPermute(arr)
+# print("resultant is " , result )       
+
+#15.SumPairs#
 # Tc is O() , Sc is O() #
+def sumPairs(arr , target):
+    n = len(arr)
+    for i in range(n):
+        if arr[i] > arr[i+1] :
+            break 
+    right = i  
+    left = (i+1) % n
+    while left != right :
+        if arr[left] + arr[right] == target :
+            return True 
+        elif arr[left] + arr[right] < target :
+            left = (left + 1 ) % n  
+        else:
+            right = ( n + right - 1 ) % n   
+    return False 
+arr = [ 15, 26, 38, 9, 10]
+key  = 19
+# result = sumPairs(arr , key )
+# print("Sum Pairs :" , result )
+
+                   
+
+
+
+
+
+
 
 
 
