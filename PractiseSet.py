@@ -536,7 +536,7 @@ arr = [ 2 , 1 , 0 , 1, 2, 0]
 # print("Sorted Colors " , result)    
 
 #17.RotateArr#
-# Tc is O() , Sc is O() #
+# Tc is O(n) , Sc is O(1) #
 def reverseArr(arr , start , end):
     while start < end :
         arr[start], arr[end] = arr[end], arr[start]
@@ -553,11 +553,25 @@ def rotateARR(arr , k) :
 
 arr = [ 2 , 3, 4 , 5, 7 , 8 , 10 ]
 k = 2
-result = rotateARR(arr , k)
-print("Rotated k Arr" , result )
+# result = rotateARR(arr , k)
+# print("Rotated k Arr" , result )
 
-                   
 
+#18.ConsecutiveOnes#
+# Tc is O(n) , Sc is O(1) #
+def consecutiveOnes(nums) :
+    maxCount = 0 
+    count = 0 
+    for num in nums :
+        if num == 1 :
+            count += 1
+            maxCount =  max(maxCount , count)  
+        else:
+            count = 0
+    return maxCount
+arr = [ 1 , 1, 1 , 0 ,0 , 1, 1, 3, 1, 0]    
+result = consecutiveOnes(arr)    
+print("The Consecutive Ones is " , result )  
 
 
 
