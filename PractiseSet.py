@@ -570,18 +570,101 @@ def consecutiveOnes(nums) :
             count = 0
     return maxCount
 arr = [ 1 , 1, 1 , 0 ,0 , 1, 1, 3, 1, 0]    
-result = consecutiveOnes(arr)    
-print("The Consecutive Ones is " , result )  
+# result = consecutiveOnes(arr)    
+# print("The Consecutive Ones is " , result )  
 
+#19.SpiralMatrix#
+# Tc is O(n*m) , Sc is O(n*m) #
+def spiralMatrix(arr):
+    left = 0
+    right = len(arr[0]) -1
+    top = 0
+    bottom = len(arr) - 1
+    result = []
+    while left < right and top < bottom :
+        for i in range(left , right + 1):
+            result.append(arr[top][i])
+        top += 1
+        for i in range(top , bottom + 1):
+            result.append(arr[i][right])
+        right -= 1
+        if top < bottom :
+            for i in range(right , left - 1 , - 1):
+                result.append(arr[bottom][i])
+            bottom -= 1
+        if left < right :
+            for i in range(bottom , top - 1 , -1):
+                result.append(arr[i][left])
+            left += 1
+    return result  
+arr = [[1, 2, 3], [4, 5, 6], [7, 8, 9]]
+# result = spiralMatrix(arr)
+# print("SpiralMatrix", result )
 
+#20.MatrixDiagonalSum#
+# Tc is O(n) , Sc is O(1) #
+def matrixDiagonalSum(arr):
+    n = len(arr) - 1
+    res = 0
+    for i in range(n):
+        res += arr[i][i]
+        res += arr[i][n-i-1]
+    if n % 2 :
+        res -= arr[n//2][n//2]
+    return res         
+arr = [[1, 2, 3 , 0], [4, 5, 6 , 0], [7, 8, 9 , 0] , [11, 12, 13 , 0]]
+# result = matrixDiagonalSum(arr)
+# print("Matrix Diagonal Sum " , result )
 
+#21.CountNegInsortedMatrix#
+# Tc is O(n+m) , Sc is O(1) #
+def countNegInMatrix(arr):
+    rows = len(arr[0])
+    cols = len(arr)
+    i = 0 
+    j = rows - 1
+    count = 0 
+    while i < cols and j >= 0 :
+        if arr[i][j] < 0 :
+            count += cols - i 
+            j -= 1
+        i  += 1
+    return count 
+arr = [ [1, 2, 3, -4],
+    [5, 6, -7, -8],
+    [9, 10, -11, -12]]
+# result = countNegInMatrix(arr)
+# print("Count Neg Num " , result )
 
-
-
-
-
-
-
+#22.RichestCustomerWealth#
+# Tc is O(n*m)  , Sc is O(1) #
+def richestWealth(nums):
+    total = 0 
+    maxWealth = 0 
+    for num in nums :
+        total = sum(num)
+        maxWealth = max(maxWealth , total)
+    return maxWealth
+arr = [[1, 2, 3, -4],
+    [5, 6, -7, -8],
+    [9, 10, -11, -12]]    
+# result = richestWealth(arr)
+# print("Richest wealth " , result )        
+    
+#23.ToeplitzMatrix#
+# Tc is O(n*m) , Sc is O(1) #
+def toeplitzMat(arr):
+    rows = len(arr) 
+    cols = len(arr[0])
+    for i in range(rows-1):
+        for j in range(cols-1):
+            if arr[i][j] != arr[i+1][j+1]:
+                return False 
+    return True 
+arr = [[1,2,3,4],[5,1,2,3],[9,5,1,2]]
+result = toeplitzMat(arr)    
+print("Toeplitz Mat " , result )            
+               
 
 
 
