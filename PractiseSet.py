@@ -662,9 +662,107 @@ def toeplitzMat(arr):
                 return False 
     return True 
 arr = [[1,2,3,4],[5,1,2,3],[9,5,1,2]]
-result = toeplitzMat(arr)    
-print("Toeplitz Mat " , result )            
+# result = toeplitzMat(arr)    
+# print("Toeplitz Mat " , result )            
+
+#24.RotateImage#
+# Tc is O(n*m) , Sc is O(1) #
+def rotateImg(arr):
+    n = len(arr)
+    for i in range(n-1):
+        for j in range(i+1 , n):
+            arr[i][j] , arr[j][i] = arr[j][i] , arr[i][j]
+    for i in range(n):        
+        arr[i] = list(reversed(arr[i]))      
+    return arr 
+mat = [[1, 2, 3 ], [4, 5, 6 ], [7, 8, 9 ]]      
+# result = rotateImg(mat)
+# print("Matrix is Rotated" , result )
+
+#25.TransposeMatrix#
+# Tc is O(n*m) , Sc is O(n*m)#
+def transposeMat(mat):
+   rows = len(mat)
+   cols = len(mat[0]) 
+   res = [[0]* rows for _ in range(cols)]
+   for i in range(rows) :
+        for j in range(cols):
+            res[j][i] = mat[i][j]
+   return res    
+mat = [[1,2,3],[4,5,6],[7,8,9]]
+# result = transposeMat(mat)
+# print("Transposal Matrix  " , result )       
+
+#26.SetMatrixZeroes#
+# Tc is O(n*m) , Sc is O(1) #
+def setMatZeroes(arr):
+    col0 = 1 
+    m = len(arr)
+    n = len(arr[0])
+    for i in range(m):
+        for j in range(n):
+            if arr[i][j] == 0 :
+                arr[i][0] = 0 
+                if j != 0 :
+                    arr[0][j] = 0
+                else:
+                    col0 = 0 
+    for i in range(m-1 , -1 , -1):
+        for j in range(n-1 , 0 , -1):
+            if arr[i][j]!= 0 :
+               if arr[i][0] == 0 or arr[0][j] == 0 :
+                 arr[i][j] = 0
+    if arr[0][0] == 0 :
+        for j in range(n):
+            arr[0][j] = 0
+
+    if col0 == 0 :              
+        for i in range(m) :
+            arr[i][0] = 0 
+
+    return arr 
+
+matrix = [[0,1,2,0],[3,4,5,2],[1,3,1,5]]
+# result = setMatZeroes(matrix)
+# print("Set matrix" , result )
+
+#27.Reshape#
+#Tc is O(m*n) , Sc is O(m*n) #
+def reshapeMat(mat, r ,c):
+    m = len(mat)
+    n = len(mat[0])
+    res = [[0]*c for _ in range(r)]
+    originalLen = m * n 
+    if originalLen != r*c :
+        return mat 
+    else :
+        for i in range(originalLen):
+            res[i//c][i%c] = mat[i//n][i%n]
+    return res 
+mat = [[1,2],[3,4]]
+# result = reshapeMat(mat , 1, 4 )
+# print("Reshaped" , result  )               
+
+#28.FlippingImg#
+# Tc is O(m*n) , Sc is O(1) #
+def flipImg(mat):
+    n = len(mat)
+    for i in range(n):
+        mat[i] = list(reversed(mat[i]))
+    for i in range(n):
+        for j in range(n):
+            if mat[i][j] != 0 :
+                mat[i][j] = 0 
+            else:
+                mat[i][j] = 1
+    return mat 
+mat = [[1,1,0],[1,0,1],[0,0,0]]  
+# result = flipImg(mat)
+# print("Flpi Image " , result )                         
                
+
+
+
 
 
 
