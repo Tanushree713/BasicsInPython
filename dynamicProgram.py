@@ -67,7 +67,7 @@ def isIsomorphicStr(s , t):
         return False
     return True 
 
-s2, t2 = "foo", "baa"
+s2, t2 = "foo", "bar"
 print(isIsomorphicStr(s2, t2))  # Output: False
 
 

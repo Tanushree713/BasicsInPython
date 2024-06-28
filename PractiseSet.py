@@ -515,7 +515,7 @@ key  = 19
 
 
 #16.SortColors#
-# Tc is O()  , Sc is O() #
+# Tc is O(n)  , Sc is O(1) #
 def sortColors(nums) :
     curr = 0 
     p0 =  0
@@ -760,11 +760,94 @@ mat = [[1,1,0],[1,0,1],[0,0,0]]
 # result = flipImg(mat)
 # print("Flpi Image " , result )                         
                
+#29.ReverseStr#
+# Tc is O(n) , Sc is O(n) #
+def reverseStr(string):
+    string = list(string)
+    left = 0 
+    right = len(string) - 1
+    while left < right :
+        string[left] , string[right] = string[right] , string[left]
+        left += 1
+        right -= 1
+    string = ''.join(string)
+    return string
+string = "hello"
+# res = reverseStr(string)
+# print("Reversed string " , res)         
 
+#30.FirstUniqueCharInStr#
+# Tc is O(n) , Sc is O(n) #
+from collections import Counter 
+def firstUniqueChar(string):
+    charCount = Counter(string)
+    for index, char in enumerate(charCount):
+        if charCount[char] == 1 :
+            return char, index 
+    return -1 
+string = "leetcode"
+# result = firstUniqueChar(string)
+# print("FirstUnique Char" , result )
+          
+#31.ReverseWordsInStr#
+# Tc is O(n) , Sc is O(n) #
+def reverseWordsInStr(string):
+    words = string.split()
+    reverse = words[::-1]
+    newStr = ' '.join(reverse)
+    return newStr
+string = "the sky is blue" 
+# result = reverseWordsInStr(string)
+# print("Reversed Words : " , result )     
 
+#32.LengthOfLastWords#
+# Tc is O(n) , Sc is O(n) #
+def lengthLastWords(string):
+    words = string.split()
+    lastword = words[-1]
+    return len(lastword)
+string = "Tanu is good and smart women"
+# result = lengthLastWords(string)
+# print("Length of last String" , result)
 
+#33.LongestCommonPrefix#
+# Tc is O(n*m) , Sc is O(k) #
+def longestCommonPrefix(string):
+    common = []
+    if not string :
+        return []
+    string.sort()
+    firstStr = string[0]
+    lastStr = string[-1]
+    for i in range(len(firstStr)):
+        if i < len(lastStr) and firstStr[i] == lastStr[i] :
+            common.append(firstStr[i])
+        else :
+            break 
+    return ''.join(common)
+string = ["flower","flow","flight"]
+# result = longestCommonPrefix(string)
+# print("Longest Common Prefix : " , result)             
 
+#34.LongestSubStr#
+# # Tc is O(n) , Sc is O(n) #
+def longestSubstr(string):
+    n = len(string)
+    charset = set()
+    maxLen = 0 
+    left = 0 
+    for right in range(n):
+        if string[right] in charset :
+            charset.remove(string[left])
+            left += 1
+        charset.add(string[right])
+        maxLen = max( maxLen , right - left +1 )
+    return maxLen      
+string = "abcabcbb"    
+result = longestSubstr(string)   
+print("LongestSubstr" , result )  
 
+#35.
 
 
 
