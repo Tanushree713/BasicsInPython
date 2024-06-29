@@ -844,10 +844,64 @@ def longestSubstr(string):
         maxLen = max( maxLen , right - left +1 )
     return maxLen      
 string = "abcabcbb"    
-result = longestSubstr(string)   
-print("LongestSubstr" , result )  
+# result = longestSubstr(string)   
+# print("LongestSubstr" , result )  
 
-#35.
+#35.JewelsAndStones#
+# Tc is O(n+m) , Sc is O(n) #
+def jewelAndStones(jewels , stones):
+    jewelset = set(jewels)
+    count = 0
+    for s in stones:
+        if s in jewelset:
+            count += 1
+    return count 
+jewels = "aA"
+stones = "aAABBBb"
+# result = jewelAndStones(jewels , stones)
+# print("Jewels And Stones" , result )            
+
+#36.ValidAnagram#
+# Tc is O(2n) , Sc is O(2n) #
+from collections import Counter
+def validAnagram(str1 , str2):
+    countstr1 = Counter(str1)
+    countstr2 = Counter(str2)
+    if countstr1 == countstr2:
+        return True 
+    else :
+        return False 
+str1 = "anagram"
+str2 = "nagara"
+# result = validAnagram(str1 , str2 )
+# print("ValidAnagram is" , result )
+
+#37.ReverseVowels#
+# Tc is O(n) , Sc is O(1) #
+def reverseVowels(string):
+    vowels = "AEIOUaeiou"
+    left = 0 
+    right = len(string) - 1
+    newStr = list(string)
+    while left < right :
+        while left < right and newStr[left] not in vowels :
+            left += 1 
+        while left < right and newStr[right] not in vowels :
+            right -= 1 
+        newStr[left] , newStr[right] = newStr[right] , newStr[left]    
+        left += 1
+        right -= 1
+    return ''.join(newStr)               
+string = "hello"
+# result = reverseVowels(string)
+# print("Reverse vowels :" , result )
+
+#38.ValidPalindrome#
+
+#39.IsomorphicStr#
+#40.RedistributeStr#
+#41.BalancedStr#
+ 
 
 
 
