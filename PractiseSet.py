@@ -897,10 +897,65 @@ string = "hello"
 # print("Reverse vowels :" , result )
 
 #38.ValidPalindrome#
+# Tc is O(n) , SC is O(n) #
+def sanitizeStr(string):
+    sanitize = ""
+    for char in string :
+        if char.isalnum():
+            sanitize += char.lower()
+    return sanitize 
+def validPalindrome(string):
+        newstring = sanitizeStr(string)
+        left = 0
+        right = len(newstring) - 1
+        while left < right :
+            if newstring[left] != newstring[right] :
+                return False
+            left += 1
+            right -= 1
+        return True 
+string = "race a car"
+result = validPalindrome(string)
+print("ValidPalindrome" , result )       
 
 #39.IsomorphicStr#
+
 #40.RedistributeStr#
+# Tc is O(n) , Sc is O(n) #
+from collections import Counter
+def redistributeStr(words):
+    charCount = Counter()
+    n = len(words)
+    for w in words :
+      charCount.update(w) 
+    for count in charCount.values() :
+        if count % n != 0 :
+            return False
+    return True          
+string = ["abc" , "bc", "aabc"]
+result = redistributeStr(string)
+print("redistribute Make Equal :" , result )
+
 #41.BalancedStr#
+# Tc is O(n) , Sc is O(1) #
+def balancedStr(string):
+    count = 0 
+    r = 0 
+    n = len(string)
+    for i in range(n):
+        if string[i] == "R":
+            r += 1
+        elif string[i] == "L":
+            r -= 1
+        if r == 0 :
+            count += 1
+    return count 
+string = "RLRLRLLL"
+result = balancedStr(string)
+print("Split balanced String" , result)                     
+
+
+
  
 
 
