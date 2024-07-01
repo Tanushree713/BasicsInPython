@@ -232,7 +232,7 @@ arr = [2 , 1 , -4, -1 , 0 , 3 , -2]
 
 #5.KthSmallestEle#
 
-# Using QuickSelection Sort #
+#5.1 Using QuickSelection Sort #
 # Tc is O(nlogn) , Sc is O(1)#
 def kthSmallest1(arr , p , q , k):
         m = partition(arr , p , q)
@@ -260,7 +260,7 @@ q = len(arr) - 1
 # result = kthSmallest1(arr , p , q, k)
 # print("Kth Smallest Element1" , result)   
 
-# Using HeapSort #
+#5.2 Using HeapSort #
 # Tc is O(nlogk) , Sc is O(k) #
 from heapq import heappush , heappop 
 def kthSmallest2(nums , k):
@@ -915,10 +915,24 @@ def validPalindrome(string):
             right -= 1
         return True 
 string = "race a car"
-result = validPalindrome(string)
-print("ValidPalindrome" , result )       
+# result = validPalindrome(string)
+# print("ValidPalindrome" , result )       
 
 #39.IsomorphicStr#
+# Tc is O(n) , Sc is O(n)#
+def isomorphicStr(s1 , s2):
+    if len(s1) != len(s2):
+        return False 
+    map_s1_to_s2 = {}
+    map_s2_to_s1 = {}
+    for char_s1 , char_s2 in zip(s1 , s2):
+        map_s1_to_s2.setdefault(char_s1 , char_s2)
+        map_s2_to_s1.setdefault(char_s2, char_s1)
+        if map_s1_to_s2[char_s1] != char_s2 or map_s2_to_s1[char_s2] != char_s1:
+            return False
+    return True 
+s2, t2 = "foo", "baa"
+# print(isomorphicStr(s2, t2))  # Output: False            
 
 #40.RedistributeStr#
 # Tc is O(n) , Sc is O(n) #
@@ -933,8 +947,8 @@ def redistributeStr(words):
             return False
     return True          
 string = ["abc" , "bc", "aabc"]
-result = redistributeStr(string)
-print("redistribute Make Equal :" , result )
+# result = redistributeStr(string)
+# print("redistribute Make Equal :" , result )
 
 #41.BalancedStr#
 # Tc is O(n) , Sc is O(1) #
@@ -951,16 +965,141 @@ def balancedStr(string):
             count += 1
     return count 
 string = "RLRLRLLL"
-result = balancedStr(string)
-print("Split balanced String" , result)                     
+# result = balancedStr(string)
+# print("Split balanced String" , result)                     
+
+#42.Fibonacci#
+#42.1 Using Recursion#
+# Tc is O(2^N) , SC is O(1) #
+def fibonacci1(n):
+    if n == 0 :
+        return 0
+    elif n == 1 or n == 2:
+        return 1 
+    else:
+       return  fibonacci1(n-1) + fibonacci1(n-2)
+n =  3        
+# result = fibonacci1(n)
+# print("Fibonacci Num" , result)
+
+#42.2 Using DP#
+
+#42.2.a> Memoization(Top-down Appr) #
+# Tc is O(n) , Sc is O(n) #
+def fiboByMemo(n , memo):
+    result = 0
+    if memo[n] is not None :
+        return memo[n]
+    if n == 1 or n == 2 :
+        result = 1
+    else:
+        result = fiboByMemo(n-1 , memo) + fiboByMemo(n-2  , memo)
+    memo[n] = result 
+    return memo[n]    
+
+def fibonacci2_a(n):
+    memo = [None] * (n+1)
+    return fiboByMemo(n , memo)
+n =  3        
+# result = fibonacci2_a(n)
+# print("Fibonacci Num" , result)
+
+#42.2.b> Tabulation( Bottom-up Appr)# Better For large Numbers Calculations
+# Tc is O(n) , Sc is O(n) #
+def fiboByTabu(n , bottom):
+    bottom[1] = 1
+    bottom[2] = 1
+    for i in range(3 , n+1):
+        bottom[i] = bottom[i-1] + bottom[i-2]
+    return bottom[n]    
+
+def fibonacci2_b(n):
+    bottom = [None] * (n+1)
+    return fiboByTabu(n , bottom)  
+n =  12        
+# result = fibonacci2_b(n)
+# print("Fibonacci Num" , result)
 
 
+#43.PowerFour#
 
- 
+#43.1 Using Recursion#
+# Tc is O(2^n) , Sc is O(1)#
+def powerFour1(n):
+    if n <= 0 :
+        return False
+    elif n == 1:
+        return True 
+    else:
+        return n % 4 == 0  and powerFour1(n // 4)
+n = 20
+# result = powerFour1(n)
+# print("Find power Four" , result )        
+
+#43.2 Using Memoization#
+#Tc is O(n) , Sc is O(1)#  
+def powerFour2(n, memo):
+    if memo[n]  is not None :
+        return memo[n]
+    if n <= 0:
+         res = False
+    elif n == 1:
+        res = True
+    else:
+        res = n % 4 == 0 and powerFour2(n // 4, memo)
+    memo[n] = res
+    return memo[n]    
+
+n = 64
+memo= [None] * (n+1)
+# result = powerFour2(n , memo )
+# print("Find power Four:", result)
 
 
+#44.SumOfDigit#
+# Tc is O(2^n) , Sc is O(1)#
+def sumOfDigit(n):
+  
+    if n == 0 :
+        return 0
+    else:
+        return n % 10 + sumOfDigit(n//10)  
+n =  4321          
+# result = sumOfDigit(n)
+# print("Sum Of Digit :" , result )
 
- 
+
+#45.FindGCD#
+# Tc is O(2^n) , Sc is O(1) #
+def findGCD(a , b):
+    if b == 0 :
+        return a
+    else :
+        return findGCD(b , a%b)      
+a = 2 
+b = 4       
+result = findGCD(a , b)           
+print("Finding GCD :" , result )              
+
+#46.SumOfSubsets#
+# Tc is O(2^n) , Sc is O(2^n + n)# 
+def sumOfAllSubsets(arr , i , sum , result ):
+    if len(arr) == i :
+        result.append(sum)
+        return 
+    else :
+        sumOfAllSubsets(arr , i+1 , sum + arr[i] , result)
+        sumOfAllSubsets(arr , i+1 , sum , result )
+
+arr = [1 , 2, 3]
+i = 0 
+sum = 0
+result = [] 
+sumOfAllSubsets(arr , i , sum , result )
+resultant = list(set(result))
+resultant.sort()
+for r in resultant:
+    print(r , end = " ")
 
 
 
