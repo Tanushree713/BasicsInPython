@@ -37,7 +37,7 @@ def indexSearchEle(arr , target):
       i = mid + 1
     else:
       j = mid - 1
-  return -1 
+  return i 
 arr = [1, 2, 3, 4, 5, 6 ,8]
 target = 3 
 result = indexSearchEle(arr , target)

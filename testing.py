@@ -1019,7 +1019,7 @@ def searchPos(arr , k ):
               i = mid + 1
            else:
             j = mid - 1
-    return -1         
+    return i        
 arr = [1 , 2 , 3, 4, 5] 
 k = 4
 # result  = searchPos(arr , k ) 

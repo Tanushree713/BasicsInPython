@@ -1078,8 +1078,8 @@ def findGCD(a , b):
         return findGCD(b , a%b)      
 a = 2 
 b = 4       
-result = findGCD(a , b)           
-print("Finding GCD :" , result )              
+# result = findGCD(a , b)           
+# print("Finding GCD :" , result )              
 
 #46.SumOfSubsets#
 # Tc is O(2^n) , Sc is O(2^n + n)# 
@@ -1098,10 +1098,75 @@ result = []
 sumOfAllSubsets(arr , i , sum , result )
 resultant = list(set(result))
 resultant.sort()
-for r in resultant:
-    print(r , end = " ")
+# for r in resultant:
+#     print(r , end = " ")
 
 
+#47.SearchIn2DMatrix #
+# Tc is O(log(m*n)) , Sc is O(1) #
+def searchIn2DMat(arr , target):
+    m = len(arr)
+    n = len(arr[0])
+    left = 0
+    right = m*n - 1
+    while left <= right :
+        mid = left + (right - left )// 2
+        mid_Ele = arr[mid//n][mid%n] 
+        if mid_Ele == target :
+            return True 
+        elif mid_Ele < target:
+            left = mid + 1
+        else :
+           right = mid - 1
+    return False 
+arr = [[ 1, 2 ,3 ] , [4, 5, 16] , [7, 8 ,9] ] 
+target = 6
+# result = searchIn2DMat(arr , target)
+# print("Binary search In 2D " , result )                     
+
+#48.SearchInsertedPosition#
+# Tc is O(logn) , Sc is O(1)#
+def SearchInsertedPosition(arr , target):
+    i = 0 
+    j = len(arr) - 1
+    while i <= j :
+        mid = i + (j - i )// 2
+        if arr[mid] == target :
+            return mid
+        elif arr[mid] < target :
+            i = mid + 1
+        else:
+            j = mid - 1
+    return i
+arr = [1 , 2 , 3, 4, 6] 
+k = 5  #Output >> 4
+# result  = SearchInsertedPosition(arr , k ) 
+# print("Searched Inserted Order of Element is : " , result )                    
+
+#49.SearchInRotatedSortedARR#
+# Tc is O(logn) , Sc is O(1) #
+def searchInRotatedMat(arr , target ):
+    i = 0 
+    j = len(arr) - 1
+    while i <= j :
+        mid = i + (j-i )// 2
+        if arr[mid] == target :
+            return mid 
+        if arr[i] <= arr[mid]:
+            if arr[i] <= target and target <= arr[mid]:
+                 j = mid - 1
+            else:
+                i = mid + 1
+        else:
+            if arr[mid] <= target and target <= arr[j] :
+                i = mid + 1
+            else :
+                j = mid  - 1
+    return -1 
+arr = [ 7 , 8 , 9 , 1, 2, 3 , 4 , 5 , 6]  
+k = 9
+# result = searchInRotatedMat(arr , k)                    
+# print("Sorted Arr " , result )  
 
 
 
