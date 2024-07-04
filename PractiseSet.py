@@ -73,7 +73,6 @@ q = len(arr) - 1
 # print("Sort arr Using QuickSort" , result)
  
 
-
 #6. MergeSort #
 # Tc is O(nlogn) , Sc is O(n) #
 def mergeSort(arr , i , j):
@@ -970,7 +969,7 @@ string = "RLRLRLLL"
 
 #42.Fibonacci#
 #42.1 Using Recursion#
-# Tc is O(2^N) , SC is O(1) #
+# Tc is O(2^n) , SC is O(1) #
 def fibonacci1(n):
     if n == 0 :
         return 0
@@ -1168,6 +1167,64 @@ k = 9
 # result = searchInRotatedMat(arr , k)                    
 # print("Sorted Arr " , result )  
 
+#50.InsertionInLL#
+#AtFront##AtEnd##AtAnyNode#
+class Node:
+    def __init__(self , data):
+        self.data = data 
+        self.next = None
+class LinkedList:
+    def __init__(self):
+        self.head = None
 
+    def frontInsertionLL(self , new_data ):
+        new_node = Node(new_data)
+        if self.head is None :
+            self.head = new_node
+        else:
+            new_node.next = self.head
+            self.head = new_node
+
+    def insertionAtEnd(self , new_data):
+        new_node = Node(new_data)
+        temp = self.head
+        if temp is None :
+            self.head = new_node
+        while temp.next :
+            temp = temp.next 
+        temp.next = new_node 
+
+    def insertionAtAnyNode(self , new_data, prev_node):
+        new_node = Node(new_data)
+        prev = None 
+        new_node.next = prev_node.next 
+        prev_node.next = new_node 
+
+
+    def printList(self):
+        temp = self.head
+        while temp :
+            print(str(temp.data)+ " " , end=" ")
+            temp = temp.next  
+
+listing  =LinkedList()   
+print("Insertion At Front")              
+listing.frontInsertionLL(12)
+listing.frontInsertionLL(11)
+listing.frontInsertionLL(10)
+listing.frontInsertionLL(9)
+listing.frontInsertionLL(8)
+listing.printList()
+print()
+print("Insertin At End")
+listing.insertionAtEnd(15)
+listing.printList()
+print()
+print("Insertion At Any Node")
+listing.insertionAtAnyNode(14 ,listing.head.next.next.next.next)
+listing.printList()
+
+#51.DeletionInLL#
+#AtAnyNodeGivenPosition##OfNodeGivenNodeVal,Head##OfNodeGivenNodeVal##NthFromtheEnd#
 
 
