@@ -1169,6 +1169,7 @@ k = 9
 
 #50.InsertionInLL#
 #AtFront##AtEnd##AtAnyNode#
+# Tc is O(1), O(n), O(n) # Sc is O(1), O(1) ,O(1) #
 class Node:
     def __init__(self , data):
         self.data = data 
@@ -1207,24 +1208,128 @@ class LinkedList:
             print(str(temp.data)+ " " , end=" ")
             temp = temp.next  
 
-listing  =LinkedList()   
-print("Insertion At Front")              
-listing.frontInsertionLL(12)
-listing.frontInsertionLL(11)
-listing.frontInsertionLL(10)
-listing.frontInsertionLL(9)
-listing.frontInsertionLL(8)
-listing.printList()
-print()
-print("Insertin At End")
-listing.insertionAtEnd(15)
-listing.printList()
-print()
-print("Insertion At Any Node")
-listing.insertionAtAnyNode(14 ,listing.head.next.next.next.next)
-listing.printList()
+# listing  =LinkedList()   
+# print("Insertion At Front")              
+# listing.frontInsertionLL(12)
+# listing.frontInsertionLL(11)
+# listing.frontInsertionLL(10)
+# listing.frontInsertionLL(9)
+# listing.frontInsertionLL(8)
+# listing.printList()
+# print()
+# print("Insertin At End")
+# listing.insertionAtEnd(15)
+# listing.printList()
+# print()
+# print("Insertion At Any Node")
+# listing.insertionAtAnyNode(14 ,listing.head.next.next.next.next)
+# listing.printList()
+
+
 
 #51.DeletionInLL#
 #AtAnyNodeGivenPosition##OfNodeGivenNodeVal,Head##OfNodeGivenNodeVal##NthFromtheEnd#
+# Tc is O(n) , O(n), O(n) , O(n),   SC is O(1), O(1), O(1) ,O(1)  #
+class Node:
+    def __init__(self , data):
+        self.data = data
+        self.next = None
+class LinkedList:
+    def __init__(self):
+        self.head = None 
+
+    def deletionAtAnyNode_Pos(self , pos):
+        temp = self.head
+        if temp is None :
+            return 
+        for i in range(pos-1):
+            temp = temp .next 
+        temp.next = temp.next.next 
+
+    def deletionOfNode_ValandHead(self , val):
+        prev = None 
+        if self.head is None:
+            return 
+        else:
+            temp = self.head
+            while temp :
+                if temp.data == val :
+                    if prev is None :
+                        return temp.next
+                    else:
+                        prev.next = temp.next 
+                prev = temp            
+                temp = temp.next        
+# class LinkedList:
+#     def __init__(self , x):
+#         self.val = x  
+
+    def deletionOfNode_Val(self , node):
+        if node is None :
+            return 
+        elif node.next is not None:
+            node.next.val = node.val 
+            node.next = node.next.next 
+        else:
+            node = None 
+
+    def deleteOfNthNodeFromEnd(self , n ):
+        fast = self.head
+        slow = self.head 
+        for i in range(n):
+            fast = fast.next
+        if fast is None:
+           self.head = self.head.next     
+        while fast.next and fast and slow :
+            slow = slow.next 
+            fast = fast.next.next 
+        slow.next = slow.next.next
+
+    def printList(self):
+        temp = self.head
+        while temp :
+            print(str(temp.data)+ " " , end=" ")
+            temp = temp.next
+
+# Helper function to append a new node at the end
+def append_to_list(linked_list, data):
+    new_node = Node(data)
+    if linked_list.head is None:
+        linked_list.head = new_node
+        return
+    last = linked_list.head
+    while last.next:
+        last = last.next
+    last.next = new_node
+
+# Create a linked list and populate it
+listing2 = LinkedList()
+append_to_list(listing2, 1)
+append_to_list(listing2, 2)
+append_to_list(listing2, 3)
+append_to_list(listing2, 4)
+append_to_list(listing2, 5)
+print()
+print("Initial List:")
+listing2.printList()
+print()
+
+# Delete node at position 2
+print("Deleting node at position 2:")
+listing2.deletionAtAnyNode_Pos(2)
+listing2.printList()
+print()
+
+# Delete node by value 4 with head 
+print("Deleting node with value 4 with head :")
+listing2.deletionOfNode_ValandHead(4)
+listing2.printList()
+print()
+
+# Delete the 2nd node from the end
+print("Deleting the 2nd node from the end:")
+listing2.deleteOfNthNodeFromEnd(2)
+listing2.printList()
+
 
 
