@@ -1255,11 +1255,14 @@ class LinkedList:
             while temp :
                 if temp.data == val :
                     if prev is None :
-                        return temp.next
+                       self.head = self.head.next 
                     else:
                         prev.next = temp.next 
-                prev = temp            
+                else:        
+                    prev = temp            
                 temp = temp.next        
+            return self.head
+
 # class LinkedList:
 #     def __init__(self , x):
 #         self.val = x  
@@ -1268,7 +1271,7 @@ class LinkedList:
         if node is None :
             return 
         elif node.next is not None:
-            node.next.val = node.val 
+            node.val = node.next.val 
             node.next = node.next.next 
         else:
             node = None 
@@ -1303,33 +1306,115 @@ def append_to_list(linked_list, data):
     last.next = new_node
 
 # Create a linked list and populate it
-listing2 = LinkedList()
-append_to_list(listing2, 1)
-append_to_list(listing2, 2)
-append_to_list(listing2, 3)
-append_to_list(listing2, 4)
-append_to_list(listing2, 5)
-print()
-print("Initial List:")
-listing2.printList()
-print()
+# listing2 = LinkedList()
+# append_to_list(listing2, 1)
+# append_to_list(listing2, 2)
+# append_to_list(listing2, 3)
+# append_to_list(listing2, 4)
+# append_to_list(listing2, 5)
+# print()
+# print("Initial List:")
+# listing2.printList()
+# print()
 
-# Delete node at position 2
-print("Deleting node at position 2:")
-listing2.deletionAtAnyNode_Pos(2)
-listing2.printList()
-print()
+# # Delete node at position 2
+# print("Deleting node at position 2:")
+# listing2.deletionAtAnyNode_Pos(2)
+# listing2.printList()
+# print()
 
-# Delete node by value 4 with head 
-print("Deleting node with value 4 with head :")
-listing2.deletionOfNode_ValandHead(4)
-listing2.printList()
-print()
+# # Delete node by value 4 with head 
+# print("Deleting node with value 4 with head :")
+# listing2.deletionOfNode_ValandHead(4)
+# listing2.printList()
+# print()
 
-# Delete the 2nd node from the end
-print("Deleting the 2nd node from the end:")
-listing2.deleteOfNthNodeFromEnd(2)
-listing2.printList()
+# # Delete the 2nd node from the end
+# print("Deleting the 2nd node from the end:")
+# listing2.deleteOfNthNodeFromEnd(2)
+# listing2.printList()
 
+
+#52.ReverseLL#
+# Tc is O(n) , Sc is O(1) #
+class Solution(object):
+    def reverseList(self, head):
+        curr = head
+        next = None 
+        prev = None 
+        while curr :
+            next = curr.next 
+            curr.next = prev 
+            prev = curr 
+            curr = next 
+        return prev
+
+#53.MergeTwoSOrtedLL#
+
+#53.1 Using Recursion #
+# Tc is O(n) , Sc is O(n)
+def mergeSortedLL1(list1 , list2):
+    temp = None
+    if list1 is None:
+        return list2
+    elif list2 is None :
+        return list1
+    else:
+        if list1.val <= list2.val :
+           temp = list1
+           temp.next = mergeSortedLL1(list1.next , list2)
+        else:
+            temp = list2
+            temp.next = mergeSortedLL1(list1 , list2.next)
+    return temp 
+
+#53.2 Using DummyList #
+# Tc is O(n) , Sc is O(n) #
+class Node :
+    def __init__(self , val):
+        self.val = val 
+        self.next = None 
+class LinkedList:
+    def __init__(self):
+        self.head = None 
+    def mergeSortedLL2(self , list1 , list2):
+        dummyList = Node(0)            
+        temp = dummyList 
+            
+        while list1 and list2 :
+            if list1.val <= list2.val :
+                temp.next = list1 
+                list1 = list1.next 
+            else:
+                temp.next = list2
+                list2 = list2.next 
+            temp = temp.next 
+
+        if list1 :
+            temp.next = list1
+        elif list2 :
+            temp.next = list2  
+
+        return  dummyList.next 
+
+list1 = Node(1)
+list1.next = Node(3)
+list1.next.next = Node(5)
+
+list2 = Node(4)
+list2.next = Node(6)
+list2.next.next = Node(8)
+llists = LinkedList()
+resultant = llists.mergeSortedLL2(list1 , list2)
+while resultant :
+    print(resultant.val , end=" ")
+    resultant = resultant.next 
+
+
+
+
+
+
+   
 
 
