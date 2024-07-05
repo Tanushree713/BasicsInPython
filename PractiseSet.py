@@ -1410,6 +1410,55 @@ while resultant :
     print(resultant.val , end=" ")
     resultant = resultant.next 
 
+#54.MiddleOfLL#
+# Tc is O(n) , SC is O(1)#
+class Solution(object):
+    def middleNode(self, head):
+        fast = head
+        slow = head
+        while fast and slow and fast.next :
+            fast = fast.next.next
+            slow = slow.next
+        return slow    
+
+#55.PalindromeLL#
+# Tc is O(n) , Sc is O(1) #
+class Solution(object):
+  
+  def isPalindrome(self , head):
+    if head is None or head.next is None :
+        return True
+    middle = self.middleOfLL(head)
+    head2 = self.halfReversedLL(middle.next)
+    result = self.comparisonLL(head , head2)
+    return result
+     
+  def middleOfLL(self, head):
+    slow = head
+    fast = head
+    while fast.next and fast.next.next :
+        fast = fast.next.next 
+        slow = slow.next 
+    return slow
+
+  def halfReversedLL(self,head):
+    curr = head
+    prev = None 
+    next = None 
+    while curr :
+        next = curr.next 
+        curr.next = prev 
+        prev = curr
+        curr = next 
+    return prev
+
+  def comparisonLL(self ,head1 , head2):
+    while head1 and head2:
+        if head1.val != head2.val :
+            return False
+        head1 = head1.next
+        head2 = head2.next 
+    return True                
 
 
 
