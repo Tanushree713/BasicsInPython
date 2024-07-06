@@ -1285,7 +1285,7 @@ class LinkedList:
            self.head = self.head.next     
         while fast.next and fast and slow :
             slow = slow.next 
-            fast = fast.next.next 
+            fast = fast.next
         slow.next = slow.next.next
 
     def printList(self):
@@ -1406,9 +1406,9 @@ list2.next = Node(6)
 list2.next.next = Node(8)
 llists = LinkedList()
 resultant = llists.mergeSortedLL2(list1 , list2)
-while resultant :
-    print(resultant.val , end=" ")
-    resultant = resultant.next 
+# while resultant :
+#     print(resultant.val , end=" ")
+#     resultant = resultant.next 
 
 #54.MiddleOfLL#
 # Tc is O(n) , SC is O(1)#
@@ -1460,10 +1460,79 @@ class Solution(object):
         head2 = head2.next 
     return True                
 
+#56.LinkedListCycle-I#
+# Tc is O(n) , SC is O(1) #
+class Solution(object):
+    def hasCycle(self, head):
+        tortoise = head
+        hare = head
+        while tortoise and hare and hare.next :
+            tortoise = tortoise.next 
+            hare = hare.next.next 
+            if hare == tortoise :
+                return True 
+        return False      
 
+#57.LinkedListCycle-II#
+# Tc is O(n) , Sc is O(1) #
+class Solution(object):
+    def detectCycle(self, head):
+        if head is None :
+            return None 
+        fast = head
+        slow = head
+        entry = head
+        while slow and fast and fast.next :
+            slow = slow.next 
+            fast = fast.next.next 
+            if fast == slow :
+                while entry != slow :
+                    entry = entry.next 
+                    slow = slow.next 
+                return entry 
+                    
+#58.MaximumTwinSum#
+# Tc is O(n) , Sc is O(1) #
+class Solution(object):
+    def pairSum(self, head):
+        sum = 0
+        maxSum = 0
+        if head is None :
+            return 0
 
+        elif head and head.next is None :
+            return head.val
 
+        middle = self.middleLL(head) 
+        head2 = self.halfReversalHead(middle)
+        while head and head2 :
+            sum = head.val + head2.val
+            maxSum = max(maxSum , sum)
+            head = head.next 
+            head2 = head2.next 
+        return maxSum 
 
-   
+    def middleLL(self , head):
+            fast = head
+            slow = head
+            while fast and fast.next :
+                fast = fast.next.next 
+                slow = slow.next
+            return slow
+
+    def halfReversalHead(self , head):
+            next = None
+            prev = None 
+            curr = head
+            while curr :
+                next = curr.next
+                curr.next = prev
+                prev = curr
+                curr = next 
+            return prev
+
+#59.AddLL#
+# Tc is O() , Sc is O() #
+
 
 
