@@ -967,6 +967,28 @@ string = "RLRLRLLL"
 # result = balancedStr(string)
 # print("Split balanced String" , result)                     
 
+
+##*LongestCommonSubsequences*##
+# Tc is O(m*n) , Sc is O(m*n) #
+class Solution(object):
+    def longestCommonSubsequence(self, text1, text2):
+       m = len(text1) 
+       n = len(text2) 
+       memo = [[None] * (n + 1) for _ in range(m + 1)]
+       return self.funcOfLCS(m-1 , n-1 , text1 , text2 , memo)
+
+    def funcOfLCS(self , i , j , str1 , str2 , memo):
+        if memo[i][j] is not None:
+            return memo[i][j]
+        if i < 0 or j < 0 :
+            memo[i][j] = 0
+        elif str1[i] == str2[j]:
+            memo[i][j] = 1 + self.funcOfLCS( i-1 , j-1 , str1 , str2 , memo)
+        else:
+            memo[i][j] = max(self.funcOfLCS(i-1 , j , str1 , str2 , memo ) , self.funcOfLCS(i , j-1 , str1 , str2 , memo))
+
+        return memo[i][j]
+##*
 #42.Fibonacci#
 #42.1 Using Recursion#
 # Tc is O(2^n) , SC is O(1) #
@@ -1571,6 +1593,6 @@ class Solution(object):
             odd.next = evenhead
         return head            
 
-
+#
 
 
