@@ -1531,8 +1531,46 @@ class Solution(object):
                 curr = next 
             return prev
 
-#59.AddLL#
-# Tc is O() , Sc is O() #
+#59.AddTwoLL#
+# Tc is O(n) , Sc is O(n) #
+class Solution(object):
+    def addTwoNumbers(self, l1, l2):
+        dummy = ListNode(0)
+        temp = dummy 
+        carry = 0
+        while l1 or l2 or carry :
+            sum = carry 
+            if l1 :
+                sum += l1.val
+                l1 = l1.next
+            if l2:
+                sum += l2.val  
+                l2 = l2.next
+            carry = sum // 10
+            temp.next = ListNode(sum%10)
+            temp = temp.next 
+        return dummy.next   
+
+#60.ODDandEVENLL#
+# Tc is O(n) , Sc is O(1) #
+class Solution(object):
+    def oddEvenList(self, head):
+        if head is None :
+            return 
+        elif head.next is None :
+            return head
+        else:
+            odd = head
+            even = head.next 
+            evenhead = head.next 
+            while even and even.next :
+                    odd.next = odd.next.next 
+                    odd = odd.next 
+                    even.next = even.next.next 
+                    even = even.next 
+            odd.next = evenhead
+        return head            
+
 
 
 
