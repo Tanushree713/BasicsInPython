@@ -988,7 +988,37 @@ class Solution(object):
             memo[i][j] = max(self.funcOfLCS(i-1 , j , str1 , str2 , memo ) , self.funcOfLCS(i , j-1 , str1 , str2 , memo))
 
         return memo[i][j]
-##*
+
+##*ConvertStr1ToStr2*##
+# Tc is O(m*n) , Sc is O(m*n)
+def convertStr1ToStr2(s1: str, s2: str) -> int:
+    m = len(s1)
+    n = len(s2)
+    memo = [[None] * (n + 1) for _ in range(m + 1)]
+    lcs_length = funcOfLCS(m, n, s1, s2, memo)
+    deletions = m - lcs_length
+    insertions = n - lcs_length
+    return deletions + insertions
+
+def funcOfLCS(i, j, s1, s2, memo):
+    if memo[i][j]:
+        return memo[i][j]
+    
+    if i == 0 or j == 0:
+        return 0
+    
+    if s1[i - 1] == s2[j - 1]:
+        memo[i][j] = 1 + funcOfLCS(i - 1, j - 1, s1, s2, memo)
+    else:
+        memo[i][j] = max(funcOfLCS(i - 1, j, s1, s2, memo), funcOfLCS(i, j - 1, s1, s2, memo))
+    
+    return memo[i][j]
+
+# Input: 's1' = "abcd", 's2' = "anc"
+# Output: 3 (deletions= len(s1)-lcs_length[2 = 4-2] , insertions = len(s2)-lcs_length[1 = 3-2 ] )
+
+
+
 #42.Fibonacci#
 #42.1 Using Recursion#
 # Tc is O(2^n) , SC is O(1) #
