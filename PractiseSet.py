@@ -176,6 +176,9 @@ arr = [ 1 , 3, 5,  7 , 12 , 2]
 # print("Best Time To Sell Stock is " , result )
 
 
+##*Kadanes Algo*##
+# Tc is O(n) , Sc is O(1)#
+
 #3.MaximumProductSubArr#
 # Tc is O(n) , Sc is O(1) #
 def maxProductSubArr(arr):
@@ -589,6 +592,35 @@ result = findMaxElementInSubarrays(arr , k)
 print("The Maximum Element In SubArray of K size is ", result )
 
 
+
+##*ReplaceNonCoprimeWithLCM*##
+# Tc is O(n^2) , Sc is O(n) #
+class Solution(object):
+    def replaceNonCoprimes(self, nums):
+      n = len(nums)
+      result = []
+      nums.reverse()
+      for num in nums :
+        result.append(num)
+        while len(result) > 1  and self.gcd(result[-1], result[-2]) != 1 :
+            last = result.pop()
+            second_last = result.pop()
+            result.append(self.lcm(last , second_last))
+      return result[::-1]   
+         
+
+    def gcd(self , a , b):
+        while b!= 0:
+            a , b = b , a % b 
+        return a      
+    def lcm(self , a, b):
+        if b == 0 :
+            return a
+        return abs(a*b)//self.gcd(a, b) 
+# nums =[6,4,3,2,7,6,2]
+# Output=[12,7,6]
+
+
 #19.SpiralMatrix#
 # Tc is O(n*m) , Sc is O(n*m) #
 def spiralMatrix(arr):
@@ -947,7 +979,7 @@ def isomorphicStr(s1 , s2):
         if map_s1_to_s2[char_s1] != char_s2 or map_s2_to_s1[char_s2] != char_s1:
             return False
     return True 
-s2, t2 = "foo", "baa"
+s2, t2 = "foo", "bar"
 # print(isomorphicStr(s2, t2))  # Output: False            
 
 #40.RedistributeStr#
@@ -986,6 +1018,8 @@ string = "RLRLRLLL"
 
 
 ##*LongestCommonSubsequences*##
+
+# Using Memoization APP #
 # Tc is O(m*n) , Sc is O(m*n) #
 class Solution(object):
     def longestCommonSubsequence(self, text1, text2):
@@ -1006,30 +1040,44 @@ class Solution(object):
 
         return memo[i][j]
 
+# Using Bottom Up APP #
+# Tc is O(m*n) , Sc is O(m*n)#
+class Solution(object):
+    def longestCommonSubsequence(self, text1, text2):
+       m = len(text1) 
+       n = len(text2) 
+       dp = [[0] * (n + 1) for _ in range(m + 1)]
+       for i in range(1 , m+1):
+         for j in range(1 , n+1):
+            if text1[i-1] == text2[j-1]:
+                dp[i][j] = 1 + dp[i-1][j-1]
+            else:
+                dp[i][j] = max(dp[i-1][j] , dp[i][j-1])
+       return dp[m][n]
+
 ##*ConvertStr1ToStr2*##
 # Tc is O(m*n) , Sc is O(m*n)
 def convertStr1ToStr2(s1: str, s2: str) -> int:
     m = len(s1)
     n = len(s2)
-    memo = [[None] * (n + 1) for _ in range(m + 1)]
-    lcs_length = funcOfLCS(m-1, n-1 , s1, s2, memo)
+    lcs_length = funcOfLCS(s1 , s2)
     deletions = m - lcs_length
     insertions = n - lcs_length
     return deletions + insertions
 
-def funcOfLCS(i, j, s1, s2, memo):
-    if memo[i][j]:
-        return memo[i][j]
+def funcOfLCS(text1 , text2):
+    m = len(text1)
+    n = len(tex2)
+    dp = [[0] * (n+1) for _ in range(m+1)]
+    for i in range(1 , m+1):
+        for j in range(1 , n+1):
+            if text1[i-1] == text2[j-1]:
+                dp[i][j] = 1 + dp[i-1][j-1]
+            else:
+                dp[i][j] = max(dp[i-1][j] , dp[i][j-1])    
+    return dp[m][n]             
+
     
-    if i == 0 or j == 0:
-        return 0
-    
-    if s1[i] == s2[j]:
-        memo[i][j] = 1 + funcOfLCS(i - 1, j - 1, s1, s2, memo)
-    else:
-        memo[i][j] = max(funcOfLCS(i - 1, j, s1, s2, memo), funcOfLCS(i, j - 1, s1, s2, memo))
-    
-    return memo[i][j]
 # Input: 's1' = "abcd", 's2' = "anc"
 # Output: 3 (deletions= len(s1)-lcs_length[2 = 4-2] , insertions = len(s2)-lcs_length[1 = 3-2 ] )
 
