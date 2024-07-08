@@ -457,6 +457,7 @@ def power(a ,n):
     elif n < 0:
         n = -n
         a = 1/a
+        return power(a , n)
     else:
         mid = n//2
         b = power(a , mid)
@@ -572,6 +573,22 @@ arr = [ 1 , 1, 1 , 0 ,0 , 1, 1, 3, 1, 0]
 # result = consecutiveOnes(arr)    
 # print("The Consecutive Ones is " , result )  
 
+
+##*ToFindtheMaxElementInSubARR*##
+# Tc is O(n) , Sc is O(k) #
+def findMaxElementInSubarrays(arr , k):
+    n = len(arr)
+    result = []
+    for i in range(n-k+1):
+        max_val = max(arr[i:i+k])
+        result.append(max_val)
+    return result 
+arr = [1 ,2, 3, 4, 5, 6]   
+k = 3 #size of Subarr 
+result = findMaxElementInSubarrays(arr , k) 
+print("The Maximum Element In SubArray of K size is ", result )
+
+
 #19.SpiralMatrix#
 # Tc is O(n*m) , Sc is O(n*m) #
 def spiralMatrix(arr):
@@ -603,7 +620,7 @@ arr = [[1, 2, 3], [4, 5, 6], [7, 8, 9]]
 #20.MatrixDiagonalSum#
 # Tc is O(n) , Sc is O(1) #
 def matrixDiagonalSum(arr):
-    n = len(arr) - 1
+    n = len(arr) 
     res = 0
     for i in range(n):
         res += arr[i][i]
@@ -995,7 +1012,7 @@ def convertStr1ToStr2(s1: str, s2: str) -> int:
     m = len(s1)
     n = len(s2)
     memo = [[None] * (n + 1) for _ in range(m + 1)]
-    lcs_length = funcOfLCS(m, n, s1, s2, memo)
+    lcs_length = funcOfLCS(m-1, n-1 , s1, s2, memo)
     deletions = m - lcs_length
     insertions = n - lcs_length
     return deletions + insertions
@@ -1007,16 +1024,14 @@ def funcOfLCS(i, j, s1, s2, memo):
     if i == 0 or j == 0:
         return 0
     
-    if s1[i - 1] == s2[j - 1]:
+    if s1[i] == s2[j]:
         memo[i][j] = 1 + funcOfLCS(i - 1, j - 1, s1, s2, memo)
     else:
         memo[i][j] = max(funcOfLCS(i - 1, j, s1, s2, memo), funcOfLCS(i, j - 1, s1, s2, memo))
     
     return memo[i][j]
-
 # Input: 's1' = "abcd", 's2' = "anc"
 # Output: 3 (deletions= len(s1)-lcs_length[2 = 4-2] , insertions = len(s2)-lcs_length[1 = 3-2 ] )
-
 
 
 #42.Fibonacci#
@@ -1404,7 +1419,7 @@ class Solution(object):
 #53.MergeTwoSOrtedLL#
 
 #53.1 Using Recursion #
-# Tc is O(n) , Sc is O(n)
+# Tc is O(n) , Sc is O(1)
 def mergeSortedLL1(list1 , list2):
     temp = None
     if list1 is None:
@@ -1421,7 +1436,7 @@ def mergeSortedLL1(list1 , list2):
     return temp 
 
 #53.2 Using DummyList #
-# Tc is O(n) , Sc is O(n) #
+# Tc is O(n) , Sc is O(1) #
 class Node :
     def __init__(self , val):
         self.val = val 
