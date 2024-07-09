@@ -1708,9 +1708,47 @@ class Solution(object):
             odd.next = evenhead
         return head            
 
-#
+#61.ValidParenthesis#
+# Tc is O(n) , Sc is O(n) #
+class Solution(object):
+    def isValid(self, s):
+      stack = []
+      openParams = set(["{" , "(" , "["])
+      dictionary = {"{" : "}" ,
+                   "[" : "]" ,
+                   "(" : ")" , }
+      for char in s: 
+        if char in openParams :
+            stack.append(char)            
+        elif stack and char == dictionary[stack[-1]]:
+            stack.pop()
+        else:
+            return False    
+      return stack == []
 
+#62.MakeStrGreat#
+# Tc is O(n) , Sc is O(n) #
+class Solution(object):
+    def makeGood(self, s):
+      stack = []
+      for char in s :
+        if stack and abs(ord(char)- ord(stack[-1])) == 32 :
+            stack.pop()
+        else:
+            stack.append(char)    
+      return ''.join(stack) 
 
+#63.RemoveAllAdjacentDupli#
+# Tc is O(n) , Sc is O(n) #
+class Solution(object):
+    def removeDuplicates(self, s):
+      stack = []
+      for char in s :
+        if stack and char == stack[-1]:
+            stack.pop()
+        else:
+            stack.append(char)
+      return ''.join(stack)  
 
 
 
@@ -1737,7 +1775,7 @@ j = 3  #AtePeanutsATaTime
 leftMonkeys(n, m, p, k, j)
   
 ##CandiesSoldandLeftInJar##
-# Tc is O( ) , Sc is O() #
+# Tc is O(1) , Sc is O(1) #
 def candiesSoldandLeftInJar(N , k):
     input =  0 #candies ordered by customer 
     if input >=1 and input <= 5 :
