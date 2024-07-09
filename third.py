@@ -30,6 +30,8 @@ def ternarySearchInSortedArray(arr , i , j ,target ):
         return -1
 
 result = ternarySearchInSortedArray(arr , i , j , target)    
-print(result)                               
+# print(result)                               
                    
-    
+
+
+        

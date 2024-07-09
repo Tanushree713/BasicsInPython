@@ -589,11 +589,12 @@ def findMaxElementInSubarrays(arr , k):
 arr = [1 ,2, 3, 4, 5, 6]   
 k = 3 #size of Subarr 
 result = findMaxElementInSubarrays(arr , k) 
-print("The Maximum Element In SubArray of K size is ", result )
+# print("The Maximum Element In SubArray of K size is ", result )
 
 
 
 ##*ReplaceNonCoprimeWithLCM*##
+## Non Coprime == gcd is greater than 1 ##
 # Tc is O(n^2) , Sc is O(n) #
 class Solution(object):
     def replaceNonCoprimes(self, nums):
@@ -1282,6 +1283,27 @@ k = 9
 # result = searchInRotatedMat(arr , k)                    
 # print("Sorted Arr " , result )  
 
+
+##*SearchIndexOfFirstInfiniteInARR*##
+# Tc is O(logn) , Sc is O(1) #
+def searchInfInArr(arr):
+    inf = float('inf')
+    i = 0 
+    j = len(arr)- 1
+    while i <= j :
+        mid = i + (j-i) // 2
+        if arr[mid] != inf :
+            i = mid + 1
+        else:
+            if mid == 0 or arr[mid-1] != inf :
+                return mid
+            else:
+                j = mid - 1
+arr = [2 , 1 , -3 , 5 , 4 , float("inf") , float('inf') , float('inf')]   
+# result = searchInfInArr(arr) 
+# print("Index of First Infinite is " , result )
+
+
 #50.InsertionInLL#
 #AtFront##AtEnd##AtAnyNode#
 # Tc is O(1), O(n), O(n) # Sc is O(1), O(1) ,O(1) #
@@ -1689,3 +1711,40 @@ class Solution(object):
 #
 
 
+
+
+
+##---Extra----##
+##LeftMonkeysIntree##
+#Tc is O(1) , Sc is O(1)#
+def leftMonkeys(n, m, p, k, j):
+    atePeanuts = j
+    ateBananas = k 
+    if n<0 or m<0 or p<0 or k<0 or j<0 :
+        print('Invalid Input')
+    else:
+        ateBananas = m // k
+        atePeanuts = m // j
+        n = n - (atePeanuts + ateBananas)  #return Monkeys Left In Tree
+        print("left Monkeys on tree ", n) 
+        
+
+n = 20 # Total Monkeys 
+m = 12 # Number of banana
+p = 12 #Number of Peanuts
+k = 2  #AteBananaATaTime
+j = 3  #AtePeanutsATaTime
+leftMonkeys(n, m, p, k, j)
+  
+##CandiesSoldandLeftInJar##
+# Tc is O( ) , Sc is O() #
+def candiesSoldandLeftInJar(N , k):
+    input =  0 #candies ordered by customer 
+    if input >=1 and input <= 5 :
+        print("num of Candies sold" , input)
+        print("Num of left Candies" , N-input)
+    else:
+        print("INVALID INPUT")
+        print("Num of left Cnadies " , N) 
+N , K = 10 , 5
+result = candiesSoldandLeftInJar(N , K)        
