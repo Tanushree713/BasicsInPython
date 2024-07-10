@@ -1770,7 +1770,55 @@ class Solution(object):
             stack.append(char)
       return ''.join(stack)  
 
-#64.
+
+#64.ImplementQueueUsingStack#
+# Tc is O(n) ,Sc is O(n) #
+class MyQueue(object):
+
+    def __init__(self):
+        self.stack1 =[]
+        self.stack2 = []
+        self.front = 0      
+           
+    def push(self, x):
+        if not self.stack1 :
+            self.front = x    
+        self.stack1.append(x)
+    def pop(self):
+        if not self.stack2:
+            while self.stack1 :
+                self.stack2.append(self.stack1.pop())
+        return self.stack2.pop()        
+    def peek(self):
+        if self.stack2 :
+            return self.stack2.peek()
+        return self.front    
+    def empty(self):
+        return not self.stack1 and not self.stack2
+
+
+#65.ImplementStackUsingQueue#
+# Tc is O(n) , Sc is O(n) #
+from collections import deque
+class MyStack :
+    def __init__(self):
+      self.q = deque()
+    def push(self , x):
+        self.q.append(x)
+    def pop(self):
+        for i in range(len(self.q)-1):
+            self.q.append(self.q.popleft())
+        return self.q.popleft()    
+    def top(self):
+        if self.q :
+            return self.q[-1]
+    def empty(self):
+        return not self.q
+
+
+#66.OnlineStocks#
+# Tc is O() , Sc is O() #
+
 
 ##*ReverseArrayUsingStack*##
 # Time Complexity is O(2n) , Space Complexity is O(2n) #

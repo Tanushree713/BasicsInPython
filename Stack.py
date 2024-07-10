@@ -81,10 +81,10 @@ class MyQueue(object):
         se;f.front = 0 
     # Time Complexity is O(1) , Space Complexity is O(n)
     def push(self , x) :
-        if self.stack1:
-            self.stack1.append(x)
+        if not self.stack1:
+            self.front = x
         else:    
-            self.front = x   
+            self.stack1.append(x)
     # Time Complexity is O(n) , Space Complexity is O(2n)
     def pop(self):
         if not self.stack2 :
@@ -108,7 +108,7 @@ class MyQueue(object):
 # Time Complexity is O(n) , Space Complexity is O(n)
 class MyStack() :
     def __init__(self):
-        self.q = deque
+        self.q = deque()
     # Time Complexity is O(n) , Space Complexity is O(n)
     def push(self , x):
         self.q.append(x)
