@@ -178,6 +178,26 @@ arr = [ 1 , 3, 5,  7 , 12 , 2]
 
 ##*Kadanes Algo*##
 # Tc is O(n) , Sc is O(1)#
+def maxSumSubArr(arr):
+    currSum = 0
+    maxSum = float("-inf")
+    n = len(arr)
+    start = 0
+    end = 0
+    tempInd = 0 
+    for i in range(n):
+        currSum += arr[i]
+        if currSum < 0 :
+            currSum = 0
+            tempInd = i+1
+        elif currSum > maxSum :
+            maxSum = currSum
+            start = tempInd 
+            end = i
+    return (maxSum , arr[start:end+1])            
+arr = [1 , 2, 3, 4, 5]
+result = maxSumSubArr(arr)
+print("Maximum Sum SubARR" , result )
 
 #3.MaximumProductSubArr#
 # Tc is O(n) , Sc is O(1) #
@@ -1750,6 +1770,22 @@ class Solution(object):
             stack.append(char)
       return ''.join(stack)  
 
+#64.
+
+##*ReverseArrayUsingStack*##
+# Time Complexity is O(2n) , Space Complexity is O(2n) #
+def reversedArr(arr) :
+    stack = []
+    result = []
+    for i in range( len(arr)):
+        stack.append(arr[i])
+    while stack:
+        result.append(stack.pop())  
+
+    return result  
+arr = [5 , 4, 3, 2, 1]     
+resultant = reversedArr(arr)
+print(resultant)     
 
 
 ##---Extra----##
