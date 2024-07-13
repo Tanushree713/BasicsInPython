@@ -197,7 +197,7 @@ def maxSumSubArr(arr):
     return (maxSum , arr[start:end+1])            
 arr = [1 , 2, 3, 4, 5]
 result = maxSumSubArr(arr)
-print("Maximum Sum SubARR" , result )
+# print("Maximum Sum SubARR" , result )
 
 #3.MaximumProductSubArr#
 # Tc is O(n) , Sc is O(1) #
@@ -1830,7 +1830,63 @@ class StockSpanner(object):
         return span 
 
 
-#67.
+#67.TimeNeededToBuyTickets#
+# Tc is O(n*max(tickets)) , Sc is O(n) #
+from collections import deque
+class Solution(object):
+    def timeRequiredToBuy(self, tickets, k):
+       time = 0
+       q = deque(range(len(tickets)))
+       while q :
+         indx = q.popleft()
+         tickets[indx] -= 1
+         time += 1
+         if tickets[indx] > 0 :
+            q.append(indx)
+         if tickets[indx] == 0 and indx ==k :
+            break 
+       return time      
+
+#68.ProductsOfLastKNum#
+# Tc is O(n) , Sc is O(n) #
+from collections import deque
+class ProductOfNumbers(object):
+    def __init__(self):
+        self.q = deque([1])
+        self.product = 1
+    def add(self, num):
+        if not num :
+            self.q = [1]
+            self.product = 1
+        else:
+            self.product *= num
+            self.q.append(self.product)        
+    def getProduct(self, k):
+        if k >= len(self.q):
+            return 0 
+        else:
+            return self.product//self.q[-k-1]    
+
+
+ #TopKFrequentEle#
+ # Tc is O(n) , Sc is O(n) #
+from collections import Counter
+import heapq
+def topKfrequentEle(nums , k):
+    if k >= len(nums):
+        return set(nums)
+    else:
+        count = Counter(nums) 
+        return heapq.nlargest(k , count.keys() , key = count.get)
+nums = [ 2, 2 , 3, 3, 3 ,4, 5]
+k = 2    
+result = topKfrequentEle(nums , k)
+# print("Top K Frequent Elem " , result )
+
+
+#KthClosestEle#
+# Tc is O() , Sc is O() #
+
 
 ##*ReverseArrayUsingStack*##
 # Time Complexity is O(2n) , Space Complexity is O(2n) #
@@ -1845,7 +1901,7 @@ def reversedArr(arr) :
     return result  
 arr = [5 , 4, 3, 2, 1]     
 resultant = reversedArr(arr)
-print(resultant)     
+# print(resultant)     
 
 
 ##---Extra----##
@@ -1858,7 +1914,7 @@ def leftMonkeys(n, m, p, k, j):
         print('Invalid Input')
     else:
         ateBananas = m // k
-        atePeanuts = m // j
+        atePeanuts = p // j
         n = n - (atePeanuts + ateBananas)  #return Monkeys Left In Tree
         print("left Monkeys on tree ", n) 
         
@@ -1868,7 +1924,7 @@ m = 12 # Number of banana
 p = 12 #Number of Peanuts
 k = 2  #AteBananaATaTime
 j = 3  #AtePeanutsATaTime
-leftMonkeys(n, m, p, k, j)
+# leftMonkeys(n, m, p, k, j)
   
 ##CandiesSoldandLeftInJar##
 # Tc is O(1) , Sc is O(1) #
@@ -1881,4 +1937,4 @@ def candiesSoldandLeftInJar(N , k):
         print("INVALID INPUT")
         print("Num of left Cnadies " , N) 
 N , K = 10 , 5
-result = candiesSoldandLeftInJar(N , K)        
+# result = candiesSoldandLeftInJar(N , K)        

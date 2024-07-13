@@ -1493,9 +1493,11 @@ def timeToBuyTickets2(self , tickets , k ):
          index = queue.popleft()
          tickets[index] -= 1
          time += 1
+         if tickets[index] > 0 :
+            queue.append(index)
          if tickets[index] == 0 and i == k :
             break 
-         queue.append(index)  
+         
     return time      
 
 

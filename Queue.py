@@ -25,11 +25,10 @@ class Solution(object):
             index = q.popleft()
             tickets[index]-= 1
             time += 1
-
+            if tickets[index] > 0 :
+                q.append(index)
             if tickets[index] == 0 and index == k :
                 break 
-            q.append(index)
-
         return time 
 queue = [  2, 3, 2] 
 k = 2           
