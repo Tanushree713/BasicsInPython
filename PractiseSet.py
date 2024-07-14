@@ -1774,7 +1774,6 @@ class Solution(object):
 #64.ImplementQueueUsingStack#
 # Tc is O(n) ,Sc is O(n) #
 class MyQueue(object):
-
     def __init__(self):
         self.stack1 =[]
         self.stack2 = []
@@ -1829,6 +1828,21 @@ class StockSpanner(object):
         self.stack.append((price , span))    
         return span 
 
+##*ReverseArrayUsingStack*##
+# Time Complexity is O(2n) , Space Complexity is O(2n) #
+def reversedArr(arr) :
+    stack = []
+    result = []
+    for i in range( len(arr)):
+        stack.append(arr[i])
+    while stack:
+        result.append(stack.pop())  
+
+    return result  
+arr = [5 , 4, 3, 2, 1]     
+resultant = reversedArr(arr)
+# print(resultant)     
+
 
 #67.TimeNeededToBuyTickets#
 # Tc is O(n*max(tickets)) , Sc is O(n) #
@@ -1868,7 +1882,7 @@ class ProductOfNumbers(object):
             return self.product//self.q[-k-1]    
 
 
- #TopKFrequentEle#
+ #69.TopKFrequentEle#
  # Tc is O(n) , Sc is O(n) #
 from collections import Counter
 import heapq
@@ -1884,24 +1898,79 @@ result = topKfrequentEle(nums , k)
 # print("Top K Frequent Elem " , result )
 
 
-#KthClosestEle#
-# Tc is O() , Sc is O() #
+#70.KthClosestEle#
+# Tc is O(nlogk) , Sc is O(n) #
+from heapq import heappop , heappush 
+def kthClosestEle(arr , k , x):
+    n = len(arr)
+    maxHeap = []
+    for i in range(n):
+        heappush(maxHeap , (abs(arr[i]- x), arr[i]))
+    result = 0
+    for i in range(k):
+        result = (heappop(maxHeap)[1] )  
+    return result 
+arr = [2, 4, 5 ,6 , 8]
+k = 3
+x =  2       
+resultant = kthClosestEle(arr , k , x)
+# print("KthClosest Ele " , resultant)
 
 
-##*ReverseArrayUsingStack*##
-# Time Complexity is O(2n) , Space Complexity is O(2n) #
-def reversedArr(arr) :
-    stack = []
+#71.KthClosestPoints#
+# Tc is O(nlogn) , Sc is O(n+k) #
+import math
+from heapq import heappush , heappop
+def getDistance(x , y ):
+    return math.sqrt(x**2 + y**2)
+def kthClosestPoints(points , k):
     result = []
-    for i in range( len(arr)):
-        stack.append(arr[i])
-    while stack:
-        result.append(stack.pop())  
+    maxHeap = []
+    for i in range(len(points)):
+        x = points[i][0]
+        y = points[i][1]
+        heappush(maxHeap , (getDistance(x , y ), points[i]))
+    for i in range(k):
+        result.append(heappop(maxHeap)[1])   
+    return result 
+points = [(1 , 2) , (3, 4) , (5, 6)]
+k = 2    
+resultant = kthClosestPoints(points , k )
+# print("Kth Closest Points ", resultant )
 
-    return result  
-arr = [5 , 4, 3, 2, 1]     
-resultant = reversedArr(arr)
-# print(resultant)     
+
+#72.kthSmallestPositiveNum#
+# Tc is O(n) , Sc is O(n) #
+def kthSmallestPositiveNum(nums):
+    numset = set()
+    for num in nums :
+        if num > 0 :
+            numset.add(num)
+    for i in range(1 , len(nums) + 2):
+        if i not in numset:
+            return i     
+nums = [1 , 2, 3, 4, 5, 6]
+resultant = kthSmallestPositiveNum(nums)
+# print("KthSmallest Positive Nums" , resultant)                
+
+
+#**KthMissingInsortedARR**#
+# Tc is O(n) , Sc is O(1) #
+def KthMissingInsortedARR(nums , k):
+    for num in nums :
+        if num <= k :
+            k += 1
+        else:    
+            break
+    return k   
+
+nums = [1 , 3, 5, 7, 10]
+k= 4
+resultant  = KthMissingInsortedARR(nums , k )
+print("kth Missing In sorted Arr" , resultant )
+
+
+
 
 
 ##---Extra----##
