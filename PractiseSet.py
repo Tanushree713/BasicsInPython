@@ -1994,8 +1994,49 @@ def commonEleInThreeSortedArr(arr1 , arr2 , arr3):
 arr1 = [1, 5, 10, 20, 40, 80]
 arr2 = [6, 7, 20, 80, 100]
 arr3 =[ 3, 4, 15, 20, 30, 70, 80, 120]
-result = commonEleInThreeSortedArr(arr1 , arr2 , arr3 )
-print("Common Elements In three Sorted Arr " , result )                                 
+# result = commonEleInThreeSortedArr(arr1 , arr2 , arr3 )
+# print("Common Elements In three Sorted Arr " , result )                                 
+
+
+#74.InversionOfAnArr#
+# Tc is O(nlogn) , Sc is O(n) #
+def inversionOfAnArr(arr , p , q):
+    __ , inv_count = mergeSort(arr , p , q)
+    return inv_count
+def mergeSort(arr , p , q):
+    if p < q:
+        mid = p + (q-p) // 2
+        leftArr, leftCnt  = mergeSort(arr , p , mid)
+        rightArr, rightCnt = mergeSort(arr , mid+1 , q)
+        mergeArr , mergedCnt = merged(leftArr , rightArr)
+        return mergeArr , leftCnt + rightCnt + mergedCnt 
+    else:
+        return [arr[p]] , 0
+
+def merged(left , right ):
+    i = 0 
+    j = 0
+    count = 0 
+    result = []
+    while i < len(left) and j < len(right):
+        if left[i] <= right[j]:
+            result.append(left[i])
+            i += 1
+        else:
+            result.append(right[j])
+            count += len(left) - i 
+            j += 1
+    result.extend(left[i:])
+    result.extend(right[j:])
+    return result , count
+
+nums = [ 2 , 4, 1, 3, 5]
+p = 0
+q = len(nums) - 1
+getInvCount = inversionOfAnArr(nums , p , q)
+print("Number of inversions To sort the Array" , getInvCount)  
+
+
 
 
 
