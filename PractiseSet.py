@@ -1967,9 +1967,35 @@ def KthMissingInsortedARR(nums , k):
 nums = [1 , 3, 5, 7, 10]
 k= 4
 resultant  = KthMissingInsortedARR(nums , k )
-print("kth Missing In sorted Arr" , resultant )
+# print("kth Missing In sorted Arr" , resultant )
 
 
+#73.CommonEleInThreesortedArr#
+# Tc is O(n) , Sc is O(k) #
+def commonEleInThreeSortedArr(arr1 , arr2 , arr3):
+    n1 = len(arr1)-1
+    n2 = len(arr2)-1
+    n3 = len(arr3)-1
+    i, j , k = 0 , 0 , 0
+    common = []
+    while i <n1 and j < n2 and k < n3 :
+        if arr1[i] == arr2[j] and arr2[j] == arr3[k]:
+            common.append(arr1[i])
+            i += 1
+            j += 1
+            k += 1
+        elif arr1[i] <arr2[j] :
+            i += 1
+        elif arr2[j] < arr3[k] :
+            j += 1
+        else:
+            k += 1
+    return common 
+arr1 = [1, 5, 10, 20, 40, 80]
+arr2 = [6, 7, 20, 80, 100]
+arr3 =[ 3, 4, 15, 20, 30, 70, 80, 120]
+result = commonEleInThreeSortedArr(arr1 , arr2 , arr3 )
+print("Common Elements In three Sorted Arr " , result )                                 
 
 
 
