@@ -26,3 +26,28 @@ result = searchInSortedArray(matrix , target)
 print(result)
 
 
+
+# def playerGame1(coins):
+#     p1 = 0
+#     p2 = 0 
+#     for coin in coins :
+#         if coin == 1:
+#             p2 += 1 
+#         else:    
+#             p2 -= 1   
+#     if p1 > p2 :
+#         return 0 
+#     for i in range(len(coins)):
+#         if coins[i] == 1:
+#             p1 += 1
+#         else:
+#              p2 += 1
+#     if p1 > p2 :
+#         return i + 1
+    
+#     return len(coins)  
+# coins = [1 , 1, 0 , 1]    
+# result = playerGame(coins)   
+# print(result )    
+
+

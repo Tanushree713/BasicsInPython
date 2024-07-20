@@ -612,7 +612,6 @@ result = findMaxElementInSubarrays(arr , k)
 # print("The Maximum Element In SubArray of K size is ", result )
 
 
-
 ##*ReplaceNonCoprimeWithLCM*##
 ## Non Coprime == gcd is greater than 1 ##
 # Tc is O(n^2) , Sc is O(n) #
@@ -640,6 +639,25 @@ class Solution(object):
         return abs(a*b)//self.gcd(a, b) 
 # nums =[6,4,3,2,7,6,2]
 # Output=[12,7,6]
+
+
+##*ClosestNumInUnsortedARR*##
+# Tc is O(n^2) , Sc is O(1) #
+def closestNumInArr(arr , k):
+    arr.sort()
+    n = len(arr)
+    maxHeap = float('inf')
+    for i in range(n):
+        for j in range(i+1 , n):
+            if abs(arr[i] - arr[j]) <= maxHeap :
+                maxHeap = abs(arr[i] - arr[j])
+                print(arr[i] , arr[j])
+    if maxHeap == float('inf') :
+        print("None")
+arr = [2, 3 , 4 ,6]
+k = 0
+resultant = closestNumInArr(arr , k)                 
+
 
 
 #19.SpiralMatrix#
@@ -1098,9 +1116,28 @@ def funcOfLCS(text1 , text2):
                 dp[i][j] = max(dp[i-1][j] , dp[i][j-1])    
     return dp[m][n]             
 
-    
 # Input: 's1' = "abcd", 's2' = "anc"
 # Output: 3 (deletions= len(s1)-lcs_length[2 = 4-2] , insertions = len(s2)-lcs_length[1 = 3-2 ] )
+
+
+##*FindInsertionsForBalancingParanthesis*##
+# Tc is O(n) , SC is O(1) #
+def findInsertionToBalanceParan(s):
+    insertions = 0 
+    balance = 0 
+    for i in range(len(s)):
+        if s[i] == '(':
+            balance += 1
+        elif s[i] == ')':
+            balance -= 1
+        if balance < 0 :
+            insertions += 1
+            balance = 0 
+    insertions += balance 
+    return insertions  
+s = '())))'
+result = findInsertionToBalanceParan(s)
+print("Insertions To Balance paranthesis ",result) 
 
 
 #42.Fibonacci#
@@ -1116,6 +1153,7 @@ def fibonacci1(n):
 n =  3        
 # result = fibonacci1(n)
 # print("Fibonacci Num" , result)
+
 
 #42.2 Using DP#
 
@@ -2034,7 +2072,7 @@ nums = [ 2 , 4, 1, 3, 5]
 p = 0
 q = len(nums) - 1
 getInvCount = inversionOfAnArr(nums , p , q)
-print("Number of inversions To sort the Array" , getInvCount)  
+# print("Number of inversions To sort the Array" , getInvCount)  
 
 
 
