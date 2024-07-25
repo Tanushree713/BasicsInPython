@@ -656,7 +656,7 @@ def closestNumInArr(arr , k):
         print("None")
 arr = [2, 3 , 4 ,6]
 k = 0
-resultant = closestNumInArr(arr , k)                 
+# resultant = closestNumInArr(arr , k)                 
 
 
 
@@ -1137,7 +1137,7 @@ def findInsertionToBalanceParan(s):
     return insertions  
 s = '())))'
 result = findInsertionToBalanceParan(s)
-print("Insertions To Balance paranthesis ",result) 
+# print("Insertions To Balance paranthesis ",result) 
 
 
 #42.Fibonacci#
@@ -2112,3 +2112,54 @@ def candiesSoldandLeftInJar(N , k):
         print("Num of left Cnadies " , N) 
 N , K = 10 , 5
 # result = candiesSoldandLeftInJar(N , K)        
+
+
+##*PATTERNS*##
+#1.* * * *
+#  * * * *
+#  * * * *
+#  * * * *
+def pattern1(n):
+    pat = ""
+    for i in range(n):
+        for j in range(n):
+            pat += " * "
+        pat += "\n"
+    return pat
+# n = int(input("Enter Nums"))        
+# result = pattern1(n)
+# print(result)
+
+#2. *
+#   * *
+#   * * *
+#   * * * *
+def pattern2(n):
+    pat = ''
+    for i in range(n):
+        for j in range(i+1):
+            pat += " * "
+        pat += "\n"    
+    return pat
+n = int(input("Enter Nums"))        
+result = pattern2(n)
+print(result)
+
+#3. * * * * *
+#   * * * *
+#   * * * 
+#   * *
+#   *
+
+#4. * * * * *
+#    * * * *
+#     * * *
+#      * * 
+#       *
+
+
+#5.    *
+#     * *
+#    * * *
+#   * * * *
+#  * * * * *
