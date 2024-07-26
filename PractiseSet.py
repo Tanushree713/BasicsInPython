@@ -1,3 +1,13 @@
+## INPUTS IN PYTHON ##
+#1. Single Inputs >> 
+#   raw_input() OR input() OR int(input())
+#2. Mutiple Space Separated
+#   map(input().split())  OR map(int , input().split()) OR map(raw_input().split())
+#3. List (ARRAY)>>
+# list(map(int , input().split())) OR map(int , raw_input().split(','))
+
+
+
 ##Sorting Algo's##
 #1. BubbleSort# 
 # Tc is O(n^2), Sc is O(1)
@@ -657,6 +667,39 @@ def closestNumInArr(arr , k):
 arr = [2, 3 , 4 ,6]
 k = 0
 # resultant = closestNumInArr(arr , k)                 
+
+
+##*BenchPress*##(CODECHEF)
+# Tc is O(nlogn) , Sc is O(1) #
+def benchPress(n , r , w_rod , arr):
+    totalSum = w_rod
+    arr.sort()
+    i = 0
+    while i < n-1 :
+        if arr[i] == arr[i+1]:
+            totalSum += 2*arr[i]
+            i += 2
+        else:
+            i += 1    
+    if totalSum >= r:
+        print("YES")
+    else:
+        print("NO")    
+testCase = int(input("Enter No. of Tests :"))
+while testCase :
+    testCase -= 1
+    numweights , requiredWeight , rodWeight = map(int , input().split() )
+    arr = list(map(int , input().split()))
+    benchPress(numweights , requiredWeight , rodWeight , arr )     
+
+#Inputs>> 
+# no. of weights - 6 
+# requiredWeight - 100
+# Rodweight - 40 
+# avaialbleWeightBits = 10, 10, 10, 10, 10, 10
+#Outputs>>
+#YES (left side>> 30(10, 10 , 10) And right side>> 30(10, 10, 10) : RIGHT CONFIG )
+
 
 
 
@@ -2202,3 +2245,5 @@ def pattern5(n):
 # n = int(input("Enter Nums"))        
 # result = pattern5(n)
 # print(result)            
+
+  
