@@ -2141,25 +2141,64 @@ def pattern2(n):
             pat += " * "
         pat += "\n"    
     return pat
-n = int(input("Enter Nums"))        
-result = pattern2(n)
-print(result)
+# n = int(input("Enter Nums"))        
+# result = pattern2(n)
+# print(result)
 
 #3. * * * * *
 #   * * * *
 #   * * * 
 #   * *
 #   *
+def pattern3(n):
+    pat =''
+    for i in range(n):
+        for j in range(n-i):
+            pat += " * "
+        pat += '\n'
+    return pat          
+# n = int(input("Enter Nums"))        
+# result = pattern3(n)
+# print(result)
 
-#4. * * * * *
-#    * * * *
-#     * * *
-#      * * 
-#       *
+#4. 
+# *********
+#  ******* 
+#   *****  
+#    ***   
+#     *  
+def pattern4(n):
+    pat = ""
+    for i in range(n):
+        for j in range(i):
+            pat += " "
+        for j in range(2*n - (2*i+1) ) :
+            pat += "*"
+        for j in range(i):
+            pat += " "
+        pat += "\n"
+    return pat 
+# n = int(input("Enter Nums"))        
+# result = pattern4(n)
+# print(result)                 
 
-
-#5.    *
-#     * *
-#    * * *
-#   * * * *
-#  * * * * *
+#5.
+#     *    
+#    ***   
+#   *****  
+#  ******* 
+# *********
+def pattern5(n):
+    pat = ''
+    for i in range(n) :
+        for j in range(n-i-1):
+            pat += " "
+        for j in range(2*i+1):
+            pat += "*"    
+        for j in range(n-i-1):
+            pat += " "
+        pat += '\n'    
+    return pat        
+# n = int(input("Enter Nums"))        
+# result = pattern5(n)
+# print(result)            
