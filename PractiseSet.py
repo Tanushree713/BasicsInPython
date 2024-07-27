@@ -685,12 +685,13 @@ def benchPress(n , r , w_rod , arr):
         print("YES")
     else:
         print("NO")    
-testCase = int(input("Enter No. of Tests :"))
-while testCase :
-    testCase -= 1
-    numweights , requiredWeight , rodWeight = map(int , input().split() )
-    arr = list(map(int , input().split()))
-    benchPress(numweights , requiredWeight , rodWeight , arr )     
+# testCase = int(input("Enter No. of Tests :"))
+# while testCase :
+#     testCase -= 1
+#     numweights , requiredWeight , rodWeight = map(int , input().split() )
+#     arr = list(map(int , input().split()))
+    # benchPress(numweights , requiredWeight , rodWeight , arr )     
+
 
 #Inputs>> 
 # no. of weights - 6 
@@ -2156,6 +2157,32 @@ def candiesSoldandLeftInJar(N , k):
 N , K = 10 , 5
 # result = candiesSoldandLeftInJar(N , K)        
 
+##*ARMSTRONG_NUM*##
+# Tc is O(n) , Sc is O(1) #
+import math
+def numPower(n):
+    return math.pow(n , 3)
+def armstrongNum(n):
+    originalNum = n
+    result = 0 
+    while n > 0 :
+        lastDigit = n % 10 
+        cubeNum = numPower(lastDigit)
+        result += cubeNum 
+        n = n//10
+    if result == originalNum:
+        return True
+    else:
+        return False
+n = 153       
+result = armstrongNum(n)
+print("Is Armstrong Num ", result)
+
+##*PythagoreanTriplet*##
+# Tc is O(n) , Sc is O(1) #
+def PythagoreanTriplet(a , b , c):
+    a , b , c = sorted([a , b , c])
+    return a**2 + b**2 == c**2
 
 ##*PATTERNS*##
 #1.* * * *
@@ -2246,4 +2273,4 @@ def pattern5(n):
 # result = pattern5(n)
 # print(result)            
 
-  
+ 
