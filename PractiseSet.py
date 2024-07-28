@@ -230,6 +230,38 @@ arr = [2 , 3 , -4, -1 , 0 , 7 , 2]
 # result = maxProductSubArr(arr)
 # print("Max Product SubArr " , result )
 
+##*NumberOfRoomsHavingGoldCoins*##
+# Tc is O(n^2) , Sc is O(k) #
+def startAndEndOfRoom(N , K , coins):
+    start , end , currSum = 0 , 0 , 0 
+    result_start , result_end = 0 , float('inf')
+    while end < N :
+        currSum += coins[end]
+        while currSum  > K :
+            currSum  -= coins[start]
+            start += 1
+        if currSum == K :
+            if end - start < result_end - result_start :
+                result_start , result_end  = start , end 
+        end += 1
+    if result_end == float('inf') :
+        return "No Solution"
+    else:
+        return result_start + 1, result_end + 1    
+
+N = int(input("Enter rooms"))
+K = int(input("Enter coins "))
+coins = list(map(int , input("No. of coins in Room").split()))
+result = startAndEndOfRoom(N , K , coins)
+print("No. of Rooms start and End ", result )
+#Input>>
+#No.of Rooms >> N - 10
+#No. Of coins in Room >> array - 5 3 7 14 18 1 18 4 8 3
+#No.of coins Needed To collect >> K - 15
+#Output>>
+# Index of start and end of Room  >> 1 3
+
+
 
 #4.TripletSum#
 # Tc is O(n^2) , Sc is O(k) #
@@ -2156,6 +2188,7 @@ def candiesSoldandLeftInJar(N , k):
         print("Num of left Cnadies " , N) 
 N , K = 10 , 5
 # result = candiesSoldandLeftInJar(N , K)        
+
 
 ##*ARMSTRONG_NUM*##
 # Tc is O(n) , Sc is O(1) #
