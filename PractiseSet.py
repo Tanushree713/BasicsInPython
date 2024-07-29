@@ -249,11 +249,11 @@ def startAndEndOfRoom(N , K , coins):
     else:
         return result_start + 1, result_end + 1    
 
-N = int(input("Enter rooms"))
-K = int(input("Enter coins "))
-coins = list(map(int , input("No. of coins in Room").split()))
-result = startAndEndOfRoom(N , K , coins)
-print("No. of Rooms start and End ", result )
+# N = int(input("Enter rooms"))
+# K = int(input("Enter coins "))
+# coins = list(map(int , input("No. of coins in Room").split()))
+# result = startAndEndOfRoom(N , K , coins)
+# print("No. of Rooms start and End ", result )
 #Input>>
 #No.of Rooms >> N - 10
 #No. Of coins in Room >> array - 5 3 7 14 18 1 18 4 8 3
@@ -734,7 +734,22 @@ def benchPress(n , r , w_rod , arr):
 #YES (left side>> 30(10, 10 , 10) And right side>> 30(10, 10, 10) : RIGHT CONFIG )
 
 
-
+##*PutsZeroesAtTheEndOfArray*##
+# Tc is O(n) , Sc is O(n) #
+def putsZeroesAtTheEndOfArray(arr):
+    nonZero = []
+    zero = 0
+    for i in range(len(arr)):
+        if arr[i] != 0 :
+            nonZero.append(arr[i])
+        else:
+            zero +=  1   
+    nonZero.extend([0] * zero)
+    return nonZero
+arr = [4, 0 , 1, 0 , 3, 0]
+result = putsZeroesAtTheEndOfArray(arr) 
+print("Zeroes At End" , result )              
+            
 
 #19.SpiralMatrix#
 # Tc is O(n*m) , Sc is O(n*m) #
@@ -1214,6 +1229,27 @@ def findInsertionToBalanceParan(s):
 s = '())))'
 result = findInsertionToBalanceParan(s)
 # print("Insertions To Balance paranthesis ",result) 
+
+##*EncryptTheString*##
+# Tc is O(n) , Sc is O(n) #
+def encryptTheString(mapping , string):
+    if not string.islower() or ' ' in string :
+        return "Invalid Input" 
+    encrypt_str = ''
+    for char in string :
+        encrypt_str += mapping[char]
+    return encrypt_str
+mapping = {
+        'a': 'f', 'b': 'g', 'c': 'h', 'd': 'i', 'e': 'j', 'f': 'k',
+        'g': 'l', 'h': 'm', 'i': 'n', 'j': 'o', 'k': 'p', 'l': 'q',
+        'm': 'r', 'n': 's', 'o': 't', 'p': 'u', 'q': 'v', 'r': 'w',
+        's': 'x', 't': 'y', 'u': 'z', 'v': 'a', 'w': 'b', 'x': 'c',
+        'y': 'd', 'z': 'e'
+}  
+string = "helloworld"
+result = encryptTheString(mapping , string)
+print("Encrypted String is" , result )
+
 
 
 #42.Fibonacci#
@@ -2209,7 +2245,8 @@ def armstrongNum(n):
         return False
 n = 153       
 result = armstrongNum(n)
-print("Is Armstrong Num ", result)
+# print("Is Armstrong Num ", result)
+
 
 ##*PythagoreanTriplet*##
 # Tc is O(n) , Sc is O(1) #
