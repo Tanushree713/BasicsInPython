@@ -748,7 +748,7 @@ def putsZeroesAtTheEndOfArray(arr):
     return nonZero
 arr = [4, 0 , 1, 0 , 3, 0]
 result = putsZeroesAtTheEndOfArray(arr) 
-print("Zeroes At End" , result )              
+# print("Zeroes At End" , result )              
             
 
 #19.SpiralMatrix#
@@ -1248,7 +1248,7 @@ mapping = {
 }  
 string = "helloworld"
 result = encryptTheString(mapping , string)
-print("Encrypted String is" , result )
+# print("Encrypted String is" , result )
 
 
 
@@ -1385,6 +1385,24 @@ resultant = list(set(result))
 resultant.sort()
 # for r in resultant:
 #     print(r , end = " ")
+
+##*TogglingBits*##
+# Tc is O(n) , Sc is O(1) #
+import math
+def toggleBits(n):
+    index = 0 
+    ans = 0 
+    while n > 0 :
+        if n & 1 == 0 :
+            ans += math.pow(2 , index)         
+        index += 1
+        n = n // 2 
+    return int(ans) 
+n = 10 
+result = toggleBits(n)
+print("Toggled Bits Give ", result )
+#Inputs - n = 10 (1010)
+# Output - 5  (onToglling gets 0101 == 5)
 
 
 #47.SearchIn2DMatrix #
