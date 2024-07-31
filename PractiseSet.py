@@ -751,9 +751,8 @@ result = putsZeroesAtTheEndOfArray(arr)
 # print("Zeroes At End" , result )              
 
 
-
 ##*CountElementsGreaterThanPreviousElements*##
-# Tc is O() , Sc is O() #
+# Tc is O(n) , Sc is O(1) #
 def countEle(arr):
     n = len(arr)
     i = 0 
@@ -768,7 +767,24 @@ result = countEle(arr)
 print("Count of Elements Greater than Previous Ele" , result )  
 
 
-##*
+##*CountSundayGivenWeekDays*##
+# Tc is O(n) , Sc is O(1) #
+def countSunday(startDay , n):
+    weekDays = ["Mon" , "Tues" , "Wednes", "Thurs" , "Fri" , "Satur" , "Sun"]
+    indexOfStartDay = weekDays.index(startDay)
+    indexOfSunDay = 6
+    remainingDays = (indexOfSunDay - indexOfStartDay) % 7
+    if n < remainingDays :
+       return "Not Possible"
+    days =  n - remainingDays   
+    count = 1 + (days // 7)
+    return count    
+start_day = 'Wednes'
+total_days = 30
+sundays = countSunday(start_day, total_days)
+print("Number of Sundays", sundays)        
+
+
 
 #19.SpiralMatrix#
 # Tc is O(n*m) , Sc is O(n*m) #
