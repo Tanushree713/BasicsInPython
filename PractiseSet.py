@@ -749,7 +749,26 @@ def putsZeroesAtTheEndOfArray(arr):
 arr = [4, 0 , 1, 0 , 3, 0]
 result = putsZeroesAtTheEndOfArray(arr) 
 # print("Zeroes At End" , result )              
-            
+
+
+
+##*CountElementsGreaterThanPreviousElements*##
+# Tc is O() , Sc is O() #
+def countEle(arr):
+    n = len(arr)
+    i = 0 
+    count = 1
+    while i < n-1 :
+        if arr[i] < arr[i+1]:
+            count += 1
+        i += 1
+    return count 
+arr = [ 7 , 4, 8 , 2, 9] 
+result = countEle(arr)     
+print("Count of Elements Greater than Previous Ele" , result )  
+
+
+##*
 
 #19.SpiralMatrix#
 # Tc is O(n*m) , Sc is O(n*m) #
@@ -1400,7 +1419,7 @@ def toggleBits(n):
     return int(ans) 
 n = 10 
 result = toggleBits(n)
-print("Toggled Bits Give ", result )
+# print("Toggled Bits Give ", result )
 #Inputs - n = 10 (1010)
 # Output - 5  (onToglling gets 0101 == 5)
 
