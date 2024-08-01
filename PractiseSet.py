@@ -1286,6 +1286,34 @@ result = encryptTheString(mapping , string)
 # print("Encrypted String is" , result )
 
 
+##*CountAqua*##
+# Tc is O(n) , Sc is O(1) #
+def countAqua(string , l):
+    n = len(string)
+    countA = 0 
+    maxi = 0 
+    for i in range(n):
+        if (i % l == 0 ):
+            if maxi < countA :
+                maxi = countA
+            countA = 0 
+        if string[i] == 'a':
+            countA += 1
+    if maxi < countA :
+        maxi = countA
+    return maxi 
+string = "bbbaaababa"
+l = 3
+result = countAqua(string , l )
+print("Count Aqua in String" , result)                      
+
+# Inputs>> 
+# N = "bbbaaababa" #Total Curtains
+# L = 3 #box Contains curtains"Aqua-a"or"Black-b"at a time 
+# Ouputs>>
+# 3
+
+
 
 #42.Fibonacci#
 #42.1 Using Recursion#
