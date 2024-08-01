@@ -764,7 +764,7 @@ def countEle(arr):
     return count 
 arr = [ 7 , 4, 8 , 2, 9] 
 result = countEle(arr)     
-print("Count of Elements Greater than Previous Ele" , result )  
+# print("Count of Elements Greater than Previous Ele" , result )  
 
 
 ##*CountSundayGivenWeekDays*##
@@ -782,7 +782,7 @@ def countSunday(startDay , n):
 start_day = 'Wednes'
 total_days = 30
 sundays = countSunday(start_day, total_days)
-print("Number of Sundays", sundays)        
+# print("Number of Sundays", sundays)        
 
 
 
@@ -1352,6 +1352,7 @@ n =  3
 # result = fibonacci2_a(n)
 # print("Fibonacci Num" , result)
 
+
 #42.2.b> Tabulation( Bottom-up Appr)# Better For large Numbers Calculations
 # Tc is O(n) , Sc is O(n) #
 def fiboByTabu(n , bottom):
@@ -1466,6 +1467,28 @@ result = toggleBits(n)
 # print("Toggled Bits Give ", result )
 #Inputs - n = 10 (1010)
 # Output - 5  (onToglling gets 0101 == 5)
+
+##*SeatArrangementIfTwoSeatAreFixed*##
+# Tc is O(n) , Sc is O(1) # 
+def factorial(n):
+    res = 1
+    if n == 0 or n == 1 :
+        return 1
+    else:
+        while n > 1 :
+            res = res * n 
+            n -= 1
+        return res 
+def seatArrangement(n):
+    if n > 2:
+        return factorial(n - 1) * 2
+    elif n == 2 :
+        return 2
+    else:
+        return "Invalid Num"
+chairNum = 4
+result = seatArrangement(chairNum)
+print("Seat Arranged " , result )
 
 
 #47.SearchIn2DMatrix #
