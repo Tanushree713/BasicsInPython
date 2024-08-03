@@ -785,6 +785,48 @@ sundays = countSunday(start_day, total_days)
 # print("Number of Sundays", sundays)        
 
 
+##*FineChargeOnOddAndEvenVehicleAccordingToDate*##
+# Tc is O(n) , Sc is O(1) #
+def fineCharge(vehicles , date):
+    n = len(vehicles)
+    charge = 0 
+    if (date % 2 == 0):
+        for i in range(n):
+            if (vehicles[i] % 2) != 0 :
+                charge += 200 
+    else:
+        for i in range(n):
+            if (vehicles[i] % 2 ) == 0 :
+                charge += 200
+    return charge  
+vehicles = [5 , 2 , 3 , 1] 
+date = 12              
+result = fineCharge(vehicles , date)
+# print("Fine By Odd or Even Vehicles Based on Even or Odd Date" , result )
+
+
+##*ConvertSumOfNumIntoSingleDigit*##
+# Tc is O(n) , SC is O(1) #
+def convertSumOfNumInSingle(n):
+    sum = sumOfNum(n)
+    while sum > 9 :
+        sum = sumOfNum(sum)
+    return sum 
+def sumOfNum(n):    
+    sum = 0
+    while n > 0 :
+        digit = n % 10 
+        sum += digit 
+        n = n //10
+    return sum   
+n = 987654321      
+result = convertSumOfNumInSingle(n)
+print("Convert Sum into Single Digit " , result )
+
+
+##*CountNonRepeatedDigitsInNum*##
+# Tc is O() , SC is O() #
+
 
 #19.SpiralMatrix#
 # Tc is O(n*m) , Sc is O(n*m) #
@@ -1385,6 +1427,7 @@ n = 20
 # result = powerFour1(n)
 # print("Find power Four" , result )        
 
+
 #43.2 Using Memoization#
 #Tc is O(n) , Sc is O(1)#  
 def powerFour2(n, memo):
@@ -1450,6 +1493,7 @@ resultant.sort()
 # for r in resultant:
 #     print(r , end = " ")
 
+
 ##*TogglingBits*##
 # Tc is O(n) , Sc is O(1) #
 import math
@@ -1467,6 +1511,7 @@ result = toggleBits(n)
 # print("Toggled Bits Give ", result )
 #Inputs - n = 10 (1010)
 # Output - 5  (onToglling gets 0101 == 5)
+
 
 ##*SeatArrangementIfTwoSeatAreFixed*##
 # Tc is O(n) , Sc is O(1) # 
