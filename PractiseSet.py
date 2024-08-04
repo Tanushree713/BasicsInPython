@@ -821,11 +821,8 @@ def sumOfNum(n):
     return sum   
 n = 987654321      
 result = convertSumOfNumInSingle(n)
-print("Convert Sum into Single Digit " , result )
+# print("Convert Sum into Single Digit " , result )
 
-
-##*CountNonRepeatedDigitsInNum*##
-# Tc is O() , SC is O() #
 
 
 #19.SpiralMatrix#
@@ -1347,14 +1344,13 @@ def countAqua(string , l):
 string = "bbbaaababa"
 l = 3
 result = countAqua(string , l )
-print("Count Aqua in String" , result)                      
+# print("Count Aqua in String" , result)                      
 
 # Inputs>> 
 # N = "bbbaaababa" #Total Curtains
 # L = 3 #box Contains curtains"Aqua-a"or"Black-b"at a time 
 # Ouputs>>
 # 3
-
 
 
 #42.Fibonacci#
@@ -1533,7 +1529,23 @@ def seatArrangement(n):
         return "Invalid Num"
 chairNum = 4
 result = seatArrangement(chairNum)
-print("Seat Arranged " , result )
+# print("Seat Arranged " , result )
+
+
+##*CountNonRepeatedDigitsInNum*##
+# Tc is O(n) , SC is O(1) #
+def countNonRepeatedDigits(n1 , n2):
+    count = 0 
+    for num in range(n1 , n2+1):
+        digits = set(str(num))
+        if len(str(num)) == len(digits):
+            count += 1
+    return count  
+n1 , n2 = 11 , 15           
+result  = countNonRepeatedDigits(n1 , n2)
+print("Count Non Repeated " , result )            
+
+
 
 
 #47.SearchIn2DMatrix #
