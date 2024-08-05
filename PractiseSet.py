@@ -1352,6 +1352,31 @@ result = countAqua(string , l )
 # Ouputs>>
 # 3
 
+##*FindFrequentVowels*##
+# Tc is O(n) , Sc is O(n + k ) #
+import heapq
+from collections import Counter
+def findFrequentVowels(s):
+    count = 0 
+    vowelLetter = getVowelsInString(s)
+    count = Counter(vowelLetter)
+    res = heapq.nlargest(1 , count.keys() , key = count.get )
+    if res :
+        return res[0]
+    else:
+        return -1    
+def getVowelsInString(s):    
+    vowels = "aeiou"
+    stack = []
+    for i in range(len(s)):
+        if s[i] in vowels :
+            stack.append(s[i])
+    return stack 
+s = "xdy"    
+result = findFrequentVowels(s)
+print("To Find Frequent vowels In String" , result )             
+
+
 
 #42.Fibonacci#
 #42.1 Using Recursion#
@@ -1544,7 +1569,6 @@ def countNonRepeatedDigits(n1 , n2):
 n1 , n2 = 11 , 15           
 result  = countNonRepeatedDigits(n1 , n2)
 print("Count Non Repeated " , result )            
-
 
 
 
@@ -2038,6 +2062,21 @@ class Solution(object):
                     even = even.next 
             odd.next = evenhead
         return head            
+
+##*AlternateSumInLL*##
+# Tc is O(n) , Sc is O(1)#
+def alternateSumInLL(head):
+    # If list is empty or one node or two node 
+    if head is None or head.next is None or head.next.next is None :
+        return head
+    curr = head.next.next 
+    prev = head    
+    while curr :
+        curr.data += prev.data
+        curr = curr.next 
+        prev = prev.next 
+    return head 
+
 
 #61.ValidParenthesis#
 # Tc is O(n) , Sc is O(n) #
