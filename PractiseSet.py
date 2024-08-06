@@ -1011,7 +1011,73 @@ def flipImg(mat):
 mat = [[1,1,0],[1,0,1],[0,0,0]]  
 # result = flipImg(mat)
 # print("Flpi Image " , result )                         
-               
+
+
+##*FormUpperTraingle*##
+# Tc is O(n) , Sc is O(1) #
+def upperTriangle(mat):
+    n = len(mat)
+    for i in range(n):
+        for j in range(n):
+            if i > j :
+               mat[i][j] = 0    #   if mat[i][j] != 0 
+    return mat                  #     return False
+mat = [                         # return True 
+    [1, 2, 3, 4],
+    [5, 6, 7, 8],
+    [9, 10, 11, 12],
+    [13, 14, 15, 16]
+]    
+result = upperTriangle(mat)
+# print("Upper Triangle " , result )               
+
+
+##*FormLowerTraingle*## 
+# Tc is O(n) , Sc is O(1) #
+def lowerTraingle(mat) :
+    n = len(mat)
+    for i in range(n):
+        for j in range(n):
+            if i < j :
+                mat[i][j] = 0 # To check mat[i][j] != 0 return False 
+    return mat                # return True 
+mat = [
+     [1, 2, 3, 4],
+    [5, 6, 7, 8],
+    [9, 10, 11, 12],
+    [13, 14, 15, 16]
+] 
+result = lowerTraingle(mat)
+# print("Lower Traingle " , result ) 
+
+
+##*EncryptStringUsing2DMat*##
+# Tc is O(n^2) , Sc is O(n^2) #
+import math
+def encryptStrIn2DMat(string) :
+    n = len(string)
+    rows = math.ceil(math.sqrt(n))
+    cols = math.ceil(n // rows)
+    mat = [['']* cols for _ in range(rows)]
+    index = 0 
+    for i in range(rows):
+        for j in range(cols):
+            if index < n :
+                mat[i][j] = string[index]
+                index += 1
+            else:
+                mat[i][j] = "" 
+    encryptStr = ""            
+    for j in range(cols):
+        for i in range(rows):
+            if mat[i][j] != '':
+                encryptStr += mat[i][j]     
+    return encryptStr
+input_string = "PLEASESAVEME"
+result  = encryptStrIn2DMat(input_string)
+print("Encrypted Str", result)
+    
+
 #29.ReverseStr#
 # Tc is O(n) , Sc is O(n) #
 def reverseStr(string):
