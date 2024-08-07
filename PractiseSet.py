@@ -1075,7 +1075,7 @@ def encryptStrIn2DMat(string) :
     return encryptStr
 input_string = "PLEASESAVEME"
 result  = encryptStrIn2DMat(input_string)
-print("Encrypted Str", result)
+# print("Encrypted Str", result)
     
 
 #29.ReverseStr#
@@ -1390,7 +1390,6 @@ string = "helloworld"
 result = encryptTheString(mapping , string)
 # print("Encrypted String is" , result )
 
-
 ##*CountAqua*##
 # Tc is O(n) , Sc is O(1) #
 def countAqua(string , l):
@@ -1440,7 +1439,7 @@ def getVowelsInString(s):
     return stack 
 s = "xdy"    
 result = findFrequentVowels(s)
-print("To Find Frequent vowels In String" , result )             
+# print("To Find Frequent vowels In String" , result )             
 
 
 
@@ -1634,7 +1633,7 @@ def countNonRepeatedDigits(n1 , n2):
     return count  
 n1 , n2 = 11 , 15           
 result  = countNonRepeatedDigits(n1 , n2)
-print("Count Non Repeated " , result )            
+# print("Count Non Repeated " , result )            
 
 
 
@@ -1660,6 +1659,7 @@ target = 6
 # result = searchIn2DMat(arr , target)
 # print("Binary search In 2D " , result )                     
 
+
 #48.SearchInsertedPosition#
 # Tc is O(logn) , Sc is O(1)#
 def SearchInsertedPosition(arr , target):
@@ -1678,6 +1678,7 @@ arr = [1 , 2 , 3, 4, 6]
 k = 5  #Output >> 4
 # result  = SearchInsertedPosition(arr , k ) 
 # print("Searched Inserted Order of Element is : " , result )                    
+
 
 #49.SearchInRotatedSortedARR#
 # Tc is O(logn) , Sc is O(1) #
@@ -1906,6 +1907,7 @@ class Solution(object):
             prev = curr 
             curr = next 
         return prev
+
 
 #53.MergeTwoSOrtedLL#
 
@@ -2519,6 +2521,29 @@ result = armstrongNum(n)
 def PythagoreanTriplet(a , b , c):
     a , b , c = sorted([a , b , c])
     return a**2 + b**2 == c**2
+
+
+##*PrimeNumber*##
+# Tc is O(n) , Sc is O(k) #
+import math
+def primeNum(num):
+    if num <= 1 :
+        return False
+    for i in range(2 , int(math.sqrt(num)) + 1):
+        if (num % i)== 0 :
+            return False
+    return True
+def findPrimeInArr(nums):
+    resultant = []
+    for num in nums :
+        if primeNum(num):
+            resultant.append(num)
+    return resultant
+
+nums = [2, 5 ,3 ,6 , 9 , 11 , 13]      
+result = findPrimeInArr(nums)    
+print("Get Prime" , result ) 
+
 
 ##*PATTERNS*##
 #1.* * * *
