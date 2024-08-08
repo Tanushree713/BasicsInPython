@@ -556,6 +556,7 @@ arr = [ 1, 3, 2]
 # result = nextPermute(arr)
 # print("resultant is " , result )       
 
+
 #15.SumPairs#
 # Tc is O(n) , Sc is O(1) #
 def sumPairs(arr , target):
@@ -1014,7 +1015,7 @@ mat = [[1,1,0],[1,0,1],[0,0,0]]
 
 
 ##*FormUpperTraingle*##
-# Tc is O(n) , Sc is O(1) #
+# Tc is O(n^2) , Sc is O(1) #
 def upperTriangle(mat):
     n = len(mat)
     for i in range(n):
@@ -1033,7 +1034,7 @@ result = upperTriangle(mat)
 
 
 ##*FormLowerTraingle*## 
-# Tc is O(n) , Sc is O(1) #
+# Tc is O(n^2) , Sc is O(1) #
 def lowerTraingle(mat) :
     n = len(mat)
     for i in range(n):
@@ -1115,8 +1116,8 @@ def reverseWordsInStr(string):
     newStr = ' '.join(reverse)
     return newStr
 string = "the sky is blue" 
-# result = reverseWordsInStr(string)
-# print("Reversed Words : " , result )     
+result = reverseWordsInStr(string)
+print("Reversed Words : " , result )     
 
 #32.LengthOfLastWords#
 # Tc is O(n) , Sc is O(n) #
@@ -2459,6 +2460,50 @@ getInvCount = inversionOfAnArr(nums , p , q)
 
 
 ##---Extra----##
+
+##*GenerateSeries*##
+#Conditions:-
+#1.PrimePositions>pow(2)
+#2.PerfectSquare>pow(3)
+#3.reamining> sum(lastTwo)
+# Tc is O() , Sc is O() #
+import math
+def isPrime(n):
+    if n <=1 :
+        return False 
+    for i in range(2 , int(math.sqrt(n)) + 1):
+        if n % i == 0 :
+            return False 
+    return True         
+
+def isPerfectSquare(n):
+    if n < 0 :  
+       return False 
+    sqrtnum = int(math.sqrt(n))
+    return sqrtnum * sqrtnum == n
+
+def generateSeries(n):
+    powertwo = 1
+    powerthree = 1
+    arr = [0] * n  # Initialize the array with `n` elements
+
+    for i in range(0, n):
+        if isPrime(i + 1):
+            arr[i] = powertwo
+            powertwo *= 2
+        elif isPerfectSquare(i + 1):
+            arr[i] = powerthree
+            powerthree *= 3
+        else:
+            arr[i] = arr[i-1] + arr[i-2]
+
+    return arr[n-1]
+num = 15
+resultant = generateSeries(num)
+print("Resultant" , resultant )
+
+
+
 ##LeftMonkeysIntree##
 #Tc is O(1) , Sc is O(1)#
 def leftMonkeys(n, m, p, k, j):
@@ -2543,6 +2588,7 @@ def findPrimeInArr(nums):
 nums = [2, 5 ,3 ,6 , 9 , 11 , 13]      
 result = findPrimeInArr(nums)    
 print("Get Prime" , result ) 
+
 
 
 ##*PATTERNS*##
