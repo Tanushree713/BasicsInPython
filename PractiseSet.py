@@ -2504,6 +2504,53 @@ resultant = generateSeries(num)
 
 
 
+##*SwapSingleEleFromArr1andArr2TogetSimilarSumValues*##
+#Tc is O(n1 + n2) , Sc is O(n2) #
+def swapSingleEle(arr1 , arr2):
+    sum1 = sum(arr1)
+    sum2 = sum(arr2)
+    diff = sum1 - sum2
+    if (diff % 2) != 0 :
+        return False
+    targetDiff = diff // 2
+    set2 = set(arr2)
+    for num1 in arr1 :
+        num2 = num1 - targetDiff 
+        if num2 in set2:
+            index1 = arr1.index(num1)
+            index2 = arr2.index(num2)
+            arr1[index1] , arr2[index2] = arr2[index2] , arr1[index1]
+            return True 
+    return False
+arr1 = [4, 1, 2, 1, 1, 2]
+arr2 = [3, 6, 3, 3]
+result = swapSingleEle(arr1 , arr2)
+print("Swap the Single  Ele In Arr" , result )        
+
+
+
+##*AddingElementsInARR*##
+# Tc is O(n) , Sc is O(1) #
+def addingEle(arr, elements):
+    arr.sort()
+    for element in elements:  #comment this for singleEle insertion 
+        left = 0 
+        right = len(arr) 
+        while left < right :
+            mid  = left + (right - left) // 2
+            if arr[mid] < element:
+                left = mid + 1
+            else:
+                right = mid 
+        arr.insert(left , element)
+    return arr         
+arr = [6, 3, 4, 5, 1]
+key = [2 , 7]
+result = addingEle(arr, key)
+# print("Adding Ele", result)
+
+
+
 ##LeftMonkeysIntree##
 #Tc is O(1) , Sc is O(1)#
 def leftMonkeys(n, m, p, k, j):
@@ -2590,25 +2637,16 @@ result = findPrimeInArr(nums)
 # print("Get Prime" , result ) 
 
 
-##*AddingElementsInARR*##
-# Tc is O(n) , Sc is O(1) #
-def addingEle(arr, elements):
-    arr.sort()
-    for element in elements:  #comment this for singleEle insertion 
-        left = 0 
-        right = len(arr) 
-        while left < right :
-            mid  = left + (right - left) // 2
-            if arr[mid] < element:
-                left = mid + 1
-            else:
-                right = mid 
-        arr.insert(left , element)
-    return arr         
-arr = [6, 3, 4, 5, 1]
-key = [2 , 7]
-result = addingEle(arr, key)
-print("Adding Ele", result)
+##SwappingBtTwoNumWith_Or_WithoutTemp##
+# Tc is O(1) , Sc is O(1)#
+def swapNum(n1 , n2):
+   temp = n1  #n1 = n1 + n2
+   n1 = n2    #n2 = n1 - n2
+   n2 = temp  #n1 = n1 - n2
+   return n1 ,n2
+result = swapNum(2 , 3)
+print("Swap" , result )
+
 
 
 
