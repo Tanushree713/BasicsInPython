@@ -1117,7 +1117,7 @@ def reverseWordsInStr(string):
     return newStr
 string = "the sky is blue" 
 result = reverseWordsInStr(string)
-print("Reversed Words : " , result )     
+# print("Reversed Words : " , result )     
 
 #32.LengthOfLastWords#
 # Tc is O(n) , Sc is O(n) #
@@ -2500,7 +2500,7 @@ def generateSeries(n):
     return arr[n-1]
 num = 15
 resultant = generateSeries(num)
-print("Resultant" , resultant )
+# print("Resultant" , resultant )
 
 
 
@@ -2587,7 +2587,28 @@ def findPrimeInArr(nums):
 
 nums = [2, 5 ,3 ,6 , 9 , 11 , 13]      
 result = findPrimeInArr(nums)    
-print("Get Prime" , result ) 
+# print("Get Prime" , result ) 
+
+
+##*AddingElementsInARR*##
+# Tc is O(n) , Sc is O(1) #
+def addingEle(arr, elements):
+    arr.sort()
+    for element in elements:  #comment this for singleEle insertion 
+        left = 0 
+        right = len(arr) 
+        while left < right :
+            mid  = left + (right - left) // 2
+            if arr[mid] < element:
+                left = mid + 1
+            else:
+                right = mid 
+        arr.insert(left , element)
+    return arr         
+arr = [6, 3, 4, 5, 1]
+key = [2 , 7]
+result = addingEle(arr, key)
+print("Adding Ele", result)
 
 
 
