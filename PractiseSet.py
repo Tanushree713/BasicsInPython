@@ -2524,8 +2524,8 @@ def swapSingleEle(arr1 , arr2):
     return False
 arr1 = [4, 1, 2, 1, 1, 2]
 arr2 = [3, 6, 3, 3]
-result = swapSingleEle(arr1 , arr2)
-print("Swap the Single  Ele In Arr" , result )        
+# result = swapSingleEle(arr1 , arr2)
+# print("Swap the Single  Ele In Arr" , result )        
 
 
 
@@ -2645,9 +2645,26 @@ def swapNum(n1 , n2):
    n2 = temp  #n1 = n1 - n2
    return n1 ,n2
 result = swapNum(2 , 3)
-print("Swap" , result )
+# print("Swap" , result )
 
 
+##ConvertBinaryToDecimal##
+# Tc is O(n) , Sc is O(1) #
+import math
+def convertBinToDeci(n):
+    index = 0 
+    res = 0 
+    while n > 0 :
+       lastDigit = n % 10 
+       if lastDigit != 0 :
+            res += math.pow(2 , index)
+       index += 1
+       n = n //10
+    return int(res)
+            
+n = 1010                
+result = convertBinToDeci(n)
+# print("DecimalNum" , result )
 
 
 ##*PATTERNS*##
