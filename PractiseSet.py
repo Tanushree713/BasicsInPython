@@ -6,7 +6,10 @@
 #3. List (ARRAY)>>
 # list(map(int , input().split())) OR map(int , raw_input().split(','))
 
-
+##ASCII VALUE##
+# A-Z -: 65 - 90
+# a-z -: 97 - 122
+# 0-9 -: 48 - 57 
 
 ##Sorting Algo's##
 #1. BubbleSort# 
@@ -1390,6 +1393,35 @@ mapping = {
 string = "helloworld"
 result = encryptTheString(mapping , string)
 # print("Encrypted String is" , result )
+
+
+##*EncryptStrInAsciiVal*##
+# Tc is O() , Sc is O() #
+def encryptStr(string, key):
+    result = []
+    for char in string:
+        if 'A' <= char <= 'Z':
+            index = ord(char) - ord('A')
+            index = (index + key) % 26
+            result.append(chr(index + ord('A')))
+        elif 'a' <= char <= 'z':
+            index = ord(char) - ord('a')
+            index = (index + key) % 26
+            result.append(chr(index + ord('a')))
+        elif '0' <= char <= '9':
+            index = ord(char) - ord('0')
+            index = (index + key) % 10
+            result.append(chr(index + ord('0')))
+        else:
+            result.append(char)  
+    return ''.join(result)
+
+string = "ADTU89"
+key = 2
+result = encryptStr(string, key)
+print("Encrypted String:", result)
+
+
 
 ##*CountAqua*##
 # Tc is O(n) , Sc is O(1) #
