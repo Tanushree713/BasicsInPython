@@ -828,6 +828,28 @@ result = convertSumOfNumInSingle(n)
 # print("Convert Sum into Single Digit " , result )
 
 
+##*NearestSmallestNumberInUnsortedARr*##
+# Tc is O(n) , Sc is O(n) #
+def small_nearestNum(arr):
+    stack = [] 
+    result = []
+    for i in range(len(arr)):  
+        while stack and stack[-1] >= arr[i]:
+            stack.pop()
+        if not stack :
+            result.append(-1)
+        else:
+            result.append(stack[-1])    
+        stack.append(arr[i])    
+    return result 
+arr = [ 1 , 6, 4 , 10 , 2 , 5]
+res = small_nearestNum(arr)
+# print("Nearest Smaller Num " , res)        
+#Input-[1 ,6 , 4, 10 , 2, 5]
+#Output-[-1 , 1 , 1 , 4 , 1 , 2]
+
+
+
 
 #19.SpiralMatrix#
 # Tc is O(n*m) , Sc is O(n*m) #
@@ -1396,7 +1418,7 @@ result = encryptTheString(mapping , string)
 
 
 ##*EncryptStrInAsciiVal*##
-# Tc is O() , Sc is O() #
+# Tc is O(n) , Sc is O(n) #
 def encryptStr(string, key):
     result = []
     for char in string:
@@ -1419,7 +1441,7 @@ def encryptStr(string, key):
 string = "ADTU89"
 key = 2
 result = encryptStr(string, key)
-print("Encrypted String:", result)
+# print("Encrypted String:", result)
 
 
 
