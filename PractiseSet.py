@@ -849,6 +849,27 @@ res = small_nearestNum(arr)
 #Output-[-1 , 1 , 1 , 4 , 1 , 2]
 
 
+##*EquillibriumIndex_WhoseLeftandRightSUMisEqual*##
+# Tc is O(n)  , Sc is O(n) #
+def equIndex(arr):
+    n = len(arr) 
+    leftSum = [0]*n 
+    rightSum = [0]*n
+    leftSum[0] = arr[0]
+    rightSum[n-1] = arr[n-1]
+    for i in range(1 , n):
+        leftSum[i] = leftSum[i-1] + arr[i]
+    for i in range(n-2 , -1 , -1):
+        rightSum[i] = rightSum[i+1] + arr[i] 
+    for i in range(n):
+        if leftSum[i] == rightSum[i]:
+            return i 
+arr = [-7, 1, 5, 2, -4, 3, 0]
+index = equIndex(arr)
+print("Equilibrium Index is:" , index)                   
+#input = [ -7 , 1, 5, 2 ,-4 , 3, 0]
+#output - [-7+1+5 = -1] , [-4+3+0 = -1] So , EquIndexis[2] == 3
+
 
 
 #19.SpiralMatrix#
