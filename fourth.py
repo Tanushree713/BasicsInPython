@@ -51,24 +51,6 @@ print(result)
 # print(result )    
 
 
-def factorial(n):
-    res = 1
-    if n == 0 or n == 1 :
-        return 1
-    else:
-        while n > 1 :
-            res = res * n 
-            n -= 1
-        return res 
-def seatArrangement(n):
-    if n > 2:
-        return factorial(n - 1) * 2
-    elif n == 2 :
-        return 2
-    else:
-        return "Invalid Num"
-chairNum = 4
-result = seatArrangement(chairNum)
-print("Seat Arranged " , result )
+
 
 

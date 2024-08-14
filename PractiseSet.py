@@ -886,7 +886,6 @@ def rankOfUnsortedARR(arr):
 arr = [20 , 15 , 26 , 2 , 98 ,6 , 2]  
 result = rankOfUnsortedARR(arr)
 # print("Replaced The Elements According to Sorted Rank " , result )
-
 #inputs=[20 , 15 , 26 , 2 , 98 ,6 , 2]
 #outputs=[4 , 3, 5 , 1 , 6 , 2  , 1] #2 is 1st ranker(sorted Manner)
 
@@ -1744,7 +1743,7 @@ def searchIn2DMat(arr , target):
         mid = left + (right - left )// 2
         mid_Ele = arr[mid//n][mid%n] 
         if mid_Ele == target :
-            return True 
+            return True   
         elif mid_Ele < target:
             left = mid + 1
         else :
@@ -1753,7 +1752,42 @@ def searchIn2DMat(arr , target):
 arr = [[ 1, 2 ,3 ] , [4, 5, 16] , [7, 8 ,9] ] 
 target = 6
 # result = searchIn2DMat(arr , target)
-# print("Binary search In 2D " , result )                     
+# print("Binary search In 2D " , result ) 
+                    
+##OR 
+# Tc is O(log(m*n)) , Sc is O(1) #
+def searchIn2D(arr , target):
+    n = len(arr[0])
+    m = len(arr)
+    left = 0 
+    right = m * n - 1
+    found = False
+    result = []
+    while left < right  :
+        mid  = left + (right - left) // 2
+        midEle = arr[mid//n][mid%n]
+        if midEle == target :
+            found = True 
+            row = mid // n
+            col = mid % n 
+            return (row , col)
+        elif midEle < target:
+            left = mid + 1
+        else:
+            right = mid - 1
+    return -1               
+arr = [
+    [1, 3, 5],
+    [7, 9, 11],
+    [13, 15, 17]
+] 
+target = 9
+res = searchIn2D(arr , target)
+if res != -1 :
+    print("found at" , res)
+else:
+    print("not found") 
+
 
 
 #48.SearchInsertedPosition#
