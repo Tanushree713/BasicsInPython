@@ -866,9 +866,29 @@ def equIndex(arr):
             return i 
 arr = [-7, 1, 5, 2, -4, 3, 0]
 index = equIndex(arr)
-print("Equilibrium Index is:" , index)                   
+# print("Equilibrium Index is:" , index)                   
 #input = [ -7 , 1, 5, 2 ,-4 , 3, 0]
 #output - [-7+1+5 = -1] , [-4+3+0 = -1] So , EquIndexis[2] == 3
+
+
+##*ReplaceARRbyRankOfArray*##
+# Tc is O(nlogn) , Sc is O(n) #
+def rankOfUnsortedARR(arr):
+    sorted_uniqueEle = sorted(set(arr))
+    rank_dict = {}
+    for rank in range(len(sorted_uniqueEle)):
+        value = sorted_uniqueEle[rank] #{2 , 6, 15 ,20 , 26 , 98}
+        rank_dict[value] = rank + 1 #{2:1 , 6:2 , 15:3 , 20:4 , 26:5 , 98:6}
+    rankedArr = []    
+    for num in arr:
+        rankedArr.append(rank_dict[num])
+    return rankedArr   
+arr = [20 , 15 , 26 , 2 , 98 ,6 , 2]  
+result = rankOfUnsortedARR(arr)
+# print("Replaced The Elements According to Sorted Rank " , result )
+
+#inputs=[20 , 15 , 26 , 2 , 98 ,6 , 2]
+#outputs=[4 , 3, 5 , 1 , 6 , 2  , 1] #2 is 1st ranker(sorted Manner)
 
 
 
