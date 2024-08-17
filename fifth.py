@@ -15,36 +15,4 @@ def bubbleSortAlgo(arr) :
 
 result  = bubbleSortAlgo(arr)
 # print(result)
-
-
-def searchIn2D(arr , target):
-    n = len(arr[0])
-    m = len(arr)
-    left = 0 
-    right = m * n - 1
-    found = False
-    result = []
-    while left < right  :
-        mid  = left + (right - left) // 2
-        midEle = arr[mid//n][mid%n]
-        if midEle == target :
-            found = True 
-            row = mid // n
-            col = mid % n 
-            return (row , col)
-        elif midEle < target:
-            left = mid + 1
-        else:
-            right = mid - 1
-    return -1               
-arr = [
-    [1, 3, 5],
-    [7, 9, 11],
-    [13, 15, 17]
-] 
-target = 9
-res = searchIn2D(arr , target)
-if res != -1 :
-    print("found at" , res)
-else:
-    print("not found")    
+ 

@@ -919,6 +919,7 @@ arr = [[1, 2, 3], [4, 5, 6], [7, 8, 9]]
 # result = spiralMatrix(arr)
 # print("SpiralMatrix", result )
 
+
 #20.MatrixDiagonalSum#
 # Tc is O(n) , Sc is O(1) #
 def matrixDiagonalSum(arr):
@@ -2274,7 +2275,8 @@ def alternateSumInLL(head):
         curr = curr.next 
         prev = prev.next 
     return head 
-
+#input-> 1>2>3>5>6>7    
+#output-> 1>2>4>7>9>12
 
 #61.ValidParenthesis#
 # Tc is O(n) , Sc is O(n) #
@@ -2595,7 +2597,7 @@ getInvCount = inversionOfAnArr(nums , p , q)
 #1.PrimePositions>pow(2)
 #2.PerfectSquare>pow(3)
 #3.reamining> sum(lastTwo)
-# Tc is O() , Sc is O() #
+# Tc is O(n) , Sc is O(n) #
 import math
 def isPrime(n):
     if n <=1 :
@@ -2885,4 +2887,37 @@ def pattern5(n):
 # result = pattern5(n)
 # print(result)            
 
- 
+
+#6.
+#     *    
+#    ***   
+#   *****  
+#  ******* 
+# *********
+# *********
+#  ******* 
+#   *****  
+#    ***   
+#     *  
+def pattern6(n):
+    pat = '' 
+    for i in range(n):
+        for j in range(n-i-1):
+            pat += " "
+        for j in range(2*i + 1):
+            pat += "*"
+        for j in range(n-i-1):
+            pat += " " 
+        pat += "\n"        
+    for i in range(n):           
+        for j in range(i):
+            pat += " "
+        for  j in range(2*n - (2*i +1)) :
+            pat += "*"
+        for j in range(i):
+            pat += " "
+        pat += "\n"
+    return pat    
+n = int(input("Enter Nums"))    
+result = pattern6(n)
+print(result)                     
