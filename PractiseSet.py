@@ -912,6 +912,35 @@ result = rankOfUnsortedARR(arr)
 #outputs=[4 , 3, 5 , 1 , 6 , 2  , 1] #2 is 1st ranker(sorted Manner)
 
 
+##*GetMaxContainerIn_K_PriceValue*##
+# Tc is O(2^n * n^2) , Sc is O(n * 2^n) #
+from itertools import combinations
+def getMaxContainer(prices , containers , k):
+    maxContainer = 0
+    for r in range(1 , len(prices)+1):
+        for indices in combinations(range(len(prices)) , r) :
+            currPriceSum = 0 
+            for i in indices :
+                currPriceSum += prices[i]
+            if currPriceSum <= K :
+                    currContainerSum = 0 
+                    for i in indices :
+                        currContainerSum += containers[i]
+                    if currContainerSum > maxContainer:
+                        maxContainer = currContainerSum 
+    return maxContainer 
+prices = [10, 10, 40, 50, 90]
+containers= [10, 20, 20, 50, 150]
+k = 105
+result = getMaxContainer(prices , containers , k)
+print("Get Max Containers" , result )    
+#Input >
+# price = [10, 10, 40, 50, 90]
+# container =[10, 20, 20, 50, 150]
+# k = 105 
+# Output = 170 [10 + 90 = 100 at index 1 and 4 and getting its corresponding container size 20 + 150 = 170 ]
+
+
 
 #19.SpiralMatrix#
 # Tc is O(n*m) , Sc is O(n*m) #
@@ -1469,7 +1498,7 @@ def get_lcs(s1 , s2):
 s1 = "processed"
 s2 = "esd"
 result =  commonCharBtTwoStrings(s1 , s2)
-print("Common char In Strings :" , result )
+# print("Common char In Strings :" , result )
 
 
 
@@ -1612,7 +1641,7 @@ def substrSumNotEqualToSubstrlen(string , length):
 string = "20"
 length = 2                   
 result = substrSumNotEqualToSubstrlen(string , length)
-print("count of sunstr sum not equal to its len of substr :", result )
+# print("count of sunstr sum not equal to its len of substr :", result )
 #input - "201"
 # output - 3  #[[0]=len(1)=sum(0) ,[2]=len(1)=sum(2) ,[01]=len(2)=sum(1) ] === 3]
 
@@ -1863,10 +1892,10 @@ arr = [
 ] 
 target = 9
 res = searchIn2D(arr , target)
-if res != -1 :
-    print("found at" , res)
-else:
-    print("not found") 
+# if res != -1 :
+#     print("found at" , res)
+# else:
+#     print("not found") 
 
 
 
@@ -2997,6 +3026,6 @@ def pattern6(n):
             pat += " "
         pat += "\n"
     return pat    
-n = int(input("Enter Nums"))    
-result = pattern6(n)
-print(result)                     
+# n = int(input("Enter Nums"))    
+# result = pattern6(n)
+# print(result)                     
