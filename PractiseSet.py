@@ -265,6 +265,28 @@ def startAndEndOfRoom(N , K , coins):
 # Index of start and end of Room  >> 1 3
 
 
+##*Count_ContinuousHorses*##
+# Tc is O(n) , SC is O(1) #
+def count_continuous_horses(arr, K):
+  start = 0 
+  end = 0
+  currSum = 0  
+  maxCount = 0 
+  n = len(arr)
+  while end < n :
+    currSum += arr[end]
+    while currSum >= K :
+        currSum -= arr[start]
+        start += 1
+    maxCount = max(maxCount , end - start + 1)
+    end += 1  
+  return maxCount 
+arr = [10 , 90 , 80 , 20 , 90 , 60 , 40 , 60 , 70 , 75]
+K = 100
+result = count_continuous_horses(arr, K)  
+# print("max Continuos Horses" , result )
+
+
 
 #4.TripletSum#
 # Tc is O(n^2) , Sc is O(k) #
@@ -1413,9 +1435,43 @@ def funcOfLCS(text1 , text2):
             else:
                 dp[i][j] = max(dp[i-1][j] , dp[i][j-1])    
     return dp[m][n]             
-
 # Input: 's1' = "abcd", 's2' = "anc"
 # Output: 3 (deletions= len(s1)-lcs_length[2 = 4-2] , insertions = len(s2)-lcs_length[1 = 3-2 ] )
+
+
+##*CommonCharBtTwoStrings*##
+# Tc is O(n) , Sc is O(n) #
+def commonCharBtTwoStrings(s1 , s2):
+    result = []
+    lcs = get_lcs(s1 , s2)
+    for char in s1 :
+        if char not in lcs :
+            result.append(char)
+    return ''.join(result)         
+def get_lcs(s1 , s2):   
+    m = len(s1)
+    n = len(s2)
+    dp = [[0] * (n+1) for _ in range(m+1)]
+    lcs = []
+    i = m 
+    j = n 
+    while i > 0 and j > 0 :
+        if s1[i-1] == s2[j-1]:
+            lcs.append(s1[i-1])
+            i -= 1
+            j -= 1
+        elif dp[i-1][j] >= dp[i][j-1]:
+            i -= 1
+        else:
+            j -= 1        
+    lcs.reverse()
+    return ''.join(lcs)
+s1 = "processed"
+s2 = "esd"
+result =  commonCharBtTwoStrings(s1 , s2)
+print("Common char In Strings :" , result )
+
+
 
 
 ##*FindInsertionsForBalancingParanthesis*##
@@ -1536,6 +1592,29 @@ def getVowelsInString(s):
 s = "xdy"    
 result = findFrequentVowels(s)
 # print("To Find Frequent vowels In String" , result )             
+
+
+##*SumOfEachSubstrNotequalTolengthofitsSubstring*##
+# Tc is O(n^3) , Sc is O(1) #
+def substrSumNotEqualToSubstrlen(string , length):
+    count = 0
+    n = length 
+    arr = list(map(int , string))
+    for i in range(n):
+        for j in range(i , n):
+            substrSum = 0 
+            for k in range(i , j+1):
+                substrSum += arr[k]
+            substrLen = j - i + 1    
+            if substrSum != substrLen:
+                count += 1
+    return count 
+string = "20"
+length = 2                   
+result = substrSumNotEqualToSubstrlen(string , length)
+print("count of sunstr sum not equal to its len of substr :", result )
+#input - "201"
+# output - 3  #[[0]=len(1)=sum(0) ,[2]=len(1)=sum(2) ,[01]=len(2)=sum(1) ] === 3]
 
 
 
