@@ -665,6 +665,23 @@ arr = [ 1 , 1, 1 , 0 ,0 , 1, 1, 3, 1, 0]
 # print("The Consecutive Ones is " , result )  
 
 
+
+##*SymmetricPairs*##
+# Tc is O(n^2) , Sc is O(k) #
+def symmetricPairs(arr):
+    n = len(arr)
+    symmetric = []
+    for i in range(n) :
+        for j in range(i+1 , n):
+            if arr[j][0] == arr[i][1] and arr[j][1] == arr[i][0] :
+                symmetric.append((arr[i][1] , arr[i][0]))
+    return symmetric            
+arr = [(1, 2), (2, 1), (3, 4), (4, 5), (5, 4)]                
+result = symmetricPairs(arr)
+print(result)
+
+
+
 ##*ToFindtheMaxElementInSubARR*##
 # Tc is O(n) , Sc is O(k) #
 def findMaxElementInSubarrays(arr , k):
@@ -2769,7 +2786,7 @@ arr2 = [3, 6, 3, 3]
 
 
 ##*AddingElementsInARR*##
-# Tc is O(n) , Sc is O(1) #
+# Tc is O(nlogn) , Sc is O(1) #
 def addingEle(arr, elements):
     arr.sort()
     for element in elements:  #comment this for singleEle insertion 
@@ -2783,8 +2800,8 @@ def addingEle(arr, elements):
                 right = mid 
         arr.insert(left , element)
     return arr         
-arr = [6, 3, 4, 5, 1]
-key = [2 , 7]
+arr = [6, 3, 4, 5, 2]
+key = (1 , 7)
 result = addingEle(arr, key)
 # print("Adding Ele", result)
 
