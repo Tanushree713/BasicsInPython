@@ -52,5 +52,3 @@ print(result)
 
 
 
-
-

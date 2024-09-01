@@ -214,7 +214,7 @@ result = maxSumSubArr(arr)
 
 #3.MaximumProductSubArr#
 # Tc is O(n) , Sc is O(1) #
-def maxProductSubArr(arr):
+def maxProductSubArr1(arr):
     n = len(arr)
     suffix = 1
     prefix = 1
@@ -229,8 +229,42 @@ def maxProductSubArr(arr):
             suffix = suffix * arr[n-i-1]
             maxProduct = max(maxProduct , max(suffix , prefix))
     return maxProduct
+      #--wanna To find start and end Index --#
+def maxProductSubArr2(arr):
+    n = len(arr)
+    suffix = 1
+    prefix = 1
+    maxProduct = float('-inf')
+    startIndex = 0
+    endIndex = 0
+    tempStart = 0
+
+    for i in range(n):
+        if prefix == 0:
+            prefix = arr[i]
+            tempStart = i
+        else:
+            prefix *= arr[i]
+
+        if prefix > maxProduct:
+            maxProduct = prefix
+            startIndex = tempStart
+            endIndex = i
+
+        if suffix == 0:
+            suffix = arr[n - i - 1]
+            tempStart = n - i - 1
+        else:
+            suffix *= arr[n - i - 1]
+
+        if suffix > maxProduct:
+            maxProduct = suffix
+            startIndex = n - i - 1
+            endIndex = n - tempStart - 1
+
+    return maxProduct, startIndex, endIndex
 arr = [2 , 3 , -4, -1 , 0 , 7 , 2]      
-# result = maxProductSubArr(arr)
+# result = maxProductSubArr1(arr)
 # print("Max Product SubArr " , result )
 
 ##*NumberOfRoomsHavingGoldCoins*##
