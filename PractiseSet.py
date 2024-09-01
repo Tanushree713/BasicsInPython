@@ -1219,6 +1219,28 @@ mat = [
 result = lowerTraingle(mat)
 # print("Lower Traingle " , result ) 
 
+##*MediansOfRowIn2DMatrix*##
+# Tc is O(n*n) , Sc is O(k) #
+def median(matrix):
+    medians = []
+    for row in matrix :
+        sortedRow = sorted(row)
+        n = len(sortedRow)
+        if n % 2 == 1 :
+            median = sortedRow[n//2]
+        else:
+            median = (sortedRow[n//2 - 1] + sortedRow[n//2]) / 2 
+        medians.append(median)
+    return min(medians)         
+matrix = [ [1, 3, 2, 4],
+    [2, 5, 1, 4],
+    [4, 3, 1, 2],
+    [5, 1, 4, 3]
+    ]
+result = median(matrix)
+print("Median Of Row In Matrix" , result )    
+
+
 
 ##*EncryptStringUsing2DMat*##
 # Tc is O(n^2) , Sc is O(n^2) #
