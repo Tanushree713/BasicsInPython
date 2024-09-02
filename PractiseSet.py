@@ -712,7 +712,7 @@ def symmetricPairs(arr):
     return symmetric            
 arr = [(1, 2), (2, 1), (3, 4), (4, 5), (5, 4)]                
 result = symmetricPairs(arr)
-print(result)
+# print(result)
 
 
 
@@ -984,7 +984,7 @@ prices = [10, 10, 40, 50, 90]
 containers= [10, 20, 20, 50, 150]
 k = 105
 result = getMaxContainer(prices , containers , k)
-print("Get Max Containers" , result )    
+# print("Get Max Containers" , result )    
 #Input >
 # price = [10, 10, 40, 50, 90]
 # container =[10, 20, 20, 50, 150]
@@ -1238,7 +1238,7 @@ matrix = [ [1, 3, 2, 4],
     [5, 1, 4, 3]
     ]
 result = median(matrix)
-print("Median Of Row In Matrix" , result )    
+# print("Median Of Row In Matrix" , result )    
 
 
 
@@ -1266,7 +1266,7 @@ def encryptStrIn2DMat(string) :
     return encryptStr
 input_string = "PLEASESAVEME"
 result  = encryptStrIn2DMat(input_string)
-# print("Encrypted Str", result)
+print("Encrypted Str", result)
     
 
 #29.ReverseStr#
@@ -2860,6 +2860,23 @@ arr = [6, 3, 4, 5, 2]
 key = (1 , 7)
 result = addingEle(arr, key)
 # print("Adding Ele", result)
+
+
+##GetTwoLegsandFourLegsNumberOfAnimals##
+# Tc is O(1) , Sc is O(1) #
+def getTwoandFourlegsAnimals(N , L):
+    # x + y = N  --Eq1
+    # 2x + 4y = L  --Eq2
+    # y = (L-2*N)/2(Four Legs) , x = L-y (Two legs)
+    x = 0 
+    y = 0    
+    y = int(((L - 2*N)/2))
+    x = N - y 
+    return x , y 
+# N = int(input("Total Animals"))
+# L = int(input("Total Legs"))
+# result = getTwoandFourlegsAnimals(N , L)
+# print(f'{result[0]} {result[1]}') #space separated Results
 
 
 
