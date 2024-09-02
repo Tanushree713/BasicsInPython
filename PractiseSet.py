@@ -1241,6 +1241,22 @@ result = median(matrix)
 # print("Median Of Row In Matrix" , result )    
 
 
+##CountOnesInRowWise##
+# Tc is O(n) , Sc is O(k) #
+def countOnesIn2DMat(mat):
+    maxCnt  = 0 
+    result = []
+    for num in mat :
+        totalCnt = sum(num)
+        # maxCnt = max(maxCnt , totalCnt)
+        result.append(totalCnt)    
+    return result 
+mat = [[1,0,1],
+       [0,1,1],
+       [0,1,0]]    
+# result = countOnesIn2DMat(mat)
+# print(result)
+
 
 ##*EncryptStringUsing2DMat*##
 # Tc is O(n^2) , Sc is O(n^2) #
@@ -2877,7 +2893,6 @@ def getTwoandFourlegsAnimals(N , L):
 # L = int(input("Total Legs"))
 # result = getTwoandFourlegsAnimals(N , L)
 # print(f'{result[0]} {result[1]}') #space separated Results
-
 
 
 ##LeftMonkeysIntree##
