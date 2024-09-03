@@ -16,3 +16,19 @@ def bubbleSortAlgo(arr) :
 result  = bubbleSortAlgo(arr)
 # print(result)
 
+
+def exchangeFirstToSecondCharandReverse(string,  firstChar , secondChar):
+    if not string :
+        return []
+    s = list(string)
+    for i in range(len(s)):
+        if s[i] == firstChar:
+            s[i] = secondChar
+        elif s[i] == secondChar:
+            s[i] = firstChar 
+    return ''.join(s)           
+string = "codebashers"
+firstChar = "c"
+secondChar = "b"
+result = exchangeFirstToSecondCharandReverse(string , firstChar, secondChar)
+print(result )

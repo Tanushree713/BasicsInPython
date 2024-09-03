@@ -2828,7 +2828,7 @@ def generateSeries(n):
     return arr[n-1]
 num = 15
 resultant = generateSeries(num)
-# print("Resultant" , resultant )
+print("Resultant" , resultant )
 
 
 
@@ -2893,6 +2893,42 @@ def getTwoandFourlegsAnimals(N , L):
 # L = int(input("Total Legs"))
 # result = getTwoandFourlegsAnimals(N , L)
 # print(f'{result[0]} {result[1]}') #space separated Results
+
+
+##CountOccurenceOfSecondLargestElement##
+# Tc is O(n) , Sc is O(n) #
+def countOccurrence(n , arr):
+    uniqueEle = list(set(arr))
+    count = 0 
+    if len(uniqueEle) == 1:
+        return 0
+    secondLargeEle = uniqueEle[-2]    
+    for i in range(n):
+        if arr[i] == secondLargeEle:
+            count += 1
+    return count            
+# n = int(input("Enter size :"))
+# arr = list(map(int , input().split()))
+# print(countOccurrence(n , arr))
+
+
+##ExchangeFirstCharToSecondCharAndSecondToFirst##
+# Tc is O(n) , Sc is O(n) #
+def exchange_FToS_CharandReverse(string,  firstChar , secondChar):
+    if not string :
+        return []
+    s = list(string)
+    for i in range(len(s)):
+        if s[i] == firstChar:
+            s[i] = secondChar
+        elif s[i] == secondChar:
+            s[i] = firstChar 
+    return ''.join(s)           
+string = "codebashers"
+firstChar = "c"
+secondChar = "b"
+result = exchange_FToS_CharandReverse(string , firstChar, secondChar)
+print(result )
 
 
 ##LeftMonkeysIntree##
