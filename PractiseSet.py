@@ -1557,7 +1557,7 @@ def funcOfLCS(text1 , text2):
 # Output: 3 (deletions= len(s1)-lcs_length[2 = 4-2] , insertions = len(s2)-lcs_length[1 = 3-2 ] )
 
 
-##*CommonCharBtTwoStrings*##
+##*CommonCharNotInAnotherStrings*##
 # Tc is O(n) , Sc is O(n) #
 def commonCharBtTwoStrings(s1 , s2):
     result = []
@@ -1746,9 +1746,14 @@ def fibonacci1(n):
         return 1 
     else:
        return  fibonacci1(n-1) + fibonacci1(n-2)
-n =  3        
+# wanna to print Fiboseries #
+       
+# def print_fibonacci_series(n):
+#     for i in range(n):
+#         print(fibonacci1(i), end=" ") 
+n =  3
 # result = fibonacci1(n)
-# print("Fibonacci Num" , result)
+# print("Fibonacci Num" , result)   
 
 
 #42.2 Using DP#
@@ -1959,13 +1964,13 @@ def searchIn2D(arr , target):
     m = len(arr)
     left = 0 
     right = m * n - 1
-    found = False
+    # found = False
     result = []
     while left < right  :
         mid  = left + (right - left) // 2
         midEle = arr[mid//n][mid%n]
         if midEle == target :
-            found = True 
+            # found = True 
             row = mid // n
             col = mid % n 
             return (row , col)
@@ -1979,12 +1984,12 @@ arr = [
     [7, 9, 11],
     [13, 15, 17]
 ] 
-target = 9
+target = 19
 res = searchIn2D(arr , target)
-# if res != -1 :
-#     print("found at" , res)
-# else:
-#     print("not found") 
+if res != -1 :
+    print("found at" , res)
+else:
+    print("not found") 
 
 
 
@@ -2964,6 +2969,23 @@ def candiesSoldandLeftInJar(N , k):
         print("Num of left Cnadies " , N) 
 N , K = 10 , 5
 # result = candiesSoldandLeftInJar(N , K)        
+
+
+##VennDiagramProblem##
+# Tc is O(1) , Sc is O(1) #
+def vennDiagram(p1, p2, p3, q, r, e):
+    res_abcExactly = e - (p1+p2+p3 - 2*q + r)   # (e = 3x + p1-q + p2-q + p3-q + q + r)
+    One_a = int((res_abcExactly / 3)) + (p1-q + p3-q + q) #CompleteCircleA
+    return res_abcExactly , One_a
+
+p1 = 30#(A intersects B)
+p2 = 26 #(B intersects C)
+p3 = 28#(A intersects C)
+q = 14#(A , B , C intersects)
+r = 43#(Not Inside)
+e = 345#(Total)
+result = vennDiagram(p1,p2,p3,q,r,e) #(1.Exactly One of them (only A + only B + Only C)    2. A (One))
+print(f"{result[0]} {result[1]}")
 
 
 ##*ARMSTRONG_NUM*##
