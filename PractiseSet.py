@@ -2899,6 +2899,20 @@ def getTwoandFourlegsAnimals(N , L):
 # result = getTwoandFourlegsAnimals(N , L)
 # print(f'{result[0]} {result[1]}') #space separated Results
 
+##ProfitPercentGainedByTopSuperVisor##
+# Tc is O(n) , Sc is O(1) #
+def profitPercent(n , m , p):
+    while n-1 > 0:
+        pval = (p/100) * m
+        m = pval
+        n = n-1 
+    return int(pval)    
+n = 4 #number of superVisors tree(A,B,C)
+m = 2000 #profitEarnedByLastNode(C)    
+p = 50 #Profit(Ineachlevels)
+result = profitPercent(n , m , p)  #((10/100) *100 = 10(EarnedByB) , 10/100 * 10 = 1(EarnedByA) ==> 1)
+print("Profit gained by A superVisor", result)
+
 
 ##CountOccurenceOfSecondLargestElement##
 # Tc is O(n) , Sc is O(n) #
@@ -2977,15 +2991,14 @@ def vennDiagram(p1, p2, p3, q, r, e):
     res_abcExactly = e - (p1+p2+p3 - 2*q + r)   # (e = 3x + p1-q + p2-q + p3-q + q + r)
     One_a = int((res_abcExactly / 3)) + (p1-q + p3-q + q) #CompleteCircleA
     return res_abcExactly , One_a
-
 p1 = 30#(A intersects B)
 p2 = 26 #(B intersects C)
 p3 = 28#(A intersects C)
 q = 14#(A , B , C intersects)
 r = 43#(Not Inside)
 e = 345#(Total)
-result = vennDiagram(p1,p2,p3,q,r,e) #(1.Exactly One of them (only A + only B + Only C)    2. A (One))
-print(f"{result[0]} {result[1]}")
+# result = vennDiagram(p1,p2,p3,q,r,e) #(1.Exactly One of them (only A + only B + Only C)    2. A (One))
+# print(f"{result[0]} {result[1]}")
 
 
 ##*ARMSTRONG_NUM*##
