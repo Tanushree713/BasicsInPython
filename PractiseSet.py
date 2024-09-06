@@ -5,6 +5,8 @@
 #   map(input().split())  OR map(int , input().split()) OR map(raw_input().split())
 #3. List (ARRAY)>>
 # list(map(int , input().split())) OR map(int , raw_input().split(','))
+#4.Convert Array to string #
+#  ''.join(map(str , arr))   ([4 , 5, 6] => 456)
 
 ##ASCII VALUE##
 # A-Z -: 65 - 90
@@ -920,6 +922,27 @@ res = small_nearestNum(arr)
 # print("Nearest Smaller Num " , res)        
 #Input-[1 ,6 , 4, 10 , 2, 5]
 #Output-[-1 , 1 , 1 , 4 , 1 , 2]
+
+
+##FactorsBecomeNumber##
+# Tc is (n+k) , Sc is O(n) #
+def factorsBecomeNum(num):
+    resultant = []
+    stack = []
+    for i in range(9 , 2 , -1):
+            while num % i == 0 :
+                stack.append(i)
+                num = num / i 
+    if num != 1 :
+        return -1            
+    while stack :
+        resultant.append(stack.pop())
+    res = map(str , resultant)   # converting arr into string list  
+    return ''.join(res)            
+num = 100     #input = 100 (100 % 5 == 0 , 20 % 5 == 0 , 4 % 4 == 0 )
+result = factorsBecomeNum(num) #output ( [5 , 5, 4] => 455 )
+print("Factors Become Complete Num " , result  )
+
 
 
 ##*EquillibriumIndex_WhoseLeftandRightSUMisEqual*##
@@ -2691,7 +2714,7 @@ resultant = kthClosestPoints(points , k )
 # print("Kth Closest Points ", resultant )
 
 
-#72.kthSmallestPositiveNum#
+#72.kthSmallestPositiveMissingNum#
 # Tc is O(n) , Sc is O(n) #
 def kthSmallestPositiveNum(nums):
     numset = set()
@@ -2703,7 +2726,7 @@ def kthSmallestPositiveNum(nums):
             return i     
 nums = [1 , 2, 3, 4, 5, 6]
 resultant = kthSmallestPositiveNum(nums)
-# print("KthSmallest Positive Nums" , resultant)                
+print("KthSmallest Positive Nums" , resultant)                
 
 
 #**KthMissingInsortedARR**#
@@ -2888,7 +2911,7 @@ result = addingEle(arr, key)
 def getTwoandFourlegsAnimals(N , L):
     # x + y = N  --Eq1
     # 2x + 4y = L  --Eq2
-    # y = (L-2*N)/2(Four Legs) , x = L-y (Two legs)
+    # y = (L-2*N)/2(Four Legs) , x = N-y (Two legs)
     x = 0 
     y = 0    
     y = int(((L - 2*N)/2))
