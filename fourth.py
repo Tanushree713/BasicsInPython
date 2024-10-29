@@ -22,8 +22,8 @@ def searchInSortedArray(matrix , target):
              right = mid - 1
     return False         
 
-result = searchInSortedArray(matrix , target)
-print(result)
+# result = searchInSortedArray(matrix , target)
+# print(result)
 
 
 
@@ -49,6 +49,4 @@ print(result)
 # coins = [1 , 1, 0 , 1]    
 # result = playerGame(coins)   
 # print(result )    
-
-
 

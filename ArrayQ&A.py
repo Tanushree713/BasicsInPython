@@ -402,7 +402,7 @@ def printMajority(array) :
       print("Not exist Candidates ")
 
 
-array = [ 2, 2, 2, 2 ,3, 3 , 2, 1]      
+array = [ 2,3, 3 , 2, 1]      
 result = printMajority(array)
 
 

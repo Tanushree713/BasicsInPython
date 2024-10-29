@@ -34,4 +34,6 @@ result = ternarySearchInSortedArray(arr , i , j , target)
                    
 
 
-        
+
+
+

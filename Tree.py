@@ -262,7 +262,7 @@ def minValInBST(root):
 def deleteNode(root , key ):
 
         if root is None :
-            return root
+            return root  #we want to return updated tree after Deletion 
         if key < root.data :
             root.left = deleteNode(root.left , key )
         elif key > root.data :

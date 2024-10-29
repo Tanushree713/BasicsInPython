@@ -385,6 +385,7 @@ q = len(arr) - 1
 # result = kthSmallest1(arr , p , q, k)
 # print("Kth Smallest Element1" , result)   
 
+
 #5.2 Using HeapSort #
 # Tc is O(nlogk) , Sc is O(k) #
 from heapq import heappush , heappop 
@@ -717,7 +718,6 @@ result = symmetricPairs(arr)
 # print(result)
 
 
-
 ##*ToFindtheMaxElementInSubARR*##
 # Tc is O(n) , Sc is O(k) #
 def findMaxElementInSubarrays(arr , k):
@@ -941,8 +941,34 @@ def factorsBecomeNum(num):
     return ''.join(res)            
 num = 100     #input = 100 (100 % 5 == 0 , 20 % 5 == 0 , 4 % 4 == 0 )
 result = factorsBecomeNum(num) #output ( [5 , 5, 4] => 455 )
-print("Factors Become Complete Num " , result  )
+# print("Factors Become Complete Num " , result  )
 
+
+##RequiredPipesForBalancingWaterFlow##
+# Tc is O(n) , Sc is O(1) #
+def requiredPipes(outgoing , incoming , r ):
+    value  = 0 
+    outgoSum = 0 
+    incomeSum = 0 
+    for num in outgoing :
+       outgoSum += num-2
+    for num in incoming :
+        incomeSum  += num-2
+    if incomeSum == outgoSum :
+        return "BALANCE"    
+    if outgoSum > incomeSum:
+        value = outgoSum - incomeSum 
+        value += 2
+        return f"-{value}"
+    else:
+        value = incomeSum - outgoSum 
+        value += 2
+        return value               
+n = [85 , 75 , 95] #OutgoingPipe
+m = [70 , 80 , 45] #IncomingPipe
+r = 2              #RustFactor
+resultant = requiredPipes(n , m , r)
+# print("Pipes are ", resultant)
 
 
 ##*EquillibriumIndex_WhoseLeftandRightSUMisEqual*##
@@ -1014,6 +1040,23 @@ result = getMaxContainer(prices , containers , k)
 # k = 105 
 # Output = 170 [10 + 90 = 100 at index 1 and 4 and getting its corresponding container size 20 + 150 = 170 ]
 
+
+##BasedOnFrequencyReturnARR##
+# Tc is O(n) , Sc is O(n) #
+from collections import Counter
+import heapq
+def getcount(arr):
+    n = len(arr)
+    count = Counter(arr)
+    res = (heapq.nlargest(n, count.keys() , count.get))
+    print(' '.join(map(str , res)))
+
+# testcase = int(input("Enter testcases")) 
+# while testcase:
+#     inputs = int(input("enter inputs")) 
+#     arrlist = list(map(int , input("list").split())) 
+#     getcount(arrlist)
+#     testcase = testcase - 1
 
 
 #19.SpiralMatrix#
@@ -1304,9 +1347,64 @@ def encryptStrIn2DMat(string) :
                 encryptStr += mat[i][j]     
     return encryptStr
 input_string = "PLEASESAVEME"
-result  = encryptStrIn2DMat(input_string)
-print("Encrypted Str", result)
+# result  = encryptStrIn2DMat(input_string)
+# print("Encrypted Str", result)
     
+
+
+#2D find greater route moving only top to bottom or left to right #
+# Tc is O(m+n) , Sc is O(1) #
+def _2DMatrix(arr):
+    top = 0 
+    left = 0 
+    bottom = len(arr)-1 
+    right = len(arr[0])-1
+    result = arr[top][left]
+    while top < bottom or left < right :
+        if top < bottom and left < right :
+           if arr[top+1][left] > arr[top][left+1]:
+              top += 1  #down movement 
+           else:
+              left += 1   #right movement
+        elif top < bottom :
+            top += 1
+        else:
+            left += 1
+        result += arr[top][left]
+    return result           
+
+matrix = [[1 , 2, 3 , 4], [14 , 15, 16 , 17],[7 , 8, 3 , 22],[9 , 10 , 1 , 19]]
+result = _2DMatrix(matrix)
+print("Maximum Values with top bottom or left right Route" , result )
+#---Taking 2D Matrix Input---#
+# rows , columns = map(int , (input("Enter rows and columns: ").split()))
+# matrix = []
+# for i in range(rows):
+#     rows = []
+#     for j in range(columns):
+#         element = int(input())
+#         rows.append(element)
+#     matrix.append(rows)
+# print("Matrix is Formed") 
+# print()   
+# for row in matrix :
+#     print(row)
+
+
+#---Taking 2D Matrix Input ----#
+# rows , columns = map(int , (input("Enter rows and columns: ").split()))
+# matrix = []
+# for i in range(rows):
+#     row = list(map(int , input("Enter elements  ").split()))
+#     matrix.append(row)
+# print("Matrix is Formed") 
+# print()   
+# for row in matrix :
+#     print(row)
+
+
+
+
 
 #29.ReverseStr#
 # Tc is O(n) , Sc is O(n) #
@@ -1580,7 +1678,7 @@ def funcOfLCS(text1 , text2):
 # Output: 3 (deletions= len(s1)-lcs_length[2 = 4-2] , insertions = len(s2)-lcs_length[1 = 3-2 ] )
 
 
-##*CommonCharNotInAnotherStrings*##
+##*UnCommonCharInStrings*##
 # Tc is O(n) , Sc is O(n) #
 def commonCharBtTwoStrings(s1 , s2):
     result = []
@@ -2009,10 +2107,10 @@ arr = [
 ] 
 target = 19
 res = searchIn2D(arr , target)
-if res != -1 :
-    print("found at" , res)
-else:
-    print("not found") 
+# if res != -1 :
+#     print("found at" , res)
+# else:
+#     print("not found") 
 
 
 
@@ -2078,7 +2176,7 @@ def searchInfInArr(arr):
             else:
                 j = mid - 1
 arr = [2 , 1 , -3 , 5 , 4 , float("inf") , float('inf') , float('inf')]   
-# result = searchInfInArr(arr) 
+result = searchInfInArr(arr) 
 # print("Index of First Infinite is " , result )
 
 
@@ -2533,6 +2631,7 @@ class Solution(object):
             stack.append(char)    
       return ''.join(stack) 
 
+
 #63.RemoveAllAdjacentDupli#
 # Tc is O(n) , Sc is O(n) #
 class Solution(object):
@@ -2954,6 +3053,71 @@ def countOccurrence(n , arr):
 # print(countOccurrence(n , arr))
 
 
+
+#Kth Count Of the Candidates to get Kth continuous ##
+# Tc is O(n) , SC is O(1)
+def kthcount(k , nums):
+    count = 0
+    cand = None 
+    for num in nums :  
+        if num == cand:
+           count += 1
+        else:
+            cand = num 
+            count = 1 
+        if count == k :
+            return cand 
+
+    return -1          
+nums = [180 , 180 , 200 , 200 , 200 , 350 , 540 , 180]  
+k = 3         
+result = kthcount(k , nums)
+if (result != -1 ):
+    sumres = k*result
+    print("Kth count" , sumres)
+else:        
+    print("Not Found")    
+
+
+#Encrypted By +2#
+# Tc is O(n) , Sc is O(n) #
+def encryptStr(strings):
+    encrypt = ""
+    for char in strings :
+        if char == "Z":
+            encrypt += "B"
+        else:
+            encrypt += chr(ord(char) + 2)
+    return encrypt        
+words = "ABCD"
+result = encryptStr(words)
+print(result )
+
+
+#If odd return 3*N +1 else n/2 till 4 , return ratio#
+# Tc is O(logn) , Sc is O(1) #
+def isODD(n):
+    if (n % 2 == 0) :
+        return False
+    return True     
+def performOperationIFODD(n):
+    if (n == 8) :
+        return str(1)+":"+"0"
+    newVal = 0    
+    while n > 4 :
+        if isODD(n):
+            n = 3*n + 1
+        else:
+            newVal = n 
+            n = n / 2
+    firstRatio = int(newVal / 4)
+    return str(firstRatio)+":"+"1"
+n = 17   
+result = performOperationIFODD(n)
+print("Ratios are" , result)    
+
+
+
 ##ExchangeFirstCharToSecondCharAndSecondToFirst##
 # Tc is O(n) , Sc is O(n) #
 def exchange_FToS_CharandReverse(string,  firstChar , secondChar):
@@ -3195,17 +3359,44 @@ def pattern5(n):
 # print(result)            
 
 
+## Add the total sum of pyramid(1 , 212 , 32123 , ....)##
+def palindrome_pyramid_sum(n):
+    total_sum = 0
+    for i in range(1, n + 1):
+        # Construct the increasing part (i to 1)
+        increasing_part = ''.join(str(j) for j in range(i, 0, -1))
+        # Construct the decreasing part (2 to i)
+        decreasing_part = ''.join(str(j) for j in range(2, i + 1))
+        
+        # Form the full palindrome
+        full_palindrome = increasing_part + decreasing_part
+        
+        # Print the current row's palindrome (optional, for visualization)
+        print(full_palindrome)
+        
+        # Manually sum the digits of the full palindrome
+        for digit in full_palindrome:
+            total_sum += int(digit)
+    
+    return total_sum
+
+# Example usage
+n = 3  # Height of the pyramid
+total_sum = palindrome_pyramid_sum(n)
+print(f"The sum of the palindrome pyramid of height {n} is: {total_sum}")
+
+
+
 #6.
-#     *    
-#    ***   
-#   *****  
-#  ******* 
+#     *
+#    ***
+#   *****
+#  *******
 # *********
-# *********
-#  ******* 
-#   *****  
-#    ***   
-#     *  
+#  *******
+#   *****
+#    ***
+#     *
 def pattern6(n):
     pat = '' 
     for i in range(n):
@@ -3216,15 +3407,16 @@ def pattern6(n):
         for j in range(n-i-1):
             pat += " " 
         pat += "\n"        
-    for i in range(n):           
+    for i in range(1 , n):           
         for j in range(i):
             pat += " "
-        for  j in range(2*n - (2*i +1)) :
+        for  j in range(2*(n) - (2*i+1 )) :
             pat += "*"
         for j in range(i):
             pat += " "
         pat += "\n"
     return pat    
-# n = int(input("Enter Nums"))    
-# result = pattern6(n)
-# print(result)                     
+n = int(input("Enter Nums"))    
+result = pattern6(n)
+print(result)                     
+
