@@ -13,6 +13,17 @@
 # a-z -: 97 - 122
 # 0-9 -: 48 - 57 
 
+
+##Plus One##
+# Tc is O(n) , SC is O(n) #
+class Solution(object):
+    def plusOne(self, digits):
+        string = map(str , digits)
+        string = ''.join(string)
+        number = int(string) + 1
+        return [int(digit) for digit in str(number)]
+
+
 ##Sorting Algo's##
 #1. BubbleSort# 
 # Tc is O(n^2), Sc is O(1)
@@ -530,6 +541,35 @@ def findDupli(nums):
 arr = [2 , 3 ,3, 2, 5 , 4] 
 # result = findDupli(arr)
 # print("Duplicates are ", result )              
+
+
+##RETURNING UNIQUE ARRAY ##
+# Tc is O(n), SC is O(1) #
+class Solution(object):
+    def removeDuplicates(self, nums):
+        if not nums :
+         return 0 
+        uniqIndx = 0 
+        for i in range(1 , len(nums)):
+            if (nums[i] != nums[uniqIndx]): # not equal  ie, unique
+                uniqIndx += 1
+                nums[uniqIndx] = nums[i]
+          
+        return  uniqIndx + 1 , nums[:uniqIndx+1]
+
+
+## REMOVE ELEMENTS FROM AN ARRAY ##
+# TC is O(n) , SC is O(1) #
+class Solution(object):
+    def removeElement(self, nums, val):
+      if not nums :
+        return 0
+      uniqIndx = 0   
+      for i in range(0, len(nums)):
+        if (nums[i] != val) :
+            nums[uniqIndx] = nums[i] 
+            uniqIndx += 1           
+      return uniqIndx  
 
 
 #11.FindNumDivisibleBy2&5#
@@ -1059,6 +1099,34 @@ def getcount(arr):
 #     testcase = testcase - 1
 
 
+# ConversionFromRomanToInteger#
+# Tc is O(n) , Sc is O(k) #
+class Solution(object):
+    def romanToInt(self, s):
+        romanMap = {
+            'I' : 1 ,
+            'V': 5  , 
+            'X': 10 ,
+            'L': 50 ,
+            'C': 100 , 
+            'D': 500 ,
+            'M': 1000 ,
+        }
+
+        s = reversed(s)
+        prevVal = 0
+        totalVal = 0
+        for char in s :
+           currVal = romanMap[char]
+           if currVal < prevVal :
+             totalVal -= currVal 
+           else:
+              totalVal += currVal
+           prevVal = currVal 
+        return totalVal      
+             
+
+
 #19.SpiralMatrix#
 # Tc is O(n*m) , Sc is O(n*m) #
 def spiralMatrix(arr):
@@ -1506,6 +1574,21 @@ jewels = "aA"
 stones = "aAABBBb"
 # result = jewelAndStones(jewels , stones)
 # print("Jewels And Stones" , result )            
+
+
+##Find the Index of the First Occurrence in a String##
+# Tc is O(n) , Sc is O(1) #
+class Solution(object):
+    def strStr(self, haystack, needle):
+      if ( needle == "") :
+        return 0 
+      len_n = len(needle)
+      len_h  = len(haystack)
+      for i in range(len_h - len_n + 1):
+        if haystack[i:i+len_n] == needle :
+            return i 
+      return -1             
+
 
 #36.ValidAnagram#
 # Tc is O(2n) , Sc is O(2n) #
