@@ -1126,6 +1126,32 @@ class Solution(object):
         return totalVal      
              
 
+##ADD BINARY DIGITS##
+# TC is O(n) , Sc is O(n) #
+class Solution(object):
+    def addBinary(self, a, b):
+        i = len(a)-1
+        j = len(b)-1
+        carry = 0 
+        result = []
+        while i >= 0 or j >= 0 or carry : 
+            if i >= 0 :
+                digit_a = int(a[i])
+            else:
+                digit_a = 0
+            if j >= 0 :        
+                digit_b = int(b[j])
+            else:
+                digit_b = 0 
+            total = digit_a + digit_b + carry 
+            carry = total // 2
+            result.append(str(total % 2))
+            i -= 1
+            j -= 1    
+
+        return ''.join(reversed(result))    
+
+
 
 #19.SpiralMatrix#
 # Tc is O(n*m) , Sc is O(n*m) #
@@ -1986,6 +2012,9 @@ n =  3
 #42.2.b> Tabulation( Bottom-up Appr)# Better For large Numbers Calculations
 # Tc is O(n) , Sc is O(n) #
 def fiboByTabu(n , bottom):
+    if n <= 2:
+        return n
+
     bottom[1] = 1
     bottom[2] = 1
     for i in range(3 , n+1):
@@ -2261,6 +2290,30 @@ def searchInfInArr(arr):
 arr = [2 , 1 , -3 , 5 , 4 , float("inf") , float('inf') , float('inf')]   
 result = searchInfInArr(arr) 
 # print("Index of First Infinite is " , result )
+
+
+
+##SQRT(X) Without using (x ** 0.5)##
+# Tc is O(n) , SC is O(1) #
+class Solution(object):
+    def mySqrt(self, x):
+        if x < 2:
+            return x
+
+        left, right = 0, x
+        while left <= right:
+            mid = (left + right) // 2
+            square = mid * mid
+
+            if square == x:
+                return mid
+            elif square < x:
+                left = mid + 1
+            else:
+                right = mid - 1
+
+        return right 
+
 
 
 #50.InsertionInLL#
