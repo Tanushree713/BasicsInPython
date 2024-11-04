@@ -28,6 +28,37 @@ root.left.right = Node(5)
 # root.inOrder()  
 
 
+
+
+##INORDER WITH RETURN TYPE##
+# TC is O(n) , Sc is O(1) #
+class Solution(object):
+    def inorderTraversal(self, root):
+       result = [] 
+       self.helperTraversal(root , result)
+       return result
+    def helperTraversal(self , root , result):
+       if root :
+        if root.left :
+            self.helperTraversal(root.left, result)
+        result.append( root.val )
+        if root.right:
+            self.helperTraversal(root.right, result)
+      
+        
+##CHECK TREES are SAME OR NOT ##
+# TC is O(n) , Sc is O(1) #
+class Solution(object):
+    def isSameTree(self, p, q):
+       if not p and not q:
+        return True  
+       if not p or not q or p.val != q.val:
+        return False  
+
+       return self.isSameTree(p.left,q.left) and self.isSameTree(p.right,q.right)
+
+
+
 ## 2. PreOrder Tree traversal Algo ##
 # Time Complexity is O(n) , Space Complexity is O(h) # where , h = height of binary tree
 class Node :

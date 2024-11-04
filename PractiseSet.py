@@ -2484,6 +2484,28 @@ def append_to_list(linked_list, data):
 # listing2.printList()
 
 
+##DELETE DUPLICATES IN SORTED LL##
+# TC is O(n) , Sc is O(1)#
+# Definition for singly-linked list.
+class ListNode(object):
+    def __init__(self, val=0, next=None):
+        self.val = val
+        self.next = next
+class Solution(object):
+    def deleteDuplicates(self, head):
+        if head is None :
+            return None
+        curr = head
+        while curr and curr.next  :
+            if (curr.val == curr.next.val) :
+                curr.next = curr.next.next
+            else:    
+                curr = curr.next 
+        return head       
+
+
+
+
 #52.ReverseLL#
 # Tc is O(n) , Sc is O(1) #
 class Solution(object):
