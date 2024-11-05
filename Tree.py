@@ -748,6 +748,23 @@ print("Maximum Depth OF BST" , result )
 
 
 
+## MINDEPTH IN BST ##
+# Tc is O(n) , SC is O(1)#
+class Solution(object):
+    def minDepth(self, root):
+       if root is None :
+        return 0
+       if root.left is None:
+            return 1 + self.minDepth(root.right)
+       if root.right is None:
+            return 1 + self.minDepth(root.left) 
+       lh = self.minDepth(root.left)
+       rh = self.minDepth(root.right)
+       return 1 + min(lh , rh ) 
+
+
+       
+
 # 94.  ZigZag Tree #
 # Tc ic O(n) , Sc is O(n) #
 class TreeNode:

@@ -3578,3 +3578,32 @@ n = int(input("Enter Nums"))
 result = pattern6(n)
 print(result)                     
 
+
+
+## PASCAL's TRIANGLE - I ##
+# Tc is O(n^2) , Sc is O(n^2) #
+class Solution(object):
+    def generate(self, numRows):
+       triangle = []
+       for i in range(numRows):
+         row = [1] * (i+1)
+         for j in range(1 , i):
+            row[j] = triangle[i-1][j-1] + triangle[i-1][j]
+         triangle.append(row)  
+       return triangle    
+
+
+## PASCAL's TRIANGLE - II ##
+# Tc is O(n^2) , Sc is O(n^2) #
+class Solution(object):
+    def getRow(self, rowIndex):
+        getTriangle = self.getTri(rowIndex)
+        return getTriangle[rowIndex]
+    def getTri(self , numRows): 
+        triangle = []
+        for i in range(numRows+1):
+            row = [1] * (i+1)
+            for j in range(1 , i):
+                row[j] = triangle[i-1][j-1] + triangle[i-1][j]
+            triangle.append(row)
+        return triangle          
