@@ -7,11 +7,28 @@
 # list(map(int , input().split())) OR map(int , raw_input().split(','))
 #4.Convert Array to string #
 #  ''.join(map(str , arr))   ([4 , 5, 6] => 456)
+## Appending ##
+# result = ""
+# result += char (Input-"XYZ", Output-"XYZ")
+
+## Prepending ##
+# result = ""
+# result = char + result (Input-"XYZ" , Output-"ZYX" )
+#-----------#
+# [char = "XYZ"
+# result = ""
+# for c in char :
+#     result = c + result 
+# print(result)   ]
+
+
 
 ##ASCII VALUE##
 # A-Z -: 65 - 90
 # a-z -: 97 - 122
 # 0-9 -: 48 - 57 
+
+
 
 
 ##Plus One##
@@ -541,6 +558,28 @@ def findDupli(nums):
 arr = [2 , 3 ,3, 2, 5 , 4] 
 # result = findDupli(arr)
 # print("Duplicates are ", result )              
+
+
+## APP2 ##
+# TC is O(n) , SC is O(1) #
+def findDupli2(nums):
+    xor_res = 0
+    for num in nums :
+        xor_res ^= num 
+    for i in range(1 , len(nums)):
+        xor_res^= i 
+    return xor_res
+# nums = [ 2, 1, 5, 4, 6, 3 , 3] --> o/p:- 3
+
+
+## APP3 ##
+# Tc is O(n) , SC is O(1) #
+XOR = 0 
+for i in range(len(arr)):
+  XOR = XOR ^ arr[i] 
+print(XOR)
+# arr = [ 1, 2 , 2, 4, 5, 4, 3, 5 , 3] --> O/p:- 1
+
 
 
 ##RETURNING UNIQUE ARRAY ##
@@ -1917,6 +1956,8 @@ result = countAqua(string , l )
 # Ouputs>>
 # 3
 
+
+
 ##*FindFrequentVowels*##
 # Tc is O(n) , Sc is O(n + k ) #
 import heapq
@@ -1940,6 +1981,21 @@ def getVowelsInString(s):
 s = "xdy"    
 result = findFrequentVowels(s)
 # print("To Find Frequent vowels In String" , result )             
+
+
+##CONVERTEXCELTITLE##
+# TC is O() , Sc is O() #
+class Solution(object):
+    def convertToTitle(self, columnNumber):
+        result = ""
+        while columnNumber > 0 :
+            columnNumber -= 1
+            remainder = columnNumber % 26 
+            result = chr(remainder + ord('A')) + result 
+            columnNumber = columnNumber // 26 
+        return result
+       
+       
 
 
 ##*SumOfEachSubstrNotequalTolengthofitsSubstring*##
