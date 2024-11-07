@@ -982,6 +982,27 @@ result = convertSumOfNumInSingle(n)
 # print("Convert Sum into Single Digit " , result )
 
 
+##*CONVERT_NUM TILL ITS SQUAREsSUM ENDS TO 1 *##
+## Tc is O((logn)^2) , Sc is O(n)  ##
+class Solution(object):
+    def isHappy(self, n):
+        while n > 1:
+            n = self.sumNumber(n)
+        if n == 1:
+            return True 
+        else:
+            return False    
+    def sumNumber(self, n):
+        sqre = 0 
+        while n > 0 :
+            lastDigit = n % 10
+            sqre += pow(lastDigit , 2)
+            n = n//10
+        return sqre
+
+
+
+
 ##*NearestSmallestNumberInUnsortedARr*##
 # Tc is O(n) , Sc is O(n) #
 def small_nearestNum(arr):
@@ -1983,8 +2004,8 @@ result = findFrequentVowels(s)
 # print("To Find Frequent vowels In String" , result )             
 
 
-##CONVERTEXCELTITLE##
-# TC is O() , Sc is O() #
+##CONVERT_NUMTOEXCELTITLE##
+# TC is O(n) , Sc is O(n) #
 class Solution(object):
     def convertToTitle(self, columnNumber):
         result = ""
@@ -1995,7 +2016,17 @@ class Solution(object):
             columnNumber = columnNumber // 26 
         return result
        
-       
+
+##CONVERT_TITLETONUM##
+# Tc is O(n) , Sc is O(1) #
+class Solution(object):
+    def titleToNumber(self, columnTitle):
+       result = 0 
+       for char in columnTitle :
+         result = result * 26 + (ord(char) - ord('A')+1)
+       return result  
+
+
 
 
 ##*SumOfEachSubstrNotequalTolengthofitsSubstring*##
