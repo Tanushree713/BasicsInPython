@@ -47,3 +47,21 @@ print("Maximum Values with top bottom or left right Route" , result )
 # for row in matrix :
 #     print(row)
  
+def flipStr(pwd):
+    result = []
+    count = 0 
+    for char in pwd :
+        if char == "0":
+            result.append("1")
+            count += 1
+        else:
+            result.append("0")
+    return  count           
+
+pwd = "01011001"
+# print(flipStr(pwd) )   
+
+ 
+
+
+

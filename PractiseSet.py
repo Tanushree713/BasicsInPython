@@ -3694,3 +3694,66 @@ class Solution(object):
                 row[j] = triangle[i-1][j-1] + triangle[i-1][j]
             triangle.append(row)
         return triangle          
+
+
+
+
+
+##
+from collections import Counter
+def countMoves(string):
+    res = 0 
+    count = Counter(string)
+    for char in count :
+        res += count[char]//2
+    return res    
+string = "baabacaa"    
+res = countMoves(string) 
+# print(res)  
+
+
+##
+def findIsdivisible(nums , n):
+ res = 0  
+ result = []
+ for i in range(n-2):
+    for j in range(i+1 ,n-1):
+        for k in range(j+1 , n):
+            total = nums[i] + nums[j] + nums[k]
+            if isDivisible(total):
+                result.append([ nums[i] , nums[j] , nums[k]])
+                res += 1   
+
+ return res , result                    
+def isDivisible(n):
+    if n % 5 == 0 :
+        return True 
+    else :
+        return False    
+
+# getDivi = findIsdivisible([3,3,4,7,8] , 5)
+# print(getDivi)
+
+
+##
+def printFizz(n):
+    for i in range(1 , n+1):
+        if isMultOf3(i):
+            print("Fizz")
+
+        elif isMultOf5(i):
+            print("Buzz")
+
+        elif isMultOf3_5(i):
+            print("FizzBuzz")
+
+        else:
+            print(i)            
+def isMultOf3(n):
+    return n % 3 == 0 and n% 5 !=0 
+def isMultOf5(n):
+    return n%3 !=0 and n % 5 == 0 
+def isMultOf3_5(n):
+    return n%3==0 and n%5==0
+
+printFizz(15)
