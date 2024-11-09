@@ -351,6 +351,197 @@ result = count_continuous_horses(arr, K)
 # print("max Continuos Horses" , result )
 
 
+#Kth Count Of the Candidates to get Kth continuous ##
+# Tc is O(n) , SC is O(1)
+def kthcount(k , nums):
+    count = 0
+    cand = None 
+    for num in nums :  
+        if num == cand:
+           count += 1
+        else:
+            cand = num 
+            count = 1 
+        if count == k :
+            return cand 
+
+    return -1          
+nums = [180 , 180 , 200 , 200 , 200 , 350 , 540 , 180]  
+k = 3         
+result = kthcount(k , nums)
+if (result != -1 ):
+    sumres = k*result
+    print("Kth count" , sumres)
+else:        
+    print("Not Found") 
+
+
+
+##*FlipZeroesAtKTimesGetTheMaxLen*##
+# Tc is O(n^2), Sc is O(1)#
+def flipZeroesAtKTimes(arr):
+    maxlen = 0
+    n = len(arr)
+    for i in range(n):
+        cnt = 0
+        for j in range(i , n):
+            if arr[j]== 0 :
+                cnt += 1
+            if cnt <= k :
+                length = j -i + 1
+                maxlen = max(maxlen , length)    
+            else:
+                break 
+    return maxlen 
+arr = [ 1,1,1,0,0,0,1,1,1,1,0,1]                
+# res = flipZeroesAtKTimes(arr)
+# print(res)
+
+
+
+##*FruitsInBasket*##
+ #Need to store distinct k types fruits in Basket #
+ # Tc is O(n^2) , Sc is O(k)#
+def stringInBasket(string , k):
+    maxlen = 0
+    arr = list(string)
+    n= len(arr)
+    for i in range(n):
+        seen = set()
+        for j in range(i, n):
+            seen.add(arr[j])
+            if len(seen) <= k :
+                length = j-i+1
+                maxlen = max(maxlen , length)
+            else:
+                break 
+    return maxlen            
+string = "aaabcacb"
+k= 2
+res = stringInBasket(string , k)
+print(res)
+
+
+##*CountSubArrWhoseSumEqualsToK*##
+# Tc is O(n) , Sc is O(1) #
+def countSubArrEqualsTok(nums , k):
+    if k < 0 :
+        return 0
+    else:
+        n = len(nums)
+        left = 0 
+        right = 0 
+        cnt = 0
+        currSum = 0  
+        while right < n :
+            currSum += nums[right]
+            while currSum > k :
+                currSum -= nums[left]
+                left += 1
+            cnt += (right-left+1)
+            right += 1
+    return cnt 
+nums = [1,0,1,0,1]  
+k = 2                
+# res1 = countSubArrEqualsTok(nums , k)
+# res2 = countSubArrEqualsTok(nums , k-1)
+# print(res1-res2)
+
+
+
+##Count the Nice SubARR ##
+#SubArr which contains odd elements Equals to K Times #
+# Tc is O(n) , Sc is O(n) #
+def niceSubArr(nums , k):
+    result = []
+    n = len(nums)
+    for num in nums :
+        if isOdd(num):
+            result.append(1)
+        else:
+            result.append(0) 
+    if k < 0 :
+        return 0    
+    else:        
+        left = 0 
+        currSum = 0 
+        cnt = 0 
+        right = 0           
+        while right < n : 
+            currSum += result[right]
+            while currSum > k :
+                currSum -= result[left]
+                left += 1
+            cnt += right-left +1
+            right += 1   
+        return cnt      
+def isOdd(n):
+   return (n % 2 != 0 )
+nums = [1 ,1,2, 1,1]
+k = 3
+# res1 = niceSubArr(nums , k)
+# res2 = niceSubArr(nums , k-1)
+# print(res1-res2)
+ 
+
+
+##Count The SubARR with K diff Integer ##
+# Tc is O(n^2) , Sc is O(k) #
+def countSubArrWithKDiff(nums , k):
+    n = len(nums)
+    cnt = 0
+    for i in range(n):
+        seen = set()
+        for j in range(i , n):
+            seen.add(nums[j])
+            if len(seen) == k :
+                cnt += 1
+            elif  len(seen) > k :
+                break 
+    return cnt   
+nums = [1,2,1,3,4] 
+k = 3             
+res1 = countSubArrWithKDiff(nums , k)
+print(res1)
+
+
+##MAXCOSTOFLAPPY_LEGALANDILLEGAL##
+def max_cost(n, cost, labels, daily_count):
+    max_cost = 0
+    current_day_cost = 0
+    num_legal_today = 0
+
+    for i in range(n):
+        # Add cost regardless of label
+        current_day_cost += cost[i]
+
+        # Only count legal items for daily requirement
+        if labels[i] == "legal":
+            num_legal_today += 1
+
+        # When we reach the required daily count of legal items
+        if num_legal_today == daily_count:
+            # Update max_cost if the current day's cost is higher
+            max_cost = max(max_cost, current_day_cost)
+            # Reset counters for the next day
+            current_day_cost = 0
+            num_legal_today = 0
+
+    return max_cost
+
+# Example usage
+n = 5
+cost = [0, 3, 2, 3, 4]
+labels = ["legal", "legal", "illegal", "legal", "legal"]
+daily_count = 1
+
+result = max_cost(n, cost, labels, daily_count)
+print(result)  # Expected Output: 5
+
+
+
+
+
 
 #4.TripletSum#
 # Tc is O(n^2) , Sc is O(k) #
@@ -1575,6 +1766,8 @@ def reverseStr(string):
 string = "hello"
 # res = reverseStr(string)
 # print("Reversed string " , res)         
+
+
 
 #30.FirstUniqueCharInStr#
 # Tc is O(n) , Sc is O(n) #
@@ -3296,32 +3489,7 @@ def countOccurrence(n , arr):
 # n = int(input("Enter size :"))
 # arr = list(map(int , input().split()))
 # print(countOccurrence(n , arr))
-
-
-
-#Kth Count Of the Candidates to get Kth continuous ##
-# Tc is O(n) , SC is O(1)
-def kthcount(k , nums):
-    count = 0
-    cand = None 
-    for num in nums :  
-        if num == cand:
-           count += 1
-        else:
-            cand = num 
-            count = 1 
-        if count == k :
-            return cand 
-
-    return -1          
-nums = [180 , 180 , 200 , 200 , 200 , 350 , 540 , 180]  
-k = 3         
-result = kthcount(k , nums)
-if (result != -1 ):
-    sumres = k*result
-    print("Kth count" , sumres)
-else:        
-    print("Not Found")    
+#    
 
 
 #Encrypted By +2#
