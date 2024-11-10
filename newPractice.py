@@ -61,7 +61,8 @@ def flipStr(pwd):
 pwd = "01011001"
 # print(flipStr(pwd) )   
 
- 
+
+
 
 
 

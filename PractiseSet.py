@@ -111,7 +111,7 @@ def partition(arr , p , q):
     return i 
 arr = [ 6 , 4 , 2 , 1 , 5] 
 p = 0 
-q = len(arr) - 1 
+q = len(arr) - 1
 # result = quickSort(arr , p , q)
 # print("Sort arr Using QuickSort" , result)
  
@@ -3923,5 +3923,30 @@ def isMultOf5(n):
     return n%3 !=0 and n % 5 == 0 
 def isMultOf3_5(n):
     return n%3==0 and n%5==0
-
 printFizz(15)
+
+
+
+##GEtTriangle##
+def triangle(trigle):
+      res = []
+      for sides in trigle :  
+        if isValid(sides):
+            if sides[0] == sides[1] and sides[1] == sides[2]:
+                res.append("Equilateral")
+            elif sides[0] == sides[1] or sides[1] == sides[2] or sides[0] == sides[2]:
+                res.append( "Isosceles")
+            else:
+                res.append("None")
+        else:
+            res.append("None")               
+      return res
+def isValid(sides): 
+   side1, side2, side3 = sides
+   return (side1 + side2 > side3) and (side2 + side3 > side1) and (side3 + side1 > side2)
+trigle = [[2,2,1],[3,3,3],[1,1,3],[1,3,4]]
+getTriangle = triangle(trigle)
+print(getTriangle)
+ 
+
+ 
