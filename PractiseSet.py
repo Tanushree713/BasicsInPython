@@ -351,6 +351,45 @@ result = count_continuous_horses(arr, K)
 # print("max Continuos Horses" , result )
 
 
+##*MinLengthSubArrWhoseSumIsGreaterANDEqualTok*##
+# Tc is O() , Sc is O() #
+def minLengthOfSubArrSumGreaterTok(arr , k):
+    minLen = float("inf")
+    n = len(arr)
+    for i in range(n):
+        total = 0
+        for j in range(i , n):
+            total += arr[j]
+            if total >= k :
+                minLen = min(minLen , j-i+1)
+                break
+    if minLen == float('inf'):
+        return 0 
+    else:
+        return minLen    
+arr = [1,3,4]     
+k = 11       
+# res = minLengthOfSubArrSumGreaterTok(arr , k)
+# print(res)
+
+   
+##MAXSubArraySumOfSizeK##
+def maxSubArrSizek(arr , k):
+    res = 0
+    maxSum = 0
+    n = len(arr)
+    for i in range(n-k+1):
+        res = sum(arr[i:i+k])
+        maxSum = max(maxSum , res)
+    return maxSum 
+arr = [2,3,4,5,3,6]
+# k = 3
+# res = maxSubArrSizek(arr , k)
+# print(res) 
+
+
+
+
 #Kth Count Of the Candidates to get Kth continuous ##
 # Tc is O(n) , SC is O(1)
 def kthcount(k , nums):
@@ -369,11 +408,11 @@ def kthcount(k , nums):
 nums = [180 , 180 , 200 , 200 , 200 , 350 , 540 , 180]  
 k = 3         
 result = kthcount(k , nums)
-if (result != -1 ):
-    sumres = k*result
-    print("Kth count" , sumres)
-else:        
-    print("Not Found") 
+# if (result != -1 ):
+#     sumres = k*result
+#     print("Kth count" , sumres)
+# else:        
+#     print("Not Found") 
 
 
 
@@ -417,9 +456,9 @@ def stringInBasket(string , k):
                 break 
     return maxlen            
 string = "aaabcacb"
-k= 2
-res = stringInBasket(string , k)
-print(res)
+# k= 2
+# res = stringInBasket(string , k)
+# print(res)
 
 
 ##*CountSubArrWhoseSumEqualsToK*##
@@ -1674,9 +1713,9 @@ mat = [[1,0,1],
 import math
 def encryptStrIn2DMat(string) :
     n = len(string)
-    rows = math.ceil(math.sqrt(n))
-    cols = math.ceil(n // rows)
-    mat = [['']* cols for _ in range(rows)]
+    rows = math.ceil(math.sqrt(n)) #3
+    cols = math.ceil(n // rows)#4
+    mat = [['']* cols for _ in range(rows)] #row=4 , col = 3(4*3)
     index = 0 
     for i in range(rows):
         for j in range(cols):
@@ -1685,6 +1724,7 @@ def encryptStrIn2DMat(string) :
                 index += 1
             else:
                 mat[i][j] = "" 
+                print(mat)
     encryptStr = ""            
     for j in range(cols):
         for i in range(rows):
@@ -1696,6 +1736,34 @@ input_string = "PLEASESAVEME"
 # print("Encrypted Str", result)
     
 
+
+# Online Python compiler (interpreter) to run Python online.
+# Write Python 3 code in this online editor and run it.
+import math
+def encryptstr(string):
+    n = len(string)
+    col = math.ceil(math.sqrt(n))  #3
+    row = math.ceil(n / col) #4
+    arr = [[0]*col for _ in range(row)]  #3*4 (row value inside col and col val inside row hota h )
+    index = 0
+    for i in range(row):
+        for j in range(col):
+            if index < n :
+                arr[i][j] = string[index]
+                index += 1
+    print(arr) 
+    encrypt = ""
+    for j in range(col):
+        for i in range(row):
+            encrypt += arr[i][j]
+    return encrypt            
+    
+string = "ABCDEFGHIJKL"    
+res = encryptstr(string) 
+print(res)
+    
+    
+    
 
 #2D find greater route moving only top to bottom or left to right #
 # Tc is O(m+n) , Sc is O(1) #

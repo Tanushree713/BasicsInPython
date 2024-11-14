@@ -62,7 +62,27 @@ pwd = "01011001"
 # print(flipStr(pwd) )   
 
 
-
-
-
-
+import math
+def encryptStrIn2DMat(string) :
+    n = len(string)
+    rows = math.ceil(math.sqrt(n))
+    cols = math.ceil(n // rows)
+    mat = [['']* cols for _ in range(rows)]
+    index = 0 
+    for i in range(rows):
+        for j in range(cols):
+            if index < n :
+                mat[i][j] = string[index]
+                index += 1
+            else:
+                mat[i][j] = "" 
+    print(mat)            
+    encryptStr = ""            
+    for j in range(cols):
+        for i in range(rows):
+            if mat[i][j] != '':
+                encryptStr += mat[i][j]     
+    return encryptStr
+input_string = "PLEASESAVEME"
+result  = encryptStrIn2DMat(input_string)
+print("Encrypted Str", result)
