@@ -1342,6 +1342,27 @@ result = rankOfUnsortedARR(arr)
 #outputs=[4 , 3, 5 , 1 , 6 , 2  , 1] #2 is 1st ranker(sorted Manner)
 
 
+
+##FINDRANKEDINDESCENDINGUSINGSTACKPOP##
+def indexedMountain(arr):
+    res = []
+    for num in arr:
+        res.append(num)
+    result = []  # Store the indices of the max elements
+    while len(res) > 0:
+        indexMaxNum = arr.index(max(res))  # Find index of the max element from original arr
+        print(indexMaxNum)
+        result.append(indexMaxNum)  # Store the index
+        res.pop(res.index(max(res)))  # Remove the max element from res
+    
+    return result
+
+arr = [2, 4, 6, 1, 8, 5]
+result = indexedMountain(arr)
+print(result)
+
+
+
 ##*GetMaxContainerIn_K_PriceValue*##
 # Tc is O(2^n * n^2) , Sc is O(n * 2^n) #
 from itertools import combinations
@@ -1860,6 +1881,7 @@ def reverseWordsInStr(string):
 string = "the sky is blue" 
 result = reverseWordsInStr(string)
 # print("Reversed Words : " , result )     
+
 
 #32.LengthOfLastWords#
 # Tc is O(n) , Sc is O(n) #
@@ -3295,6 +3317,26 @@ k = 3
 x =  2       
 resultant = kthClosestEle(arr , k , x)
 # print("KthClosest Ele " , resultant)
+
+
+##GETCLOSERTO_ZERO-TEMPERATURE##
+from heapq import heappush , heappop
+import heapq
+def closestNum(arr):
+    x = 0
+    k =1
+    heap = []
+    for i in range(len(arr)):
+        heapq.heappush(heap , (abs(arr[i] - x ) , arr[i] if arr[i] >= 0 else float('inf') , arr[i]))
+    response = []
+    for i in range(k):
+        response.append(heapq.heappop(heap)[2])
+    return response
+        
+arr = [ -3, 8, 4, -6 , 3]
+result = closestNum(arr)
+print(result)
+
 
 
 #71.KthClosestPoints#

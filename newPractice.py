@@ -19,8 +19,10 @@ def _2DMatrix(arr):
     return result           
 
 matrix = [[1 , 2, 3 , 4], [14 , 15, 16 , 17],[7 , 8, 3 , 22],[9 , 10 , 1 , 19]]
-result = _2DMatrix(matrix)
-print("Maximum Values with top bottom or left right Route" , result )
+# result = _2DMatrix(matrix)
+# print("Maximum Values with top bottom or left right Route" , result )
+
+
 #---Taking 2D Matrix Input---#
 # rows , columns = map(int , (input("Enter rows and columns: ").split()))
 # matrix = []
@@ -61,28 +63,23 @@ def flipStr(pwd):
 pwd = "01011001"
 # print(flipStr(pwd) )   
 
-
-import math
-def encryptStrIn2DMat(string) :
-    n = len(string)
-    rows = math.ceil(math.sqrt(n))
-    cols = math.ceil(n // rows)
-    mat = [['']* cols for _ in range(rows)]
-    index = 0 
-    for i in range(rows):
-        for j in range(cols):
-            if index < n :
-                mat[i][j] = string[index]
-                index += 1
+def flipZeroes(arr , k):
+    n = len(arr)
+    maxlen = 0
+    for i in range(n):
+        cnt = 0 
+        for j in range(i , n ):
+            if arr[j] == 0 :
+                cnt += 1
+            if cnt <= k:
+                    maxlen = max(maxlen , j-i+1)
             else:
-                mat[i][j] = "" 
-    print(mat)            
-    encryptStr = ""            
-    for j in range(cols):
-        for i in range(rows):
-            if mat[i][j] != '':
-                encryptStr += mat[i][j]     
-    return encryptStr
-input_string = "PLEASESAVEME"
-result  = encryptStrIn2DMat(input_string)
-print("Encrypted Str", result)
+                    break
+        return maxlen        
+    
+            
+    
+arr = [1,1,1,1,0,1,0,1,0,0,0,1,1]   # 8
+k = 2
+res = flipZeroes(arr , k)
+print(res)
